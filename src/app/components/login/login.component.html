@@ -2,7 +2,9 @@
   <div role="login" *ngIf="!showRegister">
     <div class="section__red">
       <div class="section__red--logo">
-        <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
+        <figure>
+          <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
+        </figure>
       </div>
       <section class="section__red--inputs">
         <div class="contain-input">
@@ -11,7 +13,7 @@
         </div>
         <div class="contain-input">
           <label for="user" class="label">Contraseña</label>
-          <input type="pass" class="input" placeholder="Nickname">
+          <input type="pass" class="input" placeholder="******">
         </div>
       </section>
       <div class="section__red--resetPass">
@@ -31,8 +33,10 @@
         <figure>
           <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
         </figure>
-        <object (click)="showRegister = false" data="../../../assets/svg/cancelar.svg" type="image/svg+xml">
-        </object>
+        <figure (click)="showRegister = false">
+          <object data="../../../assets/svg/cancelar.svg" type="image/svg+xml">
+          </object>
+        </figure>
       </div>
       <section class="section__red--inputs">
         <div class="section-two-inputs">
