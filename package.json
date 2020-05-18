@@ -1,9 +1,10 @@
 {
   "name": "torrefiel-pwa",
+  "autor": "karem alcala",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -11,6 +12,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "~9.1.6",
+    "@angular/compiler-cli": "~9.1.7",
     "@angular/animations": "~9.1.7",
     "@angular/common": "~9.1.7",
     "@angular/compiler": "~9.1.7",
@@ -25,8 +28,6 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.6",
-    "@angular/cli": "~9.1.6",
-    "@angular/compiler-cli": "~9.1.7",
     "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
@@ -42,5 +43,9 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
+  },
+  "engines": {
+    "node": "12.16.3",
+    "npm": "6.14.4"
   }
 }

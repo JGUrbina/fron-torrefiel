@@ -1,0 +1,103 @@
+/************************************************ DESVANECER - APARECER ************************************************/
+.fadeIn{
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
+}
+@keyframes fadeIn {
+  from{
+      opacity: 0;
+  }
+  to{
+      opacity: 1;
+  }
+}
+
+//Aparecer de arriba - abajo
+.fadeInDown{
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeInDown;
+}
+@keyframes fadeInDown {
+  from{
+      opacity: 0;
+      transform: translate3d(0,-100%,0);
+  }
+  to{
+      opacity: 1;
+      transform: translate3d(0,0,0);
+  }
+}
+
+//Aparecer de abajo - arriba
+.fadeInUp{
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeInUp;
+}
+@keyframes fadeInUp {
+  from{
+      opacity: 0;
+      transform: translate3d(0,100%,0);
+  }
+  to{
+      opacity: 1;
+      transform: translate3d(0,0,0);
+  }
+}
+
+.rotate {
+  animation: rotar 2s linear infinite;
+}
+@keyframes rotar{
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.jingle {
+  animation: dance .3s linear infinite;
+}
+@keyframes dance{
+  0% {
+    transform: rotate(0deg);
+  }
+  25%{
+      transform: rotate(15deg);
+  }
+  50%{
+      transform: rotate(0deg);
+  }
+  75%{
+      transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.jingle-null{
+  animation: invert-dance .3s linear infinite;
+}
+
+@keyframes invert-dance{
+  0% {
+    transform: rotate(0deg);
+  }
+  25%{
+      transform: rotate(-15deg);
+  }
+  50%{
+      transform: rotate(0deg);
+  }
+  75%{
+      transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
