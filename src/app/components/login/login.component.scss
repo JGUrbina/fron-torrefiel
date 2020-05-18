@@ -7,83 +7,92 @@ $color-black-middle: #303030;
   box-shadow: 0 2px 4px 1px #00000082;
 }
 
+%btn-black{
+  width: 80%;
+  margin: auto;
+  margin-top: 24px;
+  button{
+    width: 100%;
+    padding: 14px 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: $size-border-radius-secondary;
+    @extend %boxShadow;
+  }
+}
+
+%section-red{
+  .section__red{
+    background-color: $color-red;
+    padding: 20px;
+    height: 450px;
+    width: 380px;
+    margin: auto;
+    border-radius: $size-border-radius;
+
+      &--logo{
+        margin-bottom: 15px;
+        figure{
+          text-align: center;
+          padding: 15px;
+        }
+      }
+
+      &--inputs{
+        .contain-input{
+          display: flex;
+          flex-wrap: wrap;
+          width: 80%;
+          margin: auto;
+          margin-bottom: 15px;
+
+          label, input{
+            width: 100%;
+          }
+
+          label{
+            margin-bottom: 9px;
+          }
+
+          input{
+            padding: 12px;
+            border-radius: $size-border-radius-secondary;
+            border: 1px solid #989696;
+          }
+        }
+      }
+
+      &--resetPass{
+        width: 74%;
+        margin: auto;
+
+        a{
+          text-decoration: none !important;
+          color: white !important;
+          font-size: .9rem;
+        }
+      }
+
+      &--enter{
+        @extend %btn-black;
+      }
+  }
+}
+
 .login-and-register{
-    height: 100vh;
-    background-image: url(../../../assets/images/bg.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
+    min-height: 100vh;
+    background: url(../../../assets/images/bg.png) center center fixed;
+    background-size: cover;
 
     [role=login], [role=register]{
       height: inherit;
       padding-top: 15%;
+      padding-bottom: 15%;
     }
 
-    .section__red{
-        background-color: $color-red;
-        padding: 20px;
-        height: 450px;
-        width: 380px;
-        margin: auto;
-        border-radius: $size-border-radius;
-
-        &--logo{
-          margin-bottom: 15px;
-          figure{
-            text-align: center;
-            padding: 15px;
-          }
-        }
-
-        &--inputs{
-          .contain-input{
-            display: flex;
-            flex-wrap: wrap;
-            width: 80%;
-            margin: auto;
-            margin-bottom: 15px;
-
-            label, input{
-              width: 100%;
-            }
-
-            label{
-              margin-bottom: 9px;
-            }
-
-            input{
-              padding: 12px;
-              border-radius: $size-border-radius-secondary;
-              border: 1px solid #989696;
-            }
-          }
-        }
-
-        &--resetPass{
-          width: 74%;
-          margin: auto;
-
-          a{
-            text-decoration: none !important;
-            color: white !important;
-            font-size: .9rem;
-          }
-        }
-
-        &--enter{
-          width: 80%;
-          margin: auto;
-          margin-top: 24px;
-          button{
-            width: 100%;
-            padding: 14px 10px;
-            background-color: black;
-            color: white;
-            border: none;
-            border-radius: $size-border-radius-secondary;
-            @extend %boxShadow;
-          }
-        }
+    [role=login]{
+      @extend %section-red;
     }
 
     .createAccount{
@@ -100,6 +109,49 @@ $color-black-middle: #303030;
         background-color: $color-black-middle;
 
         @extend %boxShadow;
+      }
+    }
+
+    [role=register]{
+      @extend %section-red;
+
+      .section__red{
+        height: 520px;
+        width: 60%;
+  
+          &--logo{
+            position: relative;
+            .exit{
+              position: absolute;
+              top: 0;
+              right: 0;
+              padding: 0;
+
+              svg{
+                stroke: white !important;
+                stroke-width: 2px !important;
+                path{
+                  stroke: white !important;
+                  stroke-width: 2px !important;
+                }
+              }
+            }
+          }
+  
+          &--inputs{
+            .section-two-inputs{
+              display: flex;
+              justify-content: space-between;
+              .contain-input{
+                width: 43%;
+              }
+            }
+          }
+  
+          &--register{
+            @extend %btn-black;
+            width: 50%;
+          }
       }
     }
 }
