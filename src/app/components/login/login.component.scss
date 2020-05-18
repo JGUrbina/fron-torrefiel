@@ -26,7 +26,7 @@ $color-black-middle: #303030;
   .section__red{
     background-color: $color-red;
     padding: 20px;
-    height: 450px;
+    height: 480px;
     width: 380px;
     margin: auto;
     border-radius: $size-border-radius;
@@ -116,8 +116,9 @@ $color-black-middle: #303030;
       @extend %section-red;
 
       .section__red{
-        height: 520px;
+        height: 550px;
         width: 60%;
+        max-width: 700px;
   
           &--logo{
             position: relative;
