@@ -1,0 +1,36 @@
+$color-red: #cd2a00;
+
+.login-and-register{
+    height: 100vh;
+    background-image: url(../../../assets/images/bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+
+    .section__red{
+        background-color: $color-red;
+        padding: 10px;
+
+        &--logo{
+
+        }
+
+        &--inputs{
+
+        }
+
+        &--resetPass{
+
+        }
+
+        &--enter{
+
+        }
+    }
+
+    .createAccount{
+        &__btn{
+            
+        }
+    }
+}

@@ -1,1 +1,74 @@
-<p>login works!</p>
+<section class="login-and-register">
+  <div role="login" *ngIf="!showRegister">
+    <div class="section__red">
+      <div class="section__red--logo">
+        <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
+      </div>
+      <section class="section__red--inputs">
+        <div class="contain-input">
+          <label for="user" class="label">Usuario</label>
+          <input type="text" class="input" placeholder="Nickname">
+        </div>
+        <div class="contain-input">
+          <label for="user" class="label">Contraseña</label>
+          <input type="pass" class="input" placeholder="Nickname">
+        </div>
+      </section>
+      <div class="section__red--resetPass">
+        <a href="">Recuperar contraseña</a>
+      </div>
+      <div class="section__red--enter">
+        <button>Entrar</button>
+      </div>
+    </div>
+    <div class="createAccount">
+      <button class="createAccount__btn" (click)="showRegister = true">Crear cuenta</button>
+    </div>
+  </div>
+  <div role="register" *ngIf="showRegister">
+    <div class="section__red">
+      <div class="section__red--logo">
+        <figure>
+          <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
+        </figure>
+        <object (click)="showRegister = false" data="../../../assets/svg/cancelar.svg" type="image/svg+xml">
+        </object>
+      </div>
+      <section class="section__red--inputs">
+        <div class="section-two-inputs">
+          <div class="contain-input">
+            <label for="user" class="label">Nombre(s)*</label>
+            <input type="text" class="input" placeholder="Nombre(s)">
+          </div>
+          <div class="contain-input">
+            <label for="user" class="label">Apellido Paterno*</label>
+            <input type="text" class="input" placeholder="Apellido Paterno">
+          </div>
+        </div>
+        <div class="section-two-inputs">
+          <div class="contain-input">
+            <label for="user" class="label">Apellido Materno*</label>
+            <input type="text" class="input" placeholder="Apellido Materno">
+          </div>
+          <div class="contain-input">
+            <label for="user" class="label">Elige tu nickname*</label>
+            <input type="text" class="input" placeholder="Nickname">
+          </div>
+        </div>
+        <div class="section-two-inputs">
+          <div class="contain-input">
+            <label for="user" class="label">Móvil*</label>
+            <input type="text" class="input" placeholder="Móvil">
+          </div>
+          <div class="contain-input">
+            <label for="user" class="label">Email*</label>
+            <input type="text" class="input" placeholder="nombre@corre.com">
+          </div>
+        </div>
+      </section>
+      <div class="section__red--register">
+        <button>Registrarse</button>
+      </div>
+    </div>
+  </div>
+</section>
