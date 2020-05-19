@@ -19,11 +19,20 @@ export class UserService {
     return this._Http.get<any>(this.urlApi);
   }
 
-  createUser(user: User): Observable<any>{
-    return this._Http.post<any>(`${this.urlApi}/register`, user);
+  createUser(user: User): Observable<object>{
+    return this._Http.post<object>(`${this.urlApi}/register`, user);
   }
 
-  deleteUser(id: string): Observable<any> {
-    return this._Http.delete<any>(`${this.urlApi}/${id}`);
+  deleteUser(id: string): Observable<object> {
+    return this._Http.delete<object>(`${this.urlApi}/${id}`);
+  }
+
+  login(params: object): Observable<object> {
+    console.log(params);
+    return this._Http.post<object>(`${this.urlApi}/login`, params);
+  }
+
+  setPassword(token: string): Observable<object>{
+    return this._Http.post<object>(`${this.urlApi}/passwordreset/${token}`, token);
   }
 }

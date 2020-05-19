@@ -9,7 +9,7 @@
       <section class="section__red--inputs">
         <div class="contain-input">
           <label for="user" class="label">Contraseña</label>
-          <input type="text" class="input" minlength="4" placeholder="Minimo 4 caracteres" name="password" #password="ngModel" [(ngModel)]="newUser.password" required>
+          <input type="password" class="input" minlength="4" placeholder="Minimo 4 caracteres" name="password" #password="ngModel" [(ngModel)]="user.password" required>
 
           <small class="error-input" *ngIf="!password.valid && password.touched">
             Contraseña no es válida
@@ -18,7 +18,7 @@
         
         <div class="contain-input mb-0">
           <label for="user" class="label">Contraseña (Repetir)</label>
-          <input type="text" class="input" minlength="4" placeholder="Repetir Contraseña" name="passwordRepeatVariable" #passwordRepeatVariable="ngModel" [(ngModel)]="passwordRepeat" required>
+          <input type="password" class="input" minlength="4" placeholder="Repetir Contraseña" name="passwordRepeatVariable" #passwordRepeatVariable="ngModel" [(ngModel)]="passwordRepeat" required>
 
           <small class="error-input" *ngIf="!passwordRepeatVariable.valid && passwordRepeatVariable.touched">
             Contraseña no es válida

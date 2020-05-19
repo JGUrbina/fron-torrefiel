@@ -2,26 +2,38 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ContentModalComponent } from '../content-modal/content-modal.component';
 import { UserService } from '../../services/user/user.service';
-import { User } from '../../models/user/user';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-reset-pass',
   templateUrl: './reset-pass.component.html',
   styleUrls: ['./reset-pass.component.scss']
 })
 export class ResetPassComponent implements OnInit {
-    public newUser: User;
+    public user: object;
     public passwordRepeat: string;
+    public token: string;
+    public params: string;
   
     constructor(
       private ngbModalRef: NgbModal,
       public _UserService: UserService,
+      private route: ActivatedRoute,
     ){ 
       this.passwordRepeat = '';
-      this.newUser = new User('', '', '', '', '', '', '', null, [null], '', false, null, null,);
+      this.user = {
+        password: ''
+      }
     }
   
-    ngOnInit(): void {}
+    ngOnInit(): void {
+      this.getToken();
+    }
+
+    getToken(): void{
+      this.route.paramMap.subscribe(params => {
+        this.token = params.get('token');
+      });
+    }
   
     openModal(): void{
       const options = {
@@ -33,11 +45,11 @@ export class ResetPassComponent implements OnInit {
     }
   
     onSubmitPass(): void{
-      this._UserService.createUser(this.newUser).subscribe(
+      this._UserService.setPassword(this.token).subscribe(
         (data) => {
           console.log(data);
-          const title = 'Registro Correcto';
-          const subtitle = `¡Felicidades! Tu cuenta se a creado correctamente.<br><br> Espera el mail de confirmación`;
+          const title = 'Haz creación exitosa';
+          const subtitle = `Haz creado tu contraseña exitosamente.<br><br> Ya puedes iniciar sesión`;
           this.showAlert(title, subtitle);
         },
         (err) => {

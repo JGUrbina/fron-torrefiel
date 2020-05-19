@@ -9,18 +9,26 @@
       <section class="section__red--inputs">
         <div class="contain-input">
           <label for="user" class="label">Usuario</label>
-          <input type="text" class="input" placeholder="Nickname">
+          <input type="text" class="input" placeholder="Nickname" name="usernameLogin" #usernameLogin="ngModel" [(ngModel)]="userName" required>
+
+          <small class="error-input" *ngIf="!usernameLogin.valid && usernameLogin.touched">
+            Nickname no es válido
+          </small>
         </div>
         <div class="contain-input mb-0">
           <label for="user" class="label">Contraseña</label>
-          <input type="pass" class="input" placeholder="******">
+          <input type="password" class="input" minlength="4" placeholder="******" name="passwordLogin" #passwordLogin="ngModel" [(ngModel)]="password" required>
+
+          <small class="error-input" *ngIf="!passwordLogin.valid && passwordLogin.touched">
+            password no es válido
+          </small>
         </div>
       </section>
       <div class="section__red--resetPass">
-        <a href="">Recuperar contraseña</a>
+        <a [routerLink]="['/user/confirmation/resspass']" routerLinkActive="router-link-active" >Recuperar contraseña</a>
       </div>
       <div class="section__red--enter">
-        <button>Entrar</button>
+        <button (click)="logIn()">Entrar</button>
       </div>
     </div>
     <div class="createAccount">
@@ -69,7 +77,7 @@
             </div>
             <div class="contain-input">
               <label for="user" class="label">Elige tu nickname*</label>
-              <input type="text" class="input" placeholder="Nickname" name="username" #username="ngModel" [(ngModel)]="newUser.username" required>
+              <input type="text" class="input" placeholder="Nickname" name="username" #username="ngModel" [(ngModel)]="newUser.userName" required>
 
               <small class="error-input" *ngIf="!username.valid && username.touched">
                 Nickname no es válido

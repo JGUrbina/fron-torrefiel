@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
 
   public showRegister: boolean;
   public newUser: User;
+  public userName: string;
+  public password: string;
 
   constructor(
     private ngbModalRef: NgbModal,
@@ -58,8 +60,25 @@ export class LoginComponent implements OnInit {
     console.log('hola aqui');
   }
 
-  showAlert(title: string, subtitle: string){
+  showAlert(title: string, subtitle: string): void{
     alert(title + subtitle);
+  }
+
+  logIn(): void{
+    if(this.userName && this.password){
+      const userLogin = {
+        userName: this.userName,
+        password: this.password
+      }
+      this._UserService.login(userLogin).subscribe(
+        (data) => {
+          console.log(data);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
   }
 
 }

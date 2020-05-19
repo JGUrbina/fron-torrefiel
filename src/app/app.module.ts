@@ -13,6 +13,7 @@ import { FormComponent } from './components/form/form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContentModalComponent } from './components/content-modal/content-modal.component';
 import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ResetPassComponent } from './components/reset-pass/reset-pass.component
     HomeComponent,
     FormComponent,
     ContentModalComponent,
-    ResetPassComponent
+    ResetPassComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
