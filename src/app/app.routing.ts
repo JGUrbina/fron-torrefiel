@@ -9,6 +9,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'user/resetpass', component: ResetPassComponent},
   {path: 'user/confirmation/:token', component: ResetPassComponent},
   {path: '**', component: ErrorPageComponent},
 ];

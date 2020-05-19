@@ -97,6 +97,18 @@ $color-black-middle: #303030;
   }
 }
 
+%eye{
+  position: absolute;
+  right: 12px;
+  bottom: 13px;
+  margin: 0;
+  cursor: pointer;
+
+  &.active{
+    filter: invert(0.8);
+  }
+}
+
 .login-and-register{
     min-height: 100vh;
     background: url('../../../assets/images/bg.png') center center fixed;
@@ -128,4 +140,8 @@ $color-black-middle: #303030;
         @extend %boxShadow;
       }
     }
+}
+
+.eye{
+  @extend %eye;
 }

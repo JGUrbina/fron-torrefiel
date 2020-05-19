@@ -8,8 +8,12 @@
       </div>
       <section class="section__red--inputs">
         <div class="contain-input">
+          <figure class="eye" [ngClass]="{'active': showPass}" (click)="changePass()">
+            <img src="../../../assets/svg/eye.svg" alt="">
+          </figure>
+
           <label for="user" class="label">Contraseña</label>
-          <input type="password" class="input" minlength="4" placeholder="Minimo 4 caracteres" name="password" #password="ngModel" [(ngModel)]="user.password" required>
+          <input *ngIf="showPass" [type]="type" class="input" minlength="4" placeholder="Minimo 4 caracteres" name="password" #password="ngModel" [(ngModel)]="user.password" required>
 
           <small class="error-input" *ngIf="!password.valid && password.touched">
             Contraseña no es válida
@@ -23,7 +27,7 @@
           <small class="error-input" *ngIf="!passwordRepeatVariable.valid && passwordRepeatVariable.touched">
             Contraseña no es válida
           </small>
-          <small class="error-input b-26" *ngIf="passwordRepeatVariable !== password && passwordRepeatVariable.touched">
+          <small class="error-input b-26" *ngIf="passwordRepeatVariable !== user.password">
             Las contraseñas no coinciden
           </small>
         </div>

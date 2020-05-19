@@ -9,10 +9,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./reset-pass.component.scss']
 })
 export class ResetPassComponent implements OnInit {
-    public user: object;
+    public user: any;
     public passwordRepeat: string;
     public token: string;
     public params: string;
+    public showPass: boolean;
+    public type: string;
   
     constructor(
       private ngbModalRef: NgbModal,
@@ -21,12 +23,23 @@ export class ResetPassComponent implements OnInit {
     ){ 
       this.passwordRepeat = '';
       this.user = {
-        password: ''
+        password: '',
       }
+      this.showPass = false;
     }
   
     ngOnInit(): void {
       this.getToken();
+      if(this.token){
+        this._UserService.verifyUser(this.token).subscribe(
+          (data) => {
+            console.log(data);
+          },
+          (err)=> {
+            console.log(err);
+          }
+        );
+      }
     }
 
     getToken(): void{
@@ -61,6 +74,12 @@ export class ResetPassComponent implements OnInit {
   
     showAlert(title: string, subtitle: string){
       alert(title + subtitle);
+    }
+    
+    changePass(){
+      this.showPass = !this.showPass;
+      if(this.showPass) return 'text';
+      return 'password';
     }
   
   }

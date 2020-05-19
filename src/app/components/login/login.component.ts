@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ContentModalComponent } from '../content-modal/content-modal.component';
 import { UserService } from '../../services/user/user.service';
 import { User } from '../../models/user/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private ngbModalRef: NgbModal,
     public _UserService: UserService,
+    public _Router: Router,
   ){ 
     this.showRegister = false;
     this.newUser = new User('', '', '', '', '', '', '', null, [null], '', false, null, null,);
@@ -73,6 +75,7 @@ export class LoginComponent implements OnInit {
       this._UserService.login(userLogin).subscribe(
         (data) => {
           console.log(data);
+          this._Router.navigate(['/']);
         },
         (err) => {
           console.log(err);
