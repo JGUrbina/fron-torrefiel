@@ -11,7 +11,7 @@
           <label for="user" class="label">Usuario</label>
           <input type="text" class="input" placeholder="Nickname">
         </div>
-        <div class="contain-input">
+        <div class="contain-input mb-0">
           <label for="user" class="label">Contraseña</label>
           <input type="pass" class="input" placeholder="******">
         </div>
@@ -39,41 +39,66 @@
         </figure>
       </div>
       <section class="section__red--inputs">
-        <div class="section-two-inputs">
-          <div class="contain-input">
-            <label for="user" class="label">Nombre(s)*</label>
-            <input type="text" class="input" placeholder="Nombre(s)">
+        <form class="" #userForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="section-two-inputs">
+            <div class="contain-input">
+              <label for="name" class="label">Nombre(s)*</label>
+              <input type="text" class="input" placeholder="Nombre(s)" name="name" #name="ngModel" [(ngModel)]="newUser.name" required>
+
+              <small class="error-input" *ngIf="!name.valid && name.touched">
+                Nombre(s) no es válido
+              </small>
+            </div>
+            <div class="contain-input">
+              <label for="user" class="label">Apellido Paterno*</label>
+              <input type="text" class="input" placeholder="Apellido Paterno" name="lastName" #lastName="ngModel" [(ngModel)]="newUser.lastName" required>
+
+              <small class="error-input" *ngIf="!lastName.valid && lastName.touched">
+                Apellido Paterno no es válido
+              </small>
+            </div>
           </div>
-          <div class="contain-input">
-            <label for="user" class="label">Apellido Paterno*</label>
-            <input type="text" class="input" placeholder="Apellido Paterno">
+          <div class="section-two-inputs">
+            <div class="contain-input">
+              <label for="user" class="label">Apellido Materno*</label>
+              <input type="text" class="input" placeholder="Apellido Materno" name="motherLastName" #motherLastName="ngModel" [(ngModel)]="newUser.motherLastName" required>
+
+              <small class="error-input" *ngIf="!motherLastName.valid && motherLastName.touched">
+                Apellido Materno no es válido
+              </small>
+            </div>
+            <div class="contain-input">
+              <label for="user" class="label">Elige tu nickname*</label>
+              <input type="text" class="input" placeholder="Nickname" name="username" #username="ngModel" [(ngModel)]="newUser.username" required>
+
+              <small class="error-input" *ngIf="!username.valid && username.touched">
+                Nickname no es válido
+              </small>
+            </div>
           </div>
-        </div>
-        <div class="section-two-inputs">
-          <div class="contain-input">
-            <label for="user" class="label">Apellido Materno*</label>
-            <input type="text" class="input" placeholder="Apellido Materno">
+          <div class="section-two-inputs">
+            <div class="contain-input">
+              <label for="user" class="label">Móvil*</label>
+              <input type="text" class="input" placeholder="Móvil" name="phone" #phone="ngModel" [(ngModel)]="newUser.phone" required>
+
+              <small class="error-input" *ngIf="!phone.valid && phone.touched">
+                Móvil no es válido
+              </small>
+            </div>
+            <div class="contain-input">
+              <label for="user" class="label">Email*</label>
+              <input type="email" class="input" placeholder="nombre@correo.com" name="email" #email="ngModel" [(ngModel)]="newUser.email" required>
+
+              <small class="error-input" *ngIf="!email.valid && email.touched">
+                Email no es válido
+              </small>
+            </div>
           </div>
-          <div class="contain-input">
-            <label for="user" class="label">Elige tu nickname*</label>
-            <input type="text" class="input" placeholder="Nickname">
+          <div class="section__red--register">
+            <button>Registrarse</button>
           </div>
-        </div>
-        <div class="section-two-inputs">
-          <div class="contain-input">
-            <label for="user" class="label">Móvil*</label>
-            <input type="text" class="input" placeholder="Móvil">
-          </div>
-          <div class="contain-input">
-            <label for="user" class="label">Email*</label>
-            <input type="text" class="input" placeholder="nombre@corre.com">
-          </div>
-        </div>
+        </form>
       </section>
-      <div class="section__red--register">
-        <button>Registrarse</button>
-      </div>
-      <button class="btn btn-lg btn-outline-primary" (click)="openModal()">Launch demo modal</button>
     </div>
   </div>
 </section>

@@ -1,0 +1,36 @@
+<section class="login-and-register">
+  <div role="login">
+    <div class="section__red">
+      <div class="section__red--logo">
+        <figure>
+          <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
+        </figure>
+      </div>
+      <section class="section__red--inputs">
+        <div class="contain-input">
+          <label for="user" class="label">Contraseña</label>
+          <input type="text" class="input" minlength="4" placeholder="Minimo 4 caracteres" name="password" #password="ngModel" [(ngModel)]="newUser.password" required>
+
+          <small class="error-input" *ngIf="!password.valid && password.touched">
+            Contraseña no es válida
+          </small>
+        </div>
+        
+        <div class="contain-input mb-0">
+          <label for="user" class="label">Contraseña (Repetir)</label>
+          <input type="text" class="input" minlength="4" placeholder="Repetir Contraseña" name="passwordRepeatVariable" #passwordRepeatVariable="ngModel" [(ngModel)]="passwordRepeat" required>
+
+          <small class="error-input" *ngIf="!passwordRepeatVariable.valid && passwordRepeatVariable.touched">
+            Contraseña no es válida
+          </small>
+          <small class="error-input b-26" *ngIf="passwordRepeatVariable !== password && passwordRepeatVariable.touched">
+            Las contraseñas no coinciden
+          </small>
+        </div>
+      </section>
+      <div class="section__red--enter">
+        <button (click)="onSubmitPass()">Siguiente</button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { User } from '../../models/user';
+import { Observable, from } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from '../../models/user/user';
+import { UrlApiGlobal } from '../config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  public urlApi: string = "http://localhost:5001/user";
+  public urlApi: string;
 
-  constructor(private _Http: HttpClient) { }
+  constructor(private _Http: HttpClient) {
+    this.urlApi = `${UrlApiGlobal}/user`;
+  }
 
   getUsers(): Observable<any> {
     return this._Http.get<any>(this.urlApi);
