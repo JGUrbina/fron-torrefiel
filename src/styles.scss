@@ -2,5 +2,10 @@
 @import './assets/scss/variables';
 @import './assets/scss/animations';
 @import './assets/scss/base';
+
+// Components
+@import './assets/scss/components/loginAndRegister';
+
+
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

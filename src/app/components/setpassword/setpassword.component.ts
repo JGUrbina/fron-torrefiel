@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ContentModalComponent } from '../content-modal/content-modal.component';
 import { UserService } from '../../services/user/user.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -17,27 +15,41 @@ export class SetpasswordComponent implements OnInit {
   public showPass: boolean;
   public type: string;
 
+  // alert variables
+  public alertShow: boolean = false;
+  public alertUrlIcon: string;
+  public alertHeader: string;
+  public alertTitle: string;
+  public alertSubtitle: string;
+  private ALERTTIMESHOW: number = 3500;
+
   constructor(
-    private ngbModalRef: NgbModal,
-    public _UserService: UserService,
+    public userService: UserService,
     private route: ActivatedRoute,
-  ){ 
+  ){
     this.passwordRepeat = '';
-    this.user = {
-      password: '',
-    }
+    this.user = {password: ''};
     this.showPass = false;
   }
 
   ngOnInit(): void {
     this.getToken();
-    if(this.token){
-      this._UserService.verifyUser(this.token).subscribe(
-        (data) => {
-          console.log(data);
+    if (this.token){
+      this.userService.verifyUser(this.token).subscribe(
+        () => {
+          const urlIcon = '../../../assets/svg/ok-yellow.svg';
+          const header = 'Activación correcta';
+          const title = '¡Felicidades! Tu cuenta se ha activado correctamente.';
+          const subtitle = 'Ahora crea tu contraseña';
+          this.showAlert(urlIcon, header, title, subtitle);
         },
-        (err)=> {
+        (err) => {
           console.log(err);
+          const urlIcon = '';
+          const header = 'Error en Activación';
+          const title = 'Intentelo nuevamente o solicite un nuevo correo.';
+          const subtitle = '';
+          this.showAlert(urlIcon, header, title, subtitle);
         }
       );
     }
@@ -49,31 +61,36 @@ export class SetpasswordComponent implements OnInit {
     });
   }
 
-  openModal(): void{
-    const options = {
-      size: 'sm',
-      windowClass: 'modal',
-    };
-
-    this.ngbModalRef.open(ContentModalComponent, options);
-  }
-
-  onSubmitPass(): void{
-    this._UserService.setPassword(this.token).subscribe(
+  registerPassword(): void{
+    this.userService.setPassword(this.token, this.user.password).subscribe(
       (data) => {
         console.log(data);
-        const title = 'Haz creación exitosa';
-        const subtitle = `Haz creado tu contraseña exitosamente.<br><br> Ya puedes iniciar sesión`;
-        this.showAlert(title, subtitle);
+        const urlIcon = '../../../assets/svg/ok.svg';
+        const header = 'Creación exitosa';
+        const title = 'Haz creado tu contraseña exitosamente.';
+        const subtitle = 'Ya puedes iniciar sesión';
+        this.showAlert(urlIcon, header, title, subtitle);
       },
       (err) => {
         console.log('err', err);
+        const urlIcon = '';
+        const header = 'A ocurrido un error';
+        const title = 'Los mails de confirmación tienen una vigencia de 3 horas.';
+        const subtitle = 'No tienes acceso para esta acción';
+        this.showAlert(urlIcon, header, title, subtitle);
       }
     );
-    console.log('hola aqui');
   }
 
-  showAlert(title: string, subtitle: string){
-    alert(title + subtitle);
+  showAlert(urlIcon: string, header: string, title: string, subtitle: string){
+    this.alertUrlIcon = urlIcon;
+    this.alertHeader = header;
+    this.alertTitle = title;
+    this.alertSubtitle = subtitle;
+    this.alertShow = true;
+
+    setTimeout(() => {
+      this.alertShow = false;
+    }, this.ALERTTIMESHOW);
   }
 }

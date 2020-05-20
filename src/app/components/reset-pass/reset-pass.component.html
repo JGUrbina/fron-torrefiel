@@ -1,80 +1,34 @@
 <section class="login-and-register">
   <div role="login">
     <div class="section__red">
-      <ng-container *ngIf="token; else elseTemplate">
-        <div class="section__red--logo">
-          <figure>
-            <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
-          </figure>
-        </div>
-        <section class="section__red--inputs">
-          <div class="contain-input">
-            <figure class="eye" [ngClass]="{'active': showPass}" (click)="showPass = !showPass">
-              <img src="../../../assets/svg/eye.svg" alt="">
-            </figure>
-  
-            <label for="user" class="label">Contraseña</label>
-            <input [type]="showPass ? 'text' : 'password'" class="input" minlength="4" placeholder="Minimo 4 caracteres" name="password" #password="ngModel" [(ngModel)]="user.password" required>
-  
-            <small class="error-input" *ngIf="!password.valid && password.touched">
-              Contraseña no es válida
-            </small>
-          </div>
-          
-          <div class="contain-input mb-0">
-            <label for="user" class="label">Contraseña (Repetir)</label>
-            <input type="password" class="input" minlength="4" placeholder="Repetir Contraseña" name="passwordRepeatVariable" #passwordRepeatVariable="ngModel" [(ngModel)]="passwordRepeat" required>
-  
-            <small class="error-input" *ngIf="!passwordRepeatVariable.valid && passwordRepeatVariable.touched">
-              Contraseña no es válida
-            </small>
-            <small class="error-input b-26" *ngIf="passwordRepeatVariable !== password && passwordRepeatVariable.touched">
-              Las contraseñas no coinciden
-            </small>
-          </div>
-        </section>
-        <div class="section__red--enter">
-          <button (click)="onSubmitPass()">Siguiente</button>
-        </div>
-      </ng-container>
-      <ng-template #elseTemplate>
-        <div class="alert__contain">
-          <div class="alert__contain--header">
-            <figure><img src="../../../assets/svg/ok.svg" alt="ok"></figure>
-            <span>{{alertHeader}}</span>
-          </div>
-          <div class="alert__contain--body">
-            <p>{{alertTitle}}<br><br>{{alertSubtitle}}</p>
-          </div>
-        </div>
-        <div class="section__red--logo">
-          <figure>
-            <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
-          </figure>
-        </div>
-        <div class="resetpass--title">Recuperar contraseña</div>
-        <section class="section__red--inputs">
-          <div class="contain-input">
-            <label for="user" class="label">Usuario</label>
-            <input type="text" class="input" placeholder="Nickname" name="nickname" #nickname="ngModel" [(ngModel)]="userName" required>
-  
-            <small class="error-input" *ngIf="!nickname.valid && nickname.touched">
-              Nickname no es válido
-            </small>
-          </div>
-          <div class="contain-input">
-            <label for="user" class="label">Email*</label>
-            <input type="email" class="input" placeholder="nombre@correo.com" name="email" #email="ngModel" [(ngModel)]="userEmail" required>
+      <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
+      <div class="section__red--logo">
+        <figure>
+          <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
+        </figure>
+      </div>
+      <div class="resetpass--title">Recuperar contraseña</div>
+      <section class="section__red--inputs">
+        <div class="contain-input">
+          <label for="user" class="label">Usuario</label>
+          <input type="text" class="input" placeholder="Nickname" name="nickname" #nickname="ngModel" [(ngModel)]="userName" required>
 
-            <small class="error-input" *ngIf="!email.valid && email.touched">
-              Email no es válido
-            </small>
-          </div>
-        </section>
-        <div class="section__red--enter mb-30">
-          <button (click)="resetPassword()">Enviar</button>
+          <small class="error-input" *ngIf="!nickname.valid && nickname.touched">
+            Nickname no es válido
+          </small>
         </div>
-      </ng-template>
+        <div class="contain-input">
+          <label for="user" class="label">Email*</label>
+          <input type="email" class="input" placeholder="nombre@correo.com" name="email" #email="ngModel" [(ngModel)]="userEmail" required>
+
+          <small class="error-input" *ngIf="!email.valid && email.touched">
+            Email no es válido
+          </small>
+        </div>
+      </section>
+      <div class="section__red--enter mb-30">
+        <button (click)="resetPasswordMail()">Enviar</button>
+      </div>
     </div>
   </div>
 </section>

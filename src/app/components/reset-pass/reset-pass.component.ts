@@ -1,95 +1,74 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ContentModalComponent } from '../content-modal/content-modal.component';
 import { UserService } from '../../services/user/user.service';
-import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-reset-pass',
   templateUrl: './reset-pass.component.html',
   styleUrls: ['./reset-pass.component.scss']
 })
 export class ResetPassComponent implements OnInit {
-    public user: any;
-    public passwordRepeat: string;
-    public token: string;
-    public params: string;
-    public showPass: boolean;
-    public type: string;
     public userName: string;
     public userEmail: string;
+
+    // alert variables
+    public alertShow: boolean = false;
+    public alertUrlIcon: string;
     public alertHeader: string;
     public alertTitle: string;
     public alertSubtitle: string;
+    private ALERTTIMESHOW: number = 3500;
 
     constructor(
-      private ngbModalRef: NgbModal,
-      public _UserService: UserService,
-      private route: ActivatedRoute,
+      public userService: UserService,
     ){
-      this.user = {password: ''};
-      this.passwordRepeat = '';
-      this.userName = '';
-      this.userEmail = '';
-      this.showPass = false;
-      this.alertHeader = 'Activación correcta';
-      this.alertTitle = '¡Felicidades! tu cuenta se ha activado correctamente';
-      this.alertSubtitle = 'Ahora crea tu contraseña';
     }
 
-    ngOnInit(): void {
-      this.getToken();
-      if (this.token){
-        this._UserService.verifyUser(this.token).subscribe(
-          (data) => {
-            console.log(data);
-          },
-          (err) => {
-            console.log(err);
-          }
-        );
+    ngOnInit(): void {}
+
+    resetPasswordMail(): void{
+      if (!this.userEmail && !this.userName){
+        const urlIcon = '';
+        const header = 'Error de Envío';
+        const title = 'Ha ocurrido un error al intentar enviar su correo de recuperación; Verifique sus datos.';
+        const subtitle = 'Intente nuevamente.';
+        this.showAlert(urlIcon, header, title, subtitle);
+        return;
       }
-    }
 
-    getToken(): void{
-      this.route.paramMap.subscribe(params => {
-        this.token = params.get('token');
-      });
-    }
+      console.log('aquii');
 
-    openModal(): void{
-      const options = {
-        size: 'sm',
-        windowClass: 'modal',
+      const params = {
+        userName: this.userName,
+        email: this.userEmail
       };
-
-      this.ngbModalRef.open(ContentModalComponent, options);
-    }
-
-    onSubmitPass(): void{
-      this._UserService.setPassword(this.token).subscribe(
+      this.userService.sendMailResetPassword(params).subscribe(
         (data) => {
           console.log(data);
-          const title = 'Haz creación exitosa';
-          const subtitle = `Haz creado tu contraseña exitosamente.<br><br> Ya puedes iniciar sesión`;
-          this.showAlert(title, subtitle);
+          const urlIcon = '../../../assets/svg/ok.svg';
+          const header = 'Envío correcto';
+          const title = 'Revisa tu correo registrado para poder recuperar tu contraseña.';
+          const subtitle = '';
+          this.showAlert(urlIcon, header, title, subtitle);
         },
         (err) => {
-          console.log('err', err);
+          console.log(err);
+          const urlIcon = '';
+          const header = 'Error de Envío';
+          const title = 'Ha ocurrido un error al intentar enviar su correo de recuperación; Verifique sus datos.';
+          const subtitle = 'Intente nuevamente.';
+          this.showAlert(urlIcon, header, title, subtitle);
         }
       );
-      console.log('hola aqui');
     }
 
-    showAlert(title: string, subtitle: string){
-      alert(title + subtitle);
-    }
+    showAlert(urlIcon: string, header: string, title: string, subtitle: string){
+      this.alertUrlIcon = urlIcon;
+      this.alertHeader = header;
+      this.alertTitle = title;
+      this.alertSubtitle = subtitle;
+      this.alertShow = true;
 
-    resetPassword(): void{
-      if (this.userEmail && this.userName){
-        this._UserService.sendMailResetPassword(this.userEmail).subscribe(
-          (data) => {console.log(data); },
-          (err) => {console.log(err); }
-        );
-      }
+      setTimeout(() => {
+        this.alertShow = false;
+      }, this.ALERTTIMESHOW);
     }
 }

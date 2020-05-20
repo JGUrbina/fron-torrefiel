@@ -11,6 +11,7 @@ $color-black-middle: #303030;
   width: 80%;
   margin: auto;
   margin-top: 40px;
+  margin-bottom: 20px;
   button{
     width: 100%;
     padding: 14px 10px;
@@ -24,9 +25,9 @@ $color-black-middle: #303030;
 
 %section-red{
   .section__red{
+    position: relative;
     background-color: $color-red;
     padding: 20px;
-    height: 480px;
     width: 380px;
     margin: auto;
     border-radius: $size-border-radius;

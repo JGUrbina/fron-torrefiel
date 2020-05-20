@@ -15,6 +15,7 @@ import { ContentModalComponent } from './components/content-modal/content-modal.
 import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { SetpasswordComponent } from './components/setpassword/setpassword.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SetpasswordComponent } from './components/setpassword/setpassword.compo
     ContentModalComponent,
     ResetPassComponent,
     ErrorPageComponent,
-    SetpasswordComponent
+    SetpasswordComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

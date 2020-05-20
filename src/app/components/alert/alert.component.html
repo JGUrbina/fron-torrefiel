@@ -1,0 +1,9 @@
+<div class="alert__contain fadeInDown" *ngIf="alertShow">
+  <div class="alert__contain--header">
+    <figure><img [src]="alertUrlIcon" alt=""></figure>
+    <span>{{alertHeader}}</span>
+  </div>
+  <div class="alert__contain--body">
+    <p>{{alertTitle}}<br><br>{{alertSubtitle}}</p>
+  </div>
+</div>

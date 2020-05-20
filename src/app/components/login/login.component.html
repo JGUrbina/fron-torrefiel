@@ -1,6 +1,7 @@
 <section class="login-and-register">
   <div role="login" *ngIf="!showRegister">
     <div class="section__red">
+      <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
       <div class="section__red--logo">
         <figure>
           <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
@@ -40,6 +41,7 @@
   </div>
   <div role="register" *ngIf="showRegister">
     <div class="section__red">
+      <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
       <div class="section__red--logo">
         <figure>
           <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
@@ -49,7 +51,7 @@
         </figure>
       </div>
       <section class="section__red--inputs">
-        <form class="" #userForm="ngForm" (ngSubmit)="onSubmit()">
+        <form class="" #userForm="ngForm" (ngSubmit)="register()">
           <div class="section-two-inputs">
             <div class="contain-input">
               <label for="name" class="label">Nombre(s)*</label>

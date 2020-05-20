@@ -11,6 +11,7 @@ const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'user/resetpass', component: ResetPassComponent},
+  {path: 'user/passwordreset/:token', component: SetpasswordComponent},
   {path: 'user/confirmation/:token', component: SetpasswordComponent},
   {path: '**', component: ErrorPageComponent},
 ];

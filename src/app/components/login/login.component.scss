@@ -11,6 +11,7 @@ $color-black-middle: #303030;
   width: 80%;
   margin: auto;
   margin-top: 24px;
+  margin-bottom: 20px;
   button{
     width: 100%;
     padding: 14px 10px;
@@ -24,12 +25,13 @@ $color-black-middle: #303030;
 
 %section-red{
   .section__red{
+    position: relative;
     background-color: $color-red;
     padding: 20px;
-    height: 480px;
     width: 380px;
     margin: auto;
     border-radius: $size-border-radius;
+    overflow: hidden;
 
       &--logo{
         margin-bottom: 15px;
@@ -141,7 +143,6 @@ $color-black-middle: #303030;
       @extend %section-red;
 
       .section__red{
-        height: 550px;
         width: 60%;
         max-width: 700px;
   
@@ -187,4 +188,8 @@ $color-black-middle: #303030;
 
 .eye{
   @extend %eye;
+}
+
+.alert__contain{
+  box-shadow: 0 2px 5px 4px #0000006b;
 }
