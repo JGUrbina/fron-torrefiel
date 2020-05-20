@@ -17,12 +17,14 @@ export class LoginComponent implements OnInit {
   public newUser: User;
   public userName: string;
   public password: string;
+  public showPass: boolean;
 
   constructor(
     private ngbModalRef: NgbModal,
     public _UserService: UserService,
     public _Router: Router,
   ){ 
+    this.showPass = false;
     this.showRegister = false;
     this.newUser = new User('', '', '', '', '', '', '', null, [null], '', false, null, null,);
   }
@@ -67,6 +69,7 @@ export class LoginComponent implements OnInit {
   }
 
   logIn(): void{
+    this._Router.navigate(['/']);
     if(this.userName && this.password){
       const userLogin = {
         userName: this.userName,

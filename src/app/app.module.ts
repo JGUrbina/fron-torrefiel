@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContentModalComponent } from './components/content-modal/content-modal.component';
 import { ResetPassComponent } from './components/reset-pass/reset-pass.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { SetpasswordComponent } from './components/setpassword/setpassword.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
     FormComponent,
     ContentModalComponent,
     ResetPassComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    SetpasswordComponent
   ],
   imports: [
     BrowserModule,

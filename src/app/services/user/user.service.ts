@@ -39,4 +39,8 @@ export class UserService {
   verifyUser(token: string): Observable<object>{
     return this._Http.get<object>(`${this.urlApi}/confirmation/${token}`);
   }
+
+  sendMailResetPassword(email: string): Observable<object>{
+    return this._Http.post<object>(`${this.urlApi}/emailpassreset`, email);
+  }
 }

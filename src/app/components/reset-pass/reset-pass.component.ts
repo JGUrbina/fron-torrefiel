@@ -15,27 +15,35 @@ export class ResetPassComponent implements OnInit {
     public params: string;
     public showPass: boolean;
     public type: string;
-  
+    public userName: string;
+    public userEmail: string;
+    public alertHeader: string;
+    public alertTitle: string;
+    public alertSubtitle: string;
+
     constructor(
       private ngbModalRef: NgbModal,
       public _UserService: UserService,
       private route: ActivatedRoute,
-    ){ 
+    ){
+      this.user = {password: ''};
       this.passwordRepeat = '';
-      this.user = {
-        password: '',
-      }
+      this.userName = '';
+      this.userEmail = '';
       this.showPass = false;
+      this.alertHeader = 'Activación correcta';
+      this.alertTitle = '¡Felicidades! tu cuenta se ha activado correctamente';
+      this.alertSubtitle = 'Ahora crea tu contraseña';
     }
-  
+
     ngOnInit(): void {
       this.getToken();
-      if(this.token){
+      if (this.token){
         this._UserService.verifyUser(this.token).subscribe(
           (data) => {
             console.log(data);
           },
-          (err)=> {
+          (err) => {
             console.log(err);
           }
         );
@@ -47,16 +55,16 @@ export class ResetPassComponent implements OnInit {
         this.token = params.get('token');
       });
     }
-  
+
     openModal(): void{
       const options = {
         size: 'sm',
         windowClass: 'modal',
       };
-  
+
       this.ngbModalRef.open(ContentModalComponent, options);
     }
-  
+
     onSubmitPass(): void{
       this._UserService.setPassword(this.token).subscribe(
         (data) => {
@@ -71,15 +79,17 @@ export class ResetPassComponent implements OnInit {
       );
       console.log('hola aqui');
     }
-  
+
     showAlert(title: string, subtitle: string){
       alert(title + subtitle);
     }
-    
-    changePass(){
-      this.showPass = !this.showPass;
-      if(this.showPass) return 'text';
-      return 'password';
+
+    resetPassword(): void{
+      if (this.userEmail && this.userName){
+        this._UserService.sendMailResetPassword(this.userEmail).subscribe(
+          (data) => {console.log(data); },
+          (err) => {console.log(err); }
+        );
+      }
     }
-  
-  }
+}

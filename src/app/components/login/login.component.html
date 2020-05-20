@@ -16,8 +16,11 @@
           </small>
         </div>
         <div class="contain-input mb-0">
+          <figure class="eye" [ngClass]="{'active': showPass}" (click)="showPass = !showPass">
+            <img src="../../../assets/svg/eye.svg" alt="">
+          </figure>
           <label for="user" class="label">Contraseña</label>
-          <input type="password" class="input" minlength="4" placeholder="******" name="passwordLogin" #passwordLogin="ngModel" [(ngModel)]="password" required>
+          <input [type]="showPass ? 'text' : 'password'" class="input" minlength="4" placeholder="******" name="passwordLogin" #passwordLogin="ngModel" [(ngModel)]="password" required>
 
           <small class="error-input" *ngIf="!passwordLogin.valid && passwordLogin.touched">
             password no es válido
@@ -42,8 +45,7 @@
           <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
         </figure>
         <figure class="exit" (click)="showRegister = false">
-          <object data="../../../assets/svg/cancelar.svg" type="image/svg+xml">
-          </object>
+          <img src="../../../assets/svg/cancelar.svg" alt="exit">
         </figure>
       </div>
       <section class="section__red--inputs">

@@ -142,6 +142,53 @@ $color-black-middle: #303030;
     }
 }
 
+.resetpass--title{
+  width: 80%;
+  margin: auto;
+  color: white;
+  margin-bottom: 10px;
+}
+
 .eye{
   @extend %eye;
+}
+
+.mb-30{
+  margin-top: 30px !important;
+}
+
+.alert__contain{
+  background-color: white;
+  border-radius: 11px;
+  padding: 10px;
+  width: 85%;
+  margin: auto;
+
+  &--header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    figure{
+      margin-bottom: 0;
+      margin-right: 7px;
+    }
+
+    span{
+      font-size: 1.05rem;
+      color: #cd2a00;
+      font-weight: 500;
+    }
+  }
+
+  &--body{
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    margin-top: 5px;
+
+    p{
+      margin-bottom: 0;
+    }
+  }
 }
