@@ -1,1 +1,116 @@
-<p>login works!</p>
+<section class="login-and-register">
+  <div role="login" *ngIf="!showRegister">
+    <div class="section__red">
+      <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
+      <div class="section__red--logo">
+        <figure>
+          <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
+        </figure>
+      </div>
+      <section class="section__red--inputs">
+        <div class="contain-input">
+          <label for="user" class="label">Usuario</label>
+          <input type="text" class="input" placeholder="Nickname" name="usernameLogin" #usernameLogin="ngModel" [(ngModel)]="userName" required>
+
+          <small class="error-input" *ngIf="!usernameLogin.valid && usernameLogin.touched">
+            Nickname no es válido
+          </small>
+        </div>
+        <div class="contain-input mb-0">
+          <figure class="eye" [ngClass]="{'active': showPass}" (click)="showPass = !showPass">
+            <img src="../../../assets/svg/eye.svg" alt="">
+          </figure>
+          <label for="user" class="label">Contraseña</label>
+          <input [type]="showPass ? 'text' : 'password'" class="input" minlength="4" placeholder="******" name="passwordLogin" #passwordLogin="ngModel" [(ngModel)]="password" required>
+
+          <small class="error-input" *ngIf="!passwordLogin.valid && passwordLogin.touched">
+            password no es válido
+          </small>
+        </div>
+      </section>
+      <div class="section__red--resetPass">
+        <a [routerLink]="['/user/resetpass']" routerLinkActive="router-link-active" >Recuperar contraseña</a>
+      </div>
+      <div class="section__red--enter">
+        <button (click)="logIn()">Entrar</button>
+      </div>
+    </div>
+    <div class="createAccount">
+      <button class="createAccount__btn" (click)="showRegister = true">Crear cuenta</button>
+    </div>
+  </div>
+  <div role="register" *ngIf="showRegister">
+    <div class="section__red">
+      <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
+      <div class="section__red--logo">
+        <figure>
+          <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
+        </figure>
+        <figure class="exit" (click)="showRegister = false">
+          <img src="../../../assets/svg/cancelar.svg" alt="exit">
+        </figure>
+      </div>
+      <section class="section__red--inputs">
+        <form class="" #userForm="ngForm" (ngSubmit)="register()">
+          <div class="section-two-inputs">
+            <div class="contain-input">
+              <label for="name" class="label">Nombre(s)*</label>
+              <input type="text" class="input" placeholder="Nombre(s)" name="name" #name="ngModel" [(ngModel)]="newUser.name" required>
+
+              <small class="error-input" *ngIf="!name.valid && name.touched">
+                Nombre(s) no es válido
+              </small>
+            </div>
+            <div class="contain-input">
+              <label for="user" class="label">Apellido Paterno*</label>
+              <input type="text" class="input" placeholder="Apellido Paterno" name="lastName" #lastName="ngModel" [(ngModel)]="newUser.lastName" required>
+
+              <small class="error-input" *ngIf="!lastName.valid && lastName.touched">
+                Apellido Paterno no es válido
+              </small>
+            </div>
+          </div>
+          <div class="section-two-inputs">
+            <div class="contain-input">
+              <label for="user" class="label">Apellido Materno*</label>
+              <input type="text" class="input" placeholder="Apellido Materno" name="motherLastName" #motherLastName="ngModel" [(ngModel)]="newUser.motherLastName" required>
+
+              <small class="error-input" *ngIf="!motherLastName.valid && motherLastName.touched">
+                Apellido Materno no es válido
+              </small>
+            </div>
+            <div class="contain-input">
+              <label for="user" class="label">Elige tu nickname*</label>
+              <input type="text" class="input" placeholder="Nickname" name="username" #username="ngModel" [(ngModel)]="newUser.userName" required>
+
+              <small class="error-input" *ngIf="!username.valid && username.touched">
+                Nickname no es válido
+              </small>
+            </div>
+          </div>
+          <div class="section-two-inputs">
+            <div class="contain-input">
+              <label for="user" class="label">Móvil*</label>
+              <input type="text" class="input" placeholder="Móvil" name="phone" #phone="ngModel" [(ngModel)]="newUser.phone" required>
+
+              <small class="error-input" *ngIf="!phone.valid && phone.touched">
+                Móvil no es válido
+              </small>
+            </div>
+            <div class="contain-input">
+              <label for="user" class="label">Email*</label>
+              <input type="email" class="input" placeholder="nombre@correo.com" name="email" #email="ngModel" [(ngModel)]="newUser.email" required>
+
+              <small class="error-input" *ngIf="!email.valid && email.touched">
+                Email no es válido
+              </small>
+            </div>
+          </div>
+          <div class="section__red--register">
+            <button>Registrarse</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+</section>

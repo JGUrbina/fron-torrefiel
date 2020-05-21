@@ -1,0 +1,195 @@
+$color-red: #cd2a00;
+$size-border-radius: 7.8px;
+$size-border-radius-secondary: 4.6px;
+$color-black-middle: #303030;
+
+%boxShadow{
+  box-shadow: 0 2px 4px 1px #00000082;
+}
+
+%btn-black{
+  width: 80%;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  button{
+    width: 100%;
+    padding: 14px 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: $size-border-radius-secondary;
+    @extend %boxShadow;
+  }
+}
+
+%section-red{
+  .section__red{
+    position: relative;
+    background-color: $color-red;
+    padding: 20px;
+    width: 380px;
+    margin: auto;
+    border-radius: $size-border-radius;
+
+      &--logo{
+        margin-bottom: 15px;
+        figure{
+          text-align: center;
+          padding: 15px;
+        }
+      }
+
+      &--inputs{
+        .contain-input{
+          display: flex;
+          flex-wrap: wrap;
+          width: 80%;
+          margin: auto;
+          margin-bottom: 20px;
+          position: relative;
+
+          &.mb-0{
+            margin-bottom: 0;
+          }
+
+          label, input{
+            width: 100%;
+          }
+
+          label{
+            margin-bottom: 6px;
+          }
+
+          input{
+            padding: 12px;
+            border-radius: $size-border-radius-secondary;
+            border: 1px solid #989696;
+            margin-bottom: 5px;
+          }
+
+          .error-input{
+            position: absolute;
+            bottom: -13px;
+            left: 12px;
+            font-weight: bold;
+
+            &.b-26{
+              bottom: -26px;
+            }
+          }
+        }
+      }
+
+      &--resetPass{
+        width: 74%;
+        margin: auto;
+
+        a{
+          text-decoration: none !important;
+          color: white !important;
+          font-size: .9rem;
+        }
+      }
+
+      &--enter{
+        @extend %btn-black;
+      }
+  }
+}
+
+%eye{
+  position: absolute;
+  right: 12px;
+  bottom: 13px;
+  margin: 0;
+  cursor: pointer;
+
+  &.active{
+    filter: invert(0.8);
+  }
+}
+
+.login-and-register{
+    min-height: 100vh;
+    background: url('../../../assets/images/bg.png') center center fixed;
+    background-size: cover;
+
+    [role=login], [role=register]{
+      height: inherit;
+      padding-top: 15%;
+      padding-bottom: 15%;
+    }
+
+    [role=login]{
+      @extend %section-red;
+    }
+
+    .createAccount{
+      width: 100%;
+      height: 30px;
+      text-align: center;
+      margin-top: 15px;
+
+      &__btn{
+        padding: 16px 35px;
+        border: none;
+        border-radius: 4.6px;
+        color: white;
+        background-color: $color-black-middle;
+
+        @extend %boxShadow;
+      }
+    }
+}
+
+.resetpass--title{
+  width: 80%;
+  margin: auto;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.eye{
+  @extend %eye;
+}
+
+.mb-30{
+  margin-top: 30px !important;
+}
+
+.alert__contain{
+  background-color: white;
+  border-radius: 11px;
+  padding: 10px;
+  width: 85%;
+  margin: auto;
+
+  &--header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    figure{
+      margin-bottom: 0;
+      margin-right: 7px;
+    }
+
+    span{
+      font-size: 1.05rem;
+      color: #cd2a00;
+      font-weight: 500;
+    }
+  }
+
+  &--body{
+    text-align: center;
+    width: 90%;
+    margin: auto;
+    margin-top: 5px;
+
+    p{
+      margin-bottom: 0;
+    }
+  }
+}
