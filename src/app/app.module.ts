@@ -44,6 +44,8 @@ import { DownloadComponent } from './components/utils/download/download.componen
 import { DateAndHourComponent } from './components/utils/date-and-hour/date-and-hour.component';
 import { InputComponent } from './components/utils/input/input.component';
 import { SelectComponent } from './components/utils/select/select.component';
+import { AdminViewComponent } from './components/admin/admin-view/admin-view.component';
+import { JobsViewComponent } from './components/jobs/jobs-view/jobs-view.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +86,9 @@ import { SelectComponent } from './components/utils/select/select.component';
     DownloadComponent,
     DateAndHourComponent,
     InputComponent,
-    SelectComponent
+    SelectComponent,
+    AdminViewComponent,
+    JobsViewComponent
   ],
   imports: [
     BrowserModule,
