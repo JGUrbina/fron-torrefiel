@@ -42,6 +42,8 @@ import { ImageComponent } from './components/utils/image/image.component';
 import { CloseSectionComponent } from './components/utils/close-section/close-section.component';
 import { DownloadComponent } from './components/utils/download/download.component';
 import { DateAndHourComponent } from './components/utils/date-and-hour/date-and-hour.component';
+import { InputComponent } from './components/utils/input/input.component';
+import { SelectComponent } from './components/utils/select/select.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +82,9 @@ import { DateAndHourComponent } from './components/utils/date-and-hour/date-and-
     ImageComponent,
     CloseSectionComponent,
     DownloadComponent,
-    DateAndHourComponent
+    DateAndHourComponent,
+    InputComponent,
+    SelectComponent
   ],
   imports: [
     BrowserModule,
