@@ -38,6 +38,10 @@ import { InformationComponent } from './components/utils/information/information
 import { InfoCheckComponent } from './components/utils/info-check/info-check.component';
 import { DescriptionComponent } from './components/utils/description/description.component';
 import { NotificationComponent } from './components/utils/notification/notification.component';
+import { ImageComponent } from './components/utils/image/image.component';
+import { CloseSectionComponent } from './components/utils/close-section/close-section.component';
+import { DownloadComponent } from './components/utils/download/download.component';
+import { DateAndHourComponent } from './components/utils/date-and-hour/date-and-hour.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +76,11 @@ import { NotificationComponent } from './components/utils/notification/notificat
     InformationComponent,
     InfoCheckComponent,
     DescriptionComponent,
-    NotificationComponent
+    NotificationComponent,
+    ImageComponent,
+    CloseSectionComponent,
+    DownloadComponent,
+    DateAndHourComponent
   ],
   imports: [
     BrowserModule,
