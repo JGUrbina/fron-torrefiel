@@ -7,7 +7,6 @@ import { routing, appRoutingProviders } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormComponent } from './components/form/form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -51,7 +50,6 @@ import { JobsViewComponent } from './components/jobs/jobs-view/jobs-view.compone
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
     HomeComponent,
     FormComponent,
     ContentModalComponent,
