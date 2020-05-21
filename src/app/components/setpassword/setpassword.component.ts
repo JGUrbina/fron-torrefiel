@@ -14,6 +14,7 @@ export class SetpasswordComponent implements OnInit {
   public params: string;
   public showPass: boolean;
   public type: string;
+  public reset: boolean;
 
   // alert variables
   public alertShow: boolean = false;
@@ -30,6 +31,7 @@ export class SetpasswordComponent implements OnInit {
     this.passwordRepeat = '';
     this.user = {password: ''};
     this.showPass = false;
+    this.reset = false;
   }
 
   ngOnInit(): void {
@@ -41,7 +43,7 @@ export class SetpasswordComponent implements OnInit {
           const header = 'Activación correcta';
           const title = '¡Felicidades! Tu cuenta se ha activado correctamente.';
           const subtitle = 'Ahora crea tu contraseña';
-          this.showAlert(urlIcon, header, title, subtitle);
+          if (!this.reset) { this.showAlert(urlIcon, header, title, subtitle); }
         },
         (err) => {
           console.log(err);
@@ -58,6 +60,7 @@ export class SetpasswordComponent implements OnInit {
   getToken(): void{
     this.route.paramMap.subscribe(params => {
       this.token = params.get('token');
+      this.reset = params.get('passwordreset') === 'passwordreset';
     });
   }
 
@@ -66,17 +69,17 @@ export class SetpasswordComponent implements OnInit {
       (data) => {
         console.log(data);
         const urlIcon = '../../../assets/svg/ok.svg';
-        const header = 'Creación exitosa';
-        const title = 'Haz creado tu contraseña exitosamente.';
-        const subtitle = 'Ya puedes iniciar sesión';
+        const header = this.reset ? 'Activación correcta' : 'Creación exitosa';
+        const title = this.reset ? 'Recuerda esta nueva contraseña para que no se te vuelva a olvidar' : 'Haz creado tu contraseña exitosamente.';
+        const subtitle = this.reset ? '' : 'Ya puedes iniciar sesión';
         this.showAlert(urlIcon, header, title, subtitle);
       },
       (err) => {
         console.log('err', err);
         const urlIcon = '';
         const header = 'A ocurrido un error';
-        const title = 'Los mails de confirmación tienen una vigencia de 3 horas.';
-        const subtitle = 'No tienes acceso para esta acción';
+        const title = this.reset ? 'Revisa los datos ingresados' : 'Los mails de confirmación tienen una vigencia de 3 horas.';
+        const subtitle = this.reset ? 'Intenta nuevamente' : 'No tienes acceso para esta acción';
         this.showAlert(urlIcon, header, title, subtitle);
       }
     );
