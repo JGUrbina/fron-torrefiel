@@ -10,3 +10,11 @@ body{
   margin: 0;
   font-family: 'Lato';
 }
+
+.alertCenter{
+  position: absolute;
+  width: 90%;
+  margin: auto;
+  top: 36%;
+  z-index: 99999999;
+}
