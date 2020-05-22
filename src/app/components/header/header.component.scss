@@ -1,4 +1,5 @@
 @import '../../../assets/scss/variables';
+@import '../../../assets/scss/components/header';
 
 header{
   background-color: $color-red;
@@ -54,6 +55,32 @@ header{
         font-size: 1rem;
         margin-bottom: 0;
         color: $color-white;
+      }
+    }
+  }
+
+  .contain__icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+
+    .icon{
+      margin-bottom: 0;
+      width: 35px;
+      height: 35px;
+      position: relative;
+      transition: all .5s;
+
+      &:hover{
+        .hoverIcon{
+          display: block !important;
+        }
+      }
+
+      .hoverIcon{
+        @extend %hoverIcon;
+        display: none;
       }
     }
   }

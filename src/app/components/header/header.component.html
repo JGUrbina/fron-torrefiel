@@ -17,21 +17,22 @@
       </h2>
     </div>
   </div>
-  <div>
-    <div>
-      <figure>
-        <img src="../../../assets/svg/calendario.png" alt="">
-      </figure>
-    </div>
-    <div>
-      <figure>
-        <img src="../../../assets/svg/notificacion.svg" alt="">
-      </figure>
-    </div>
-    <div>
-      <figure>
-        <img src="../../../assets/svg/salir.svg" alt="">
-      </figure>
-    </div>
+  <div class="contain__icons">
+    <figure class="icon">
+      <app-create-icon [class]="'button color-gray bg-white h-color-red'" [name]="'calendar'" [url]="'../../../assets/svg/calendario.svg'"></app-create-icon>
+      <span class="hoverIcon fadeIn">Calendario</span>
+    </figure>
+    <figure class="icon">
+      <app-create-icon [class]="'color-white'" [name]="'campana'" [url]="'../../../assets/svg/campana.svg'"></app-create-icon>
+      <div class="d-none">
+        notificaciones
+      </div>
+    </figure>
+    <figure class="icon">
+      <app-create-icon [class]="'color-white'" [name]="'exit'" [url]="'../../../assets/svg/salir.svg'"></app-create-icon>
+      <div class="d-none">
+        estas seguro?
+      </div>
+    </figure>
   </div>
 </header>
