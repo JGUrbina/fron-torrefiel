@@ -1,6 +1,11 @@
-<section>
-  <button><img src="../../../assets/svg/flecha-abajo.svg" alt=""></button>
-  <div>
+<section class="filter">
+  <div class="filter__containButton">
+    <button type="button" class="filter__containButton--button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="filter">
+      <span class="filter__containButton--title">Filtrar</span>
+      <img src="../../../assets/svg/flecha-abajo.svg" alt="">
+    </button>
+  </div>
+  <div class="filter__containOptions" id="filter" [ngbCollapse]="isCollapsed">
     <div>
       <label for="status">Estado</label>
       <select name="status" id="">

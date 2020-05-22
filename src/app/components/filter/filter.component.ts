@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterComponent implements OnInit {
 
-  constructor() { }
+  public isCollapsed: boolean;
+
+  constructor() {
+    this.isCollapsed = true;
+  }
 
   ngOnInit(): void {
   }
