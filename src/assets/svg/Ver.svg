@@ -1,9 +1,9 @@
-<svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg class="svg" width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_dd)">
 <rect x="11" y="6" width="31" height="31" rx="7.75" fill="white"/>
 </g>
-<path d="M16.5715 21C16.5715 21 20.0001 14.1428 26.0001 14.1428C32.0001 14.1428 35.4287 21 35.4287 21C35.4287 21 32.0001 27.8571 26.0001 27.8571C20.0001 27.8571 16.5715 21 16.5715 21Z" stroke="#303030" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M26.0001 23.5714C27.4203 23.5714 28.5715 22.4201 28.5715 21C28.5715 19.5798 27.4203 18.4285 26.0001 18.4285C24.5799 18.4285 23.4287 19.5798 23.4287 21C23.4287 22.4201 24.5799 23.5714 26.0001 23.5714Z" stroke="#303030" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16.5715 21C16.5715 21 20.0001 14.1428 26.0001 14.1428C32.0001 14.1428 35.4287 21 35.4287 21C35.4287 21 32.0001 27.8571 26.0001 27.8571C20.0001 27.8571 16.5715 21 16.5715 21Z"  stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M26.0001 23.5714C27.4203 23.5714 28.5715 22.4201 28.5715 21C28.5715 19.5798 27.4203 18.4285 26.0001 18.4285C24.5799 18.4285 23.4287 19.5798 23.4287 21C23.4287 22.4201 24.5799 23.5714 26.0001 23.5714Z"  stroke-linecap="round" stroke-linejoin="round"/>
 <defs>
 <filter id="filter0_dd" x="0.666667" y="0.833333" width="51.6667" height="51.6667" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>

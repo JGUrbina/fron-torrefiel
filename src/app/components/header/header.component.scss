@@ -1,0 +1,94 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/components/hoverIcon';
+
+header{
+  background-color: $color-red;
+  display: flex;
+  height: 133px;
+  justify-content: space-between;
+  padding: 12px 65px;
+  padding-right: 54px;
+  align-items: center;
+
+  .logo{
+    figure{
+      margin: auto;
+      width: 88%;
+      img{
+        width: 100%;
+      }
+    }
+  }
+
+  .contain__middle{
+    display: flex;
+    .contain__search{
+      label{
+        display: flex;
+        margin-bottom: 0;
+        background-color: white;
+        padding: 3px 10px;
+        border-radius: 14px;
+        box-shadow: 0 2px 11px 1px #00000061;
+
+        figure{
+          width: 40px;
+          height: 40px;
+          margin: 0px;
+        }
+
+        input{
+          border: none;
+          padding-left: 10px;
+          width: 276px;
+          height: 46px;
+          
+          &:focus{
+            border: none;
+            outline: none !important;
+          }
+        }
+      }
+      margin-right: 10px;
+    }
+    .contain__name{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 10px;
+      
+      .name{
+        font-size: 1rem;
+        margin-bottom: 0;
+        color: $color-white;
+      }
+    }
+  }
+
+  .contain__icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 214px;
+
+    .icon{
+      margin-bottom: 0;
+      width: 47px;
+      height: 46px;
+      position: relative;
+      transition: all 0.5s;
+      margin-top: 5px;
+
+      &:hover{
+        .hoverIcon{
+          display: block !important;
+        }
+      }
+
+      .hoverIcon{
+        @extend %hoverIcon;
+        display: none;
+      }
+    }
+  }
+}

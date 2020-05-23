@@ -4,10 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MomentModule } from 'angular2-moment';
 import { routing, appRoutingProviders } from './app.routing';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormComponent } from './components/form/form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -42,12 +42,16 @@ import { ImageComponent } from './components/utils/image/image.component';
 import { CloseSectionComponent } from './components/utils/close-section/close-section.component';
 import { DownloadComponent } from './components/utils/download/download.component';
 import { DateAndHourComponent } from './components/utils/date-and-hour/date-and-hour.component';
-
+import { InputComponent } from './components/utils/input/input.component';
+import { SelectComponent } from './components/utils/select/select.component';
+import { AdminViewComponent } from './components/admin/admin-view/admin-view.component';
+import { JobsViewComponent } from './components/jobs/jobs-view/jobs-view.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateIconComponent } from './components/create-icon/create-icon.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
     HomeComponent,
     FormComponent,
     ContentModalComponent,
@@ -80,7 +84,12 @@ import { DateAndHourComponent } from './components/utils/date-and-hour/date-and-
     ImageComponent,
     CloseSectionComponent,
     DownloadComponent,
-    DateAndHourComponent
+    DateAndHourComponent,
+    InputComponent,
+    SelectComponent,
+    AdminViewComponent,
+    JobsViewComponent,
+    CreateIconComponent
   ],
   imports: [
     BrowserModule,
@@ -89,8 +98,10 @@ import { DateAndHourComponent } from './components/utils/date-and-hour/date-and-
     FormsModule,
     MomentModule,
     routing,
+    NoopAnimationsModule,
+    MatIconModule,
   ],
-  providers: [appRoutingProviders],
+  providers: [appRoutingProviders, MatIconModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

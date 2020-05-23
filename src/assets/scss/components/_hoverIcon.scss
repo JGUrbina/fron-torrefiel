@@ -1,0 +1,15 @@
+@import '../variables';
+
+%hoverIcon{
+  background-color: $color-gray;
+  padding: 6px 10px;
+  border-radius: 5px;
+  margin: auto;
+  position: absolute;
+  bottom: -82%;
+  left: -65%;
+  right: -65%;
+  width: fit-content;
+  font-size: 0.9rem;
+  font-weight: bold;
+}

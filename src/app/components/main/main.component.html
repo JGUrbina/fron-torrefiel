@@ -1,72 +1,19 @@
-<main>
-  <section>
-    <div class="">
-      <button>Trabajos</button>
-      <button>Dar alta servicio</button>
-      <button>Administrador</button>
+<main class="main">
+  <section class="main__section">
+    <div class="main__section--buttons">
+      <button class="button" [ngClass]="{'active': showView === JOBS}" (click)="changeView(JOBS)"><h1>Trabajos</h1></button>
+      <button class="button" [ngClass]="{'active': showView === CREATESERVICE}" (click)="changeView(CREATESERVICE)"><h1>Dar alta servicio</h1></button>
+      <button class="button" [ngClass]="{'active': showView === ADMIN}" (click)="changeView(ADMIN)"><h1>Administrador</h1></button>
     </div>
-    <div>
-      <div class="job">
-        <div class="description">
-          <div class="arriba">
-            <div>
-              <span>#1151172</span>
-              <span>Servihogar 24 horas Valencia</span>
-              <div>
-                <label for="">Urgente</label>
-                <input type="checkbox" value="true">
-              </div>
-            </div>
-            <div>
-              <span class="etapa">Pendiente de presupuesto</span>
-              <span class="date">00/00/2020 | date</span>
-              <span class="precio">0.000$</span>
-            </div>
-            <div>
-              <span class="direccion">
-                Risueño Abril Juan José C/ Músico Cabanilles 32 P.24 46017. Valencia. 690 319 479
-              </span>
-            </div>
-          </div>
-          <div class="abajo">
-            <h2>PERSIONISTA</h2>
-            <p>descripcion</p><h2>SERVICIO SHOT</h2>
-            <h2>LIBERTY SEGUROS</h2>
-            <P>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi totam pariatur temporibus cupiditate molestias tempore sunt quam voluptatum perferendis laborum. Voluptates architecto temporibus, ad labore adipisci deleniti ipsa! Sit, exercitationem?
-            </P>
-          </div>
-        </div>
-        <div>
-          <div>
-            <figure><img src="" alt=""></figure>
-            <span>title</span>
-          </div>
-          <div>
-            <figure><img src="" alt=""></figure>
-            <span>title</span>
-          </div>
-          <div>
-            <figure><img src="" alt=""></figure>
-            <span>title</span>
-          </div>
-          <div>
-            <figure><img src="" alt=""></figure>
-            <span>title</span>
-          </div>
-          <div>
-            <figure><img src="" alt=""></figure>
-            <span>title</span>
-          </div>
-          <div>
-            <figure><img src="" alt=""></figure>
-            <span>title</span>
-          </div>
-          <div>
-            <figure><img src="" alt=""></figure>
-            <span>title</span>
-          </div>
-        </div>
+    <div class="viewOptions {{showView}}">
+      <div class="job" *ngIf="showView === JOBS">
+        <app-jobs-view></app-jobs-view>
+      </div>
+      <div class="service" *ngIf="showView === CREATESERVICE">
+        <app-create-services></app-create-services>
+      </div>
+      <div class="admin" *ngIf="showView === ADMIN">
+        <app-admin-view></app-admin-view>
       </div>
     </div>
   </section>

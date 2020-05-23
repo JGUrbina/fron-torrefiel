@@ -1,9 +1,9 @@
-<svg width="53" height="49" viewBox="0 0 53 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg class="svg" width="53" height="49" viewBox="0 0 53 49" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_dd)">
 <rect x="11" y="6" width="31" height="31" rx="7.75" fill="white"/>
 </g>
-<path d="M17.5715 20.6072L34.5358 12.5715L26.5001 29.5358L24.7144 22.393L17.5715 20.6072Z" stroke="#303030" stroke-linecap="round" stroke-linejoin="round"/>
-<line x1="24.3606" y1="22.0393" x2="28.8248" y2="17.575" stroke="#303030" stroke-linejoin="round"/>
+<path d="M17.5715 20.6072L34.5358 12.5715L26.5001 29.5358L24.7144 22.393L17.5715 20.6072Z"  stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="24.3606" y1="22.0393" x2="28.8248" y2="17.575"  stroke-linejoin="round"/>
 <defs>
 <filter id="filter0_dd" x="0.666667" y="0.833333" width="51.6667" height="51.6667" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
