@@ -10,7 +10,7 @@ export class FilterComponent implements OnInit {
   public isCollapsed: boolean;
 
   constructor() {
-    this.isCollapsed = true;
+    this.isCollapsed = false;
   }
 
   ngOnInit(): void {

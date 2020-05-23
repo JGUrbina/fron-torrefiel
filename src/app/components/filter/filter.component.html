@@ -1,51 +1,51 @@
 <section class="filter">
   <div class="filter__containButton">
-    <button type="button" class="filter__containButton--button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="filter">
+    <button class="filter__containButton--button" (click)="isCollapsed = !isCollapsed">
       <span class="filter__containButton--title">Filtrar</span>
-      <img src="../../../assets/svg/flecha-abajo.svg" alt="">
+      <img src="../../../assets/svg/flecha-abajo.svg" alt="" [ngClass]="{'transition fadeIn': isCollapsed}">
     </button>
   </div>
-  <div class="filter__containOptions" id="filter" [ngbCollapse]="isCollapsed">
-    <div>
+  <div class="filter__containOptions fadeInDown" *ngIf="isCollapsed">
+    <div class="option">
       <label for="status">Estado</label>
       <select name="status" id="">
-        <option value="1">1</option>
+        <option value="1">Selecciona el estado</option>
         <option value="2">2</option>
         <option value="3">3</option>
       </select>
     </div>
-    <div>
+    <div class="option">
       <label for="">Número de servicio</label>
-      <input type="text">
+      <input type="text" placeholder="Número de servicio">
     </div>
-    <div>
+    <div class="option">
       <label for="">Actividad</label>
       <select name="status" id="">
-        <option value="1">1</option>
+        <option value="1">Selecciona Actividad</option>
         <option value="2">2</option>
         <option value="3">3</option>
       </select>
     </div>
-    <div>
+    <div class="option">
       <label for="">Cliente</label>
-      <input type="text">
+      <input type="text" placeholder="Número de servicio">
     </div>
-    <div>
+    <div class="option">
       <label for="">Palabra clave</label>
-      <input type="text">
+      <input type="text" placeholder="Busca por palabra clave">
     </div>
-    <div>
+    <div class="option">
       <label for="">Año</label>
       <select name="status" id="">
-        <option value="1">1</option>
+        <option value="1">Año</option>
         <option value="2">2</option>
         <option value="3">3</option>
       </select>
     </div>
-    <div>
+    <div class="option">
       <label for="">Mes</label>
       <select name="status" id="">
-        <option value="1">1</option>
+        <option value="1">Mes</option>
         <option value="2">2</option>
         <option value="3">3</option>
       </select>
