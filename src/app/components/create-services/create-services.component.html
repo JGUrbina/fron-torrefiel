@@ -106,27 +106,27 @@
   </div>
   <div class="containService__assets">
     <div>
-      <div class="input__contain">
-        <h4>adjuntar <b>Albarán</b></h4>
-        <div>
-          <label for="albaran">
-            <input type="file" name="albaran">
+      <div class="input__contain albaran">
+        <h4>Adjuntar <b>Albarán</b></h4>
+        <div class="d-flex align-items-center">
+          <label class="label" for="albaran">
+            <input class="d-none" type="file" name="albaran">
             <figure><img src="../../../assets/svg/add.svg" alt=""></figure>
           </label>
-          <span> archivo adjunto</span>
+          <span><b>archivo adjunto</b></span>
         </div>
-        <p>Tamaño máximo 50MB</p>
+        <p class="tmn-max">Tamaño máximo 50MB</p>
       </div>
-      <div class="input__contain">
-        <h4>adjuntar <b>Factura</b></h4>
+      <div class="input__contain factura">
+        <h4>Adjuntar <b>Factura</b></h4>
         <div>
-          <label for="factura">
-            <input type="file" name="factura">
+          <label class="label" for="factura">
+            <input class="d-none" type="file" name="factura">
             <figure><img src="../../../assets/svg/add.svg" alt=""></figure>
           </label>
           <span> archivo adjunto</span>
         </div>
-        <p>Tamaño máximo 50MB</p>
+        <p class="tmn-max">Tamaño máximo 50MB</p>
       </div>
     </div>
     <div class="addEmployee">
@@ -138,9 +138,11 @@
         </select>
       </div>
     </div>
-    <div class="saveService">
+    <div class="saveService d-flex justify-content-center align-items-center">
       <button>Guardar y crear Calendario</button>
-      <figure><img src="../../../assets/svg/calendario.svg" alt="agregar al calendario"></figure>
+      <figure class="icon">
+        <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'calendar'" [url]="'../../../assets/svg/calendario.svg'"></app-create-icon>
+      </figure>
     </div>
   </div>
 </section>

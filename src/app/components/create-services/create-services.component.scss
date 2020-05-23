@@ -71,6 +71,64 @@
 
   &__assets{
     width: 30%;
+    padding: 26px 20px;
+
+    .albaran, .factura{
+      font-size: .9rem;
+      height: 135px;
+      padding: 10px;
+
+      h4, .input__contain{
+        font-size: .9rem;
+      }
+      .input__contain{
+        padding: 10px;
+      }
+  
+      .label{
+        margin: 0;
+        height: 65px;
+  
+        figure{
+          width: 130px;
+          margin: 0;
+        }
+      }
+    }
+
+    .tmn-max{
+      font-size: .7rem;
+      padding-left: 14%;
+    }
+
+    .addEmployee{
+      padding: 20px;
+      font-size: .9rem;
+
+      .input__contain{
+        display: flex;
+        flex-wrap: wrap;
+        font-size: .8rem;
+        width: inherit;
+        position: relative;
+      }
+
+      select{
+        height: 45px;
+        border-radius: 5px;
+        border: 1px solid black;
+        padding: 5px 10px;
+        width: 88%;
+      }
+    }
+
+    .saveService{
+      figure{
+        width: 20px;
+        height: 20px;
+        position: absolute;
+      }
+    }
   }
 }
 
