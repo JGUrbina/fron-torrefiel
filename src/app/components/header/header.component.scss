@@ -24,14 +24,17 @@ header{
     display: flex;
     .contain__search{
       label{
+        display: flex;
         margin-bottom: 0;
         background-color: white;
         padding: 3px 10px;
         border-radius: 14px;
         box-shadow: 0 2px 11px 1px #00000061;
 
-        img{
-          margin-bottom: 1px;
+        figure{
+          width: 40px;
+          height: 40px;
+          margin: 0px;
         }
 
         input{
