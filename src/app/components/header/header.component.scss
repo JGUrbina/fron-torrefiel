@@ -1,18 +1,19 @@
 @import '../../../assets/scss/variables';
-@import '../../../assets/scss/components/header';
+@import '../../../assets/scss/components/hoverIcon';
 
 header{
   background-color: $color-red;
   display: flex;
-  height: 99px;
+  height: 133px;
   justify-content: space-between;
-  padding: 12px 30px;
+  padding: 12px 65px;
+  padding-right: 54px;
   align-items: center;
 
   .logo{
     figure{
-      margin-bottom: 0;
-      width: 82%;
+      margin: auto;
+      width: 88%;
       img{
         width: 100%;
       }
@@ -23,20 +24,25 @@ header{
     display: flex;
     .contain__search{
       label{
+        display: flex;
         margin-bottom: 0;
         background-color: white;
         padding: 3px 10px;
         border-radius: 14px;
         box-shadow: 0 2px 11px 1px #00000061;
 
-        img{
-          margin-bottom: 1px;
+        figure{
+          width: 40px;
+          height: 40px;
+          margin: 0px;
         }
 
         input{
           border: none;
-          padding: 5px;
-          width: 225px;
+          padding-left: 10px;
+          width: 276px;
+          height: 46px;
+          
           &:focus{
             border: none;
             outline: none !important;
@@ -63,14 +69,15 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 150px;
+    width: 214px;
 
     .icon{
       margin-bottom: 0;
-      width: 35px;
-      height: 35px;
+      width: 47px;
+      height: 46px;
       position: relative;
-      transition: all .5s;
+      transition: all 0.5s;
+      margin-top: 5px;
 
       &:hover{
         .hoverIcon{

@@ -1,18 +1,18 @@
-<main>
-  <section>
-    <div class="">
-      <button>Trabajos</button>
-      <button>Dar alta servicio</button>
-      <button>Administrador</button>
+<main class="main">
+  <section class="main__section">
+    <div class="main__section--buttons">
+      <button class="button" [ngClass]="{'active': showView === JOBS}" (click)="changeView(JOBS)"><h1>Trabajos</h1></button>
+      <button class="button" [ngClass]="{'active': showView === CREATESERVICE}" (click)="changeView(CREATESERVICE)"><h1>Dar alta servicio</h1></button>
+      <button class="button" [ngClass]="{'active': showView === ADMIN}" (click)="changeView(ADMIN)"><h1>Administrador</h1></button>
     </div>
-    <div>
-      <div class="job">
+    <div class="viewOptions {{showView}}">
+      <div class="job" *ngIf="showView === JOBS">
         <app-jobs-view></app-jobs-view>
       </div>
-      <div class="service">
+      <div class="service" *ngIf="showView === CREATESERVICE">
         <app-create-services></app-create-services>
       </div>
-      <div class="admin">
+      <div class="admin" *ngIf="showView === ADMIN">
         <app-admin-view></app-admin-view>
       </div>
     </div>
