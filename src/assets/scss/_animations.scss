@@ -1,6 +1,6 @@
 /************************************************ DESVANECER - APARECER ************************************************/
 .fadeIn{
-  animation-duration: 1s;
+  animation-duration: .5s;
   animation-fill-mode: both;
   animation-name: fadeIn;
 }
@@ -10,6 +10,40 @@
   }
   to{
       opacity: 1;
+  }
+}
+
+//Aparecer de derecha - izquierda
+.fadeInLeft{
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeInLeft;
+}
+@keyframes fadeInLeft {
+  from{
+      opacity: 0;
+      transform: translate3d(100%,0,0);
+  }
+  to{
+      opacity: 1;
+      transform: translate3d(0,0,0);
+  }
+}
+
+//Aparecer de izquierda - derecha
+.fadeInRight{
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeInRight;
+}
+@keyframes fadeInRight {
+  from{
+      opacity: 0;
+      transform: translate3d(-100%,0,0);
+  }
+  to{
+      opacity: 1;
+      transform: translate3d(0,0,0);
   }
 }
 

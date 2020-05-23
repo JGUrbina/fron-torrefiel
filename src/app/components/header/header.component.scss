@@ -1,0 +1,87 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/components/header';
+
+header{
+  background-color: $color-red;
+  display: flex;
+  height: 99px;
+  justify-content: space-between;
+  padding: 12px 30px;
+  align-items: center;
+
+  .logo{
+    figure{
+      margin-bottom: 0;
+      width: 82%;
+      img{
+        width: 100%;
+      }
+    }
+  }
+
+  .contain__middle{
+    display: flex;
+    .contain__search{
+      label{
+        margin-bottom: 0;
+        background-color: white;
+        padding: 3px 10px;
+        border-radius: 14px;
+        box-shadow: 0 2px 11px 1px #00000061;
+
+        img{
+          margin-bottom: 1px;
+        }
+
+        input{
+          border: none;
+          padding: 5px;
+          width: 225px;
+          &:focus{
+            border: none;
+            outline: none !important;
+          }
+        }
+      }
+      margin-right: 10px;
+    }
+    .contain__name{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 10px;
+      
+      .name{
+        font-size: 1rem;
+        margin-bottom: 0;
+        color: $color-white;
+      }
+    }
+  }
+
+  .contain__icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+
+    .icon{
+      margin-bottom: 0;
+      width: 35px;
+      height: 35px;
+      position: relative;
+      transition: all .5s;
+
+      &:hover{
+        .hoverIcon{
+          display: block !important;
+        }
+      }
+
+      .hoverIcon{
+        @extend %hoverIcon;
+        display: none;
+      }
+    }
+  }
+}

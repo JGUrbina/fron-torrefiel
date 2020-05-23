@@ -1,32 +1,38 @@
 <header>
-  <div>
+  <div class="logo">
     <figure>
       <img src="../../../assets/images/logo-blanco.png" alt="">
     </figure>
   </div>
-  <div>
-    <div>
-      <input type="search">
+  <div class="contain__middle">
+    <div class="contain__search">
+      <label for="search">
+        <img src="../../../assets/svg/buscar.svg" alt="">
+        <input type="search" name="search" placeholder="Buscar">
+      </label>
     </div>
-    <div>
-      Hola hola
+    <div class="contain__name">
+      <h2 class="name">
+        Hola Karem
+      </h2>
     </div>
   </div>
-  <div>
-    <div>
-      <figure>
-        <img src="../../../assets/svg/calendario.png" alt="">
-      </figure>
-    </div>
-    <div>
-      <figure>
-        <img src="../../../assets/svg/notificacion.svg" alt="">
-      </figure>
-    </div>
-    <div>
-      <figure>
-        <img src="../../../assets/svg/salir.svg" alt="">
-      </figure>
-    </div>
+  <div class="contain__icons">
+    <figure class="icon">
+      <app-create-icon [class]="'button color-gray bg-white h-color-red'" [name]="'calendar'" [url]="'../../../assets/svg/calendario.svg'"></app-create-icon>
+      <span class="hoverIcon fadeIn">Calendario</span>
+    </figure>
+    <figure class="icon">
+      <app-create-icon [class]="'color-white'" [name]="'campana'" [url]="'../../../assets/svg/campana.svg'"></app-create-icon>
+      <div class="d-none">
+        notificaciones
+      </div>
+    </figure>
+    <figure class="icon">
+      <app-create-icon [class]="'color-white'" [name]="'exit'" [url]="'../../../assets/svg/salir.svg'"></app-create-icon>
+      <div class="d-none">
+        estas seguro?
+      </div>
+    </figure>
   </div>
 </header>
