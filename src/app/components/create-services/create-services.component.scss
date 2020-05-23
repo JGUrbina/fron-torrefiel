@@ -7,22 +7,79 @@
   border-radius: 16px;
 
   &__data{
-    .whenService{
-      .client{
+    width: 70%;
+    padding: 26px 20px;
+    padding-left: 40px;
 
+    .client, .date{
+      display: flex;
+    }
+
+    .date{
+      .dateContain{
+        width: 36%;
+        margin-right: 10px;
+      }
+      .icon{
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        bottom: 0;
+        margin: 0;
+        right: 3px;
       }
     }
 
-    label, input, select{
-      
+    .client{
+      width: 57%;
+    }
+
+    label{
+      width: 100%;
+      margin-bottom: 3px;
+    }
+
+    input, select, textarea{
+      height: 39px;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 5px 10px;
+      padding-right: 0;
     }
 
     .input__contain{
+      display: flex;
+      flex-wrap: wrap;
+      font-size: .8rem;
+      width: inherit;
+      position: relative;
+    }
 
+    .name{
+      max-width: 19%;
+      margin-right: 20px;
+
+      input{
+        width: 100%;
+      }
+    }
+
+    .code{
+      width: 18%;
     }
   }
 
   &__assets{
-
+    width: 30%;
   }
+}
+
+.w-90{
+  width: 90% !important;
+}
+.w-95{
+  width: 95% !important;
+}
+.h-85{
+  height: 85px !important;
 }
