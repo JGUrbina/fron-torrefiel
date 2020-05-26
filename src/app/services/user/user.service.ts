@@ -19,28 +19,28 @@ export class UserService {
     return this.http.get<any>(this.urlApi);
   }
 
-  createUser(user: User): Observable<object>{
-    return this.http.post<object>(`${this.urlApi}/register`, user);
+  createUser(user: User): Observable<any>{
+    return this.http.post<any>(`${this.urlApi}/register`, user);
   }
 
-  deleteUser(id: string): Observable<object> {
-    return this.http.delete<object>(`${this.urlApi}/${id}`);
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.urlApi}/${id}`);
   }
 
-  login(params: object): Observable<object> {
+  login(params: object): Observable<any> {
     console.log(params);
-    return this.http.post<object>(`${this.urlApi}/login`, params);
+    return this.http.post<any>(`${this.urlApi}/login`, params);
   }
 
-  setPassword(token: string, password: string): Observable<object>{
-    return this.http.post<object>(`${this.urlApi}/passwordreset/${token}`, {password});
+  setPassword(token: string, password: string): Observable<any>{
+    return this.http.post<any>(`${this.urlApi}/passwordreset/${token}`, {password});
   }
 
-  verifyUser(token: string): Observable<object>{
-    return this.http.get<object>(`${this.urlApi}/confirmation/${token}`);
+  verifyUser(token: string): Observable<any>{
+    return this.http.get<any>(`${this.urlApi}/confirmation/${token}`);
   }
 
-  sendMailResetPassword(params: any): Observable<object>{
-    return this.http.post<object>(`${this.urlApi}/emailpassreset`, params);
+  sendMailResetPassword(params: any): Observable<any>{
+    return this.http.post<any>(`${this.urlApi}/emailpassreset`, params);
   }
 }

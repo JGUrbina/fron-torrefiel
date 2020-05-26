@@ -10,26 +10,28 @@ import { UrlApiGlobal } from '../config';
 export class ServiceService {
 
   public urlApi: string;
-
+  headers = new HttpHeaders()
   constructor(private http: HttpClient) {
     this.urlApi = `${UrlApiGlobal}/service`;
+    this.headers.append('Content-Type', 'application/json')
+    this.headers.append('Authoriztion', 'Bearer ' + localStorage.getItem('token'))
   }
 
   getServices(): Observable<any> {
-    return this.http.get<any>(this.urlApi);
+    return this.http.get<any>(this.urlApi, { headers: this.headers });
   }
 
   updateService(id: string): Observable<any> {
-    return this.http.post<object>(`${this.urlApi}/update/${id}`, {id});
+    return this.http.post<object>(`${this.urlApi}/update/${id}`, {id}, { headers: this.headers });
   }
 
   createService(service: Service): Observable<object>{
     const id = service.client;
-    return this.http.post<object>(`${this.urlApi}/register/${id}`, {id});
+    return this.http.post<object>(`${this.urlApi}/register/${id}`, {id}, { headers: this.headers });
   }
 
   deleteService(id: string): Observable<object> {
-    return this.http.delete<object>(`${this.urlApi}/${id}`);
+    return this.http.delete<object>(`${this.urlApi}/${id}`, { headers: this.headers });
   }
 
 }

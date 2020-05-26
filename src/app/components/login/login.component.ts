@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../../services/user/user.service';
 import { User } from '../../models/user/user';
 import { Router } from '@angular/router';
@@ -71,7 +70,8 @@ export class LoginComponent implements OnInit {
     const userLogin = { userName: this.userName, password: this.password};
     this.userService.login(userLogin).subscribe(
       (data) => {
-        console.log(data);
+        const {  token }  = data;
+        localStorage.setItem('token', token);
         this.router.navigate(['/']);
       },
       (err) => {
