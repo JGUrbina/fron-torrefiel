@@ -71,7 +71,10 @@ export class LoginComponent implements OnInit {
     const userLogin = { userName: this.userName, password: this.password};
     this.userService.login(userLogin).subscribe(
       (data) => {
-        console.log(data);
+        const {  token }  = data
+        console.log(token);
+        
+        localStorage.setItem('token', token)
         this.router.navigate(['/']);
       },
       (err) => {
