@@ -5,6 +5,7 @@
   background-color: $color-white;
   display: flex;
   border-radius: 16px;
+  position: relative;
 
   &__data{
     width: 70%;
@@ -123,10 +124,26 @@
     }
 
     .saveService{
+      position: relative;
       figure{
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 24px;
         position: absolute;
+        margin: 0;
+        right: 12%;
+        top: 14%;
+      }
+
+      .buttonSave{
+        border: none;
+        padding: 7px 15px;
+        background-color: #cd2a00;
+        border-radius: 6px;
+        color: white;
+        font-size: .8rem;
+        width: 82%;
+        box-shadow: 0 2px 5px 1px #00000042;
+        outline: none;
       }
     }
   }

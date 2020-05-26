@@ -32,45 +32,68 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi totam pariatur temporibus cupiditate molestias tempore sunt quam voluptatum perferendis laborum. Voluptates architecto temporibus, ad labore adipisci deleniti ipsa! Sit, exercitationem?
       </P>
     </div>
+    <div class="sectionMenu">
+      <div class="delivery-note" *ngIf="sectionMenuShow === DELIVERYNOTE">
+        <h2>DELIVERYNOTE</h2>
+      </div>
+      <div class="bill" *ngIf="sectionMenuShow === BILL">
+        <h2>BILL</h2>
+      </div>
+      <div class="calendar" *ngIf="sectionMenuShow === CALENDAR">
+        <h2>CALENDAR</h2>
+      </div>
+      <div class="chat" *ngIf="sectionMenuShow === CHAT">
+        <h2>CHAT</h2>
+      </div>
+      <div class="images" *ngIf="sectionMenuShow === IMAGES">
+        <h2>IMAGES</h2>
+      </div>
+      <div class="firm" *ngIf="sectionMenuShow === FIRM">
+        <h2>FIRM</h2>
+      </div>
+      <div class="note" *ngIf="sectionMenuShow === NOTE">
+        <h2>NOTE</h2>
+      </div>
+    </div>
   </div>
   <div class="description__icons">
-    <figure class="description__icons--icon">
+    <figure class="description__icons--icon" (click)="sectionMenuShow = DELIVERYNOTE">
       <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'delivery-note'" [url]="'../../../assets/svg/albaran-menu.svg'"></app-create-icon>
       <div class="hoverIcon fadeIn">
         Albarán
       </div>
     </figure>
-    <figure class="description__icons--icon">
+    <figure class="description__icons--icon" (click)="sectionMenuShow = BILL">
       <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'bill'" [url]="'../../../assets/svg/file.svg'"></app-create-icon>
       <div class="hoverIcon fadeIn">
         Factura
       </div>
     </figure>
-    <figure class="description__icons--icon">
+    <figure class="description__icons--icon" (click)="sectionMenuShow = CALENDAR">
       <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'calendar'" [url]="'../../../assets/svg/calendario.svg'"></app-create-icon>
       <div class="hoverIcon fadeIn">
         Calendario
       </div>
     </figure>
-    <figure class="description__icons--icon">
+    <figure class="description__icons--icon" (click)="sectionMenuShow = CHAT">
       <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'chat'" [url]="'../../../assets/svg/comentar.svg'"></app-create-icon>
       <div class="hoverIcon fadeIn">
         Chat
       </div>
     </figure>
-    <figure class="description__icons--icon">
+    <figure class="description__icons--icon" (click)="sectionMenuShow = IMAGES">
       <app-create-icon [class]="'color-gray bg-white button h-color-red p-7'" [name]="'img'" [url]="'../../../assets/svg/img-firma.svg'"></app-create-icon>
       <div class="hoverIcon fadeIn">
         Imagenes cliente
       </div>
     </figure>
-    <figure class="description__icons--icon">
+    <figure class="description__icons--icon" (click)="sectionMenuShow = FIRM">
       <app-create-icon [class]="'color-gray bg-white button h-color-red p-7'" [name]="'firm'" [url]="'../../../assets/svg/firma-vector.svg'"></app-create-icon>
       <div class="hoverIcon fadeIn">
         Firma cliente
       </div>
     </figure>
-    <figure class="description__icons--icon">
+    <figure class="description__icons--icon" (click)="sectionMenuShow = NOTE">
       <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'note'" [url]="'../../../assets/svg/note-intern.svg'"></app-create-icon>
       <div class="hoverIcon fadeIn">
         Nota interna

@@ -1,6 +1,8 @@
 <div class="alert__contain fadeInDown" *ngIf="alertShow">
   <div class="alert__contain--header">
-    <figure><img [src]="alertUrlIcon" alt=""></figure>
+    <figure>
+      <app-create-icon [class]="'color-gray'" [name]="'calendar'" [url]="alertUrlIcon"></app-create-icon>
+    </figure>
     <span>{{alertHeader}}</span>
   </div>
   <div class="alert__contain--body">
