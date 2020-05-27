@@ -1,10 +1,16 @@
-<section>
-  <div>
-    <figure><img src="../../../../assets/svg/descargar.svg" alt=""></figure>
-    <figure><img src="../../../../assets/svg/imprimir.svg" alt=""></figure>
-    <figure><img src="../../../../assets/svg/cancelar.svg" alt=""></figure>
+<section class="sectionPdf">
+  <div class="sectionPdf__icons">
+    <figure class="icon">
+      <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg/descargar.svg'"></app-create-icon>
+    </figure>
+    <figure class="icon">
+      <app-create-icon [class]="'color-gray bg-white button'" [name]="'print'" [url]="'../../../../assets/svg/impresora.svg'"></app-create-icon>
+    </figure>
+    <figure class="icon exit">
+      <app-create-icon [class]="'color-red bg-white'" [name]="'cancel'" [url]="'../../../../assets/svg/cancelar.svg'"></app-create-icon>
+    </figure>
   </div>
-  <div class="pagado">
-    pdf albaran
+  <div class="sectionPdf__viewpdf">
+    pdf factura
   </div>
 </section>

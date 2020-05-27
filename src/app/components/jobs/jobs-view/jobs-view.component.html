@@ -33,67 +33,67 @@
       </P>
     </div>
     <div class="sectionMenu">
-      <div class="delivery-note" *ngIf="sectionMenuShow === DELIVERYNOTE">
-        <h2>DELIVERYNOTE</h2>
+      <div class="pdf delivery-note d-flex justify-content-center" *ngIf="sectionMenuShow === DELIVERYNOTE">
+        <app-delivery-note class="w-100"></app-delivery-note>
       </div>
-      <div class="bill" *ngIf="sectionMenuShow === BILL">
-        <h2>BILL</h2>
+      <div class="bill delivery-note d-flex justify-content-center" *ngIf="sectionMenuShow === BILL">
+        <app-bill class="w-100"></app-bill>
       </div>
       <div class="calendar" *ngIf="sectionMenuShow === CALENDAR">
-        <h2>CALENDAR</h2>
+        <app-calendar class="w-100"></app-calendar>
       </div>
       <div class="chat" *ngIf="sectionMenuShow === CHAT">
-        <h2>CHAT</h2>
+        <app-chat class="w-100"></app-chat>
       </div>
       <div class="images" *ngIf="sectionMenuShow === IMAGES">
-        <h2>IMAGES</h2>
+        <app-images class="w-100"></app-images>
       </div>
       <div class="firm" *ngIf="sectionMenuShow === FIRM">
-        <h2>FIRM</h2>
+        <app-firm class="w-100"></app-firm>
       </div>
       <div class="note" *ngIf="sectionMenuShow === NOTE">
-        <h2>NOTE</h2>
+        <app-note class="w-100"></app-note>
       </div>
     </div>
   </div>
   <div class="description__icons">
-    <figure class="description__icons--icon" (click)="sectionMenuShow = DELIVERYNOTE">
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === DELIVERYNOTE}" (click)="sectionMenuShow = DELIVERYNOTE">
       <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'delivery-note'" [url]="'../../../assets/svg/albaran-menu.svg'"></app-create-icon>
       <div class="hoverIcon fadeIn">
         Albarán
       </div>
     </figure>
-    <figure class="description__icons--icon" (click)="sectionMenuShow = BILL">
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === BILL}" (click)="sectionMenuShow = BILL">
       <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'bill'" [url]="'../../../assets/svg/file.svg'"></app-create-icon>
       <div class="hoverIcon fadeIn">
         Factura
       </div>
     </figure>
-    <figure class="description__icons--icon" (click)="sectionMenuShow = CALENDAR">
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === CALENDAR}" (click)="sectionMenuShow = CALENDAR">
       <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'calendar'" [url]="'../../../assets/svg/calendario.svg'"></app-create-icon>
       <div class="hoverIcon fadeIn">
         Calendario
       </div>
     </figure>
-    <figure class="description__icons--icon" (click)="sectionMenuShow = CHAT">
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === CHAT}" (click)="sectionMenuShow = CHAT">
       <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'chat'" [url]="'../../../assets/svg/comentar.svg'"></app-create-icon>
       <div class="hoverIcon fadeIn">
         Chat
       </div>
     </figure>
-    <figure class="description__icons--icon" (click)="sectionMenuShow = IMAGES">
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === IMAGES}" (click)="sectionMenuShow = IMAGES">
       <app-create-icon [class]="'color-gray bg-white button h-color-red p-7'" [name]="'img'" [url]="'../../../assets/svg/img-firma.svg'"></app-create-icon>
       <div class="hoverIcon fadeIn">
         Imagenes cliente
       </div>
     </figure>
-    <figure class="description__icons--icon" (click)="sectionMenuShow = FIRM">
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === FIRM}" (click)="sectionMenuShow = FIRM">
       <app-create-icon [class]="'color-gray bg-white button h-color-red p-7'" [name]="'firm'" [url]="'../../../assets/svg/firma-vector.svg'"></app-create-icon>
       <div class="hoverIcon fadeIn">
         Firma cliente
       </div>
     </figure>
-    <figure class="description__icons--icon" (click)="sectionMenuShow = NOTE">
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === NOTE}" (click)="sectionMenuShow = NOTE">
       <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'note'" [url]="'../../../assets/svg/note-intern.svg'"></app-create-icon>
       <div class="hoverIcon fadeIn">
         Nota interna

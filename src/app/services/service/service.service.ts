@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Service } from '../../models/service/service';
-import { UrlApiGlobal } from '../config';
+import { UrlApiGlobal } from '../../config/config';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +10,14 @@ import { UrlApiGlobal } from '../config';
 export class ServiceService {
 
   public urlApi: string;
-  headers = new HttpHeaders()
-  constructor(private http: HttpClient) {
+
+  constructor(
+    private http: HttpClient,
+    private headers: HttpHeaders
+  ) {
     this.urlApi = `${UrlApiGlobal}/service`;
-    this.headers.append('Content-Type', 'application/json')
-    this.headers.append('Authoriztion', 'Bearer ' + localStorage.getItem('token'))
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('Authoriztion', 'Bearer ' + localStorage.getItem('token'));
   }
 
   getServices(): Observable<any> {
