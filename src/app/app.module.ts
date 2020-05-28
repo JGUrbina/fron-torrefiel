@@ -57,6 +57,7 @@ import { CreateIconComponent } from './components/create-icon/create-icon.compon
 // Config
 import { SocketConfig } from './config/config';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { CardCalendarComponent } from './components/card-calendar/card-calendar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -99,7 +100,8 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
     AdminViewComponent,
     JobsViewComponent,
     CreateIconComponent,
-    PieChartComponent
+    PieChartComponent,
+    CardCalendarComponent
   ],
   imports: [
     BrowserModule,

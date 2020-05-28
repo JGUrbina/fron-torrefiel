@@ -1,0 +1,41 @@
+@import 'src/assets/scss/variables';
+
+.sectionCalendar{
+  height: 100%;
+  width: 100%;
+
+  &__icons{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 6px 10px;
+
+    .icon{
+      width: 31px;
+      height: 33px;
+      margin-bottom: 0;
+      margin-right: 7px;
+
+      &.exit{
+        width: 15px;
+        height: 16px;
+        border-radius: 5px;
+        background-color: white;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  &__body{
+    overflow: scroll;
+    overflow-x: hidden;
+    background-color: white;
+    margin: 15px;
+    margin-top: 3px;
+    height: 90%;
+    padding: 10px;
+  }
+}

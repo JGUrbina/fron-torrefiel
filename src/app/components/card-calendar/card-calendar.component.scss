@@ -1,0 +1,18 @@
+@import 'src/assets/scss/variables';
+
+.app-top {
+  margin: 0 0 3em;
+}
+
+.app-calendar {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.fc-button-primary{
+  background-color: $color-red !important;
+  border-color: $color-red !important;
+}
+.fc-icon{
+  font-size: 1rem;
+}
