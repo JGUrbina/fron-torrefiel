@@ -12,4 +12,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  closeSession(): void{
+    localStorage.clear();
+  }
 }

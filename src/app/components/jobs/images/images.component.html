@@ -1,51 +1,29 @@
-<section>
-  <header>
-    <img src="../../../../assets/svg/cancelar.svg" alt="salir">
+<section class="sectionImages">
+  <header class="sectionImages__icons">
+    <figure class="icon exit">
+      <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../../assets/svg/cancelar.svg'"></app-create-icon>
+    </figure>
   </header>
-  <main>
-    <div class="img__contain">
-      <figure><img src="../../../../assets/svg/descargar.svg" alt="descargar"></figure>
-      <figure>
-        <img src="https://geeksroom.com/wp-content/uploads/2019/07/carpintero-pixabay.jpg" alt="imagen">
-      </figure>
-      <div>
-        <span>nickname image</span>
-        <span>fecha y hora</span>
-      </div>
-    </div>
-    <div class="img__contain">
-      <figure><img src="../../../../assets/svg/descargar.svg" alt="descargar"></figure>
-      <figure>
-        <img src="https://lh3.googleusercontent.com/proxy/g4OBEfrYKA0abRxWrw569R_RoFwsaWjUd6MQqxtTgcHkp5pWVHd2JbvPO_mlBzbKhcw-6kytPax1alhZ6gumA1QJYPoRV0nAVRvzN3EZrrrWNF8wLVcnXJy_32-7TssgCo5vlblhi_0jjHrUm13bFERBwy09mwvhIxh4m6RWYOpOGOgtU-Zit9Onuq4RiMIU7yg61ySgU8q1Z7maz6upOA" alt="imagen">
-      </figure>
-      <div>
-        <span>nickname image</span>
-        <span>fecha y hora</span>
-      </div>
-    </div>
-    <div class="img__contain">
-      <figure><img src="../../../../assets/svg/descargar.svg" alt="descargar"></figure>
-      <figure>
-        <img src="https://cdn2.atraccion360.com/media/aa/reparaciones-auto-01.jpg" alt="imagen">
-      </figure>
-      <div>
-        <span>nickname image</span>
-        <span>fecha y hora</span>
-      </div>
-    </div>
-    <div class="img__contain">
-      <figure><img src="../../../../assets/svg/descargar.svg" alt="descargar"></figure>
-      <figure>
-        <img src="https://www.galiciae.com/media/galiciae/images/2017/06/22/herramientas.jpg" alt="imagen">
-      </figure>
-      <div>
-        <span>nickname image</span>
-        <span>fecha y hora</span>
+  <main class="sectionImages__body">
+    <div class="sectionImages__body--containImgs">
+      <div class="img__contain" *ngFor="let image of allImages">
+        <figure class="icon descarga">
+          <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg/descargar.svg'"></app-create-icon>
+        </figure>
+        <figure class="image">
+          <img [src]="image.url" alt="imagen">
+        </figure>
+        <div class="info">
+          <span>{{image.name}}</span> <br>
+          <span>{{image.date | date }}</span>
+        </div>
       </div>
     </div>
   </main>
-  <footer>
-    <figure><img src="../../../../assets/svg/descargar.svg" alt="descargar"></figure>
+  <footer class="sectionImages__footer">
+    <figure class="icon descarga">
+      <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg/descargar.svg'"></app-create-icon>
+    </figure>
     <span>Descargar <br> todas</span>
   </footer>
 </section>

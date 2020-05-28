@@ -1,0 +1,148 @@
+.sectionChat{
+
+  &__header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h3{
+      font-size: 1rem;
+      color: white;
+    }
+
+    .icon{
+      width: 31px;
+      height: 33px;
+      margin-bottom: 0;
+      margin-right: 7px;
+
+      &.exit{
+        width: 15px;
+        height: 16px;
+        border-radius: 5px;
+        background-color: white;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 9px;
+        right: 11px;
+      }
+    }
+  }
+
+  &__main{
+    background-color: white;
+    height: 345px;
+    padding: 5px;
+    font-size: 0.7rem !important;
+
+    .date{
+      margin-bottom: 12px;
+      .chat__date{
+        background-color: #f2f2f2;
+        color: #c5c5c5;
+        font-size: .8rem;
+        padding: 3px 5px;
+        border-radius: 7px;
+      }
+    }
+
+    .chat__you{
+      font-size: .9rem;
+      margin: 7px 5px;
+      display: flex;
+      justify-content: flex-end;
+      color: white;
+
+      .burbuja{
+        width: 75%;
+        display: flex;
+        padding: 7px 13px;
+        background-color: #cd2a00;
+        color: white;
+        border-radius: 25px;
+        border-bottom-right-radius: 0;
+        box-shadow: 0 2px 5px 1px #00000038;
+      }
+    }
+
+    .chat__other{
+      font-size: .9rem;
+      margin: 17px 5px;
+      color: white;
+      display: flex;
+      align-items: center;
+
+      .avatar{
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        margin-right: 5px;
+      }
+
+      .burbuja{
+        width: 75%;
+        display: flex;
+        justify-content: flex-start;
+        padding: 7px 13px;
+        background-color: white;
+        color: #333;
+        border-radius: 25px;
+        box-shadow: 0 2px 5px 1px #00000038;
+      }
+      
+    }
+  }
+
+  &__footer{
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .visit{
+      width: 30px;
+      height: 30px;
+      margin: 0;
+    }
+
+    .input{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+
+      label{
+        position: relative;
+        margin: 0;
+      }
+
+      input{
+        border: none;
+        border-radius: 15px;
+        padding: 4px 12px;
+        font-size: .8rem;
+        width: 200px;
+        outline: none !important;
+      }
+
+      figure{
+        width: 24px;
+        height: 26px;
+        border-radius: 15px;
+        background-color: white;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        right: 5px;
+        margin: 0;
+      }
+    }
+    
+  }
+}

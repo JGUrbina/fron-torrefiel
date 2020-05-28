@@ -28,5 +28,16 @@
     background-color: white;
     margin: 15px;
     height: 90%;
+    overflow-y: auto;
+
+    table{
+      color: #7f017e;
+      background: #fdff99;
+      border-color: #ca9afe;
+
+      tbody, tr{
+        display: block;
+      }
+    }
   }
 }

@@ -1,33 +1,57 @@
-<section>
-  <header>
+<section class="sectionChat">
+  <header class="sectionChat__header">
     <h3>Chat de seguimiento</h3>
-    <figure><img src="../../../../assets/svg/cancelar.svg" alt="salir"></figure>
+    <figure class="icon exit">
+      <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../../assets/svg/cancelar.svg'"></app-create-icon>
+    </figure>
   </header>
-  <main class="chat">
-    <span class="chat__date">MIER - 14:48PM</span>
+  <main class="sectionChat__main">
+    <div class="text-center date">
+      <span class="chat__date">MIER - 14:48PM</span>
+    </div>
     <div class="chat__you">
-      <span>el cliente no abre, que hago?</span>
+      <div class="burbuja">
+        <span>el cliente no abre, que hago?</span>
+      </div>
     </div>
     <div class="chat__other">
-      <img src="../../../../assets/svg/avatar.svg" alt="">
-      <span>ok, espera 5 min. Voy a localizarla</span>
+      <figure class="avatar">
+        <app-create-icon [class]="'color-gray'" [name]="'avatar'" [url]="'../../../../assets/svg/avatar.svg'"></app-create-icon>
+      </figure>
+      <div class="burbuja">
+        <span>ok, espera 5 min. Voy a localizarla</span>
+      </div>
     </div>
     <div class="chat__you">
-      <span>ok espero, sino que hago? 👱👱</span>
+      <div class="burbuja">
+        <span>ok espero, sino que hago? 👱👱</span>
+      </div>
     </div>
     <div class="chat__other">
-      <img src="../../../../assets/svg/avatar.svg" alt="">
-      <span>sino, presiona visitado aqui y vete</span>
+      <figure class="avatar">
+        <app-create-icon [class]="'color-gray'" [name]="'avatar'" [url]="'../../../../assets/svg/avatar.svg'"></app-create-icon>
+      </figure>
+      <div class="burbuja">
+        <span>sino, presiona visitado aqui y vete</span>
+      </div>
     </div>
     <div class="chat__you">
-      <span>Perfecto así haré</span>
+      <div class="burbuja">
+        <span>Perfecto así haré</span>
+      </div>
     </div>
   </main>
-  <footer>
-    <figure><img src="../../../../assets/svg/visitado.svg" alt="visitado"></figure>
-    <div>
-      <input type="text" placeholder="Mensaje">
-      <figure><img src="../../../../assets/svg/comentar.svg" alt="chat"></figure>
+  <footer class="sectionChat__footer">
+    <figure class="icon visit">
+      <app-create-icon [class]="'color-gray bg-white button p-0'" [name]="'visit'" [url]="'../../../../assets/svg/visitado-ok.svg'"></app-create-icon>
+    </figure>
+    <div class="input">
+      <label for="">
+        <input type="text" placeholder="Mensaje">
+        <figure class="icon">
+          <app-create-icon [class]="'color-gray'" [name]="'chat'" [url]="'../../../../assets/svg/comentar.svg'"></app-create-icon>
+        </figure>
+      </label>
     </div>
   </footer>
 </section>
