@@ -1,3 +1,5 @@
+@import '../../../../assets/scss/components/chat';
+
 .sectionChat{
 
   &__header{
@@ -33,67 +35,8 @@
   }
 
   &__main{
-    background-color: white;
+    @extend %chatSection;
     height: 345px;
-    padding: 5px;
-    font-size: 0.7rem !important;
-
-    .date{
-      margin-bottom: 12px;
-      .chat__date{
-        background-color: #f2f2f2;
-        color: #c5c5c5;
-        font-size: .8rem;
-        padding: 3px 5px;
-        border-radius: 7px;
-      }
-    }
-
-    .chat__you{
-      font-size: .9rem;
-      margin: 7px 5px;
-      display: flex;
-      justify-content: flex-end;
-      color: white;
-
-      .burbuja{
-        width: 75%;
-        display: flex;
-        padding: 7px 13px;
-        background-color: #cd2a00;
-        color: white;
-        border-radius: 25px;
-        border-bottom-right-radius: 0;
-        box-shadow: 0 2px 5px 1px #00000038;
-      }
-    }
-
-    .chat__other{
-      font-size: .9rem;
-      margin: 17px 5px;
-      color: white;
-      display: flex;
-      align-items: center;
-
-      .avatar{
-        width: 40px;
-        height: 40px;
-        margin: 0;
-        margin-right: 5px;
-      }
-
-      .burbuja{
-        width: 75%;
-        display: flex;
-        justify-content: flex-start;
-        padding: 7px 13px;
-        background-color: white;
-        color: #333;
-        border-radius: 25px;
-        box-shadow: 0 2px 5px 1px #00000038;
-      }
-      
-    }
   }
 
   &__footer{

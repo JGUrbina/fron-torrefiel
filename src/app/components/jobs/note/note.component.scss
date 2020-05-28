@@ -1,3 +1,5 @@
+@import '../../../../assets/scss/components/chat';
+
 .sectionNote{
 
   &__header{
@@ -32,11 +34,12 @@
     }
   }
 
-  &__main{
+  /* &__main{
     background-color: white;
     height: 230px;
     padding: 5px;
     font-size: 0.7rem !important;
+    overflow: auto;
 
     .date{
       margin-bottom: 12px;
@@ -49,7 +52,7 @@
       }
     }
 
-    .chat__you{
+    .chat__me{
       font-size: .9rem;
       margin: 7px 5px;
       display: flex;
@@ -95,6 +98,11 @@
       }
       
     }
+  } */
+
+  &__main{
+    @extend %chatSection;
+    height: 230px;
   }
 
   &__footer{

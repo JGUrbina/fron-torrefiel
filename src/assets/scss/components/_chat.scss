@@ -1,0 +1,69 @@
+@import '../variables';
+
+%burbuja{
+  width: 75%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 7px 13px;
+  background-color: $color-red;
+  color: $color-white;
+  border-radius: 25px;
+  border-bottom-right-radius: 0;
+  box-shadow: 0 2px 5px 1px #00000038;
+}
+
+%contain{
+  font-size: .9rem;
+  margin: 7px 5px;
+  display: flex;
+  color: $color-white;
+}
+
+%chatSection{
+  background-color: $color-white;
+    height: 230px;
+    padding: 5px;
+    font-size: 0.7rem !important;
+    overflow: auto;
+
+    .date{
+      margin-bottom: 12px;
+      .chat__date{
+        background-color: #f2f2f2;
+        color: #c5c5c5;
+        font-size: .8rem;
+        padding: 3px 5px;
+        border-radius: 7px;
+      }
+    }
+
+    .chat__me{
+      @extend %contain;
+      justify-content: flex-end;
+
+      .burbuja{
+        @extend %burbuja;
+      }
+    }
+
+    .chat__other{
+      @extend %contain;
+      justify-content: flex-start;
+      align-items: center;
+
+      .avatar{
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        margin-right: 5px;
+      }
+
+      .burbuja{
+        @extend %burbuja;
+        background-color: $color-white;
+        color: $color-black-middle;
+        justify-content: flex-start;
+      }
+      
+    }
+}
