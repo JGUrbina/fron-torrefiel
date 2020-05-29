@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PdfService } from '../../../services/pdf/pdf.service';
 
 @Component({
   selector: 'app-bill',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BillComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private pdfService: PdfService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  downloadPdf(): void{
+    this.pdfService.onExportClick('pdf_factura_idUser', 'albaran', '');
   }
 
 }

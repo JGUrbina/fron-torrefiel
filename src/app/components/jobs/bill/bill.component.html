@@ -1,6 +1,6 @@
 <section class="sectionPdf">
   <div class="sectionPdf__icons">
-    <figure class="icon">
+    <figure class="icon" (click)="downloadPdf()">
       <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg/descargar.svg'"></app-create-icon>
     </figure>
     <figure class="icon">
@@ -10,8 +10,8 @@
       <app-create-icon [class]="'color-red bg-white'" [name]="'cancel'" [url]="'../../../../assets/svg/cancelar.svg'"></app-create-icon>
     </figure>
   </div>
-  <div class="sectionPdf__viewpdf">
-    <table class="pdf" width="500" border="0" cellpadding="0" cellspacing="0" align="center" style="border:1px solid #c1c1c8">
+  <div class="sectionPdf__viewpdf" id="pdf_factura_idUser">
+    <table class="pdf" width="500" border="0" cellpadding="0" cellspacing="0" align="center" style="border:1px solid #c1c1c8; overflow: hidden;">
       <tbody>
         <!-- header -->
         <tr class="header">
