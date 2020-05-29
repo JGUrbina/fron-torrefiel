@@ -29,14 +29,208 @@
     margin: 15px;
     height: 90%;
     overflow-y: auto;
+    overflow-x: hidden;
 
     table{
-      color: #7f017e;
-      background: #fdff99;
-      border-color: #ca9afe;
+      background-color: white;
+      color: #333;
+      font-size: .7rem;
+      position: relative;
+
+      &.pdf::after{
+        position: absolute;
+        content: "PAGADO";
+        width: fit-content;
+        bottom: 20%;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        color: #8cc68c8c;
+        font-size: 7.2rem;
+        transform: rotate(-45deg);
+      }
 
       tbody, tr{
         display: block;
+      }
+
+      tbody{
+        padding: 15px;
+      }
+
+      td{
+        border: none;
+        padding: 0;
+      }
+
+      .header{
+        /* height: 80px; */ 
+        margin-bottom: 20px;
+        font-size: .8rem;
+        display: flex;
+        justify-content: space-between;
+
+        td{
+          width: 50%;
+        }
+        .logo{
+          height: 100px;
+          display: flex;
+          align-items: center;
+        }
+        .info{
+          text-align: end;
+          font-size: .7rem;
+        }
+      }
+
+      .services{
+        /* height: 80px; */ 
+        margin-bottom: 20px;
+        tr{
+          display: flex;
+          justify-content: space-between;
+
+          th{
+            width: 20%;
+            text-align: center;
+            border: 1px solid black;
+          }
+
+          .purple{
+            background-color: #7f017e;
+            color: white;
+          }
+        }
+      }
+
+      .data{
+        /* height: 80px; */ 
+        margin-bottom: 20px;
+        background-color: #fdff99 !important;
+        table{
+          tbody{
+            background-color: #fdff99 !important;
+            padding: 0px;
+            color: #7f017e;
+          }
+
+          tr{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+
+            td{
+              border: 1px solid #7f017e;
+              padding: 5px;
+
+              &:nth-child(1){
+                width: 60%;
+              }
+              &:nth-child(2), &:nth-child(3){
+                width: 20%;
+                text-align: center;
+              }
+            }
+          }
+
+          .location{
+            td{
+              height: 44px;
+            }
+          }
+        }
+      }
+
+      .info{
+        .title{
+          height: 30px;
+          text-align: center;
+          font-weight: bold;
+          font-size: 1rem;
+        }
+
+        table{
+          tr{
+            display: flex;
+            width: 100%;
+            td{
+              &:nth-child(1){
+                width: 10%;
+              }
+              &:nth-child(2){
+                width: 50%;
+              }
+              &:nth-child(3),&:nth-child(4){
+                width: 20%;
+              }
+            }
+          }
+
+          .bg-purple{
+            display: flex;
+            td{
+              background-color: #ca9afe;
+              border: .5px solid #7f017e;
+              padding: 2px;
+              font-weight: bold;
+              text-align: center;
+            }
+          }
+          
+          .bg-yellow{
+            display: flex;
+            td{
+              background-color: #feffd2;
+              border: .5px solid #121213;
+              padding: 2px;
+              font-weight: bold;
+              text-align: center;
+            }
+          }
+
+          tbody{
+            padding: 0;
+            border: 1px solid black;
+            font-weight: bold;
+
+            .text{
+              height: 190px;
+
+              td{
+                border: .5px solid black;
+                padding: 2px;
+              }
+
+              &.sm{
+                height: 95px;
+              }
+            }
+
+            .bg-yellow{
+              background-color: #feffd2;
+            }
+
+            .bg-purple{
+              background-color: #7f017e;
+              color: white;
+            }
+
+            .b-left{
+              border-left: .5px solid black;
+            }
+            .b-right{
+              border-right: .5px solid black;
+            }
+            .b-top{
+              border-top: .5px solid black;
+            }
+            .b-bottom{
+              border-bottom: .5px solid black;
+            }
+          }
+        }
       }
     }
   }
