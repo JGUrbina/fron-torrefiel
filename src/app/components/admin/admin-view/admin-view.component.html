@@ -1,23 +1,33 @@
-<section>
-  <div>
+<section class="sectionAdmin">
+  <div class="sectionAdmin__clients">
     <app-clients></app-clients>
   </div>
-  <div>
+  <div class="sectionAdmin__users">
     <app-users></app-users>
   </div>
-  <div>
-    <div>
-      <img src="../../../../assets/svg/perfil.svg" alt="icon perfil">
-      <span>Tu perfil</span>
+  <div class="sectionAdmin__data">
+    <div class="containProfile">
+      <div class="title">
+        <figure class="icon">
+          <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg/perfil.svg'"></app-create-icon>
+        </figure>
+        <span>Tu Perfil</span>
+      </div>
     </div>
-    <div>
+    <div class="data">
       <h2>Data</h2>
-      <img src="../../../../assets/svg/grafica.svg" alt="">
+      <figure class="icon">
+        <app-create-icon [class]="'color-white'" [name]="'graphic'" [url]="'../../../../assets/svg/grafica.svg'"></app-create-icon>
+      </figure>
     </div>
-    <div>
+    <div class="summary">
       <h2>Resumen<br>mensual</h2>
-      <img src="../../../../assets/svg/albaran.svg" alt="">
-      <img src="../../../../assets/svg/factura.svg" alt="">
+      <figure class="icon ml-2">
+        <app-create-icon [class]="'color-white'" [name]="'delivery-note'" [url]="'../../../../assets/svg/albaran-menu.svg'"></app-create-icon>
+      </figure>
+      <figure class="icon">
+        <app-create-icon [class]="'color-white'" [name]="'bill'" [url]="'../../../../assets/svg/file.svg'"></app-create-icon>
+      </figure>
     </div>
   </div>
 </section>

@@ -1,7 +1,7 @@
 <section class="containService">
   <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
   <div class="containService__data">
-    <div class="whenService d-flex">
+    <div class="whenService d-flex justify-content-between">
       <div class="client">
         <div class="input__contain">
           <label for="">N° cliente nuevo</label>
@@ -9,7 +9,7 @@
         </div>
         <div class="input__contain">
           <label for="">N° cliente registrado</label>
-          <select class="w-75" name="" id="">
+          <select class="w-100" name="" id="">
             <option value="">Buscalo</option>
           </select>
         </div>
@@ -18,24 +18,21 @@
         <div class="input__contain dateContain">
           <label for="" class="w-50">Fecha</label>
           <input class="w-100" type="date" placeholder="00/00/0000">
-          <figure class="icon">
-            <app-create-icon [class]="'color-gray'" [name]="'calendar'" [url]="'../../../assets/svg/calendario.svg'"></app-create-icon>
-          </figure>
         </div>
         <div class="input__contain w-25">
           <label for="">Hora</label>
           <input type="time" placeholder="00:00">
         </div>
-        <div class="input__contain">
-          <label for="">Urgente</label>
-          <select class="w-90" name="" id="">
+        <div class="input__contain w-25">
+          <label for="" class="color-red">Urgente</label>
+          <select class="w-90 border-red" name="" id="">
             <option value="">SI</option>
             <option value="">NO</option>
           </select>
         </div>
       </div>
     </div>
-    <div class="dataService d-flex pt-4">
+    <div class="dataService d-flex justify-content-between pt-4">
       <div class="input__contain name">
         <label for="">Nombre(s)</label>
         <input type="text" placeholder="Nombre">
@@ -59,7 +56,7 @@
         </select>
       </div>
     </div>
-    <div class="infoService d-flex pt-3">
+    <div class="infoService d-flex justify-content-between pt-3">
       <div class="input__contain">
         <label for="">Teléfono</label>
         <input type="text" placeholder="000 000 000">
@@ -77,30 +74,32 @@
         <input class="w-100" type="text" placeholder="Código postal">
       </div>
     </div>
-    <div class="statusService d-flex pt-4">
-      <div class="input__contain mr-5">
-        <label for="">Estado</label>
-        <select class="w-100" name="" id="">
-          <option value="">Selecciona un Estado</option>
-          <option value="">NO</option>
-        </select>
+    <div class="d-flex justify-content-between">
+      <div class="statusService d-flex justify-content-between flex-wrap pt-4 mr-3">
+        <div class="input__contain">
+          <label for="">Estado</label>
+          <select class="w-100" name="" id="">
+            <option value="">Selecciona un Estado</option>
+            <option value="">NO</option>
+          </select>
+        </div>
+        <div class="input__contain">
+          <label for="">Actividad</label>
+          <select class="w-100" name="" id="">
+            <option value="">Selecciona una o varias</option>
+            <option value="">NO</option>
+          </select>
+        </div>
+        <div class="input__contain w-100 mt-2">
+          <label for="">Descripción</label>
+          <textarea class="w-100 h-85" name="" id="" cols="30" rows="10" placeholder="Descripción del trabajo sin Nota interna"></textarea>
+        </div>
       </div>
-      <div class="input__contain ml-3">
-        <label for="">Actividad</label>
-        <select class="w-100" name="" id="">
-          <option value="">Selecciona una o varias</option>
-          <option value="">NO</option>
-        </select>
-      </div>
-    </div>
-    <div class="descriptionService d-flex pt-3">
-      <div class="input__contain w-75 mr-5">
-        <label for="">Descripción</label>
-        <textarea class="w-100 h-85" name="" id="" cols="30" rows="10" placeholder="Descripción del trabajo sin Nota interna"></textarea>
-      </div>
-      <div class="input__contain">
-        <label for="">Incluye <b>Nota interna</b></label>
-        <textarea class="w-100 h-85" name="" id="" cols="30" rows="10" placeholder="escribe una breve nota interna"></textarea>
+      <div class="descriptionService w-25 d-flex justify-content-center pt-3">
+        <div class="input__contain">
+          <label for="">Incluye <b>Nota interna</b></label>
+          <textarea class="w-100 h-85" name="" id="" cols="30" rows="10" placeholder="escribe una breve nota interna"></textarea>
+        </div>
       </div>
     </div>
   </div>
@@ -124,7 +123,7 @@
             <input class="d-none" type="file" name="factura">
             <figure><img src="../../../assets/svg/add.svg" alt=""></figure>
           </label>
-          <span> archivo adjunto</span>
+          <span><b>archivo adjunto</b></span>
         </div>
         <p class="tmn-max">Tamaño máximo 50MB</p>
       </div>

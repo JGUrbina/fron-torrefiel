@@ -16,7 +16,15 @@
       display: flex;
     }
 
+    .color-red{
+      color: red;
+    }
+    .border-red{
+      border-color: red;
+    }
+
     .date{
+      width: 53%;
       .dateContain{
         width: 36%;
         margin-right: 10px;
@@ -32,12 +40,12 @@
     }
 
     .client{
-      width: 57%;
+      justify-content: space-between;
     }
 
     label{
-      width: 100%;
       margin-bottom: 3px;
+      display: block;
     }
 
     input, select, textarea{
@@ -49,10 +57,8 @@
     }
 
     .input__contain{
-      display: flex;
-      flex-wrap: wrap;
       font-size: .8rem;
-      width: inherit;
+      width: auto;
       position: relative;
     }
 
@@ -141,11 +147,15 @@
         border-radius: 6px;
         color: white;
         font-size: .8rem;
-        width: 82%;
+        width: 84%;
         box-shadow: 0 2px 5px 1px #00000042;
         outline: none;
       }
     }
+  }
+
+  .descriptionService{
+    align-items: flex-end;
   }
 }
 

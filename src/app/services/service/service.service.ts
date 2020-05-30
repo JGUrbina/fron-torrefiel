@@ -10,10 +10,10 @@ import { UrlApiGlobal } from '../../config/config';
 export class ServiceService {
 
   public urlApi: string;
+  private headers: HttpHeaders = new HttpHeaders();
 
   constructor(
     private http: HttpClient,
-    private headers: HttpHeaders
   ) {
     this.urlApi = `${UrlApiGlobal}/service`;
     this.headers.append('Content-Type', 'application/json');

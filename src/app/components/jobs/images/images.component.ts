@@ -31,15 +31,17 @@ export class ImagesComponent implements OnInit {
 
   downloadImage(url: string, title: string): void{
     console.log(url, title);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = title;
-    link.target = '_blank';
-    link.style.visibility = 'hidden';
-    console.log(link);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+
+    /* const downloading = browser.downloads.download({
+      url,
+      filename: `${title}.jpg`,
+      conflictAction: 'uniquity'
+    });
+
+    downloading.then(
+      (data: any) => {console.log(data); },
+      (err: any) => {console.log(err); },
+    ); */
   }
 
 }

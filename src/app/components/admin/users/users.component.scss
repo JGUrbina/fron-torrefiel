@@ -1,0 +1,68 @@
+.sectionUsers{
+  padding: 25px;
+  background-color: white;
+  border-radius: 4.5px;
+  height: 100%;
+
+  .section-title{
+    text-align: center;
+
+    h3{
+      font-size: 1rem;
+      color: #cd2a00;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    p{
+      font-size: .9rem;
+    }
+  }
+
+  .list{
+    margin-top: 30px;
+
+    .user__contain{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+
+      &--title{
+        font-size: 1rem !important;
+        color: #cd2a00;
+        background-color: #c1c1c8;
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 6px;
+        box-shadow: 0 3px 8px 3px #0000001f;
+        width: 75%;
+        height: 80px;
+
+        h4, p{
+          font-size: 1rem !important;
+          margin: 0;
+          margin-left: 8px;
+        }
+
+        figure{
+          width: 35px;
+          height: 35px;
+          margin: 0;
+        }
+      }
+
+      &--icons{
+        width: 20%;
+
+        figure{
+          width: 40px;
+          height: 40px;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

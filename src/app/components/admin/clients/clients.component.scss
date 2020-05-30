@@ -1,0 +1,67 @@
+.sectionClient{
+  padding: 25px;
+  background-color: white;
+  border-radius: 4.5px;
+  height: 100%;
+
+  .section-title{
+    text-align: center;
+    h3{
+      color: #cd2a00;
+      font-weight: bold;
+      letter-spacing: 1px;
+      font-size: 1rem !important;
+    }
+  }
+
+  .search{
+    border-radius: 13px;
+    display: flex;
+    padding: 3px 5px;
+    overflow: hidden;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 3px 4px 1px #0000001f;
+
+    figure{
+      width: 33px;
+      height: 25px;
+      margin: 0;
+    }
+
+    input{
+      border: none;
+      outline: none !important;
+      width: 65%;
+    }
+  }
+
+  .list{
+    margin-top: 30px;
+
+    .client__contain{
+      background-color: #c1c1c8;
+      padding: 15px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px 3px #0000001f;
+      margin-bottom: 2rem;
+
+      &--title{
+        font-size: 1rem !important;
+        color: #cd2a00;
+
+        h4, p{
+          font-size: 1rem !important;
+          margin: 0;
+        }
+      }
+
+      &--icon{
+        margin: 0;
+      }
+    }
+  }
+}
