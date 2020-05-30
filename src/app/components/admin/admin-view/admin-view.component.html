@@ -7,20 +7,20 @@
   </div>
   <div class="sectionAdmin__data">
     <div class="containProfile">
-      <div class="title">
+      <div class="title" (click)="showView(PROFILE)">
         <figure class="icon">
           <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg/perfil.svg'"></app-create-icon>
         </figure>
         <span>Tu Perfil</span>
       </div>
     </div>
-    <div class="data">
+    <div class="data" (click)="showView(DATA)">
       <h2>Data</h2>
       <figure class="icon">
         <app-create-icon [class]="'color-white'" [name]="'graphic'" [url]="'../../../../assets/svg/grafica.svg'"></app-create-icon>
       </figure>
     </div>
-    <div class="summary">
+    <div class="summary" (click)="showView(SUMMARY)">
       <h2>Resumen<br>mensual</h2>
       <figure class="icon ml-2">
         <app-create-icon [class]="'color-white'" [name]="'delivery-note'" [url]="'../../../../assets/svg/albaran-menu.svg'"></app-create-icon>
@@ -29,5 +29,11 @@
         <app-create-icon [class]="'color-white'" [name]="'bill'" [url]="'../../../../assets/svg/file.svg'"></app-create-icon>
       </figure>
     </div>
+  </div>
+
+  <div class="clickSection" *ngIf="view">
+    <app-profile *ngIf="view === PROFILE"></app-profile>
+    <app-data *ngIf="view === DATA"></app-data>
+    <app-summary *ngIf="view === SUMMARY"></app-summary>
   </div>
 </section>

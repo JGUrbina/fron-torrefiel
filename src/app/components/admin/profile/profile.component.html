@@ -1,48 +1,71 @@
-<section>
-  <header>
-    <figure><img src="../../../../assets/images/logo-blanco.png" alt="torrefiel"></figure>
-    <figure><img src="../../../../assets/svg/cancelar.svg" alt=""></figure>
+<section class="sectionProfile">
+  <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
+  <header class="sectionProfile__logo">
+    <figure class="logo"><img src="../../../../assets/images/logo-blanco.png" alt="torrefiel"></figure>
+    <figure class="exit">
+      <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg/cancelar.svg'"></app-create-icon>
+    </figure>
   </header>
-  <main>
-    <div>
-      <div class="inputs">
-        <div class="input__contain">
-          <label for="">Nombre(s)</label>
-          <input type="text" placeholder="Nombre(s)">
+  <main class="sectionProfile__inputs">
+    <form class="" #userForm="ngForm" (ngSubmit)="update()">
+      <div class="section-two-inputs">
+        <div class="contain-input">
+          <label for="name" class="label">Nombre(s)*</label>
+          <input type="text" class="input" placeholder="Nombre(s)" name="name" #name="ngModel" [(ngModel)]="user.name" required>
+
+          <small class="error-input" *ngIf="!name.valid && name.touched">
+            Nombre(s) no es válido
+          </small>
         </div>
-        <div class="input__contain">
-          <label for="">Apellido Paterno</label>
-          <input type="text" placeholder="Apellido paterno">
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="inputs">
-        <div class="input__contain">
-          <label for="">Apellido Materno</label>
-          <input type="text" placeholder="Apellido materno">
-        </div>
-        <div class="input__contain">
-          <label for="">Tu nickname</label>
-          <input type="text" placeholder="Nickname">
+        <div class="contain-input">
+          <label for="user" class="label">Apellido Paterno*</label>
+          <input type="text" class="input" placeholder="Apellido Paterno" name="lastName" #lastName="ngModel" [(ngModel)]="user.lastName" required>
+
+          <small class="error-input" *ngIf="!lastName.valid && lastName.touched">
+            Apellido Paterno no es válido
+          </small>
         </div>
       </div>
-    </div>
-    <div>
-      <div class="inputs">
-        <div class="input__contain">
-          <label for="">Móvil</label>
-          <input type="text" placeholder="Móvil">
+      <div class="section-two-inputs">
+        <div class="contain-input">
+          <label for="user" class="label">Apellido Materno*</label>
+          <input type="text" class="input" placeholder="Apellido Materno" name="motherLastName" #motherLastName="ngModel" [(ngModel)]="user.motherLastName" required>
+
+          <small class="error-input" *ngIf="!motherLastName.valid && motherLastName.touched">
+            Apellido Materno no es válido
+          </small>
         </div>
-        <div class="input__contain">
-          <label for="">Email</label>
-          <input type="text" placeholder="correo@correo.com">
+        <div class="contain-input">
+          <label for="user" class="label">Elige tu nickname*</label>
+          <input type="text" class="input" placeholder="Nickname" name="username" #username="ngModel" [(ngModel)]="user.userName" required>
+
+          <small class="error-input" *ngIf="!username.valid && username.touched">
+            Nickname no es válido
+          </small>
         </div>
       </div>
-    </div>
-    <footer>
-      <button>Eliminar Administrador</button>
-      <button>Actualizar</button>
-    </footer>
+      <div class="section-two-inputs">
+        <div class="contain-input">
+          <label for="user" class="label">Móvil*</label>
+          <input type="text" class="input" placeholder="Móvil" name="phone" #phone="ngModel" [(ngModel)]="user.phone" required>
+
+          <small class="error-input" *ngIf="!phone.valid && phone.touched">
+            Móvil no es válido
+          </small>
+        </div>
+        <div class="contain-input">
+          <label for="user" class="label">Email*</label>
+          <input type="email" class="input" placeholder="nombre@correo.com" name="email" #email="ngModel" [(ngModel)]="user.email" required>
+
+          <small class="error-input" *ngIf="!email.valid && email.touched">
+            Email no es válido
+          </small>
+        </div>
+      </div>
+      <footer class="sectionProfile__buttons">
+        <button class="button">Eliminar Administrador</button>
+        <button class="button">Actualizar</button>
+      </footer>
+    </form>
   </main>
 </section>

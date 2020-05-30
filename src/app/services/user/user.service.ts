@@ -9,11 +9,11 @@ import { UrlApiGlobal } from '../../config/config';
 })
 export class UserService {
 
+  private headers: HttpHeaders = new HttpHeaders();
   public urlApi: string;
 
   constructor(
-    private http: HttpClient,
-    private headers: HttpHeaders
+    private http: HttpClient
   ) {
     this.urlApi = `${UrlApiGlobal}/user`;
     this.headers.append('Content-Type', 'application/json');

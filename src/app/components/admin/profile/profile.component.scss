@@ -1,0 +1,100 @@
+@import '../../../../assets/scss/variables';
+
+.sectionProfile{
+  width: 45%;
+  background-color: rgba($color: #000000, $alpha: .8);
+  padding: 20px;
+  margin: auto;
+  border-radius: $size-border-radius;
+  position: relative;
+
+  &__logo{
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    .logo{
+      width: 95px;
+
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+      }
+    }
+
+    .exit{
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      top: 0;
+      right: 0;
+      padding: 0;
+      cursor: pointer;
+    }
+  }
+
+  form{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__inputs{
+    .section-two-inputs{
+      display: flex;
+      justify-content: space-between;
+      .contain-input{
+        width: 43%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+        margin-bottom: 20px;
+        position: relative;
+
+        input{
+          padding: 12px;
+          border-radius: $size-border-radius-secondary;
+          border: 1px solid #989696;
+          margin-bottom: 5px;
+        }
+
+        .error-input{
+          position: absolute;
+          bottom: -13px;
+          left: 12px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  &__buttons{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 24px;
+    margin-bottom: 20px;
+
+    .button{
+      width: 43%;
+      margin-top: 15px;
+      padding: 14px 10px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: $size-border-radius-secondary;
+      @extend %boxShadow;
+
+      &:nth-child(1){
+        background-color: $color-red;
+      }
+      &:nth-child(2){
+        background-color: $color-green;
+      }
+    }
+  }
+}

@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminViewComponent implements OnInit {
 
-  constructor() { }
+  public PROFILE: string = 'profile';
+  public DATA: string = 'data';
+  public SUMMARY: string = 'summary';
+
+  public view: string;
+
+  constructor() {
+    this.view = '';
+  }
 
   ngOnInit(): void {
+  }
+
+  showView(view: string): void {
+    this.view = view;
+  }
+
+  closeView(): void{
+    this.view = '';
   }
 
 }
