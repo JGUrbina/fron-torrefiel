@@ -4,12 +4,12 @@
     <p>Elimina y revisa los trabajos<br> asignados de cada usuario</p>
   </div>
   <div class="list">
-    <div class="user__contain">
+    <div class="user__contain" *ngFor="let user of allUsers">
       <div class="user__contain--title">
         <figure class="icon">
           <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg/perfil.svg'"></app-create-icon>
         </figure>
-        <h4>Nickname</h4>
+        <h4>{{user.name}}</h4>
       </div>
       <div class="user__contain--icons">
         <figure class="icon">
@@ -20,40 +20,13 @@
         </figure>
       </div>
     </div>
-    <div class="user__contain">
-      <div class="user__contain--title">
-        <figure class="icon">
-          <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg/perfil.svg'"></app-create-icon>
-        </figure>
-        <h4>Nickname</h4>
-      </div>
-      <div class="user__contain--icons">
-        <figure class="icon">
-          <app-create-icon [class]="'color-gray bg-white button'" [name]="'only-eye'" [url]="'../../../../assets/svg/only-eye.svg'"></app-create-icon>
-        </figure>
-        <figure class="icon">
-          <app-create-icon [class]="'color-gray bg-white button'" [name]="'trash'" [url]="'../../../../assets/svg/trash.svg'"></app-create-icon>
-        </figure>
+    <div class="user__contain" *ngIf="!allUsers  || allUsers.length === 0">
+      <div class="user__contain--title d-flex justify-content-center text-center w-100">
+        <h4>No existen usuarios</h4>
       </div>
     </div>
-    <div class="user__contain">
-      <div class="user__contain--title">
-        <figure class="icon">
-          <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg/perfil.svg'"></app-create-icon>
-        </figure>
-        <h4>Nickname</h4>
-      </div>
-      <div class="user__contain--icons">
-        <figure class="icon">
-          <app-create-icon [class]="'color-gray bg-white button'" [name]="'only-eye'" [url]="'../../../../assets/svg/only-eye.svg'"></app-create-icon>
-        </figure>
-        <figure class="icon">
-          <app-create-icon [class]="'color-gray bg-white button'" [name]="'trash'" [url]="'../../../../assets/svg/trash.svg'"></app-create-icon>
-        </figure>
-      </div>
-    </div>
-    <div>
+    <!-- <div>
       paginacion
-    </div>
+    </div> -->
   </div>
 </section>

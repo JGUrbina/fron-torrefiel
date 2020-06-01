@@ -7,6 +7,6 @@ export class Client {
     public postalcode: number,
     public phone: number,
     public email: string,
-    public services: any
+    public services: any,
   ){}
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../models/user/user';
-import { UserService } from 'src/app/services/user/user.service';
+import { Client } from '../../../models/client/client';
+import { ClientService } from 'src/app/services/client/client.service';
 
 @Component({
   selector: 'app-clients',
@@ -9,22 +9,21 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class ClientsComponent implements OnInit {
 
-  public allUsers: User[];
+  public allClients: Client[];
 
   constructor(
-    private userService: UserService
+    private clientService: ClientService
   ) {
-    this.allUsers = [];
   }
 
   ngOnInit(): void {
-    this.getData();
+    this.getDataClient();
   }
 
-  getData(): void{
-    this.userService.getUsers().subscribe(
+  getDataClient(): void{
+    this.clientService.getClients().subscribe(
       (data) => {
-        this.allUsers = data;
+        this.allClients = data;
       },
       (err) => {
         console.log(err);

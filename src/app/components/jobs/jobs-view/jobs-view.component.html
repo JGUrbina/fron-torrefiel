@@ -1,4 +1,4 @@
-<div class="description">
+<div class="description" *ngFor="let job of allJobs">
   <div class="description__info">
     <div class="up">
       <div class="upContain">
@@ -6,30 +6,30 @@
         <span class="info hours">Servihogar 24 horas Valencia</span>
         <div>
           <label for="priority" class="info priority">
-            Urgente
+            <span *ngIf="job.priority">Urgente</span>
             <input class="d-none" type="checkbox" value="true" name="priority">
           </label>
         </div>
       </div>
       <div class="upContain">
-        <span class="info stage f-bold">Pendiente de presupuesto</span>
-        <span class="info date">00/00/2020 | date</span>
-        <span class="info price">0.000$</span>
+        <span class="info stage f-bold">{{job.status}}</span>
+        <span class="info date">{{job.start}}</span>
+        <span class="info price">{{job.amount}}€</span>
       </div>
       <div class="upContain">
         <span class="info direction">
-          Risueño Abril Juan José C/ Músico Cabanilles 32 P.24 46017. Valencia. 690 319 479
+          {{job.direction}}
         </span>
       </div>
     </div>
     <div class="dowm">
-      <h2>PERSIONISTA</h2>
+      <h2>{{job.workers.name}}</h2>
       <div class="descriptionService">
-        <p>Descripcion:</p><h2>SERVICIO SHOT</h2>
+        <p>Descripcion:</p><h2>{{job.descriptionShort}}</h2>
       </div>
-      <h2>LIBERTY SEGUROS</h2>
+      <h2>{{job.client.name}}</h2>
       <P>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi totam pariatur temporibus cupiditate molestias tempore sunt quam voluptatum perferendis laborum. Voluptates architecto temporibus, ad labore adipisci deleniti ipsa! Sit, exercitationem?
+        {{job.description}}
       </P>
     </div>
     <div class="sectionMenu">
@@ -99,5 +99,10 @@
         Nota interna
       </div>
     </figure>
+  </div>
+</div>
+<div class="no-data" *ngIf="!allJobs || allJobs.length === 0">
+  <div class="text-center">
+    <h4>No existen trabajos</h4>
   </div>
 </div>

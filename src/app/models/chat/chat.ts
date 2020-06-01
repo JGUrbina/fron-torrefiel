@@ -5,5 +5,7 @@ export class Chat {
     public user: User,
     public text: string,
     public images: [any],
+    public createdAt: any,
+    public updatedAt: any,
   ){}
 }

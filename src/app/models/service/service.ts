@@ -6,8 +6,8 @@ export class Service {
     public amount: number,
     public start: any,
     public finalized: any,
-    public client: object,
-    public workers: object,
+    public client: any,
+    public workers: any,
   ){
   }
 }

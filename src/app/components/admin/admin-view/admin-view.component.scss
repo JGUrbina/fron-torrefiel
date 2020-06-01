@@ -1,6 +1,7 @@
 .sectionAdmin{
   display: flex;
   justify-content: space-between;
+  min-height: 550px;
 
   &__clients, &__users{
     width: 30%;

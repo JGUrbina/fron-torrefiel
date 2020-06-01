@@ -9,38 +9,20 @@
     <input type="search" placeholder="Buscar">
   </div>
   <div class="list">
-    <div class="client__contain">
+    <div class="client__contain" *ngFor="let client of allClients">
       <div class="client__contain--title">
-        <h4>Numero cliente</h4>
-        <p>nombre</p>
-        <p>00/00/0000</p>
+        <h4>{{client.id}}</h4>
+        <p>{{client.name}}</p>
+        <p>{{client.createdAt}}</p>
       </div>
       <div class="client__contain--icon">
         <figure><img src="../../../../assets/svg/firma.svg" alt=""></figure>
       </div>
     </div>
-    <div class="client__contain">
-      <div class="client__contain--title">
-        <h4>Numero cliente</h4>
-        <p>nombre</p>
-        <p>00/00/0000</p>
-      </div>
-      <div class="client__contain--icon">
-        <figure><img src="../../../../assets/svg/firma.svg" alt=""></figure>
+    <div class="client__contain" *ngIf="!allClients">
+      <div class="client__contain--title d-flex justify-content-center text-center w-100">
+        <h4>No existen clientes</h4>
       </div>
     </div>
-    <div class="client__contain">
-      <div class="client__contain--title">
-        <h4>Numero cliente</h4>
-        <p>nombre</p>
-        <p>00/00/0000</p>
-      </div>
-      <div class="client__contain--icon">
-        <figure><img src="../../../../assets/svg/firma.svg" alt=""></figure>
-      </div>
-    </div>
-    <!-- <div>
-      paginacion
-    </div> -->
   </div>
 </section>
