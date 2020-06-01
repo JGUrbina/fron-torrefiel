@@ -17,5 +17,5 @@ const appRoutes: Routes = [
   {path: '**', component: ErrorPageComponent},
 ];
 
-export const appRoutingProviders: any[] = [];
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const appRoutingProviders: any[] = [RouterModule];

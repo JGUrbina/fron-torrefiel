@@ -58,6 +58,8 @@ import { CreateIconComponent } from './components/create-icon/create-icon.compon
 import { SocketConfig } from './config/config';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { CardCalendarComponent } from './components/card-calendar/card-calendar.component';
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -114,7 +116,8 @@ import { CardCalendarComponent } from './components/card-calendar/card-calendar.
     MatIconModule,
     SocketIoModule.forRoot(SocketConfig),
     ChartsModule,
-    FullCalendarModule
+    FullCalendarModule,
+    RouterModule.forRoot(appRoutingProviders),
   ],
   providers: [appRoutingProviders, MatIconModule],
   bootstrap: [AppComponent]
