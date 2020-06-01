@@ -3,18 +3,23 @@ import { Observable } from 'rxjs';
 import { Socket } from 'ngx-socket-io';
 import { Chat } from '../../models/chat/chat';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UrlApiGlobal } from '../../config/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
+  private headers: HttpHeaders = new HttpHeaders();
+  public urlApi: string;
+
   constructor(
-    private socket: Socket,
-    private headers: HttpHeaders
+    private http: HttpClient,
+    private socket: Socket
   ) {
-    /* this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authoriztion', 'Bearer ' + localStorage.getItem('token')); */
+    this.urlApi = `${UrlApiGlobal}/chat`;
+    this.headers.append('Content-Type', 'application/json');
+    this.headers.append('Authoriztion', 'Bearer ' + localStorage.getItem('token'));
   }
 
   getMessages(): Observable<any>{
@@ -23,7 +28,7 @@ export class ChatService {
           observer.next(message);
       });
     });
-}
+  }
 
   sendMessage(message: Chat): Observable<any>{
     return this.socket.emit('new-message', message);

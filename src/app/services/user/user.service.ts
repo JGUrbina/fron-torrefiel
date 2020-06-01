@@ -32,8 +32,11 @@ export class UserService {
     return this.http.delete<any>(`${this.urlApi}/${id}`, { headers: this.headers });
   }
 
+  updateClient(id: string): Observable<any>{
+    return this.http.put<any>(`${this.urlApi}/update/${id}`, { headers: this.headers });
+  }
+
   login(params: object): Observable<any> {
-    console.log(params);
     return this.http.post<any>(`${this.urlApi}/login`, params, { headers: this.headers });
   }
 

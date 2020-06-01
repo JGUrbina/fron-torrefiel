@@ -1,3 +1,3 @@
-export const UrlApiGlobal = 'http://localhost:5001';
+export const UrlApiGlobal = 'https://torrefiel.herokuapp.com';
 
-export const SocketConfig = { url: 'http://localhost:5001', options: {} };
+export const SocketConfig = { url: 'https://torrefiel.herokuapp.com', options: {} };
