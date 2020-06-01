@@ -19,7 +19,8 @@ export class ChatService {
   ) {
     this.urlApi = `${UrlApiGlobal}/chat`;
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authoriztion', 'Bearer ' + localStorage.getItem('token'));
+    /* this.headers.append('Authoriztion', 'Bearer ' + localStorage.getItem('token')); */
+    this.headers.append('Authoriztion', 'Bearer ' + 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9zw6kgR3Jhc21pbiIsInVzZXJOYW1lIjoiSkdVcmJpbmEiLCJlbWFpbCI6ImoudXJiaW5hLjAxODNAZ21haWwuY29tIiwiaXNWZXJpZnkiOmZhbHNlLCJwaG9uZSI6MTIzNDU2NywiaWF0IjoxNTkxMDI4MTc0LCJleHAiOjE1OTEwNjc3NzR9.tm6PScSo9QnitRRxpKmCjBSJsgEf21mjD1gHeaJYSpE');
   }
 
   getMessages(): Observable<any>{
