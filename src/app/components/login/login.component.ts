@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   ){
     this.showPass = false;
     this.showRegister = false;
-    this.newUser = new User('', '', '', '', '', '', '', null, [null], '', false, null, null);
+    this.newUser = new User('', '', '', '', '', '', '', null, [null], null, null, null);
   }
 
   ngOnInit(): void {}
