@@ -25,7 +25,7 @@ export class UserService {
   }
 
   createUser(user: User): Observable<any>{
-    return this.http.post<any>(`${this.urlApi}/register`, user, { headers: this.headers });
+    return this.http.post<any>(`${this.urlApi}/register`, user);
   }
 
   deleteUser(id: string): Observable<any> {
@@ -49,6 +49,6 @@ export class UserService {
   }
 
   sendMailResetPassword(params: any): Observable<any>{
-    return this.http.post<any>(`${this.urlApi}/emailpassreset`, params, { headers: this.headers });
+    return this.http.post<any>(`${this.urlApi}/emailpassreset`, params);
   }
 }
