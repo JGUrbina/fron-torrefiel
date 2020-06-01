@@ -8,7 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: '/login', component: LoginComponent, pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
   {path: 'user/resetpass', component: ResetPassComponent},
