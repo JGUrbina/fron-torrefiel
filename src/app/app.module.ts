@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MomentModule } from 'angular2-moment';
 import { routing, appRoutingProviders } from './app.routing';
 import { MatIconModule } from '@angular/material/icon';
@@ -116,6 +116,7 @@ import { CardCalendarComponent } from './components/card-calendar/card-calendar.
     SocketIoModule.forRoot(SocketConfig),
     ChartsModule,
     FullCalendarModule,
+    ReactiveFormsModule,
   ],
   providers: [appRoutingProviders, MatIconModule],
   bootstrap: [AppComponent]

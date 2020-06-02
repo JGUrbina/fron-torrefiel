@@ -1,11 +1,20 @@
 @import '../../../assets/scss/variables';
 
 .containService{
-  height: 465px;
   background-color: $color-white;
   display: flex;
   border-radius: 16px;
   position: relative;
+
+  form{
+    width: 100%;
+    display: flex;
+    position: relative;
+  }
+
+  option{
+    padding: 10px 5px;
+  }
 
   &__data{
     width: 70%;
@@ -167,4 +176,10 @@
 }
 .h-85{
   height: 85px !important;
+}
+
+.no-exist{
+  font-weight: bold;
+  margin: 0;
+  margin-top: 1rem;
 }

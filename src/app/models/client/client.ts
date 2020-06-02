@@ -1,6 +1,8 @@
 export class Client {
   constructor(
+    public numClient: number,
     public name: string,
+    public lastName: string,
     public direction: string,
     public province: string,
     public municipality: string,

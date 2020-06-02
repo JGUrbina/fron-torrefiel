@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServiceService } from '../../services/service/service.service';
+import { UserService } from '../../services/user/user.service';
+import { ClientService } from '../../services/client/client.service';
+import { DropDownOptionsService } from '../../services/dropDownOptions/drop-down-options.service';
 import { Service } from '../../models/service/service';
+import { User } from '../../models/user/user';
+import { Client } from '../../models/client/client';
 
 @Component({
   selector: 'app-create-services',
@@ -10,7 +15,19 @@ import { Service } from '../../models/service/service';
 })
 export class CreateServicesComponent implements OnInit {
 
+  private numberClientFinal: string;
+
   public newService: Service;
+  public newClient: Client;
+  public allUsers: User[];
+  public allClients: Client[];
+  public optionsActivities: string[];
+  public optionsStatus: string[];
+  public optionsProvince: string[];
+  public optionsMunicipality: string[];
+  public searchNameUser: string;
+  public searchNameClient: string;
+  public hour: any;
 
   // alert variables
   public alertShow: boolean = false;
@@ -21,16 +38,91 @@ export class CreateServicesComponent implements OnInit {
   private ALERTTIMESHOW: number = 3000;
 
   constructor(
-    public serviceService: ServiceService,
+    private serviceService: ServiceService,
+    private userService: UserService,
+    private clientService: ClientService,
+    private dropDownOptions: DropDownOptionsService,
     public router: Router,
   ) {
-    this.newService = new Service('', '', '', null, null, null, {}, {});
+    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, {}, {});
+    this.newClient = new Client(null, null, null, null, null, null, null, null, null, null);
+    this.optionsActivities = this.dropDownOptions.getActivities();
+    this.optionsStatus = this.dropDownOptions.getStatus();
+    this.optionsProvince = this.dropDownOptions.getProvince();
+    this.optionsMunicipality = this.dropDownOptions.getMunicipality();
+    this.allUsers = [];
+
+    this.newService.numService = 1;
+    this.newService.numDeliveryNote = 1;
+    this.newService.numBill = 1;
+    this.newService.descriptionShort = 'description short';
   }
 
   ngOnInit(): void {
+    this.getAllClient();
+    this.getAllUser();
+  }
+
+  getAllUser(): void{
+    this.userService.getUsers().subscribe(
+      (data) => {
+        this.allUsers = data;
+      },
+      (err) => {
+        console.error('error: \n', err);
+      }
+    );
+  }
+
+  getAllClient(): void{
+    this.clientService.getClients().subscribe(
+      (data) => {
+        this.allClients = data;
+      },
+      (err) => {
+        console.error('error: \n', err);
+      }
+    );
+  }
+
+  // if el cliente existe
+  clientExisting(): void {
+    // autocompletar data :
+    /*
+      nombres
+      apellidos
+      telefono
+      correo electronico
+      provincia
+      municipio
+      direction
+      postalcode
+    */
+
+    // agregar nuevo servicio al cliente
+  }
+
+  createClientAndService(): void{
+    // si existe con ese id le asigno el trabajo
+    // this.idClientFinal = data.id;
+
+    // si no existe lo creo y luego le asigno el trabajo
+    this.clientService.createClient(this.newClient).subscribe(
+      (data) => {
+        console.log(data);
+        this.numberClientFinal = data.numClient;
+        this.saveService();
+      },
+      (err) => {
+        console.error('error: \n', err);
+        this.messageErrorCreate();
+        return;
+      }
+    );
   }
 
   saveService(){
+    this.newService.client = this.numberClientFinal;
     this.serviceService.createService(this.newService).subscribe(
       (data) => {
         console.log(data);
@@ -41,14 +133,18 @@ export class CreateServicesComponent implements OnInit {
         this.showAlert(urlIcon, header, title, subtitle);
       },
       (err) => {
-        console.log('err', err);
-        const urlIcon = '';
-        const header = 'Ha ocurrido un error';
-        const title = 'No se a podido realizar el registro, verifique los datos.';
-        const subtitle = 'Intente nuevamente.';
-        this.showAlert(urlIcon, header, title, subtitle);
+        console.error('error: \n', err);
+        this.messageErrorCreate();
       }
     );
+  }
+
+  messageErrorCreate(){
+    const urlIcon = '';
+    const header = 'Ha ocurrido un error';
+    const title = 'No se a podido realizar el registro, verifique los datos.';
+    const subtitle = 'Intente nuevamente.';
+    this.showAlert(urlIcon, header, title, subtitle);
   }
 
   showAlert(urlIcon: string, header: string, title: string, subtitle: string){

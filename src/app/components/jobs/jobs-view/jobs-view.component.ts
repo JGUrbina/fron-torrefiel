@@ -37,7 +37,7 @@ export class JobsViewComponent implements OnInit {
         console.log(this.allJobs);
       },
       (err) => {
-        console.log(err);
+        console.error('Error: \n', err);
       }
     );
   }

@@ -70,7 +70,8 @@ export class LoginComponent implements OnInit {
     const userLogin = { userName: this.userName, password: this.password};
     this.userService.login(userLogin).subscribe(
       (data) => {
-        const {  token }  = data;
+        const { token }  = data;
+        console.log(data);
         localStorage.setItem('token', token);
         this.router.navigate(['/home']);
       },
