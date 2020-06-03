@@ -17,11 +17,15 @@ export class UserService {
   ) {
     this.urlApi = `${UrlApiGlobal}/user`;
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authoriztion', 'Bearer ' + localStorage.getItem('token'));
+    this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
   }
 
   getUsers(): Observable<any> {
     return this.http.get<any>(this.urlApi, { headers: this.headers });
+  }
+
+  getUser(id: string): Observable<any> {
+    return this.http.get<any>(`${this.urlApi}/${id}`, { headers: this.headers });
   }
 
   createUser(user: User): Observable<any>{

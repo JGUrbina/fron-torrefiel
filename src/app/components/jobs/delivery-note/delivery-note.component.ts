@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { PdfService } from '../../../services/pdf/pdf.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-delivery-note',
@@ -7,6 +8,8 @@ import { PdfService } from '../../../services/pdf/pdf.service';
   styleUrls: ['./delivery-note.component.scss']
 })
 export class DeliveryNoteComponent implements OnInit {
+
+  @Output () closeWindow = new EventEmitter();
 
   constructor(private pdfService: PdfService) { }
 
@@ -17,4 +20,7 @@ export class DeliveryNoteComponent implements OnInit {
     this.pdfService.onExportClick('pdf_albaran_idUser', 'factura', '');
   }
 
+  emitEvent(): void{
+    this.closeWindow.emit('');
+  }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-note',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./note.component.scss']
 })
 export class NoteComponent implements OnInit {
+
+  @Output () closeWindow = new EventEmitter();
 
   public allMessages: any[];
   public newMessage: string;
@@ -44,4 +47,7 @@ export class NoteComponent implements OnInit {
     this.newMessage = '';
   }
 
+  emitEvent(): void{
+    this.closeWindow.emit('');
+  }
 }

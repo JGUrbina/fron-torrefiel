@@ -44,7 +44,8 @@ export class CreateServicesComponent implements OnInit {
     private dropDownOptions: DropDownOptionsService,
     public router: Router,
   ) {
-    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, {}, {});
+    // tslint:disable-next-line: max-line-length
+    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     this.newClient = new Client(null, null, null, null, null, null, null, null, null, null);
     this.optionsActivities = this.dropDownOptions.getActivities();
     this.optionsStatus = this.dropDownOptions.getStatus();
@@ -106,12 +107,15 @@ export class CreateServicesComponent implements OnInit {
     // si existe con ese id le asigno el trabajo
     // this.idClientFinal = data.id;
 
+    this.newClient.direction = `${this.newClient.province}, ${this.newClient.municipality}`;
+    console.log(this.newClient);
+    console.log(this.newService);
+
     // si no existe lo creo y luego le asigno el trabajo
     this.clientService.createClient(this.newClient).subscribe(
       (data) => {
-        console.log(data);
-        this.numberClientFinal = data.numClient;
-        this.saveService();
+        console.log(data, '******* DATA');
+        this.saveService(data.numClient);
       },
       (err) => {
         console.error('error: \n', err);
@@ -121,9 +125,9 @@ export class CreateServicesComponent implements OnInit {
     );
   }
 
-  saveService(){
-    this.newService.client = this.numberClientFinal;
-    this.serviceService.createService(this.newService).subscribe(
+  saveService(idClient: string){
+    this.newService.client = idClient;
+    this.serviceService.createService(this.newService, idClient).subscribe(
       (data) => {
         console.log(data);
         const urlIcon = '../../../assets/svg/ok.svg';

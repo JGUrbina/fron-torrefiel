@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { PdfService } from '../../../services/pdf/pdf.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-bill',
@@ -7,6 +8,8 @@ import { PdfService } from '../../../services/pdf/pdf.service';
   styleUrls: ['./bill.component.scss']
 })
 export class BillComponent implements OnInit {
+
+  @Output () closeWindow = new EventEmitter();
 
   constructor(
     private pdfService: PdfService
@@ -17,6 +20,10 @@ export class BillComponent implements OnInit {
 
   downloadPdf(): void{
     this.pdfService.onExportClick('pdf_factura_idUser', 'albaran', '');
+  }
+
+  emitEvent(): void{
+    this.closeWindow.emit('');
   }
 
 }

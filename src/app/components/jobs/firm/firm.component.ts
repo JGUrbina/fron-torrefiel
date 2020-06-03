@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-firm',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./firm.component.scss']
 })
 export class FirmComponent implements OnInit {
+
+  @Output () closeWindow = new EventEmitter();
 
   public firmClient: any;
 
@@ -17,6 +20,10 @@ export class FirmComponent implements OnInit {
       name: 'firma de prueba',
       date: new Date()
     };
+  }
+
+  emitEvent(): void{
+    this.closeWindow.emit('');
   }
 
 }

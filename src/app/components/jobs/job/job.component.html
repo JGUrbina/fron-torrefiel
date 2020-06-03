@@ -1,0 +1,102 @@
+<div class="description">
+  <div class="description__info">
+    <div class="up">
+      <div class="upContain">
+        <span class="info code f-bold">#1151172</span>
+        <span class="info hours">Servihogar 24 horas Valencia</span>
+        <div>
+          <label for="priority" class="info priority" [ngClass]="{'urgent': job.priority}">
+            <span *ngIf="job.priority">Urgente</span>
+          </label>
+        </div>
+      </div>
+      <div class="upContain">
+        <span class="info stage f-bold">{{job.status}}</span>
+        <span class="info date">{{job.startDate | date}} - {{job.startHours}}</span>
+        <span class="info price">{{job.amount}}€</span>
+      </div>
+      <div class="upContain">
+        <span class="info direction">
+          <!-- {{job.direction}} -->
+        </span>
+      </div>
+    </div>
+    <div class="dowm">
+      <h2 class="text-uppercase">{{nameWorker}}</h2>
+      <div class="descriptionService">
+        <p>Descripcion:</p><h2 class="text-uppercase">{{job.descriptionShort}}</h2>
+      </div>
+      <h2 class="text-uppercase">{{nameClient}}</h2>
+      <P>
+        {{job.description}}
+      </P>
+    </div>
+    <div class="sectionMenu">
+      <div class="pdf delivery-note d-flex justify-content-center" *ngIf="sectionMenuShow === DELIVERYNOTE">
+        <app-delivery-note class="w-100" (closeWindow)="close($event)"></app-delivery-note>
+      </div>
+      <div class="bill delivery-note d-flex justify-content-center" *ngIf="sectionMenuShow === BILL">
+        <app-bill class="w-100" (closeWindow)="close($event)"></app-bill>
+      </div>
+      <div class="calendar" *ngIf="sectionMenuShow === CALENDAR">
+        <app-calendar class="w-100" (closeWindow)="close($event)"></app-calendar>
+      </div>
+      <div class="chat" *ngIf="sectionMenuShow === CHAT">
+        <app-chat class="w-100" (closeWindow)="close($event)"></app-chat>
+      </div>
+      <div class="images" *ngIf="sectionMenuShow === IMAGES">
+        <app-images class="w-100" (closeWindow)="close($event)"></app-images>
+      </div>
+      <div class="firm" *ngIf="sectionMenuShow === FIRM">
+        <app-firm class="w-100" (closeWindow)="close($event)"></app-firm>
+      </div>
+      <div class="note" *ngIf="sectionMenuShow === NOTE">
+        <app-note class="w-100" (closeWindow)="close($event)"></app-note>
+      </div>
+    </div>
+  </div>
+  <div class="description__icons">
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === DELIVERYNOTE}" (click)="sectionMenuShow = DELIVERYNOTE">
+      <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'delivery-note'" [url]="'../../../assets/svg/albaran-menu.svg'"></app-create-icon>
+      <div class="hoverIcon fadeIn">
+        Albarán
+      </div>
+    </figure>
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === BILL}" (click)="sectionMenuShow = BILL">
+      <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'bill'" [url]="'../../../assets/svg/file.svg'"></app-create-icon>
+      <div class="hoverIcon fadeIn">
+        Factura
+      </div>
+    </figure>
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === CALENDAR}" (click)="sectionMenuShow = CALENDAR">
+      <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'calendar'" [url]="'../../../assets/svg/calendario.svg'"></app-create-icon>
+      <div class="hoverIcon fadeIn">
+        Calendario
+      </div>
+    </figure>
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === CHAT}" (click)="sectionMenuShow = CHAT">
+      <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'chat'" [url]="'../../../assets/svg/comentar.svg'"></app-create-icon>
+      <div class="hoverIcon fadeIn">
+        Chat
+      </div>
+    </figure>
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === IMAGES}" (click)="sectionMenuShow = IMAGES">
+      <app-create-icon [class]="'color-gray bg-white button h-color-red p-7'" [name]="'img'" [url]="'../../../assets/svg/img-firma.svg'"></app-create-icon>
+      <div class="hoverIcon fadeIn">
+        Imagenes cliente
+      </div>
+    </figure>
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === FIRM}" (click)="sectionMenuShow = FIRM">
+      <app-create-icon [class]="'color-gray bg-white button h-color-red p-7'" [name]="'firm'" [url]="'../../../assets/svg/firma-vector.svg'"></app-create-icon>
+      <div class="hoverIcon fadeIn">
+        Firma cliente
+      </div>
+    </figure>
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === NOTE}" (click)="sectionMenuShow = NOTE">
+      <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'note'" [url]="'../../../assets/svg/note-intern.svg'"></app-create-icon>
+      <div class="hoverIcon fadeIn">
+        Nota interna
+      </div>
+    </figure>
+  </div>
+</div>

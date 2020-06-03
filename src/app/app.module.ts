@@ -10,6 +10,9 @@ import { SocketIoModule } from 'ngx-socket-io';
 import { ChartsModule } from 'ng2-charts';
 import { FullCalendarModule } from '@fullcalendar/angular';
 
+// Config
+import { SocketConfig } from './config/config';
+
 // Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -53,11 +56,9 @@ import { AdminViewComponent } from './components/admin/admin-view/admin-view.com
 import { JobsViewComponent } from './components/jobs/jobs-view/jobs-view.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateIconComponent } from './components/create-icon/create-icon.component';
-
-// Config
-import { SocketConfig } from './config/config';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { CardCalendarComponent } from './components/card-calendar/card-calendar.component';
+import { JobComponent } from './components/jobs/job/job.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { CardCalendarComponent } from './components/card-calendar/card-calendar.
     JobsViewComponent,
     CreateIconComponent,
     PieChartComponent,
-    CardCalendarComponent
+    CardCalendarComponent,
+    JobComponent
   ],
   imports: [
     BrowserModule,

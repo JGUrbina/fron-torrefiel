@@ -1,6 +1,6 @@
 export class Client {
   constructor(
-    public numClient: number,
+    public numClien: number,
     public name: string,
     public lastName: string,
     public direction: string,

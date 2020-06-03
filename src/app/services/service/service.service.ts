@@ -17,7 +17,7 @@ export class ServiceService {
   ) {
     this.urlApi = `${UrlApiGlobal}/service`;
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authoriztion', 'Bearer ' + localStorage.getItem('token'));
+    this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
   }
 
   getServices(): Observable<any> {
@@ -28,9 +28,8 @@ export class ServiceService {
     return this.http.post<object>(`${this.urlApi}/update/${id}`, {id}, { headers: this.headers });
   }
 
-  createService(service: Service): Observable<object>{
-    const id = service.client;
-    return this.http.post<object>(`${this.urlApi}/register/${id}`, {id}, { headers: this.headers });
+  createService(service: Service, idClient: string): Observable<object>{
+    return this.http.post<object>(`${this.urlApi}/register/${idClient}`, {service}, { headers: this.headers });
   }
 
   deleteService(id: string): Observable<object> {

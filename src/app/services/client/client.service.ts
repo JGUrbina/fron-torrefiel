@@ -17,11 +17,15 @@ export class ClientService {
   ) {
     this.urlApi = `${UrlApiGlobal}/client`;
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authoriztion', 'Bearer ' + localStorage.getItem('token'));
+    this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
   }
 
   getClients(): Observable<any> {
     return this.http.get<any>(this.urlApi, { headers: this.headers });
+  }
+
+  getClient(id: string): Observable<any> {
+    return this.http.get<any>(`${this.urlApi}/${id}`, { headers: this.headers });
   }
 
   createClient(client: Client): Observable<any>{

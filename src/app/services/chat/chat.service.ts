@@ -19,7 +19,7 @@ export class ChatService {
   ) {
     this.urlApi = `${UrlApiGlobal}/chat`;
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authoriztion', 'Bearer ' + localStorage.getItem('token'));
+    this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
   }
 
   getMessages(): Observable<any>{

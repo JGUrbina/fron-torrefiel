@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-images',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./images.component.scss']
 })
 export class ImagesComponent implements OnInit {
+
+  @Output () closeWindow = new EventEmitter();
 
   public allImages: any[];
 
@@ -42,6 +45,10 @@ export class ImagesComponent implements OnInit {
       (data: any) => {console.log(data); },
       (err: any) => {console.log(err); },
     ); */
+  }
+
+  emitEvent(): void{
+    this.closeWindow.emit('');
   }
 
 }

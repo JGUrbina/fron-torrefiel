@@ -8,7 +8,7 @@
         <div class="client">
           <div class="input__contain">
             <label for="">N° cliente nuevo</label>
-            <input class="w-75" type="text" placeholder="Registralo" name="nameUser" #nameUser="ngModel" [(ngModel)]="newClient.numClient">
+            <input class="w-75" type="text" pattern="^[0-9]*$" placeholder="Registralo" name="nameUser" #nameUser="ngModel" [(ngModel)]="newClient.numClien">
           </div>
           <div class="input__contain">
             <label for="">N° cliente registrado</label>
@@ -32,8 +32,8 @@
           <div class="input__contain w-25">
             <label for="" class="color-red">Urgente</label>
             <select class="w-90 border-red" name="priority" [(ngModel)]="newService.priority" required>
-              <option value="">SI</option>
-              <option value="">NO</option>
+              <option value="true">SI</option>
+              <option value="false">NO</option>
             </select>
           </div>
         </div>
@@ -67,16 +67,16 @@
         <!-- client -->
         <div class="input__contain">
           <label for="">Teléfono</label>
-          <input type="text" placeholder="000 000 000" name="number" [(ngModel)]="newClient.phone" required>
+          <input type="text" minlength="7" pattern="^[0-9]*$" placeholder="000 000 000" name="number" [(ngModel)]="newClient.phone" required>
         </div>
         <div class="input__contain">
           <label for="">Correo Electrónico</label>
-          <input type="email" placeholder="correo@correo.com" name="email" [(ngModel)]="newClient.email" required>
+          <input type="email" pattern="[\w0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="correo@correo.com" name="email" [(ngModel)]="newClient.email" required>
         </div>
         <!-- service -->
         <div class="input__contain">
           <label for="">Importe</label>
-          <input type="text" placeholder="0000 €" name="amount" [(ngModel)]="newService.amount" required>
+          <input type="text" pattern="^[0-9]*$" placeholder="0000 €" name="amount" [(ngModel)]="newService.amount" required>
         </div>
         <!-- client -->
         <div class="input__contain code">
@@ -121,7 +121,7 @@
           <label for=""><b>Asigna el trabajo</b></label>
           <select class="w-100" name="workers" [(ngModel)]="newService.workers" *ngIf="allUsers">
             <option value="">Busca tu trabajador</option>
-            <option *ngFor="let option of allUsers"  [value]="option">{{option.name}}</option>
+            <option *ngFor="let option of allUsers"  [value]="option.name">{{option.name}}</option>
           </select>  
           <p *ngIf="!allUsers" class="no-exist"><b>No existen trabajadores</b></p>
         </div>

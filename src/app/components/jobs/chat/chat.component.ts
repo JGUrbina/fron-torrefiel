@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 /* import { ChatService } from 'src/app/services/chat/chat.service'; */
 import { Chat } from 'src/app/models/chat/chat';
 import { User } from 'src/app/models/user/user';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-chat',
@@ -9,6 +10,9 @@ import { User } from 'src/app/models/user/user';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+
+  @Output () closeWindow = new EventEmitter();
+
   public message: Chat;
   public user: User;
   public visited: boolean;
@@ -55,5 +59,9 @@ export class ChatComponent implements OnInit {
     };
     this.allMessages.push(message);
     this.newMessage = '';
+  }
+
+  emitEvent(): void{
+    this.closeWindow.emit('');
   }
 }

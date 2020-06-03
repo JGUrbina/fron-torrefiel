@@ -6,7 +6,7 @@
     <figure class="icon">
       <app-create-icon [class]="'color-gray bg-white button'" [name]="'print'" [url]="'../../../../assets/svg/impresora.svg'"></app-create-icon>
     </figure>
-    <figure class="icon exit">
+    <figure class="icon exit" (click)="emitEvent()">
       <app-create-icon [class]="'color-red bg-white'" [name]="'cancel'" [url]="'../../../../assets/svg/cancelar.svg'"></app-create-icon>
     </figure>
   </div>
