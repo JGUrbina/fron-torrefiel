@@ -1,15 +1,21 @@
-<section>
-  <header>
-    <img src="../../../../assets/svg/cancelar.svg" alt="salir">
-  </header>
-  <main>
-    <figure><img src="../../../../assets/svg/descargar.svg" alt="descargar"></figure>
-    <figure>
-      <img src="https://static.vecteezy.com/system/resources/previews/000/537/800/non_2x/manual-signature-for-documents-on-white-background-hand-drawn-calligraphy-lettering-vector-illustration.jpg" alt="">
+<section class="sectionFirm">
+  <header class="sectionFirm__icons">
+    <figure class="icon exit" (click)="emitEvent()">
+      <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../../assets/svg/cancelar.svg'"></app-create-icon>
     </figure>
-    <div>
-      <span>fecha 00/00/00</span>
-      <span>hora 00:00</span>
+  </header>
+  <main class="sectionFirm__body">
+    <div class="img__contain">
+      <figure class="icon descarga">
+        <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg/descargar.svg'"></app-create-icon>
+      </figure>
+      <figure class="image">
+        <img [src]="firmClient.url" alt="firma">
+      </figure>
+      <div class="info">
+        <span>{{ firmClient.name }}</span> <br>
+        <span>{{ firmClient.date | date}}</span>
+      </div>
     </div>
   </main>
 </section>

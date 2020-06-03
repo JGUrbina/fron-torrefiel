@@ -8,13 +8,14 @@ import { HomeComponent } from './components/home/home.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 const appRoutes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'user/resetpass', component: ResetPassComponent},
   {path: 'user/:passwordreset/:token', component: SetpasswordComponent},
   {path: 'user/confirmation/:token', component: SetpasswordComponent},
   {path: '**', component: ErrorPageComponent},
 ];
 
-export const appRoutingProviders: any[] = [];
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const appRoutingProviders: any[] = [RouterModule];

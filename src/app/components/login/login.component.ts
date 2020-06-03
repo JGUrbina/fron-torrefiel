@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../../services/user/user.service';
 import { User } from '../../models/user/user';
 import { Router } from '@angular/router';
@@ -32,7 +31,7 @@ export class LoginComponent implements OnInit {
   ){
     this.showPass = false;
     this.showRegister = false;
-    this.newUser = new User('', '', '', '', '', '', '', null, [null], '', false, null, null);
+    this.newUser = new User('', '', '', '', '', '', '', null, [null], null, null, null);
   }
 
   ngOnInit(): void {}
@@ -71,8 +70,10 @@ export class LoginComponent implements OnInit {
     const userLogin = { userName: this.userName, password: this.password};
     this.userService.login(userLogin).subscribe(
       (data) => {
+        const { token }  = data;
         console.log(data);
-        this.router.navigate(['/']);
+        localStorage.setItem('token', token);
+        this.router.navigate(['/home']);
       },
       (err) => {
         console.log(err);

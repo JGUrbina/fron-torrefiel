@@ -1,0 +1,91 @@
+@import '../../../../assets/scss/components/chat';
+
+.sectionChat{
+
+  &__header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h3{
+      font-size: 1rem;
+      color: white;
+    }
+
+    .icon{
+      width: 31px;
+      height: 33px;
+      margin-bottom: 0;
+      margin-right: 7px;
+
+      &.exit{
+        width: 15px;
+        height: 16px;
+        border-radius: 5px;
+        background-color: white;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 9px;
+        right: 11px;
+      }
+    }
+  }
+
+  &__main{
+    @extend %chatSection;
+    height: 345px;
+  }
+
+  &__footer{
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .visit{
+      width: 30px;
+      height: 30px;
+      margin: 0;
+    }
+
+    .input{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+
+      label{
+        position: relative;
+        margin: 0;
+      }
+
+      input{
+        border: none;
+        border-radius: 15px;
+        padding: 4px 12px;
+        font-size: .8rem;
+        width: 200px;
+        outline: none !important;
+      }
+
+      figure{
+        width: 24px;
+        height: 26px;
+        border-radius: 15px;
+        background-color: white;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        right: 5px;
+        margin: 0;
+      }
+    }
+    
+  }
+}

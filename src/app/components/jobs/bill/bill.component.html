@@ -1,10 +1,175 @@
-<section>
-  <div>
-    <figure><img src="../../../../assets/svg/descargar.svg" alt=""></figure>
-    <figure><img src="../../../../assets/svg/imprimir.svg" alt=""></figure>
-    <figure><img src="../../../../assets/svg/cancelar.svg" alt=""></figure>
+<section class="sectionPdf">
+  <div class="sectionPdf__icons">
+    <figure class="icon" (click)="downloadPdf()">
+      <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg/descargar.svg'"></app-create-icon>
+    </figure>
+    <figure class="icon">
+      <app-create-icon [class]="'color-gray bg-white button'" [name]="'print'" [url]="'../../../../assets/svg/impresora.svg'"></app-create-icon>
+    </figure>
+    <figure class="icon exit" (click)="emitEvent()">
+      <app-create-icon [class]="'color-red bg-white'" [name]="'cancel'" [url]="'../../../../assets/svg/cancelar.svg'"></app-create-icon>
+    </figure>
   </div>
-  <div class="pagado">
-    pdf albaran
+  <div class="sectionPdf__viewpdf" id="pdf_factura_idUser">
+    <table class="pdf" width="500" border="0" cellpadding="0" cellspacing="0" align="center" style="border:1px solid #c1c1c8; overflow: hidden;">
+      <tbody>
+        <!-- header -->
+        <tr class="header">
+          <td>
+            <tr>
+              <td>
+                <span>PERSIANAS Y TOLDOS</span>
+              </td>
+            </tr>
+            <tr class="logo">
+              <td>
+                <img src="../../../../assets/images/logo-color.png" alt="Torre fiel">
+              </td>
+            </tr>
+          </td>
+          <td class="info">
+            <tr class="mb-2">
+              <span><b>Persionas y Toldos Torrefiel, CB</b></span><br>
+              <span>c/ Librero Esclapes, 2 Bajo dcha.</span><br>
+              <span>46019- Valencia</span><br>
+              <span>CIF: E97681472</span>
+            </tr>
+            <tr>
+              <span>Telf.: 961337760</span><br>
+              <span>963284410</span><br>
+              <span>Correo electrónico: <a href="mailto:info@mejorarhogar.com">info@mejorarhogar.com</a></span>
+            </tr>
+          </td>
+        </tr>
+        <!-- actividades -->
+        <tr class="services">
+          <td>
+            <table width="500" border="0" cellpadding="0" cellspacing="0" align="center">
+              <thead>
+                <tr>
+                  <th scope="col" class="purple">Persianas</th>
+                  <th scope="col">Toldos</th>
+                  <th scope="col" class="purple">Ventanas</th>
+                  <th scope="col">Mosquiteras</th>
+                  <th scope="col" class="purple">Electricidad</th>
+                </tr>
+                <tr>
+                  <th scope="col">Mamparas de<br>baño</th>
+                  <th scope="col" class="purple">Decoración</th>
+                  <th scope="col">Rejas</th>
+                  <th scope="col" class="purple">Motorizaciones</th>
+                  <th scope="col">Reparaciones<br> a domicilio</th>
+                </tr>
+              </thead>
+            </table>
+          </td>
+        </tr>
+        <!-- data -->
+        <tr class="data">
+          <td>
+            <table width="500" border="0" cellpadding="0" cellspacing="0" align="center" style="border:1px solid #c1c1c8">
+              <tbody>
+                <tr>
+                  <td>
+                    <span><b>Fecha de emisión:</b> Valencia. 12 de marzo de 2020</span>
+                  </td>
+                  <td><span>N° albarán:</span></td>
+                  <td><span>¿¿??</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <span><b>Cliente:</b> ???????</span>
+                  </td>
+                  <td><span>Teléfono 1:</span></td>
+                  <td><span>¿¿??</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <span><b>Correo electronico:</b> ??????? @gmail.com</span>
+                  </td>
+                  <td><span>Teléfono 2:</span></td>
+                  <td><span>¿¿??</span></td>
+                </tr>
+                <tr class="location">
+                  <td>
+                    <span><b>Dirección trabajos:</b> ???????</span>
+                  </td>
+                  <td><span>Población 1:</span></td>
+                  <td><span>46004 - Valencia <br> Valencia</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <!-- albaran -->
+        <tr class="info">
+          <td>
+            <tr class="title">
+              <span>FACTURA</span>
+            </tr>
+            <tr>
+              <table width="500" border="0" cellpadding="0" cellspacing="0" align="center">
+                <thead class="bg-purple">
+                  <tr>
+                    <td>UND</td>
+                    <td>DESCRIPCIÓN</td>
+                    <td>PRECIO/UND</td>
+                    <td>SUBTOTAL</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text">
+                    <td class="text-center">
+                      <span>1</span>
+                    </td>
+                    <td>
+                      <span>Destalle del Producto</span>
+                    </td>
+                    <td class="text-center">
+                      <span>289,67&</span>
+                    </td>
+                    <td class="text-center">
+                      <span>289,67&</span>
+                    </td>
+                  </tr>
+                  <tr class="total b-bottom">
+                    <td class="bg-yellow"></td>
+                    <td class="bg-yellow d-flex justify-content-center">
+                      <span>IMPORTE TOTAL:</span>
+                    </td>
+                    <td class="bg-yellow b-left b-right d-flex justify-content-center">
+                      <span>Base imp.:</span>
+                    </td>
+                    <td class="bg-white d-flex justify-content-center">
+                      <span>289,67&</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="bg-yellow b-left b-right b-bottom d-flex justify-content-center">
+                      <span>21% IVA:</span>
+                    </td>
+                    <td class="bg-white b-bottom d-flex justify-content-center">
+                      <span>60,83&</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="bg-yellow b-left b-right justify-content-center">
+                      <span>TOTAL:</span>
+                    </td>
+                    <td class="bg-purple justify-content-center">
+                      <span>350,50&</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </tr>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>

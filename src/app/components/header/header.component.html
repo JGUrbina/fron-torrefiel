@@ -5,17 +5,9 @@
     </figure>
   </div>
   <div class="contain__middle">
-    <div class="contain__search">
-      <label for="search">
-        <figure>
-          <app-create-icon [class]="'color-gray'" [name]="'search'" [url]="'../../../assets/svg/buscar.svg'"></app-create-icon>
-        </figure>
-        <input type="search" name="search" placeholder="Buscar">
-      </label>
-    </div>
     <div class="contain__name">
       <h2 class="name">
-        Hola Karem
+        Hola
       </h2>
     </div>
   </div>
@@ -30,7 +22,7 @@
         notificaciones
       </div>
     </figure>
-    <figure class="icon">
+    <figure class="icon" (click)="closeSession()">
       <app-create-icon [class]="'color-white'" [name]="'exit'" [url]="'../../../assets/svg/salir.svg'"></app-create-icon>
       <div class="d-none">
         estas seguro?

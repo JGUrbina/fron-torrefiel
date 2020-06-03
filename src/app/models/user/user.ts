@@ -11,10 +11,9 @@ export class User {
     public email: string,
     public phone: number,
     public works: [any],
+    public messages: [any],
     public rol: string,
     public isVerify: boolean,
-    public createdAt: any,
-    public updatedAt: any,
   ){
   }
 }

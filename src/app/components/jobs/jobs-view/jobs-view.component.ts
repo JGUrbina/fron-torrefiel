@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Service } from '../../../models/service/service';
+import { ServiceService } from 'src/app/services/service/service.service';
 
 @Component({
   selector: 'app-jobs-view',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobsViewComponent implements OnInit {
 
-  constructor() { }
+  public allJobs: Service[];
+
+  constructor(
+    private serviceService: ServiceService,
+  ) { }
 
   ngOnInit(): void {
+    this.getDataService();
   }
 
+  getDataService(): void{
+    this.serviceService.getServices().subscribe(
+      (data) => {
+        this.allJobs = data;
+        console.log(this.allJobs);
+      },
+      (err) => {
+        console.error('Error: \n', err);
+      }
+    );
+  }
 }

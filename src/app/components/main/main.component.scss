@@ -7,6 +7,7 @@
     margin: auto;
     background-color: $color-black-middle;
     margin-bottom: 40px;
+    max-width: 1200px;
 
     &--buttons{
       width: 100%;
@@ -41,6 +42,7 @@
     }
 
     .viewOptions{
+      position: relative;
       &.jobs{
         padding: 41px 100px 20px 49px;
       }

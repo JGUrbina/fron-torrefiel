@@ -11,8 +11,18 @@
   $color-gray: #c1c1c8;
   $color-black: #000;
   $color-black-middle: #5B5B5F;
-  $color-red: #cd2a00;
+  $color-red: #cd2a00;    
+  $color-green: #0ba649;
 
 // font size
 $fs-title: 14px;
 $fs-subtitle: 1.2rem;
+
+// border-radius
+$size-border-radius: 7.8px;
+$size-border-radius-secondary: 4.6px;
+
+// box-shadow
+%boxShadow{
+  box-shadow: 0 2px 4px 1px #00000082;
+}

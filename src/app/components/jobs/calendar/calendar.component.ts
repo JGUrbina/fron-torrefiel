@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-calendar',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarComponent implements OnInit {
 
+  @Output () closeWindow = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  emitEvent(): void{
+    this.closeWindow.emit('');
   }
 
 }

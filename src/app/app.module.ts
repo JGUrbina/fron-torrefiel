@@ -1,11 +1,19 @@
+// Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MomentModule } from 'angular2-moment';
 import { routing, appRoutingProviders } from './app.routing';
 import { MatIconModule } from '@angular/material/icon';
+import { SocketIoModule } from 'ngx-socket-io';
+import { ChartsModule } from 'ng2-charts';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
+// Config
+import { SocketConfig } from './config/config';
+
+// Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
@@ -48,6 +56,10 @@ import { AdminViewComponent } from './components/admin/admin-view/admin-view.com
 import { JobsViewComponent } from './components/jobs/jobs-view/jobs-view.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateIconComponent } from './components/create-icon/create-icon.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { CardCalendarComponent } from './components/card-calendar/card-calendar.component';
+import { JobComponent } from './components/jobs/job/job.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +101,10 @@ import { CreateIconComponent } from './components/create-icon/create-icon.compon
     SelectComponent,
     AdminViewComponent,
     JobsViewComponent,
-    CreateIconComponent
+    CreateIconComponent,
+    PieChartComponent,
+    CardCalendarComponent,
+    JobComponent
   ],
   imports: [
     BrowserModule,
@@ -100,6 +115,10 @@ import { CreateIconComponent } from './components/create-icon/create-icon.compon
     routing,
     NoopAnimationsModule,
     MatIconModule,
+    SocketIoModule.forRoot(SocketConfig),
+    ChartsModule,
+    FullCalendarModule,
+    ReactiveFormsModule,
   ],
   providers: [appRoutingProviders, MatIconModule],
   bootstrap: [AppComponent]
