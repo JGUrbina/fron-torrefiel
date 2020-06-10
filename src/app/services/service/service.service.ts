@@ -29,7 +29,9 @@ export class ServiceService {
   }
 
   createService(service: Service, idClient: string): Observable<object>{
-    return this.http.post<object>(`${this.urlApi}/register/${idClient}`, {service}, { headers: this.headers });
+    console.log(service);
+    console.log(idClient);
+    return this.http.post<object>(`${this.urlApi}/register/${idClient}`, service, { headers: this.headers });
   }
 
   deleteService(id: string): Observable<object> {

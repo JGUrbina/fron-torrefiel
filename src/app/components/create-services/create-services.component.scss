@@ -1,10 +1,11 @@
 @import '../../../assets/scss/variables';
 
 .containService{
-  background-color: $color-white;
+  background-color: $color-gray;
   display: flex;
   border-radius: 16px;
   position: relative;
+  min-height: 525px;
 
   form{
     width: 100%;
@@ -16,20 +17,64 @@
     padding: 10px 5px;
   }
 
+  .color-red{
+    color: red;
+  }
+  .border-red{
+    border-color: red;
+  }
+
+  .icon{
+    width: 20px;
+    height: 22px;
+    padding: 0px 4px 0px 4px;
+    background-color: $color-white;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-bottom: 0;
+    margin-right: 8px;
+  }
+
+  .buttons{
+    position: relative;
+    figure{
+      width: 22px;
+      height: 24px;
+      position: absolute;
+      margin: 0;
+      right: 12%;
+      top: 14%;
+    }
+
+    .buttonSave{
+      border: none;
+      padding: 7px 15px;
+      background-color: #cd2a00;
+      border-radius: 6px;
+      color: white;
+      font-size: .8rem;
+      width: 84%;
+      box-shadow: 0 2px 5px 1px #00000042;
+      outline: none;
+    }
+  }
+
+  .w-fix-content{
+    width: fit-content;
+  }
+
   &__data{
-    width: 70%;
     padding: 26px 20px;
-    padding-left: 40px;
+    padding-left: 35px;
+    width: 70%;
+
+    .title{
+      font-size: 1rem;
+      color: $color-red;
+    }
 
     .client, .date{
       display: flex;
-    }
-
-    .color-red{
-      color: red;
-    }
-    .border-red{
-      border-color: red;
     }
 
     .date{
@@ -73,7 +118,6 @@
 
     .name{
       max-width: 19%;
-      margin-right: 20px;
 
       input{
         width: 100%;
@@ -83,33 +127,65 @@
     .code{
       width: 18%;
     }
+
+    .statusService{
+      input, select{
+        max-width: 160px;
+      }
+    }
   }
 
-  &__assets{
-    width: 30%;
-    padding: 26px 20px;
+  .direccion{
+    .title{
+      padding: 2rem 0 1rem;
+      font-size: 1rem;
+      color: #cd2a00;
+    }
 
-    .albaran, .factura{
-      font-size: .9rem;
-      height: 135px;
-      padding: 10px;
+    .max-width-95{
+      max-width: 95px;
+    }
 
-      h4, .input__contain{
-        font-size: .9rem;
+    .w-200{
+      width: 200px;
+    }
+
+    .mr-12{
+      margin-right: 12%;
+    }
+  }
+
+  &__aside{
+    justify-content: center;
+    width: 28%;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .buttons{
+      margin-bottom: 1rem;
+      .buttonSave{
+        padding: 8px 19px 9px;
+        width: fit-content;
+        font-size: 1.5rem;
       }
-      .input__contain{
-        padding: 10px;
+      .buttonBefore{
+        border: none;
+        padding: 7px 15px;
+        background-color: #5b5b5f;
+        border-radius: 6px;
+        color: white;
+        font-size: 1.2rem;
+        width: fit-content;
+        box-shadow: 0 2px 5px 1px #00000042;
+        outline: none;    
       }
-  
-      .label{
-        margin: 0;
-        height: 65px;
-  
-        figure{
-          width: 130px;
-          margin: 0;
-        }
-      }
+    }
+
+    .spanDirectionEqual{
+      font-size: .7rem;
+      font-weight: bold;
     }
 
     .tmn-max{
@@ -138,27 +214,25 @@
       }
     }
 
-    .saveService{
-      position: relative;
-      figure{
+    &.saveService{
+      .buttons{
+        margin-bottom: 1rem;
+        .buttonSave{
+          font-size: 1rem;
+          min-width: 220px;
+          margin-bottom: 1.5rem;
+        }
+        .buttonBefore{ 
+          font-size: .9rem;  
+        }
+      }
+      .icon{
         width: 22px;
         height: 24px;
-        position: absolute;
-        margin: 0;
-        right: 12%;
-        top: 14%;
-      }
-
-      .buttonSave{
-        border: none;
-        padding: 7px 15px;
-        background-color: #cd2a00;
-        border-radius: 6px;
-        color: white;
-        font-size: .8rem;
-        width: 84%;
-        box-shadow: 0 2px 5px 1px #00000042;
-        outline: none;
+        margin: auto;
+        position: relative;
+        padding: 0;
+        overflow: auto;
       }
     }
   }

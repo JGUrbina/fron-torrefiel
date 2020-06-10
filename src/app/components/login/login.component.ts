@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   ){
     this.showPass = false;
     this.showRegister = false;
-    this.newUser = new User('', '', '', '', '', '', '', null, [null], null, null, null);
+    this.newUser = new User('', '', '', '', '', '', null, null, [null], null, null);
   }
 
   ngOnInit(): void {}
@@ -71,7 +71,6 @@ export class LoginComponent implements OnInit {
     this.userService.login(userLogin).subscribe(
       (data) => {
         const { token }  = data;
-        console.log(data);
         localStorage.setItem('token', token);
         this.router.navigate(['/home']);
       },

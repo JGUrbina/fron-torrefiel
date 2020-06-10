@@ -2,10 +2,10 @@
   <div class="description__info">
     <div class="up">
       <div class="upContain">
-        <span class="info code f-bold">#1151172</span>
+        <span class="info code f-bold">#{{job.numService}}</span>
         <span class="info hours">Servihogar 24 horas Valencia</span>
         <div>
-          <label for="priority" class="info priority" [ngClass]="{'urgent': job.priority}">
+          <label for="priority" class="info priority" [ngClass]="{'urgent': job.priority === 'true'}">
             <span *ngIf="job.priority">Urgente</span>
           </label>
         </div>
@@ -22,11 +22,11 @@
       </div>
     </div>
     <div class="dowm">
-      <h2 class="text-uppercase">{{nameWorker}}</h2>
+      <!-- <h2 class="text-uppercase">{{nameWorker}}</h2>
       <div class="descriptionService">
         <p>Descripcion:</p><h2 class="text-uppercase">{{job.descriptionShort}}</h2>
       </div>
-      <h2 class="text-uppercase">{{nameClient}}</h2>
+      <h2 class="text-uppercase">{{nameClient}}</h2> -->
       <P>
         {{job.description}}
       </P>

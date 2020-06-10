@@ -15,8 +15,6 @@ import { Client } from '../../models/client/client';
 })
 export class CreateServicesComponent implements OnInit {
 
-  private numberClientFinal: string;
-
   public newService: Service;
   public newClient: Client;
   public allUsers: User[];
@@ -29,13 +27,21 @@ export class CreateServicesComponent implements OnInit {
   public searchNameClient: string;
   public hour: any;
 
+  public useDirectionEqual: boolean = true;
+
+  // vistas
+  public USER: string = 'user';
+  public SERVICEDIRECTION: string = 'service direction';
+  public SERVICE: string = 'service';
+  public viewActual: string = this.USER;
+
   // alert variables
   public alertShow: boolean = false;
   public alertUrlIcon: string;
   public alertHeader: string;
   public alertTitle: string;
   public alertSubtitle: string;
-  private ALERTTIMESHOW: number = 3000;
+  private ALERTTIMESHOW: number = 3500;
 
   constructor(
     private serviceService: ServiceService,
@@ -45,18 +51,14 @@ export class CreateServicesComponent implements OnInit {
     public router: Router,
   ) {
     // tslint:disable-next-line: max-line-length
-    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-    this.newClient = new Client(null, null, null, null, null, null, null, null, null, null);
+    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    // tslint:disable-next-line: max-line-length
+    this.newClient = new Client(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     this.optionsActivities = this.dropDownOptions.getActivities();
     this.optionsStatus = this.dropDownOptions.getStatus();
     this.optionsProvince = this.dropDownOptions.getProvince();
     this.optionsMunicipality = this.dropDownOptions.getMunicipality();
     this.allUsers = [];
-
-    this.newService.numService = 1;
-    this.newService.numDeliveryNote = 1;
-    this.newService.numBill = 1;
-    this.newService.descriptionShort = 'description short';
   }
 
   ngOnInit(): void {
@@ -103,31 +105,30 @@ export class CreateServicesComponent implements OnInit {
     // agregar nuevo servicio al cliente
   }
 
-  createClientAndService(): void{
-    // si existe con ese id le asigno el trabajo
+  createClient(): void{
+    // si existe con ese numero de cliente se actualiza
     // this.idClientFinal = data.id;
 
-    this.newClient.direction = `${this.newClient.province}, ${this.newClient.municipality}`;
-    console.log(this.newClient);
-    console.log(this.newService);
-
     // si no existe lo creo y luego le asigno el trabajo
-    this.clientService.createClient(this.newClient).subscribe(
+    /* this.clientService.createClient(this.newClient).subscribe(
       (data) => {
         console.log(data, '******* DATA');
-        this.saveService(data.numClient);
+        this.newClient._id = data._id;
+        this.viewActual = this.SERVICEDIRECTION;
+        this.updateView(this.SERVICEDIRECTION);
       },
       (err) => {
         console.error('error: \n', err);
-        this.messageErrorCreate();
+        this.messageErrorCreate('cliente');
         return;
       }
-    );
+    ); */
+    this.updateView(this.SERVICEDIRECTION);
   }
 
-  saveService(idClient: string){
-    this.newService.client = idClient;
-    this.serviceService.createService(this.newService, idClient).subscribe(
+  createService(): void{
+    console.log(this.newService);
+    /* this.serviceService.createService(this.newService, this.newService._id).subscribe(
       (data) => {
         console.log(data);
         const urlIcon = '../../../assets/svg/ok.svg';
@@ -138,14 +139,36 @@ export class CreateServicesComponent implements OnInit {
       },
       (err) => {
         console.error('error: \n', err);
-        this.messageErrorCreate();
+        this.messageErrorCreate('servicio');
+      }
+    ); */
+  }
+
+  createServiceAndSendPDF(): void{
+    this.serviceService.createService(this.newService, this.newService._id).subscribe(
+      (data) => {
+        // ENVIAR PDF
+        console.log(data, ' ENVIAR PDF');
+        const urlIcon = '../../../assets/svg/ok.svg';
+        const header = 'Registro Correcto';
+        const title = 'Si deseas editarlo puedes hacerlo en Administrador';
+        const subtitle = '';
+        this.showAlert(urlIcon, header, title, subtitle);
+      },
+      (err) => {
+        console.error('error: \n', err);
+        this.messageErrorCreate('servicio');
       }
     );
   }
 
-  messageErrorCreate(){
+  updateView(view: string): void{
+    this.viewActual = view;
+  }
+
+  messageErrorCreate(where: string){
     const urlIcon = '';
-    const header = 'Ha ocurrido un error';
+    const header = `Ha ocurrido un error ${where}`;
     const title = 'No se a podido realizar el registro, verifique los datos.';
     const subtitle = 'Intente nuevamente.';
     this.showAlert(urlIcon, header, title, subtitle);
