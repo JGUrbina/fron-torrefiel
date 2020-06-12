@@ -33,7 +33,7 @@
 </section>
 
 <section class="containService" *ngIf="show === OPTIONS">
-  <form class="p-3" #userForm="ngForm" *ngIf="showView === EDITUSER">
+  <form class="p-3 form" #userForm="ngForm" *ngIf="showView === EDITUSER">
     <div class="containService__data">
       <div class="whenService d-flex justify-content-between pb-2">
         <div class="client">
@@ -129,41 +129,40 @@
       </div>
     </aside>
   </form>
-  <div *ngIf="showView === SERVICES">
-    <div>
+  <div class="services" *ngIf="showView === SERVICES">
+    <div class="services__header">
       <h3>Servicios</h3>
       <div>
-        <button (click)="showView = EDITSERVICE">+</button>
+        <button class="button" (click)="showView = EDITSERVICE">Crear Nuevo</button>
       </div>
-      <div>
-        <!-- <div *ngFor="let service of services">
-          <div>
-            <h4>{{service.name}}</h4>
-            <p>{{service.startDate}}</p>
+    </div>
+    <div class="services__main">
+      <div class="service" *ngFor="let service of allServiceOfClient">
+        <div class="left">
+          <div class="one">
+            <p>#{{service.numService}}</p>
+            <p>{{service.dateStart}}</p>
           </div>
           <div>
-            <button>Actualizar</button>
+            <p>{{service.name}}</p>
           </div>
-        </div> -->
+        </div>
+        <div class="button">
+          <button (click)="showView = EDITSERVICE">Editar</button>
+        </div>
       </div>
     </div>
   </div>
-  <form class="p-3" *ngIf="showView === EDITSERVICE">
+  <form class="p-3 form" *ngIf="showView === EDITSERVICE">
     <div class="containService__data">
       <div>
         <h3 class="title">DATOS DEL SERVICIO</h3>
       </div>
       <div class="d-flex justify-content-between flex-wrap mt-4">
-        <div class="w-100 mb-4">
-          <div class="input__contain dateContain w-fix-content">
-            <label for="" class="w-50">N° de Servicio</label>
-            <input type="text" placeholder="NúmeroAutomatico" disabled>
-          </div>
-        </div>
         <div class="d-flex justify-content-between align-items-center flex-wrap w-100">
           <div class="input__contain dateContain">
-            <label for="" class="w-50">N° de Albarán</label>
-            <input class="w-100" type="text" placeholder="000000" name="numDeliveryNote" [(ngModel)]="newService.numDeliveryNote" required>
+            <label for="" class="w-50">N° de Servicio</label>
+            <input class="w-100" type="text" placeholder="000000" name="numService" [(ngModel)]="newService.numService" required>
           </div>
           <div class="input__contain dateContain">
             <label for="" class="w-50">N° de Factura</label>

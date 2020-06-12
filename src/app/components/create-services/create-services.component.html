@@ -168,21 +168,15 @@
     </div>
   </div>
   <form class="p-3" *ngIf="viewActual === SERVICE">
-    <div class="containService__data">
+    <div class="containService__data pt-6x100">
       <div>
         <h3 class="title">DATOS DEL SERVICIO</h3>
       </div>
       <div class="d-flex justify-content-between flex-wrap mt-4">
-        <div class="w-100 mb-4">
-          <div class="input__contain dateContain w-fix-content">
-            <label for="" class="w-50">N° de Servicio</label>
-            <input type="text" placeholder="NúmeroAutomatico" disabled>
-          </div>
-        </div>
         <div class="d-flex justify-content-between align-items-center flex-wrap w-100">
           <div class="input__contain dateContain">
-            <label for="" class="w-50">N° de Albarán</label>
-            <input class="w-100" type="text" placeholder="000000" name="numDeliveryNote" [(ngModel)]="newService.numDeliveryNote" required>
+            <label for="" class="w-50">N° de Servicio</label>
+            <input class="w-100" type="text" placeholder="000000" name="numDeliveryNote" [(ngModel)]="newService.numService" required>
           </div>
           <div class="input__contain dateContain">
             <label for="" class="w-50">N° de Factura</label>
@@ -212,8 +206,8 @@
           <div class="input__contain">
             <label for="">Tipo IVA</label>
             <select class="w-100" name="status" [(ngModel)]="newService.status" required>
-              <option value="">Normal</option>
-              <option *ngFor="let option of optionsStatus" [value]="option">{{option}}</option>
+              <option value="10">Reducido</option>
+              <option value="21">Normal</option>
             </select>
           </div>
           <div class="input__contain">

@@ -1,3 +1,29 @@
+%titleUser{
+  font-size: 1rem !important;
+  color: #cd2a00;
+  background-color: #c1c1c8;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px 3px #0000001f;
+  width: 75%;
+  height: 70px;
+
+  h4, p{
+    font-size: 1rem !important;
+    margin: 0;
+    margin-left: 8px;
+  }
+
+  figure{
+    width: 35px;
+    height: 35px;
+    margin: 0;
+  }
+}
+
 .sectionUsers{
   padding: 25px;
   background-color: white;
@@ -29,29 +55,7 @@
       margin: 2.5rem auto;
 
       &--title{
-        font-size: 1rem !important;
-        color: #cd2a00;
-        background-color: #c1c1c8;
-        padding: 12px 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 6px;
-        box-shadow: 0 3px 8px 3px #0000001f;
-        width: 75%;
-        height: 70px;
-
-        h4, p{
-          font-size: 1rem !important;
-          margin: 0;
-          margin-left: 8px;
-        }
-
-        figure{
-          width: 35px;
-          height: 35px;
-          margin: 0;
-        }
+        @extend %titleUser;
       }
 
       &--icons{
@@ -66,4 +70,127 @@
       }
     }
   }
+}
+
+.containUser{
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  width: 120%;
+  position: absolute;
+  top: -2%;
+  left: -10%;
+  margin: auto;
+  height: 104%;
+  overflow: hidden;
+  padding: 30px;
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .title{
+      @extend %titleUser;
+      width: 50%;
+    }
+
+    .upAdmin{
+      border: none;
+      padding: 7px 12px;
+      color: black;
+      background-color: white;
+      border-radius: 7px;
+      box-shadow: 0 2px 15px 1px #00000087;
+      font-weight: bold;
+      font-size: 0.8rem;
+      padding-top: 9px;
+    }
+  }
+
+  &__main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &--title{
+      width: 100%;
+      text-align: center;
+      padding: 15px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+    }
+
+    .job{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+
+      .left{
+        color: #cd2a00;
+        background-color: #c1c1c8;
+        width: 64%;
+        padding: 10px 13px;
+        font-size: 0.8rem !important;
+        border-radius: 4px;
+        border: none;
+        margin-right: 20px;
+
+        p{
+          margin-bottom: 5px;
+        }
+
+        .one{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+
+          p{
+            margin: 0;
+          }
+        }
+
+        .reAsignar{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+
+          p{
+            margin-bottom: 7px;
+            color: black;
+            font-weight: bold;
+          }
+
+          select{
+            padding: 8px 10px;
+            border-radius: 3px;
+            outline: none !important;
+            min-width: 130px;
+          }
+        }
+        
+      }
+
+      .button{
+        button{
+          border: none;
+          font-size: .8rem;
+          padding: 6px 12px;
+          color: white;
+          background-color: #cd2a00;
+          border-radius: 7px;
+          box-shadow: 0 2px 15px 1px #00000087;
+          padding-top: 7px;
+        }
+      }
+    }
+  }  
 }

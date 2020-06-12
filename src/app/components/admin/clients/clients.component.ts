@@ -16,6 +16,12 @@ export class ClientsComponent implements OnInit {
 
   public allClients: Client[];
   public allUsers: User[];
+  public allServiceOfClient: any[] = [
+    {numService: '#01', dateStart: '00/00/0000', name: 'Trabaja'},
+    {numService: '#02', dateStart: '00/00/0000', name: 'Trabaja'},
+    {numService: '#03', dateStart: '00/00/0000', name: 'Trabaja'},
+  ];
+
 
   public newService: Service;
   public newClient: Client;

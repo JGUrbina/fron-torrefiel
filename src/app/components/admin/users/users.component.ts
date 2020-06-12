@@ -11,6 +11,13 @@ export class UsersComponent implements OnInit {
 
   public allUsers: User[];
 
+  public showUser: boolean = false;
+  public jobsOfUser: any[] = [
+    {numClient: '#01', dateStart: '00/00/0000', name: 'karem'},
+    {numClient: '#02', dateStart: '00/00/0000', name: 'karem'},
+    {numClient: '#03', dateStart: '00/00/0000', name: 'karem'},
+  ];
+
   constructor(
     private userService: UserService
   ) {
