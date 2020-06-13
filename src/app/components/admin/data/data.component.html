@@ -4,19 +4,18 @@
     <figure><img src="../../../../assets/svg/cancelar.svg" alt=""></figure>
   </header>
   <main>
-    <div>
-      <app-pie-chart></app-pie-chart>
-    </div>
     <div class="before">
       <div class="contain">
         <div class="cancels">
           <p>Cancelaciones</p>
-          <div>Grafica</div>
+          <div>
+            <app-pie-chart [id]="'number-01'" [porcentage]='46' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+          </div>
           <p>20</p>
         </div>
         <div class="newJobs">
           <p>Nuevos Trabajos</p>
-          <div>Grafica</div>
+          <app-pie-chart [id]="'number-02'" [porcentage]='70' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
           <p>60</p>
         </div>
       </div>
@@ -38,9 +37,17 @@
         </div>
         <div>
           <h4>Actividades más solicitadas</h4>
-          <div>Grafica</div>
-          <div>Grafica</div>
-          <div>Grafica</div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <app-pie-chart [id]="'number-03'" [porcentage]='46' [size]='50' [lineWidth]='1' [rotate]='0'></app-pie-chart>
+            </div>
+            <div>
+              <app-pie-chart [id]="'number-04'" [porcentage]='74' [size]='50' [lineWidth]='1' [rotate]='0'></app-pie-chart>
+            </div>
+            <div>
+              <app-pie-chart [id]="'number-05'" [porcentage]='14' [size]='50' [lineWidth]='1' [rotate]='0'></app-pie-chart>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -48,18 +55,39 @@
       <div class="contain">
         <div class="topUser">
           <p>Usuario con más<br> trabajos</p>
-          <div>Grafica</div>
+          <div>
+            <app-pie-chart [id]="'number-06'" [porcentage]='70' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+          </div>
           <p>Nickname</p>
         </div>
         <div class="newJobs">
           <p>Estado más <br> utilizado</p>
-          <div>Grafica</div>
+          <div>
+            <app-pie-chart [id]="'number-07'" [porcentage]='80' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+          </div>
           <p>Pendiente de cita</p>
         </div>
       </div>
       <div class="uso">
-        <p>Uso de...</p>
-        <div>Grafica</div>
+        <p>Clientes con mayor número de servicios mensuales</p>
+        <div>
+          <div>
+            <p>Cliente A</p>
+            <app-pie-chart [id]="'number-08'" [porcentage]='70' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+          </div>
+          <div>
+            <p>Cliente B</p>
+            <app-pie-chart [id]="'number-09'" [porcentage]='70' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+          </div>
+          <div>
+            <p>Cliente C</p>
+            <app-pie-chart [id]="'number-10'" [porcentage]='70' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+          </div>
+          <div>
+            <p>Cliente D</p>
+            <app-pie-chart [id]="'number-11'" [porcentage]='70' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+          </div>
+        </div>
       </div>
     </div>
   </main>
