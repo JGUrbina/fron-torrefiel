@@ -9,22 +9,24 @@
         <div class="cancels data-card xs">
           <p>Cancelaciones</p>
           <div>
-            <app-pie-chart [id]="'number-01'" [porcentage]='46' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+            <app-pie-chart [id]="'number-01'" [porcentage]='46' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
           </div>
           <p class="number">20</p>
         </div>
         <div class="newJobs data-card xs">
           <p>Nuevos Trabajos</p>
-          <app-pie-chart [id]="'number-02'" [porcentage]='70' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+          <app-pie-chart [id]="'number-02'" [porcentage]='70' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
           <p class="number">60</p>
         </div>
       </div>
-      <div class="ingresos data-card">
+      <div class="ingresos data-card flex-row">
         <div>
           <p>Calculando sobre importes (SIN IVA)</p>
-          <div>Grafica</div>
+          <div>
+            <app-line-chart></app-line-chart>
+          </div>
         </div>
-        <div>
+        <div class="align-self-center">
           <h3>Ingresos <br> <span class="color-red">1.000€</span></h3>
         </div>
       </div>
@@ -39,13 +41,16 @@
           <p>Actividades más solicitadas</p>
           <div class="d-flex justify-content-between align-items-center">
             <div>
-              <app-pie-chart [id]="'number-03'" [porcentage]='46' [size]='50' [lineWidth]='1' [rotate]='0'></app-pie-chart>
+              <app-pie-chart [id]="'number-03'" [porcentage]='46' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
+              <p class="mt-2"><small><b>toldos</b></small></p>
             </div>
             <div>
-              <app-pie-chart [id]="'number-04'" [porcentage]='74' [size]='50' [lineWidth]='1' [rotate]='0'></app-pie-chart>
+              <app-pie-chart [id]="'number-04'" [porcentage]='74' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
+              <p class="mt-2"><small><b>bricoHogar</b></small></p>
             </div>
             <div>
-              <app-pie-chart [id]="'number-05'" [porcentage]='14' [size]='50' [lineWidth]='1' [rotate]='0'></app-pie-chart>
+              <app-pie-chart [id]="'number-05'" [porcentage]='14' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
+              <p class="mt-2"><small><b>Ventana</b></small></p>
             </div>
           </div>
         </div>
@@ -53,39 +58,39 @@
     </div>
     <div class="after">
       <div class="contain">
-        <div class="topUser data-card xs">
+        <div class="topUser data-card xs p-15">
           <p>Usuario con más<br> trabajos</p>
           <div>
-            <app-pie-chart [id]="'number-06'" [porcentage]='70' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+            <app-pie-chart [id]="'number-06'" [porcentage]='70' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
           </div>
           <p class="text">Nickname</p>
         </div>
         <div class="newJobs data-card xs">
           <p>Estado más <br> utilizado</p>
           <div>
-            <app-pie-chart [id]="'number-07'" [porcentage]='80' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+            <app-pie-chart [id]="'number-07'" [porcentage]='80' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
           </div>
           <p class="text">Pendiente de cita</p>
         </div>
       </div>
       <div class="uso data-card">
-        <p>Clientes con mayor número de servicios mensuales</p>
+        <p class="mb-2">Clientes con mayor número de servicios mensuales</p>
         <div class="d-flex justify-content-between align-items-center">
           <div>
-            <p>Cliente A</p>
-            <app-pie-chart [id]="'number-08'" [porcentage]='70' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+            <p class="mb-2 f-07">Cliente A</p>
+            <app-pie-chart [id]="'number-08'" [porcentage]='70' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
           </div>
           <div>
-            <p>Cliente B</p>
-            <app-pie-chart [id]="'number-09'" [porcentage]='70' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+            <p class="mb-2 f-07">Cliente B</p>
+            <app-pie-chart [id]="'number-09'" [porcentage]='70' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
           </div>
           <div>
-            <p>Cliente C</p>
-            <app-pie-chart [id]="'number-10'" [porcentage]='70' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+            <p class="mb-2 f-07">Cliente C</p>
+            <app-pie-chart [id]="'number-10'" [porcentage]='70' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
           </div>
           <div>
-            <p>Cliente D</p>
-            <app-pie-chart [id]="'number-11'" [porcentage]='70' [size]='50' [lineWidth]='3' [rotate]='0'></app-pie-chart>
+            <p class="mb-2 f-07">Cliente D</p>
+            <app-pie-chart [id]="'number-11'" [porcentage]='70' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
           </div>
         </div>
       </div>

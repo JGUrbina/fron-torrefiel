@@ -59,6 +59,8 @@ import { CreateIconComponent } from './components/create-icon/create-icon.compon
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { CardCalendarComponent } from './components/card-calendar/card-calendar.component';
 import { JobComponent } from './components/jobs/job/job.component';
+import { MediumPieChartComponent } from './components/medium-pie-chart/medium-pie-chart.component';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +106,9 @@ import { JobComponent } from './components/jobs/job/job.component';
     CreateIconComponent,
     PieChartComponent,
     CardCalendarComponent,
-    JobComponent
+    JobComponent,
+    MediumPieChartComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,

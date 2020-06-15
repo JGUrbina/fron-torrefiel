@@ -21,13 +21,12 @@ export class PieChartComponent implements OnInit {
     this.searchId = `graph-${this.id}-${this.porcentage}`;
     setTimeout(() => {
       this.createGraph(this.lineWidth, this.porcentage, this.rotate, this.size);
-    }, 3000);
+    }, 1000);
   }
 
   createGraph(lineWidth: number, porcentage: number, rotate: number, size: number): void {
     console.log(this.searchId);
     const el = document.getElementById(this.searchId); // get canvas
-    console.log(el, '****************** ELEMENTO');
 
     const options: any = {
       percent: porcentage || 25,

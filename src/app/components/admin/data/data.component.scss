@@ -28,11 +28,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 2rem;
   }
 
   &__main{
     display: flex;
-    align-items: center;
     justify-content: space-between;
     width: 100%;
 
@@ -42,9 +42,16 @@
 
     .before{
       display: flex;
-      align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
+    }
+
+    .f-07{
+      font-size: .7rem;
+    }
+
+    .p-15{
+      padding: 15px !important;
     }
 
     .contain{
@@ -61,6 +68,9 @@
       font-weight: bold;
       border-radius: 7px;
       min-width: 130px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       &.xs{
         max-width: 130px;
@@ -84,6 +94,10 @@
       display: flex;
       justify-content: space-between;
       width: 100%;
+    }
+
+    .ingresos, .uso{
+      margin-top: 2rem;
     }
   }
 }
