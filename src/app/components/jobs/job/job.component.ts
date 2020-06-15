@@ -33,7 +33,7 @@ export class JobComponent implements OnInit {
 
   ngOnInit(): void {
     this.getWorker(this.job.workers);
-    this.getWorker(this.job.client);
+    this.getClient(this.job.client);
   }
 
   getWorker(id: string): void{
@@ -45,7 +45,7 @@ export class JobComponent implements OnInit {
 
   getClient(id: string): void{
     this.clientService.getClient(id).subscribe(
-      (data) => { console.log( data); },
+      (data) => { this.nameClient = data.name; },
       (err) => {console.error('Error: ', err); }
     );
   }

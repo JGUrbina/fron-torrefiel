@@ -22,11 +22,6 @@
       </div>
     </div>
     <div class="dowm">
-      <!-- <h2 class="text-uppercase">{{nameWorker}}</h2>
-      <div class="descriptionService">
-        <p>Descripcion:</p><h2 class="text-uppercase">{{job.descriptionShort}}</h2>
-      </div>
-      <h2 class="text-uppercase">{{nameClient}}</h2> -->
       <P>
         {{job.description}}
       </P>
@@ -39,7 +34,7 @@
         <app-bill class="w-100" (closeWindow)="close($event)"></app-bill>
       </div>
       <div class="calendar" *ngIf="sectionMenuShow === CALENDAR">
-        <app-calendar class="w-100" (closeWindow)="close($event)"></app-calendar>
+        <app-calendar class="w-100" (closeWindow)="close($event)" [startService]="job.startDate" [hourService]="job.startHours" [nameClient]="nameClient"></app-calendar>
       </div>
       <div class="chat" *ngIf="sectionMenuShow === CHAT">
         <app-chat class="w-100" (closeWindow)="close($event)"></app-chat>
