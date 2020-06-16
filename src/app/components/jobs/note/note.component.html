@@ -6,9 +6,6 @@
     </figure>
   </header>
   <main class="sectionNote__main">
-    <div class="text-center date">
-      <span class="chat__date">MIER - 14:48PM</span>
-    </div>
     <div [ngClass]="itemMessage.person === 'admin' ? 'chat__other':'chat__me'" *ngFor="let itemMessage of allMessages">
       <figure class="avatar" *ngIf="itemMessage.person === 'admin'">
         <app-create-icon [class]="'color-gray'" [name]="'avatar'" [url]="itemMessage.avatar"></app-create-icon>

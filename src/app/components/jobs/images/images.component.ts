@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { browser } from 'protractor';
 
 @Component({
   selector: 'app-images',
@@ -35,7 +36,7 @@ export class ImagesComponent implements OnInit {
   downloadImage(url: string, title: string): void{
     console.log(url, title);
 
-    /* const downloading = browser.downloads.download({
+    const downloading = browser.downloads.download({
       url,
       filename: `${title}.jpg`,
       conflictAction: 'uniquity'
@@ -44,7 +45,7 @@ export class ImagesComponent implements OnInit {
     downloading.then(
       (data: any) => {console.log(data); },
       (err: any) => {console.log(err); },
-    ); */
+    );
   }
 
   emitEvent(): void{
