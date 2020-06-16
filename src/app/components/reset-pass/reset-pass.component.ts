@@ -34,15 +34,12 @@ export class ResetPassComponent implements OnInit {
         return;
       }
 
-      console.log('aquii');
-
       const params = {
         userName: this.userName,
         email: this.userEmail
       };
       this.userService.sendMailResetPassword(params).subscribe(
         (data) => {
-          console.log(data);
           const urlIcon = '../../../assets/svg/ok.svg';
           const header = 'Envío correcto';
           const title = 'Revisa tu correo registrado para poder recuperar tu contraseña.';
@@ -50,7 +47,7 @@ export class ResetPassComponent implements OnInit {
           this.showAlert(urlIcon, header, title, subtitle);
         },
         (err) => {
-          console.log(err);
+          console.error(err);
           const urlIcon = '';
           const header = 'Error de Envío';
           const title = 'Ha ocurrido un error al intentar enviar su correo de recuperación; Verifique sus datos.';

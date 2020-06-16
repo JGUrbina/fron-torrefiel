@@ -35,7 +35,6 @@ export class CardCalendarComponent implements OnInit {
   }
 
   pushInCalendar(events: any){
-    console.log(this.events);
     if (events.length > 1){
       for (const event of events) {
         this.concatEvent(event);
@@ -43,7 +42,6 @@ export class CardCalendarComponent implements OnInit {
       return;
     }
     this.concatEvent(events);
-    console.log(this.calendarEvents);
   }
 
   concatEvent(input: any){

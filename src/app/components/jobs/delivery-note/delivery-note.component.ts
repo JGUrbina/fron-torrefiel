@@ -11,13 +11,22 @@ export class DeliveryNoteComponent implements OnInit {
 
   @Output () closeWindow = new EventEmitter();
 
+  public exportPdfChangeClass: boolean = false;
+
   constructor(private pdfService: PdfService) { }
 
   ngOnInit(): void {
   }
 
   downloadPdf(): void{
-    this.pdfService.onExportClick('pdf_albaran_idUser', 'factura', '');
+    this.exportPdfChangeClass = true;
+    console.log(this.pdfService.onExportClick('pdf_albaran_idUser', 'factura', ''));
+    this.pdfService.onExportClick('pdf_albaran_idUser', 'factura', '').subscribe(
+      (data) => {
+        console.log(data);
+        this.exportPdfChangeClass = false;
+      }
+    );
   }
 
   emitEvent(): void{

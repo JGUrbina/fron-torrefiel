@@ -46,7 +46,7 @@ export class SetpasswordComponent implements OnInit {
           if (!this.reset) { this.showAlert(urlIcon, header, title, subtitle); }
         },
         (err) => {
-          console.log(err);
+          console.error(err);
           const urlIcon = '';
           const header = 'Error en Activación';
           const title = 'Intentelo nuevamente o solicite un nuevo correo.';
@@ -67,7 +67,6 @@ export class SetpasswordComponent implements OnInit {
   registerPassword(): void{
     this.userService.setPassword(this.token, this.user.password).subscribe(
       (data) => {
-        console.log(data);
         const urlIcon = '../../../assets/svg/ok.svg';
         const header = this.reset ? 'Activación correcta' : 'Creación exitosa';
         const title = this.reset ? 'Recuerda esta nueva contraseña para que no se te vuelva a olvidar' : 'Haz creado tu contraseña exitosamente.';
@@ -75,7 +74,7 @@ export class SetpasswordComponent implements OnInit {
         this.showAlert(urlIcon, header, title, subtitle);
       },
       (err) => {
-        console.log('err', err);
+        console.error('err', err);
         const urlIcon = '';
         const header = 'A ocurrido un error';
         const title = this.reset ? 'Revisa los datos ingresados' : 'Los mails de confirmación tienen una vigencia de 3 horas.';

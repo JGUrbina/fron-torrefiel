@@ -33,7 +33,7 @@ export class UsersComponent implements OnInit {
         this.allUsers = data;
       },
       (err) => {
-        console.log(err);
+        console.error(err);
       }
     );
   }

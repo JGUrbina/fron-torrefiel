@@ -38,7 +38,7 @@ export class JobComponent implements OnInit {
 
   getWorker(id: string): void{
     this.userService.getUser(id).subscribe(
-      (data) => { console.log( data); },
+      (data) => { /* console.log(data); */ },
       (err) => {console.error('Error: ', err); }
     );
   }

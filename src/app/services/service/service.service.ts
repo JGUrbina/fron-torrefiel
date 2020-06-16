@@ -29,8 +29,6 @@ export class ServiceService {
   }
 
   createService(service: Service, idClient: string): Observable<object>{
-    console.log(service);
-    console.log(idClient);
     return this.http.post<object>(`${this.urlApi}/register/${idClient}`, service, { headers: this.headers });
   }
 

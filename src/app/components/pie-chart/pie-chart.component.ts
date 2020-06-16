@@ -25,7 +25,6 @@ export class PieChartComponent implements OnInit {
   }
 
   createGraph(lineWidth: number, porcentage: number, rotate: number, size: number): void {
-    console.log(this.searchId);
     const el = document.getElementById(this.searchId); // get canvas
 
     const options: any = {

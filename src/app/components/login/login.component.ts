@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
   register(): void{
     this.userService.createUser(this.newUser).subscribe(
       (data) => {
-        console.log(data);
         const urlIcon = '../../../assets/svg/ok.svg';
         const header = 'Registro Correcto';
         const title = '¡Felicidades! Tu cuenta se a creado correctamente.';
@@ -47,7 +46,7 @@ export class LoginComponent implements OnInit {
         this.showAlert(urlIcon, header, title, subtitle);
       },
       (err) => {
-        console.log('err', err);
+        console.error('err', err);
         const urlIcon = '';
         const header = 'Ha ocurrido un error';
         const title = 'No se a podido realizar el registro, verifique sus datos.';
@@ -75,7 +74,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
       },
       (err) => {
-        console.log(err);
+        console.error(err);
         const urlIcon = '';
         const header = 'Ha ocurrido un error';
         const title = 'Verifique los datos ingresados. he intente nuevamente.';

@@ -51,7 +51,7 @@ export class ClientsComponent implements OnInit {
     this.optionsActivities = this.dropDownOptions.getActivities();
     this.optionsStatus = this.dropDownOptions.getStatus();
     this.optionsProvince = this.dropDownOptions.getProvince();
-    this.optionsMunicipality = this.dropDownOptions.getMunicipality();
+    this.optionsMunicipality = this.dropDownOptions.getMunicipality('Castellón/Castelló');
   }
 
   ngOnInit(): void {
@@ -64,7 +64,7 @@ export class ClientsComponent implements OnInit {
         this.allClients = data;
       },
       (err) => {
-        console.log(err);
+        console.error(err);
       }
     );
   }

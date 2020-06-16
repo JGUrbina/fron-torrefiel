@@ -30,11 +30,14 @@
     height: 90%;
     overflow-y: auto;
     overflow-x: hidden;
+    display: flex;
+    justify-content: center;
 
     table{
       background-color: white;
       color: #333;
       font-size: .7rem;
+      width: 520px;
 
       tbody, tr{
         display: block;
@@ -161,5 +164,13 @@
         }
       }
     }
+
+    &.export{
+      table{
+        width: 595.28px !important;
+      }
+    }
   }
+
+  
 }
