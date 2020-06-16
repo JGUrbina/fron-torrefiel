@@ -12,14 +12,13 @@ export class PdfService {
     console.log(filename, id, orientation);
     const options = {
       filename,
-      image: {type: 'png', quality: 8 },
-      html2canvas: {},
-      jsPDF: {orientation, format: 'a4'},
-      scale: 1
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: {unit: 'in', format: 'letter', orientation},
     };
 
     const content: Element = document.getElementById(id);
 
-    html2pdf().from(content).set(options).save().then((data) => data);
+    return html2pdf().from(content).set(options).save();
   }
 }

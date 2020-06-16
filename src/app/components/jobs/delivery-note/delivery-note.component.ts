@@ -20,13 +20,11 @@ export class DeliveryNoteComponent implements OnInit {
 
   downloadPdf(): void{
     this.exportPdfChangeClass = true;
-    console.log(this.pdfService.onExportClick('pdf_albaran_idUser', 'factura', ''));
-    this.pdfService.onExportClick('pdf_albaran_idUser', 'factura', '').subscribe(
-      (data) => {
-        console.log(data);
-        this.exportPdfChangeClass = false;
-      }
-    );
+    // agregar un loading para que no se vea el cambio de ancho
+    this.pdfService.onExportClick('pdf_albaran_idUser', 'factura', '');
+    setTimeout(() => {
+      this.exportPdfChangeClass = false;
+    }, 2000);
   }
 
   emitEvent(): void{
