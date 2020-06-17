@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { SocketIoModule } from 'ngx-socket-io';
 import { ChartsModule } from 'ng2-charts';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { DataTablesModule } from 'angular-datatables';
 
 // Config
 import { SocketConfig } from './config/config';
@@ -123,6 +124,7 @@ import { LineChartComponent } from './components/line-chart/line-chart.component
     ChartsModule,
     FullCalendarModule,
     ReactiveFormsModule,
+    DataTablesModule
   ],
   providers: [appRoutingProviders, MatIconModule],
   bootstrap: [AppComponent]
