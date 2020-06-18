@@ -38,14 +38,16 @@ export class CardCalendarComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.pushInCalendar(this.events);
-    }, 400);
+    }, 200);
   }
 
   pushInCalendar(events: any[]){
     if (events. length > 1){
-      events.forEach(element => {
+      // tslint:disable-next-line: prefer-for-of
+      for (let i = 0; i < events.length; i++) {
+        const element = events[i];
         this.concatEvent(element);
-      });
+      }
     }
     this.concatEvent(events);
   }

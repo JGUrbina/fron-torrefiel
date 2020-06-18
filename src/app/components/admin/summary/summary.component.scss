@@ -6,6 +6,16 @@
   border-radius: 7.8px;
   position: relative;
 
+  .exit{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
   color: white;
 
   &__icon{

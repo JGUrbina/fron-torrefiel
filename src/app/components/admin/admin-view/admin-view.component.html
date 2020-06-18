@@ -1,9 +1,9 @@
 <section class="sectionAdmin">
   <div class="sectionAdmin__clients">
-    <app-clients></app-clients>
+    <app-clients (closeWindow)="closeView($event)"></app-clients>
   </div>
   <div class="sectionAdmin__users">
-    <app-users></app-users>
+    <app-users (closeWindow)="closeView($event)"></app-users>
   </div>
   <div class="sectionAdmin__data">
     <div class="containProfile">
@@ -32,8 +32,8 @@
   </div>
 
   <div class="clickSection" *ngIf="view">
-    <app-profile *ngIf="view === PROFILE"></app-profile>
-    <app-data *ngIf="view === DATA"></app-data>
-    <app-summary *ngIf="view === SUMMARY" class="w-100"></app-summary>
+    <app-profile *ngIf="view === PROFILE" (closeWindow)="closeView($event)"></app-profile>
+    <app-data *ngIf="view === DATA" (closeWindow)="closeView($event)"></app-data>
+    <app-summary *ngIf="view === SUMMARY" class="w-100" (closeWindow)="closeView($event)"></app-summary>
   </div>
 </section>

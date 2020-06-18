@@ -1,7 +1,9 @@
 <section class="sectionData">
   <header class="sectionData__header">
     <figure><img src="../../../../assets/images/logo-blanco.png" alt="torrefiel"></figure>
-    <figure><img src="../../../../assets/svg/cancelar.svg" alt=""></figure>
+    <figure class="exit" (click)="emitEvent()">
+      <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg/cancelar.svg'"></app-create-icon>
+    </figure>
   </header>
   <main class="sectionData__main">
     <div class="before">

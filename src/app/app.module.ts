@@ -62,6 +62,7 @@ import { CardCalendarComponent } from './components/card-calendar/card-calendar.
 import { JobComponent } from './components/jobs/job/job.component';
 import { MediumPieChartComponent } from './components/medium-pie-chart/medium-pie-chart.component';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -109,7 +110,8 @@ import { LineChartComponent } from './components/line-chart/line-chart.component
     CardCalendarComponent,
     JobComponent,
     MediumPieChartComponent,
-    LineChartComponent
+    LineChartComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
