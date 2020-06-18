@@ -34,6 +34,8 @@ export class JobComponent implements OnInit {
   ngOnInit(): void {
     this.getWorker(this.job.workers);
     this.getClient(this.job.client);
+
+    console.log(this.job);
   }
 
   getWorker(id: string): void{

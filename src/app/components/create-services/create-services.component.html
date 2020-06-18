@@ -2,7 +2,7 @@
   <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
   
   <!-- client -->
-  <form class="p-3" #userForm="ngForm" (ngSubmit)="createClient()" *ngIf="viewActual === USER">
+  <form class="p-3" *ngIf="viewActual === USER">
     <div class="containService__data">
       <div class="whenService d-flex justify-content-between pb-2">
         <div class="client">
@@ -10,7 +10,7 @@
             <label for="">N° cliente registrado</label>
             <select class="w-100" name="searchNameClient" [(ngModel)]="searchNameClient" *ngIf="allClients">
               <option value="">Buscalo</option>
-              <option *ngFor="let option of allClients"  [value]="option.numClient">{{option.numClient}}</option>
+              <option *ngFor="let option of allClients" (click)="searchClient(option)" [value]="option.numClient">{{option.numClient}}</option>
             </select>  
             <p *ngIf="!allClients" class="no-exist"><b>No existen Clientes</b></p>  
           </div>
@@ -99,7 +99,7 @@
     <aside class="containService__aside">
       <div>
         <div class="buttons d-flex justify-content-center align-items-center">
-          <button  class="buttonSave">
+          <button  class="buttonSave" (click)="updateView(SERVICEDIRECTION)">
             Siguiente
           </button>
         </div>
@@ -205,7 +205,7 @@
           </div>
           <div class="input__contain">
             <label for="">Tipo IVA</label>
-            <select class="w-100" name="status" [(ngModel)]="newService.status" required>
+            <select class="w-100" name="status" [(ngModel)]="newService.typeIva" required>
               <option value="10">Reducido</option>
               <option value="21">Normal</option>
             </select>
@@ -256,7 +256,7 @@
           </button>
         </div>
         <div class="buttons w-50 d-flex align-items-center">
-          <button  class="buttonSave" (click)="createService()">
+          <button  class="buttonSave" (click)="createClientAndService()">
             Guardar y Agendar <br>
             <figure class="icon">
               <app-create-icon [class]="'color-gray bg-white button p-2x'" [name]="'calendar'" [url]="'../../../assets/svg/calendario.svg'"></app-create-icon>

@@ -19,14 +19,17 @@ export class CalendarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // tslint:disable-next-line: max-line-length
-    const start = new Date(this.startService + this.hourService);
-    console.log(start);
-    console.log(this.startService);
     this.allEvents = {
       title: this.nameClient,
-      start: this.startService
+      start: this.generateDate(this.startService, this.hourService)
     };
+  }
+
+  generateDate(fecha: any, hour: any): string{
+    fecha = fecha.toString().slice(0, 10);
+    fecha += ` ${hour}`;
+
+    return fecha;
   }
 
   emitEvent(): void{

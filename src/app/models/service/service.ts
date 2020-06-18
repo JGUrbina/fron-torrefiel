@@ -11,13 +11,13 @@ export class Service {
   public activities: string;
   public priority: string;
   public amount: number;
-  public typeIva: any;
+  public typeIva: number;
   public startDate: any;
   public startHours: any;
   public finalized: any;
   public direction: string;
-  public numberExternal: number;
-  public numberInternal: number;
+  public numberExternal: string;
+  public numberInternal: string;
   public province: string;
   public municipality: string;
   public postalcode: number;
@@ -26,7 +26,6 @@ export class Service {
 
   constructor(
     numService: number,
-    numDeliveryNote: number,
     numBill: number,
     description: string,
     note: string,
@@ -37,15 +36,17 @@ export class Service {
     startDate: any,
     startHours: any,
     workers: any,
+    client: any,
     direction: string,
-    numberExternal: number,
-    numberInternal: number,
+    numberExternal: string,
+    numberInternal: string,
     province: string,
     municipality: string,
     postalcode: number,
+    typeIva: number
   ){
+    this.client = client;
     this.numService = numService;
-    this.numDeliveryNote = numDeliveryNote;
     this.numBill = numBill;
     this.description = description;
     this.note = note;
@@ -62,5 +63,6 @@ export class Service {
     this.numberExternal = numberExternal;
     this.numberInternal = numberInternal;
     this.postalcode = postalcode;
+    this.typeIva = typeIva;
   }
 }
