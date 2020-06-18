@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { SocketIoModule } from 'ngx-socket-io';
 import { ChartsModule } from 'ng2-charts';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { DataTablesModule } from 'angular-datatables';
 
 // Config
 import { SocketConfig } from './config/config';
@@ -59,6 +60,8 @@ import { CreateIconComponent } from './components/create-icon/create-icon.compon
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { CardCalendarComponent } from './components/card-calendar/card-calendar.component';
 import { JobComponent } from './components/jobs/job/job.component';
+import { MediumPieChartComponent } from './components/medium-pie-chart/medium-pie-chart.component';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +107,9 @@ import { JobComponent } from './components/jobs/job/job.component';
     CreateIconComponent,
     PieChartComponent,
     CardCalendarComponent,
-    JobComponent
+    JobComponent,
+    MediumPieChartComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,
@@ -119,6 +124,7 @@ import { JobComponent } from './components/jobs/job/job.component';
     ChartsModule,
     FullCalendarModule,
     ReactiveFormsModule,
+    DataTablesModule
   ],
   providers: [appRoutingProviders, MatIconModule],
   bootstrap: [AppComponent]

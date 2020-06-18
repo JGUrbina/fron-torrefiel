@@ -2,10 +2,10 @@
   <div class="description__info">
     <div class="up">
       <div class="upContain">
-        <span class="info code f-bold">#1151172</span>
+        <span class="info code f-bold">#{{job.numService}}</span>
         <span class="info hours">Servihogar 24 horas Valencia</span>
         <div>
-          <label for="priority" class="info priority" [ngClass]="{'urgent': job.priority}">
+          <label for="priority" class="info priority" [ngClass]="{'urgent': job.priority === 'true'}">
             <span *ngIf="job.priority">Urgente</span>
           </label>
         </div>
@@ -17,16 +17,12 @@
       </div>
       <div class="upContain">
         <span class="info direction">
-          <!-- {{job.direction}} -->
+          {{job}}
+          {{job.direction}} - {{job.numberExternal}} - {{job.numberInternal}}, {{job.province}} - {{job.municipality}}
         </span>
       </div>
     </div>
     <div class="dowm">
-      <h2 class="text-uppercase">{{nameWorker}}</h2>
-      <div class="descriptionService">
-        <p>Descripcion:</p><h2 class="text-uppercase">{{job.descriptionShort}}</h2>
-      </div>
-      <h2 class="text-uppercase">{{nameClient}}</h2>
       <P>
         {{job.description}}
       </P>
@@ -39,7 +35,7 @@
         <app-bill class="w-100" (closeWindow)="close($event)"></app-bill>
       </div>
       <div class="calendar" *ngIf="sectionMenuShow === CALENDAR">
-        <app-calendar class="w-100" (closeWindow)="close($event)"></app-calendar>
+        <app-calendar class="w-100" (closeWindow)="close($event)" [startService]="job.startDate" [hourService]="job.startHours" [nameClient]="nameClient"></app-calendar>
       </div>
       <div class="chat" *ngIf="sectionMenuShow === CHAT">
         <app-chat class="w-100" (closeWindow)="close($event)"></app-chat>
@@ -51,7 +47,7 @@
         <app-firm class="w-100" (closeWindow)="close($event)"></app-firm>
       </div>
       <div class="note" *ngIf="sectionMenuShow === NOTE">
-        <app-note class="w-100" (closeWindow)="close($event)"></app-note>
+        <app-note class="w-100" (closeWindow)="close($event)" [message]="job.note"></app-note>
       </div>
     </div>
   </div>

@@ -1,0 +1,75 @@
+.sectionSummary{
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  margin: auto;
+  border-radius: 7.8px;
+  position: relative;
+
+  color: white;
+
+  &__icon{
+    .exit{
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      top: 0;
+      right: 0;
+      padding: 0;
+      cursor: pointer;
+    }
+  }
+
+  .line{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #ffffff73;
+    padding: 15px 0;
+    width: 60%;
+    margin: auto;
+
+    span{
+      font-size: .8rem;
+      margin-right: 10px;
+    }
+  }
+
+  .title{
+    h2{
+      font-size: 1rem;
+      text-align: center;
+      padding: 15px 0;
+    }
+  }
+
+  .descarga{
+    background-color: #cd2a00;
+    padding: 6px;
+    padding-top: 3px;
+    border-radius: 8px;
+    width: 35px;
+    height: 35px;
+  }
+
+  figure{
+    width: 40px;
+    height: 40px;
+    margin: 0;
+  }
+
+  .contentMes{
+    display: flex;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .mes{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    text-transform: uppercase;
+  }
+}

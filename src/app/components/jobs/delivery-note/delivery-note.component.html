@@ -10,122 +10,96 @@
       <app-create-icon [class]="'color-red bg-white'" [name]="'cancel'" [url]="'../../../../assets/svg/cancelar.svg'"></app-create-icon>
     </figure>
   </div>
-  <div class="sectionPdf__viewpdf" id="pdf_albaran_idUser">
-    <table width="500" border="0" cellpadding="0" cellspacing="0" align="center" style="border:1px solid #c1c1c8">
-      <tbody>
-        <!-- header -->
-        <tr class="header">
-          <td>
-            <tr>
-              <td>
-                <span>PERSIANAS Y TOLDOS</span>
-              </td>
-            </tr>
-            <tr class="logo">
-              <td>
-                <img src="../../../../assets/images/logo-color.png" alt="Torre fiel">
-              </td>
-            </tr>
-          </td>
-          <td class="info">
-            <tr class="mb-2">
-              <span><b>Persionas y Toldos Torrefiel, CB</b></span><br>
-              <span>c/ Librero Esclapes, 2 Bajo dcha.</span><br>
-              <span>46019- Valencia</span><br>
-              <span>CIF: E97681472</span>
-            </tr>
-            <tr>
-              <span>Telf.: 961337760</span><br>
-              <span>963284410</span><br>
-              <span>Correo electrónico: <a href="mailto:info@mejorarhogar.com">info@mejorarhogar.com</a></span>
-            </tr>
-          </td>
-        </tr>
-        <!-- actividades -->
-        <tr class="services">
-          <td>
-            <table width="500" border="0" cellpadding="0" cellspacing="0" align="center">
-              <thead>
-                <tr>
-                  <th scope="col" class="purple">Persianas</th>
-                  <th scope="col">Toldos</th>
-                  <th scope="col" class="purple">Ventanas</th>
-                  <th scope="col">Mosquiteras</th>
-                  <th scope="col" class="purple">Electricidad</th>
-                </tr>
-                <tr>
-                  <th scope="col">Mamparas de<br>baño</th>
-                  <th scope="col" class="purple">Decoración</th>
-                  <th scope="col">Rejas</th>
-                  <th scope="col" class="purple">Motorizaciones</th>
-                  <th scope="col">Reparaciones<br> a domicilio</th>
-                </tr>
-              </thead>
-            </table>
-          </td>
-        </tr>
-        <!-- data -->
-        <tr class="data">
-          <td>
-            <table width="500" border="0" cellpadding="0" cellspacing="0" align="center" style="border:1px solid #c1c1c8">
-              <tbody>
-                <tr>
-                  <td>
-                    <span><b>Fecha de emisión:</b> Valencia. 12 de marzo de 2020</span>
-                  </td>
-                  <td><span>N° albarán:</span></td>
-                  <td><span>¿¿??</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <span><b>Cliente:</b> ???????</span>
-                  </td>
-                  <td><span>Teléfono 1:</span></td>
-                  <td><span>¿¿??</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <span><b>Correo electronico:</b> ??????? @gmail.com</span>
-                  </td>
-                  <td><span>Teléfono 2:</span></td>
-                  <td><span>¿¿??</span></td>
-                </tr>
-                <tr class="location">
-                  <td>
-                    <span><b>Dirección trabajos:</b> ???????</span>
-                  </td>
-                  <td><span>Población 1:</span></td>
-                  <td><span>46004 - Valencia <br> Valencia</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-        <!-- albaran -->
-        <tr class="info">
-          <td>
-            <table width="500" border="0" cellpadding="0" cellspacing="0" align="center">
-              <tbody>
-                <tr class="title">
-                  <span>ALBARÁN</span>
-                </tr>
-                <tr class="bg-purple">
-                  <td>Descripción de trabajos realizados</td>
-                </tr>
-                <tr class="text">
-                  texto...
-                </tr>
-                <tr class="bg-purple">
-                  <td><b>Importe a facturar</b> por los trabajos realizados en esta visita</td>
-                </tr>
-                <tr class="text sm">
-                  texto...
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="sectionPdf__viewpdf" id="pdf_albaran_idUser" [ngClass]="{'export': exportPdfChangeClass}">
+    <section class="pdf">
+      <header class="pdf__header">
+        <div class="title">
+          <div>
+            <h1 class="name">PERSIANAS Y TOLDOS</h1>
+          </div>
+          <div>
+            <figure class="logo"><img src="../../../../assets/images/logo-color.png" alt="Torre fiel"></figure>
+          </div>
+        </div>
+        <div class="info">
+          <div class="mb-3">
+            <span><b>Persionas y Toldos Torrefiel, CB</b></span><br>
+            <span>c/ Librero Esclapes, 2 Bajo dcha.</span><br>
+            <span>46019- Valencia</span><br>
+            <span>CIF: E97681472</span>
+          </div>
+          <div>
+            <span>Telf.: 961337760</span><br>
+            <span>963284410</span><br>
+            <span>Correo electrónico: <a href="mailto:info@mejorarhogar.com">info@mejorarhogar.com</a></span>
+          </div>
+        </div>
+      </header>
+      <section class="pdf__services">
+        <div class="one">
+          <p class="purple">Persianas</p>
+          <p>Toldos</p>
+          <p class="purple">Ventanas</p>
+          <p>Mosquiteras</p>
+          <p class="purple">Electricidad</p>
+        </div>
+        <div class="two">
+          <p>Mamparas de<br>baño</p>
+          <p class="purple">Decoración</p>
+          <p>Rejas</p>
+          <p class="purple">Motorizaciones</p>
+          <p>Reparaciones<br> a domicilio</p>
+        </div>
+      </section>
+      <main class="pdf__main">
+        <section class="data">
+          <div class="data__contain">
+            <div class="data__contain--item">
+              <span><b>Fecha de emisión:</b> Valencia. 12 de marzo de 2020</span>
+            </div>
+            <div class="data__contain--item"><span>N° albarán:</span></div>
+            <div class="data__contain--item"><span>¿¿??</span></div>
+          </div>
+          <div class="data__contain">
+            <div class="data__contain--item"><span><b>Cliente:</b> ???????</span></div>
+            <div class="data__contain--item"><span>Teléfono 1:</span></div>
+            <div class="data__contain--item"><span>¿¿??</span></div>
+          </div>
+          <div class="data__contain">
+            <div class="data__contain--item"><span><b>Correo electronico:</b> ??????? @gmail.com</span></div>
+            <div class="data__contain--item"><span>Teléfono 2:</span></div>
+            <div class="data__contain--item"><span>¿¿??</span></div>
+          </div>
+          <div class="data__contain">
+            <div class="data__contain--item"><span><b>Dirección trabajos:</b> ???????</span></div>
+            <div class="data__contain--item"><span>Población 1:</span></div>
+            <div class="data__contain--item"><span>46004 - Valencia <br> Valencia</span></div>
+          </div>
+        </section>
+        <section class="info">
+          <div class="title">
+            <p><span>ALBARÁN</span></p>
+          </div>
+          <div>
+            <div>
+              <p class="bg-purple mb-0">
+                Descripción de trabajos realizados
+              </p>
+            </div>
+            <div class="text">
+              <span>texto...</span>
+            </div>
+            <div>
+              <p class="bg-purple mb-0">
+                <b>Importe a facturar</b> por los trabajos realizados en esta visita
+              </p>
+            </div>
+            <div class="importe">
+              <span>texto...</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </section>
   </div>
 </section>

@@ -30,84 +30,90 @@
     height: 90%;
     overflow-y: auto;
     overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
-    table{
-      background-color: white;
+    .pdf{
+      padding: 15px;
+      width: 100%;
       color: #333;
       font-size: .7rem;
 
-      tbody, tr{
-        display: block;
-      }
-
-      tbody{
-        padding: 15px;
-      }
-
-      td{
-        border: none;
-        padding: 0;
-      }
-
-      .header{
-        /* height: 80px; */ 
-        margin-bottom: 20px;
+      &__header{
+        margin-bottom: 30px;
         font-size: .8rem;
         display: flex;
         justify-content: space-between;
 
-        td{
-          width: 50%;
-        }
-        .logo{
-          height: 100px;
+        .title{
           display: flex;
-          align-items: center;
+          flex-direction: column;
+          justify-content: space-evenly;
+
+          .name{
+            font-size: 1rem;
+            font-weight: 400;      
+          }
+  
+          .logo{
+            height: 86px;
+            margin-bottom: .5rem;
+
+            img{
+              height: 100%;
+              object-fit: contain;
+              object-position: center;
+            }
+          }
         }
+
         .info{
           text-align: end;
-          font-size: .7rem;
+          font-size: .8rem;
         }
       }
 
-      .services{
-        /* height: 80px; */ 
-        margin-bottom: 20px;
-        tr{
+      &__services{
+        margin-bottom: 27px;
+        
+        .one, .two{
           display: flex;
           justify-content: space-between;
+        }
 
-          th{
-            width: 20%;
-            text-align: center;
-            border: 1px solid black;
-          }
+        .one{
+          align-items: center;
+        }
 
-          .purple{
-            background-color: #7f017e;
-            color: white;
-          }
+        p{
+          text-align: center;
+          border: 1px solid black;
+          margin: 0;
+          width: 20%;
+          padding: 5px;
+        }
+
+        .purple{
+          background-color: #7f017e;
+          color: white;
         }
       }
 
-      .data{
-        /* height: 80px; */ 
-        margin-bottom: 20px;
-        background-color: #fdff99 !important;
-        table{
-          tbody{
-            background-color: #fdff99 !important;
-            padding: 0px;
-            color: #7f017e;
-          }
+      &__main{
+        
+        .data{
+          margin-bottom: 20px;
+          background-color: #fdff99 !important;
 
-          tr{
+          &__contain{
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
 
-            td{
+            &--item{
+              background-color: #fdff99 !important;
+              padding: 5px;
+              color: #7f017e;
+
               border: 1px solid #7f017e;
               padding: 5px;
 
@@ -120,46 +126,36 @@
               }
             }
           }
-
-          .location{
-            td{
-              height: 44px;
-            }
-          }
         }
-      }
 
-      .info{
+        .info{
 
-        table{
-          tbody{
-            padding: 0;
+          .title{
+            display: flex;
+            justify-content: center;          
+            font-weight: bold;
+            font-size: 1rem;
+          }
 
-            .title{
-              display: flex;
-              justify-content: center;          
-              font-weight: bold;
-              font-size: 1rem;
-            }
+          .bg-purple{
+            background-color: #ca9afe;
+            border: 1px solid #7f017e;
+            padding: 2px;
+          }
 
-            .bg-purple{
-              background-color: #ca9afe;
-              border: 1px solid #7f017e;
-              padding: 2px;
-            }
+          .text, .importe{
+            border: 1px solid #7f017e;
+            padding: 2px;
+            min-height: 95px;
+          }
 
-            .text{
-              border: 1px solid #7f017e;
-              padding: 2px;
-              height: 190px;
-
-              &.sm{
-                height: 95px;
-              }
-            }
+          .text{
+            min-height: 190px;
           }
         }
       }
     }
   }
+
+  
 }

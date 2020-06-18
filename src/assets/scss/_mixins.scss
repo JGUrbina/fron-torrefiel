@@ -1,0 +1,34 @@
+@function progress($percent){
+	$deg: $percent / 100 * 180;
+	@return #{$deg}deg;
+}
+
+@mixin circular-progress($percent, $color, $bgcolor, $tamano){
+	$progress: progress($percent);
+	transform:rotate($progress);
+	background: linear-gradient(
+		0deg,
+		$color 50%,
+		rgba($color,.2) 50%
+	);
+	&, &:after{
+		width: $tamano;
+		height: $tamano;
+		border-radius: 50%;
+	}
+	&:before, &:after{
+		color:$color;
+	}
+	&:before{
+		content:"";
+		width: $tamano + .5rem;
+		height: $tamano + .5rem;
+		border-radius: 50%;
+		background: $bgcolor content-box;
+	}
+	&:after{
+		content:"#{$percent}%";
+		line-height: $tamano + .2rem;
+		transform: scale(1.1) rotate(-#{$progress});
+	}
+}

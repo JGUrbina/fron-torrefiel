@@ -35,7 +35,7 @@ export class ImagesComponent implements OnInit {
   downloadImage(url: string, title: string): void{
     console.log(url, title);
 
-    /* const downloading = browser.downloads.download({
+    /* const downloading = this.downloads.download({
       url,
       filename: `${title}.jpg`,
       conflictAction: 'uniquity'

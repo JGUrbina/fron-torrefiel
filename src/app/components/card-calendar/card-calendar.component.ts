@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -14,6 +14,8 @@ import esLocale from '@fullcalendar/core/locales/es';
 export class CardCalendarComponent implements OnInit {
 
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
+  @Input() events: any;
+
   public calendarLocale: any;
   public calendarVisible: boolean;
   public calendarPlugins: any[];
@@ -29,10 +31,25 @@ export class CardCalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(new Date());
-    this.calendarEvents.push({ title: 'Esto es un evento', date: '2020-05-26' });
-    this.calendarEvents.push({ title: 'Prueba', date: '2020-05-08 14:20:00'});
-    this.calendarEvents.push({ title: 'Event Now', date: new Date() });
+    this.pushInCalendar(this.events);
+  }
+
+  pushInCalendar(events: any){
+    if (events.length > 1){
+      for (const event of events) {
+        this.concatEvent(event);
+      }
+      return;
+    }
+    this.concatEvent(events);
+  }
+
+  concatEvent(input: any){
+    this.calendarEvents = this.calendarEvents.concat({
+      title: input.title,
+      start: input.start,
+      allDay: false
+    });
   }
 
   toggleVisible() {
@@ -42,15 +59,4 @@ export class CardCalendarComponent implements OnInit {
   toggleWeekends() {
     this.calendarWeekends = !this.calendarWeekends;
   }
-
-  handleDateClick(arg: any) {
-    if (confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
-      this.calendarEvents = this.calendarEvents.concat({ // add new event data. must create new array
-        title: 'New Event',
-        start: arg.date,
-        allDay: arg.allDay
-      });
-    }
-  }
-
 }
