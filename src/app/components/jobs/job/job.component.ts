@@ -42,7 +42,7 @@ export class JobComponent implements OnInit {
 
     for (const id of ids) {
       this.userService.getUser(id).subscribe(
-        (data) => { this.nameWorker.push(data.name); console.log(this.nameWorker);  },
+        (data) => { this.nameWorker.push(data.name); },
         (err) => {console.error('Error: ', err); }
       );
     }

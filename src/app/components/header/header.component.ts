@@ -16,7 +16,7 @@ import { Client } from '../../models/client/client';
 export class HeaderComponent implements OnInit {
 
   public allServices: Service[];
-  public allEvents: any[];
+  public allEvents: any[] = [];
   public showCalendar: boolean = false;
 
   constructor(
@@ -38,7 +38,6 @@ export class HeaderComponent implements OnInit {
   getAllService() {
     this.serviceService.getServices().subscribe(
       (data) => {
-        console.log(data);
         this.allServices = data;
         this.setAllEvent(this.allServices);
       },
@@ -50,54 +49,20 @@ export class HeaderComponent implements OnInit {
     if (!services) return;
 
     for (const service of services) {
-      console.log(service, '****** service');
-      const client: Client = this.getClient(service.client);
-      const users: User[] = this.getUser(service.workers);
 
-      console.log(client, 'client', users, 'users');
+      this.clientService.getClient(service.client).subscribe(
+        (data: Client) => {
+          const newEvent = {
+            title: data.name,
+            start: this.typeDateService.generateDate(service.startDate, service.startHours),
+          };
 
-      for (const user of users) {
-        console.log(user.name);
-      }
-      console.log(users.filter((user) => user.name ? `${user.name} ` : ''));
-
-      const newEvent = {
-        title: `${client.name ? client.name : ''} - ${users.map((user) => user.name ? `${user.name} ` : '')}`,
-        start: this.typeDateService.generateDate(service.startDate, service.startHours)
-      };
-
-      this.allEvents.push(newEvent);
-    }
-
-    if (this.allEvents.length > 0){
-      this.showCalendar = true;
-    }
-  }
-
-  getClient(id: any): Client{
-    this.clientService.getClient(id).subscribe(
-      (data: Client) => console.log(data, '-- client --'),
-      (err) => { console.error(err) ; }
-    );
-
-    return;
-  }
-
-  getUser(users: string[]): User[]{
-    if (users.length < 1) return;
-
-    console.log(users, 'userssss');
-    const usersOfService: User[] = [];
-
-    for (const user of users) {
-      this.userService.getUser(user).subscribe(
-        (data: User) => {
-          usersOfService.push(data);
+          this.allEvents.push(newEvent);
         },
-        (err) => { console.error(err) ; }
+        (err) => { console.error(err); }
       );
     }
 
-    return usersOfService;
+    this.showCalendar = !this.showCalendar;
   }
 }

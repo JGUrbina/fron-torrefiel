@@ -9,7 +9,6 @@ export class PdfService {
   constructor() { }
 
   onExportClick(id: string, filename: string, type: string, orientation: string = 'portrait'): any{
-    console.log(filename, id, orientation);
     const options = {
       filename,
       image: { type: 'jpeg', quality: 0.98 },

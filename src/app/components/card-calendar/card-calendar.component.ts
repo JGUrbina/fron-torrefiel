@@ -42,14 +42,11 @@ export class CardCalendarComponent implements OnInit {
   }
 
   pushInCalendar(events: any[]){
-    if (events){
-      // tslint:disable-next-line: prefer-for-of
-      for (let i = 0; i < events.length; i++) {
-        const element = events[i];
+    if (events. length > 1){
+      events.forEach(element => {
         this.concatEvent(element);
-      }
+      });
     }
-
     this.concatEvent(events);
   }
 
@@ -60,11 +57,11 @@ export class CardCalendarComponent implements OnInit {
       allDay: false,
     });
 
-    console.log(this.calendarEvents);
-
-    this.user = input.data.user;
-    this.client = input.title;
-    this.description = input.data.description;
+    if (input.data){
+      this.user = input.data.user;
+      this.client = input.title;
+      this.description = input.data.description;
+    }
   }
 
   changeShowEvent(event){
