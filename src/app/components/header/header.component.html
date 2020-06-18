@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="contain__icons">
-    <figure class="icon">
+    <figure class="icon" (click)="getAllService()">
       <app-create-icon [class]="'button color-gray bg-white h-color-red'" [name]="'calendar'" [url]="'../../../assets/svg/calendario.svg'"></app-create-icon>
       <span class="hoverIcon fadeIn">Calendario</span>
     </figure>
@@ -28,5 +28,10 @@
         estas seguro?
       </div>
     </figure>
+  </div>
+  <div class="show__calendar" *ngIf="showCalendar">
+    <div>
+      <app-card-calendar [events]="allEvents"></app-card-calendar>
+    </div>
   </div>
 </header>

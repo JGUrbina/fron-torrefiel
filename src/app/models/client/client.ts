@@ -18,7 +18,7 @@ export class Client {
   public numberInternal: number;
   public province: string;
   public municipality: string;
-  public postalcode: number;
+  public postalCode: number;
 
   constructor(
     numClient: number,
@@ -35,7 +35,7 @@ export class Client {
     numberInternal: number,
     province: string,
     municipality: string,
-    postalcode: number,
+    postalCode: number,
   ){
     this.numClient = numClient;
     this.nif = nif;
@@ -43,7 +43,7 @@ export class Client {
     this.nameCompany = nameCompany;
     this.lastName = lastName;
     this.motherLastName = motherLastName;
-    this.postalcode = postalcode;
+    this.postalCode = postalCode;
     this.phoneOne = phoneOne;
     this.phoneTwo = phoneTwo;
     this.email = email;

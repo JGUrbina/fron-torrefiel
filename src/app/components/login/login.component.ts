@@ -66,8 +66,6 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.router.navigate(['/home']);
-
     const userLogin = { userName: this.userName, password: this.password};
     this.userService.login(userLogin).subscribe(
       (data) => {

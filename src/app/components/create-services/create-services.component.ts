@@ -136,7 +136,7 @@ export class CreateServicesComponent implements OnInit {
   }
 
   createService(clientId: any): void{
-    console.log(this.newService);
+    console.log(clientId);
     this.serviceService.createService(this.newService, clientId).subscribe(
       (data) => {
         console.log(data, 'service');

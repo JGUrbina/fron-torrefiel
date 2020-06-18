@@ -20,19 +20,19 @@ export class Service {
   public numberInternal: string;
   public province: string;
   public municipality: string;
-  public postalcode: number;
+  public postalCode: number;
   public client: any;
   public workers: any;
 
   constructor(
+    activities: string,
+    amount: number,
     numService: number,
     numBill: number,
     description: string,
     note: string,
     status: string,
-    activities: string,
     priority: string,
-    amount: number,
     startDate: any,
     startHours: any,
     workers: any,
@@ -42,7 +42,7 @@ export class Service {
     numberInternal: string,
     province: string,
     municipality: string,
-    postalcode: number,
+    postalCode: number,
     typeIva: number
   ){
     this.client = client;
@@ -62,7 +62,7 @@ export class Service {
     this.municipality = municipality;
     this.numberExternal = numberExternal;
     this.numberInternal = numberInternal;
-    this.postalcode = postalcode;
+    this.postalCode = postalCode;
     this.typeIva = typeIva;
   }
 }
