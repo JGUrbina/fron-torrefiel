@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Service } from '../../../models/service/service';
 import { ClientService } from 'src/app/services/client/client.service';
 import { UserService } from 'src/app/services/user/user.service';
+import { TypeDateService } from 'src/app/services/typeDate/type-date.service';
 
 @Component({
   selector: 'app-job',
@@ -13,7 +14,7 @@ export class JobComponent implements OnInit {
   @Input() public job: Service;
 
   public nameClient: string;
-  public nameWorker: string;
+  public nameWorker: string[] = [];
 
   // views
   public DELIVERYNOTE: string = 'delivery note';
@@ -29,20 +30,23 @@ export class JobComponent implements OnInit {
   constructor(
     private clientService: ClientService,
     private userService: UserService,
+    private typeDateService: TypeDateService
   ) { }
 
   ngOnInit(): void {
     this.getWorker(this.job.workers);
     this.getClient(this.job.client);
-
-    console.log(this.job);
   }
 
-  getWorker(id: string): void{
-    this.userService.getUser(id).subscribe(
-      (data) => { /* console.log(data); */ },
-      (err) => {console.error('Error: ', err); }
-    );
+  getWorker(ids: string[]): void{
+
+    for (const id of ids) {
+      this.userService.getUser(id).subscribe(
+        (data) => { this.nameWorker.push(data.name); console.log(this.nameWorker);  },
+        (err) => {console.error('Error: ', err); }
+      );
+    }
+
   }
 
   getClient(id: string): void{
@@ -56,4 +60,7 @@ export class JobComponent implements OnInit {
     this.sectionMenuShow = input;
   }
 
+  getDate(date: any){
+    return this.typeDateService.generateDateOnly(date);
+  }
 }

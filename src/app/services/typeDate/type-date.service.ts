@@ -13,4 +13,8 @@ export class TypeDateService {
 
     return fecha;
   }
+
+  generateDateOnly(fecha: any): string{
+    return fecha.toString().slice(0, 10);
+  }
 }

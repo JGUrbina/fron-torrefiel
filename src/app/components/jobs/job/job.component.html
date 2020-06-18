@@ -12,7 +12,7 @@
       </div>
       <div class="upContain">
         <span class="info stage f-bold">{{job.status}}</span>
-        <span class="info date">{{job.startDate | date}} - {{job.startHours}}</span>
+        <span class="info date">{{getDate(job.startDate) | date: 'dd/MM/yyyy'}} - {{job.startHours}}</span>
         <span class="info price">{{job.amount}}€</span>
       </div>
       <div class="upContain">
@@ -34,7 +34,7 @@
         <app-bill class="w-100" (closeWindow)="close($event)"></app-bill>
       </div>
       <div class="calendar" *ngIf="sectionMenuShow === CALENDAR">
-        <app-calendar class="w-100" (closeWindow)="close($event)" [startService]="job.startDate" [hourService]="job.startHours" [nameClient]="nameClient"></app-calendar>
+        <app-calendar class="w-100" (closeWindow)="close($event)" [startService]="job.startDate" [hourService]="job.startHours" [nameClient]="nameClient" [nameUser]="nameWorker" [descriptionService]="job.description"></app-calendar>
       </div>
       <div class="chat" *ngIf="sectionMenuShow === CHAT">
         <app-chat class="w-100" (closeWindow)="close($event)"></app-chat>

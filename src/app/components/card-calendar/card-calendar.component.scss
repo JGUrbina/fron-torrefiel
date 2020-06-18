@@ -16,3 +16,26 @@
 .fc-icon{
   font-size: 1rem;
 }
+
+.show__event{
+  background-color: #cc2900;
+  color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 9;
+  width: 250px;
+  height: 150px;
+  padding: 10px;
+  border-radius: 6.5px;
+  box-shadow: 0 2px 15px 1px #00000085;
+  display: flex;
+  align-items: center;
+}
+
+.fc-content{
+  cursor: pointer;
+}
