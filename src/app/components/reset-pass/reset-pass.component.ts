@@ -40,7 +40,7 @@ export class ResetPassComponent implements OnInit {
       };
       this.userService.sendMailResetPassword(params).subscribe(
         (data) => {
-          const urlIcon = '../../../assets/svg/ok.svg';
+          const urlIcon = '../../../assets/svg_2/ok.svg';
           const header = 'Envío correcto';
           const title = 'Revisa tu correo registrado para poder recuperar tu contraseña.';
           const subtitle = '';

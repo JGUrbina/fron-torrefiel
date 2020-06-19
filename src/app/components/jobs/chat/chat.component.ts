@@ -29,19 +29,19 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
     this.allMessages = [
       {person: 'me', avatar: '', message: 'el cliente no abre, que hago?', date: new Date()},
-      {person: 'admin', avatar: '../../../../assets/svg/avatar.svg', message: 'ok, espera 5 min. Voy a localizarla', date: new Date()},
+      {person: 'admin', avatar: '../../../../assets/svg_2/avatar.svg', message: 'ok, espera 5 min. Voy a localizarla', date: new Date()},
       {person: 'me', avatar: '', message: 'ok espero, sino que hago? 👱👱', date: new Date()},
-      {person: 'admin', avatar: '../../../../assets/svg/avatar.svg', message: 'sino, presiona visitado aqui y vete', date: new Date()},
+      {person: 'admin', avatar: '../../../../assets/svg_2/avatar.svg', message: 'sino, presiona visitado aqui y vete', date: new Date()},
       {person: 'me', avatar: '', message: 'Perfecto así haré', date: new Date()},
       {person: 'me', avatar: '', message: 'el cliente no abre, que hago?', date: new Date()},
-      {person: 'admin', avatar: '../../../../assets/svg/avatar.svg', message: 'ok, espera 5 min. Voy a localizarla', date: new Date()},
+      {person: 'admin', avatar: '../../../../assets/svg_2/avatar.svg', message: 'ok, espera 5 min. Voy a localizarla', date: new Date()},
       {person: 'me', avatar: '', message: 'ok espero, sino que hago? 👱👱', date: new Date()},
-      {person: 'admin', avatar: '../../../../assets/svg/avatar.svg', message: 'sino, presiona visitado aqui y vete', date: new Date()},
+      {person: 'admin', avatar: '../../../../assets/svg_2/avatar.svg', message: 'sino, presiona visitado aqui y vete', date: new Date()},
       {person: 'me', avatar: '', message: 'Perfecto así haré', date: new Date()},
       {person: 'me', avatar: '', message: 'el cliente no abre, que hago?', date: new Date()},
-      {person: 'admin', avatar: '../../../../assets/svg/avatar.svg', message: 'ok, espera 5 min. Voy a localizarla', date: new Date()},
+      {person: 'admin', avatar: '../../../../assets/svg_2/avatar.svg', message: 'ok, espera 5 min. Voy a localizarla', date: new Date()},
       {person: 'me', avatar: '', message: 'ok espero, sino que hago? 👱👱', date: new Date()},
-      {person: 'admin', avatar: '../../../../assets/svg/avatar.svg', message: 'sino, presiona visitado aqui y vete', date: new Date()},
+      {person: 'admin', avatar: '../../../../assets/svg_2/avatar.svg', message: 'sino, presiona visitado aqui y vete', date: new Date()},
       {person: 'me', avatar: '', message: 'Perfecto así haré', date: new Date()},
     ];
   }

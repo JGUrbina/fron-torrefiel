@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
     /* this.userService.createUser(this.user).subscribe(
       (data) => {
         console.log(data);
-        const urlIcon = '../../../assets/svg/ok.svg';
+        const urlIcon = '../../../assets/svg_2/ok.svg';
         const header = 'Registro Correcto';
         const title = '¡Felicidades! Tu cuenta se a creado correctamente.';
         const subtitle = 'Espera el mail de confirmación';

@@ -23,7 +23,7 @@ export class CreateIconComponent implements OnInit {
 
     this.matIconRegistry.addSvgIcon(
       `${this.name}`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl(`${domain}/${this.url}`)
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`${domain}/${this.url.toLowerCase()}`)
     );
   }
 

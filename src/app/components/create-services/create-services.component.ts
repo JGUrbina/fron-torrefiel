@@ -133,7 +133,7 @@ export class CreateServicesComponent implements OnInit {
   createService(clientId: any): void{
     this.serviceService.createService(this.newService, clientId).subscribe(
       (data) => {
-        const urlIcon = '../../../assets/svg/ok.svg';
+        const urlIcon = '../../../assets/svg_2/ok.svg';
         const header = 'Registro Correcto';
         const title = 'Si deseas editarlo puedes hacerlo en Administrador';
         const subtitle = '';
@@ -144,23 +144,6 @@ export class CreateServicesComponent implements OnInit {
         this.messageErrorCreate('servicio');
       }
     );
-  }
-
-  createServiceAndSendPDF(): void{
-    /* this.serviceService.createService(this.newService, this.newService._id).subscribe(
-      (data) => {
-        // ENVIAR PDF
-        const urlIcon = '../../../assets/svg/ok.svg';
-        const header = 'Registro Correcto';
-        const title = 'Si deseas editarlo puedes hacerlo en Administrador';
-        const subtitle = '';
-        this.showAlert(urlIcon, header, title, subtitle);
-      },
-      (err) => {
-        console.error('error: \n', err);
-        this.messageErrorCreate('servicio');
-      }
-    ); */
   }
 
   updateView(view: string): void{
