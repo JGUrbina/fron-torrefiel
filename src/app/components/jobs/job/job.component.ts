@@ -49,11 +49,9 @@ export class JobComponent implements OnInit {
 
   }
 
-  getClient(id: string): void{
-    this.clientService.getClient(id).subscribe(
-      (data) => { this.nameClient = data.name; },
-      (err) => {console.error('Error: ', err); }
-    );
+  async getClient(id: string): Promise<any>{
+    const client = await this.clientService.getClient(id);
+    this.nameClient = client.name;
   }
 
   close(input: string): void{

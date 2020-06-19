@@ -17,7 +17,8 @@ export class HeaderComponent implements OnInit {
 
   public allServices: Service[];
   public allEvents: any[] = [];
-  public showCalendar: boolean = false;
+  public showCalendar: boolean = true;
+  public contador: number = 0;
 
   constructor(
     private router: Router,
@@ -25,9 +26,11 @@ export class HeaderComponent implements OnInit {
     private serviceService: ServiceService,
     private userService: UserService,
     private clientService: ClientService,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
+    this.getAllService();
   }
 
   closeSession(): void {
@@ -38,31 +41,47 @@ export class HeaderComponent implements OnInit {
   getAllService() {
     this.serviceService.getServices().subscribe(
       (data) => {
-        this.allServices = data;
-        this.setAllEvent(this.allServices);
+        /* console.log('en funcion');
+        console.log(localStorage.getItem('services'));
+        if (localStorage.getItem('services') === null || localStorage.getItem('services') !== data){
+          console.log('en el if');
+          localStorage.setItem('services', data.toString());
+          this.setAllEvent(data);
+        } */
+
+        if (this.contador === 0){
+          console.log('en contador');
+          this.setAllEvent(data);
+          this.contador += 1;
+        }
+
+        console.log('fuera de if');
+
+        this.showCalendar = !this.showCalendar;
       },
       (err) => { console.error(err); }
     );
   }
 
-  setAllEvent(services: any): any{
+  async setAllEvent(services: any): Promise<any>{
     if (!services) return;
+
+    console.log('ANtes del for');
 
     for (const service of services) {
 
-      this.clientService.getClient(service.client).subscribe(
-        (data: Client) => {
-          const newEvent = {
-            title: data.name,
-            start: this.typeDateService.generateDate(service.startDate, service.startHours),
-          };
+      const client = await this.clientService.getClient(service.client);
 
-          this.allEvents.push(newEvent);
-        },
-        (err) => { console.error(err); }
-      );
+      const newEvent = {
+        title: client.name,
+        start: this.typeDateService.generateDate(service.startDate, service.startHours),
+      };
+
+      this.allEvents.push(newEvent);
+      console.log(this.allEvents);
+
     }
 
-    this.showCalendar = !this.showCalendar;
+    console.log('salio del for');
   }
 }
