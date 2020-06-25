@@ -5,6 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
+    "start:pwa": "http-server -p 8080 -c-1 dist/src",
+    "start:pwa-proxy": "http-server --proxy http://localhost:8080? dist/src",
     "build": "ng build",
     "lint": "ng lint",
     "heroku-postbuild": "ng build --prod"
