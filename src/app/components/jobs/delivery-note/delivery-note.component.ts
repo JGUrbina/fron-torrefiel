@@ -1,4 +1,5 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
+import { Service } from '../../../models/service/service';
 import { PdfService } from '../../../services/pdf/pdf.service';
 import { EventEmitter } from '@angular/core';
 
@@ -8,6 +9,7 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./delivery-note.component.scss']
 })
 export class DeliveryNoteComponent implements OnInit {
+  @Input() public job: Service;
 
   @Output () closeWindow = new EventEmitter();
 
@@ -16,6 +18,7 @@ export class DeliveryNoteComponent implements OnInit {
   constructor(private pdfService: PdfService) { }
 
   ngOnInit(): void {
+
   }
 
   downloadPdf(): void{
