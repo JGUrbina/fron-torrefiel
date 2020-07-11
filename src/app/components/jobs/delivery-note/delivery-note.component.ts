@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
 import { Service } from '../../../models/service/service';
+import { Client } from '../../../models/client/client'
 import { PdfService } from '../../../services/pdf/pdf.service';
 import { EventEmitter } from '@angular/core';
 
@@ -9,8 +10,9 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./delivery-note.component.scss']
 })
 export class DeliveryNoteComponent implements OnInit {
-  @Input() public job: Service;
-
+  // @Input() public job: Service;
+  @Input() client: Client
+  @Input() service: Service
   @Output () closeWindow = new EventEmitter();
 
   public exportPdfChangeClass: boolean = false;
@@ -18,7 +20,7 @@ export class DeliveryNoteComponent implements OnInit {
   constructor(private pdfService: PdfService) { }
 
   ngOnInit(): void {
-
+    console.log(this.client, '+++++++++++++++Albaram++++++++++++++++++')
   }
 
   downloadPdf(): void{

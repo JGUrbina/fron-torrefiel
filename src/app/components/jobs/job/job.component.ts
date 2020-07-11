@@ -35,7 +35,10 @@ export class JobComponent implements OnInit {
 
   ngOnInit(): void {
     this.getWorker(this.job.workers);
-    this.getClient(this.job.client);
+    // this.getClient(this.job.client);
+    this.getClient(this.job.client).then(client => {
+      this.job.client = client
+    })
   }
 
   getWorker(ids: string[]): void{
@@ -51,7 +54,8 @@ export class JobComponent implements OnInit {
 
   async getClient(id: string): Promise<any>{
     const client = await this.clientService.getClient(id);
-    this.nameClient = client.name;
+    return client
+    // this.nameClient = client.name;
   }
 
   close(input: string): void{

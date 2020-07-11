@@ -28,10 +28,10 @@
     </div>
     <div class="sectionMenu">
       <div class="pdf delivery-note d-flex justify-content-center" *ngIf="sectionMenuShow === DELIVERYNOTE">
-        <app-delivery-note class="w-100" (closeWindow)="close($event)"></app-delivery-note>
+        <app-delivery-note class="w-100" (closeWindow)="close($event)" [client]="job.client" [service]="job"></app-delivery-note>
       </div>
       <div class="bill delivery-note d-flex justify-content-center" *ngIf="sectionMenuShow === BILL">
-        <app-bill class="w-100" (closeWindow)="close($event)"></app-bill>
+        <app-bill class="w-100" (closeWindow)="close($event)" [client]="job.client" [service]="job"></app-bill>
       </div>
       <div class="calendar" *ngIf="sectionMenuShow === CALENDAR">
         <app-calendar class="w-100" (closeWindow)="close($event)" [startService]="job.startDate" [hourService]="job.startHours" [nameClient]="nameClient" [nameUser]="nameWorker" [descriptionService]="job.description"></app-calendar>

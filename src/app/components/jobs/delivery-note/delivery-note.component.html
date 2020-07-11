@@ -42,7 +42,7 @@
           <p class="purple">Ventanas</p>
           <p>Mosquiteras</p>
           <p class="purple">Electricidad</p>
-        </div>
+        </div> 
         <div class="two">
           <p>Mamparas de<br>baño</p>
           <p class="purple">Decoración</p>
@@ -58,22 +58,22 @@
               <span><b>Fecha de emisión:</b> Valencia. 12 de marzo de 2020</span>
             </div>
             <div class="data__contain--item"><span>N° albarán:</span></div>
-            <div class="data__contain--item"><span>{{job.numBill}}</span></div>
+            <div class="data__contain--item"><span>{{service.numDeliveryNote}}</span></div>
           </div>
           <div class="data__contain">
-            <div class="data__contain--item"><span><b>Cliente:</b> ???????</span></div>
+            <div class="data__contain--item"><span><b>Cliente:  </b><strong>{{client.name}}</strong></span></div>
             <div class="data__contain--item"><span>Teléfono 1:</span></div>
-            <div class="data__contain--item"><span>¿¿??</span></div>
+            <div class="data__contain--item"><span>{{client.phoneOne}}</span></div>
           </div>
           <div class="data__contain">
-            <div class="data__contain--item"><span><b>Correo electronico:</b> ??????? @gmail.com</span></div>
+            <div class="data__contain--item"><span><b>Correo electronico: </b><strong>{{client.email}}</strong></span></div>
             <div class="data__contain--item"><span>Teléfono 2:</span></div>
-            <div class="data__contain--item"><span>¿¿??</span></div>
+            <div class="data__contain--item"><span>{{client.phoneTwo}}</span></div>
           </div>
           <div class="data__contain">
-            <div class="data__contain--item"><span><b>Dirección trabajos:</b> ???????</span></div>
+            <div class="data__contain--item"><span><b>Dirección trabajos:</b> {{service.direction}}</span></div>
             <div class="data__contain--item"><span>Población 1:</span></div>
-            <div class="data__contain--item"><span>46004 - Valencia <br> Valencia</span></div>
+            <div class="data__contain--item"><span>{{service.postalCode}} - {{service.province}} <br> {{service.municipality}}</span></div>
           </div>
         </section>
         <section class="info">
