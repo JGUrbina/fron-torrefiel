@@ -63,6 +63,8 @@ import { JobComponent } from './components/jobs/job/job.component';
 import { MediumPieChartComponent } from './components/medium-pie-chart/medium-pie-chart.component';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 import { SearchComponent } from './components/search/search.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -126,7 +128,8 @@ import { SearchComponent } from './components/search/search.component';
     ChartsModule,
     FullCalendarModule,
     ReactiveFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [appRoutingProviders, MatIconModule],
   bootstrap: [AppComponent]
