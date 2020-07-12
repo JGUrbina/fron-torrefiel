@@ -45,6 +45,28 @@
     }
   }
 
+  .search{
+    border-radius: 13px;
+    display: flex;
+    padding: 3px 5px;
+    overflow: hidden;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 3px 4px 1px #0000001f;
+
+    figure{
+      width: 33px;
+      height: 25px;
+      margin: 0;
+    }
+
+    input{
+      border: none;
+      outline: none !important;
+      width: 65%;
+    }
+  }
+
   .list{
     margin-top: 30px;
 

@@ -51,7 +51,7 @@ export class CreateServicesComponent implements OnInit {
     public router: Router,
   ) {
     // tslint:disable-next-line: max-line-length
-    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     // tslint:disable-next-line: max-line-length
     this.newClient = new Client(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     this.optionsActivities = this.dropDownOptions.getActivities();
@@ -105,32 +105,41 @@ export class CreateServicesComponent implements OnInit {
     // agregar nuevo servicio al cliente
   }
 
-  createClient(): void{
+  searchClient(option: any){
+    console.log(this.searchNameClient);
+    console.log(option);
+    const id = option._id;
+    console.log(id, 'id de result');
+   /*  let result: Client;
+    result = this.allClients.filter((client: Client) => client._id === id);
+    console.log(result);
+    this.newClient = result; */
+  }
+
+  createClientAndService(): void{
     // si existe con ese numero de cliente se actualiza
     // this.idClientFinal = data.id;
 
     // si no existe lo creo y luego le asigno el trabajo
-    /* this.clientService.createClient(this.newClient).subscribe(
+    this.clientService.createClient(this.newClient).subscribe(
       (data) => {
-        console.log(data, '******* DATA');
-        this.newClient._id = data._id;
-        this.viewActual = this.SERVICEDIRECTION;
-        this.updateView(this.SERVICEDIRECTION);
+        console.log(data, 'este es el client');
+        console.log(`id del cliente ${data.client._id} - client: ${data.client}`);
+        this.createService(data.client._id);
       },
       (err) => {
         console.error('error: \n', err);
         this.messageErrorCreate('cliente');
         return;
       }
-    ); */
-    this.updateView(this.SERVICEDIRECTION);
+    );
   }
 
-  createService(): void{
+  createService(clientId: any): void{
     console.log(this.newService);
-    /* this.serviceService.createService(this.newService, this.newService._id).subscribe(
+    this.serviceService.createService(this.newService, clientId).subscribe(
       (data) => {
-        console.log(data);
+        console.log(data, 'service');
         const urlIcon = '../../../assets/svg/ok.svg';
         const header = 'Registro Correcto';
         const title = 'Si deseas editarlo puedes hacerlo en Administrador';
@@ -141,7 +150,7 @@ export class CreateServicesComponent implements OnInit {
         console.error('error: \n', err);
         this.messageErrorCreate('servicio');
       }
-    ); */
+    );
   }
 
   createServiceAndSendPDF(): void{
