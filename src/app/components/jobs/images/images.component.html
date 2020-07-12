@@ -1,14 +1,14 @@
 <section class="sectionImages">
   <header class="sectionImages__icons">
     <figure class="icon exit" (click)="emitEvent()">
-      <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../../assets/svg/cancelar.svg'"></app-create-icon>
+      <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
     </figure>
   </header>
   <main class="sectionImages__body">
     <div class="sectionImages__body--containImgs">
       <div class="img__contain" *ngFor="let image of allImages">
         <figure class="icon descarga" (click)="downloadImage(image.url, image.name)">
-          <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg/descargar.svg'"></app-create-icon>
+          <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg_2/descargar.svg'"></app-create-icon>
         </figure>
        <!--  <a  download target="_blank">
         </a> -->
@@ -24,7 +24,7 @@
   </main>
   <footer class="sectionImages__footer">
     <figure class="icon descarga">
-      <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg/descargar.svg'"></app-create-icon>
+      <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg_2/descargar.svg'"></app-create-icon>
     </figure>
     <span>Descargar <br> todas</span>
   </footer>

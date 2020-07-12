@@ -9,6 +9,7 @@ header{
   padding: 12px 65px;
   padding-right: 54px;
   align-items: center;
+  position: relative;
 
   .logo{
     figure{
@@ -90,4 +91,19 @@ header{
       }
     }
   }
+}
+
+.show__calendar{
+  position: absolute;
+  top: 110px;
+  right: 50px;
+  background-color: white;
+  padding: 10px;
+  width: 545px;
+  z-index: 99;
+  border-radius: 5px;
+}
+
+.fc-dayGrid-view .fc-body .fc-row {
+  height: 55px !important
 }

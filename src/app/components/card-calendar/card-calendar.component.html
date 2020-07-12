@@ -5,15 +5,24 @@
       #calendar
       defaultView="dayGridMonth"
       [header]="{
-        left: 'prev,next hoy',
+        left: 'prev',
         center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        right: 'next'
       }"
       [locale]="calendarLocale"
       [plugins]="calendarPlugins"
       [weekends]="calendarWeekends"
       [events]="calendarEvents"
+      (eventClick)="changeShowEvent($event)"
     ></full-calendar>
+  </div>
+
+  <div class="show__event" *ngIf="showEvent">
+    <div class="d-flex flex-column justify-content-between">
+      <p>Cliente: {{client}}</p>
+      <p>Trabajador: {{user}}</p>
+      <p>descripcion: {{description}}</p>
+    </div>
   </div>
 
 </div>

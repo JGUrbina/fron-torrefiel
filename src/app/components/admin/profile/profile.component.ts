@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { UserService } from '../../../services/user/user.service';
 import { User } from '../../../models/user/user';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
@@ -8,6 +9,8 @@ import { User } from '../../../models/user/user';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+
+  @Output () closeWindow = new EventEmitter();
 
   public user: User;
 
@@ -30,7 +33,7 @@ export class ProfileComponent implements OnInit {
     /* this.userService.createUser(this.user).subscribe(
       (data) => {
         console.log(data);
-        const urlIcon = '../../../assets/svg/ok.svg';
+        const urlIcon = '../../../assets/svg_2/ok.svg';
         const header = 'Registro Correcto';
         const title = '¡Felicidades! Tu cuenta se a creado correctamente.';
         const subtitle = 'Espera el mail de confirmación';
@@ -57,5 +60,9 @@ export class ProfileComponent implements OnInit {
     setTimeout(() => {
       this.alertShow = false;
     }, this.ALERTTIMESHOW);
+  }
+
+  emitEvent(): void{
+    this.closeWindow.emit('');
   }
 }

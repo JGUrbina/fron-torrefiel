@@ -24,8 +24,8 @@ export class ClientService {
     return this.http.get<any>(this.urlApi, { headers: this.headers });
   }
 
-  getClient(id: string): Observable<any> {
-    return this.http.get<any>(`${this.urlApi}/${id}`, { headers: this.headers });
+  getClient(id: string): Promise<any> {
+    return this.http.get<any>(`${this.urlApi}/${id}`, { headers: this.headers }).toPromise();
   }
 
   createClient(client: Client): Observable<any>{

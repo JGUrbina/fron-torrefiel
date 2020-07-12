@@ -2,8 +2,8 @@
   <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
   <header class="sectionProfile__logo">
     <figure class="logo"><img src="../../../../assets/images/logo-blanco.png" alt="torrefiel"></figure>
-    <figure class="exit">
-      <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg/cancelar.svg'"></app-create-icon>
+    <figure class="exit" (click)="emitEvent()">
+      <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
     </figure>
   </header>
   <main class="sectionProfile__inputs">

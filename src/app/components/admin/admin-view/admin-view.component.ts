@@ -24,7 +24,7 @@ export class AdminViewComponent implements OnInit {
     this.view = view;
   }
 
-  closeView(): void{
+  closeView(event: any): void{
     this.view = '';
   }
 

@@ -9,7 +9,7 @@
   left: 0;
   right: 0;
   margin: auto;
-  top: 10%;
+  top: 8px;
   z-index: 1;
   align-items: center;
   justify-content: center;
@@ -29,6 +29,16 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 2rem;
+
+    .exit{
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      top: 0;
+      right: 0;
+      padding: 0;
+      cursor: pointer;
+    }
   }
 
   &__main{

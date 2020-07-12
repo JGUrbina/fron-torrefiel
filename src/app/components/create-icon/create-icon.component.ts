@@ -19,12 +19,12 @@ export class CreateIconComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    /* const domain = document.domain;
+    const domain = document.domain;
 
     this.matIconRegistry.addSvgIcon(
       `${this.name}`,
-      this.domSanitizer.bypassSecurityTrustResourceUrl(`${domain}/${this.url}`)
-    ); */
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`${domain}/${this.url.toLowerCase()}`)
+    );
   }
 
 }

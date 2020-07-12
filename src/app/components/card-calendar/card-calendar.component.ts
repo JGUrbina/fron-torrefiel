@@ -14,13 +14,18 @@ import esLocale from '@fullcalendar/core/locales/es';
 export class CardCalendarComponent implements OnInit {
 
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
-  @Input() events: any;
+  @Input() events: any[];
 
   public calendarLocale: any;
   public calendarVisible: boolean;
   public calendarPlugins: any[];
   public calendarWeekends: boolean;
   public calendarEvents: EventInput[];
+
+  public showEvent: boolean = false;
+  public user: string;
+  public client: string;
+  public description: string;
 
   constructor() {
     this.calendarVisible = true;
@@ -31,15 +36,18 @@ export class CardCalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pushInCalendar(this.events);
+    setTimeout(() => {
+      this.pushInCalendar(this.events);
+    }, 200);
   }
 
-  pushInCalendar(events: any){
-    if (events.length > 1){
-      for (const event of events) {
-        this.concatEvent(event);
+  pushInCalendar(events: any[]){
+    if (events. length > 1){
+      // tslint:disable-next-line: prefer-for-of
+      for (let i = 0; i < events.length; i++) {
+        const element = events[i];
+        this.concatEvent(element);
       }
-      return;
     }
     this.concatEvent(events);
   }
@@ -48,8 +56,19 @@ export class CardCalendarComponent implements OnInit {
     this.calendarEvents = this.calendarEvents.concat({
       title: input.title,
       start: input.start,
-      allDay: false
+      allDay: false,
     });
+
+    if (input.data){
+      this.user = input.data.user;
+      this.client = input.title;
+      this.description = input.data.description;
+    }
+  }
+
+  changeShowEvent(event){
+    const element = event.jsEvent.srcElement.innerText;
+    this.showEvent = !this.showEvent;
   }
 
   toggleVisible() {

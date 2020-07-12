@@ -5,6 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
+    "start:pwa": "http-server -p 8080 -c-1 dist/src",
+    "start:pwa-proxy": "http-server --proxy http://localhost:8080? dist/src",
     "build": "ng build",
     "lint": "ng lint",
     "heroku-postbuild": "ng build --prod"
@@ -24,6 +26,7 @@
     "@angular/platform-browser": "~9.1.7",
     "@angular/platform-browser-dynamic": "~9.1.7",
     "@angular/router": "~9.1.7",
+    "@angular/service-worker": "~9.1.7",
     "@fullcalendar/angular": "^4.4.5-beta",
     "@fullcalendar/core": "^4.4.0",
     "@fullcalendar/daygrid": "^4.4.0",

@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   register(): void{
     this.userService.createUser(this.newUser).subscribe(
       (data) => {
-        const urlIcon = '../../../assets/svg/ok.svg';
+        const urlIcon = '../../../assets/svg_2/ok.svg';
         const header = 'Registro Correcto';
         const title = '¡Felicidades! Tu cuenta se a creado correctamente.';
         const subtitle = 'Espera el mail de confirmación';
@@ -65,8 +65,6 @@ export class LoginComponent implements OnInit {
       this.showAlert(urlIcon, header, title, subtitle);
       return;
     }
-
-    this.router.navigate(['/home']);
 
     const userLogin = { userName: this.userName, password: this.password};
     this.userService.login(userLogin).subscribe(

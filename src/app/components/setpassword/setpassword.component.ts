@@ -39,7 +39,7 @@ export class SetpasswordComponent implements OnInit {
     if (this.token){
       this.userService.verifyUser(this.token).subscribe(
         () => {
-          const urlIcon = '../../../assets/svg/ok-yellow.svg';
+          const urlIcon = '../../../assets/svg_2/ok-yellow.svg';
           const header = 'Activación correcta';
           const title = '¡Felicidades! Tu cuenta se ha activado correctamente.';
           const subtitle = 'Ahora crea tu contraseña';
@@ -67,7 +67,7 @@ export class SetpasswordComponent implements OnInit {
   registerPassword(): void{
     this.userService.setPassword(this.token, this.user.password).subscribe(
       (data) => {
-        const urlIcon = '../../../assets/svg/ok.svg';
+        const urlIcon = '../../../assets/svg_2/ok.svg';
         const header = this.reset ? 'Activación correcta' : 'Creación exitosa';
         const title = this.reset ? 'Recuerda esta nueva contraseña para que no se te vuelva a olvidar' : 'Haz creado tu contraseña exitosamente.';
         const subtitle = this.reset ? '' : 'Ya puedes iniciar sesión';

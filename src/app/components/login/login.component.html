@@ -18,7 +18,7 @@
         </div>
         <div class="contain-input mb-0">
           <figure class="eye" [ngClass]="{'active': showPass}" (click)="showPass = !showPass">
-            <img src="../../../assets/svg/eye.svg" alt="">
+            <img src="../../../assets/svg_2/eye.svg" alt="">
           </figure>
           <label for="user" class="label">Contraseña</label>
           <input [type]="showPass ? 'text' : 'password'" class="input" minlength="4" placeholder="******" name="passwordLogin" #passwordLogin="ngModel" [(ngModel)]="password" required>
@@ -47,7 +47,7 @@
           <img src="../../../assets/images/logo-blanco.png" alt="torrefiel logo">
         </figure>
         <figure class="exit" (click)="showRegister = false">
-          <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../assets/svg/cancelar.svg'"></app-create-icon>
+          <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../assets/svg_2/cancelar.svg'"></app-create-icon>
         </figure>
       </div>
       <section class="section__red--inputs">

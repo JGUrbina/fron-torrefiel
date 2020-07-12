@@ -106,10 +106,7 @@ export class CreateServicesComponent implements OnInit {
   }
 
   searchClient(option: any){
-    console.log(this.searchNameClient);
-    console.log(option);
     const id = option._id;
-    console.log(id, 'id de result');
    /*  let result: Client;
     result = this.allClients.filter((client: Client) => client._id === id);
     console.log(result);
@@ -123,8 +120,6 @@ export class CreateServicesComponent implements OnInit {
     // si no existe lo creo y luego le asigno el trabajo
     this.clientService.createClient(this.newClient).subscribe(
       (data) => {
-        console.log(data, 'este es el client');
-        console.log(`id del cliente ${data.client._id} - client: ${data.client}`);
         this.createService(data.client._id);
       },
       (err) => {
@@ -136,29 +131,9 @@ export class CreateServicesComponent implements OnInit {
   }
 
   createService(clientId: any): void{
-    console.log(this.newService);
     this.serviceService.createService(this.newService, clientId).subscribe(
       (data) => {
-        console.log(data, 'service');
-        const urlIcon = '../../../assets/svg/ok.svg';
-        const header = 'Registro Correcto';
-        const title = 'Si deseas editarlo puedes hacerlo en Administrador';
-        const subtitle = '';
-        this.showAlert(urlIcon, header, title, subtitle);
-      },
-      (err) => {
-        console.error('error: \n', err);
-        this.messageErrorCreate('servicio');
-      }
-    );
-  }
-
-  createServiceAndSendPDF(): void{
-    this.serviceService.createService(this.newService, this.newService._id).subscribe(
-      (data) => {
-        // ENVIAR PDF
-        console.log(data, ' ENVIAR PDF');
-        const urlIcon = '../../../assets/svg/ok.svg';
+        const urlIcon = '../../../assets/svg_2/ok.svg';
         const header = 'Registro Correcto';
         const title = 'Si deseas editarlo puedes hacerlo en Administrador';
         const subtitle = '';
