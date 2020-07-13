@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve -o",
     "start:pwa": "http-server -p 8080 -c-1 dist/src",
     "start:pwa-proxy": "http-server --proxy http://localhost:8080? dist/src",
     "build": "ng build",

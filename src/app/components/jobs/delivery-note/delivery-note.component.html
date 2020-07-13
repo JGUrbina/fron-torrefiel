@@ -58,17 +58,17 @@
               <span><b>Fecha de emisión:</b> Valencia. 12 de marzo de 2020</span>
             </div>
             <div class="data__contain--item"><span>N° albarán:</span></div>
-            <div class="data__contain--item"><span>¿¿??</span></div>
+            <div class="data__contain--item"><span> {{service.numDeliveryNote}} </span></div>
           </div>
           <div class="data__contain">
-            <div class="data__contain--item"><span><b>Cliente:</b> ???????</span></div>
+            <div class="data__contain--item"><span><b>Cliente:</b> {{client.name}} </span></div>
             <div class="data__contain--item"><span>Teléfono 1:</span></div>
-            <div class="data__contain--item"><span>¿¿??</span></div>
+            <div class="data__contain--item"><span> {{client.phoneOne}} </span></div>
           </div>
           <div class="data__contain">
-            <div class="data__contain--item"><span><b>Correo electronico:</b> ??????? @gmail.com</span></div>
+            <div class="data__contain--item"><span><b>Correo electronico:</b> {{client.email}} </span></div>
             <div class="data__contain--item"><span>Teléfono 2:</span></div>
-            <div class="data__contain--item"><span>¿¿??</span></div>
+            <div class="data__contain--item"><span> {{client.phoneOne}} </span></div>
           </div>
           <div class="data__contain">
             <div class="data__contain--item"><span><b>Dirección trabajos:</b> ???????</span></div>
@@ -87,7 +87,7 @@
               </p>
             </div>
             <div class="text">
-              <span>texto...</span>
+              <span> {{service.direction}} </span>
             </div>
             <div>
               <p class="bg-purple mb-0">
@@ -95,7 +95,7 @@
               </p>
             </div>
             <div class="importe">
-              <span>texto...</span>
+              <span><strong> {{service.amount}} </strong></span>
             </div>
           </div>
         </section>

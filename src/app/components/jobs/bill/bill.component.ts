@@ -1,7 +1,8 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { PdfService } from '../../../services/pdf/pdf.service';
 import { EventEmitter } from '@angular/core';
-
+import { Service }  from '../../../models/service/service'
+import { Client }  from '../../../models/client/client'
 @Component({
   selector: 'app-bill',
   templateUrl: './bill.component.html',
@@ -10,6 +11,9 @@ import { EventEmitter } from '@angular/core';
 export class BillComponent implements OnInit {
 
   @Output () closeWindow = new EventEmitter();
+
+  @Input() client: Client
+  @Input() service: Service
 
   constructor(
     private pdfService: PdfService

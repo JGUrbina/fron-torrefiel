@@ -24,6 +24,34 @@
     }
   }
 
+  // Data
+  .data{
+    margin-bottom: 20px;
+    background-color: #fdff99 !important;
+
+    &__contain{
+      display: flex;
+
+      &--item{
+        background-color: #fdff99 !important;
+        padding: 5px;
+        color: #7f017e;
+
+        border: 1px solid #7f017e;
+        padding: 5px;
+
+        &:nth-child(1){
+          width: 60%;
+        }
+        &:nth-child(2), &:nth-child(3){
+          width: 20%;
+          text-align: center;
+        }
+      }
+    }
+  }
+  // Data
+
   &__viewpdf{
     background-color: white;
     margin: 15px;

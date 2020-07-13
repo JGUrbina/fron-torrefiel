@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Service } from '../../../models/service/service';
+import { Client } from '../../../models/client/client'
 import { ClientService } from 'src/app/services/client/client.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { TypeDateService } from 'src/app/services/typeDate/type-date.service';
@@ -12,6 +13,7 @@ import { TypeDateService } from 'src/app/services/typeDate/type-date.service';
 export class JobComponent implements OnInit {
 
   @Input() public job: Service;
+  @Input() public client: Client;
 
   public nameClient: string;
   public nameWorker: string[] = [];
@@ -50,8 +52,8 @@ export class JobComponent implements OnInit {
   }
 
   async getClient(id: string): Promise<any>{
-    const client = await this.clientService.getClient(id);
-    this.nameClient = client.name;
+    this.client = await this.clientService.getClient(id);
+    
   }
 
   close(input: string): void{

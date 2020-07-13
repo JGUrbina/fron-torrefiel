@@ -23,7 +23,7 @@ export class Service {
   public postalCode: number;
   public client: any;
   public workers: any;
-
+ 
   constructor(
     activities: string,
     amount: number,

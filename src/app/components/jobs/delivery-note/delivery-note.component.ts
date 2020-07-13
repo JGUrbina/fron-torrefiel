@@ -1,6 +1,8 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { PdfService } from '../../../services/pdf/pdf.service';
 import { EventEmitter } from '@angular/core';
+import { Client } from '../../../models/client/client'
+import { Service } from '../../../models/service/service'
 
 @Component({
   selector: 'app-delivery-note',
@@ -10,6 +12,8 @@ import { EventEmitter } from '@angular/core';
 export class DeliveryNoteComponent implements OnInit {
 
   @Output () closeWindow = new EventEmitter();
+  @Input() client: Client
+  @Input() service: Service
 
   public exportPdfChangeClass: boolean = false;
 
