@@ -33,8 +33,8 @@
       <div class="bill delivery-note d-flex justify-content-center" *ngIf="sectionMenuShow === BILL">
         <app-bill class="w-100" (closeWindow)="close($event)"></app-bill>
       </div>
-      <div class="calendar" *ngIf="sectionMenuShow === CALENDAR">
-        <app-calendar class="w-100" (closeWindow)="close($event)" [startService]="job.startDate" [hourService]="job.startHours" [nameClient]="nameClient" [nameUser]="nameWorker" [descriptionService]="job.description"></app-calendar>
+      <div class="scheduling" *ngIf="sectionMenuShow === CALENDAR">
+        <app-calendar class="w-100" (closeWindow)="close($event)" [startService]="job.startDate" [hourService]="job.startHours" [service]="job" [worker]="worker"></app-calendar>
       </div>
       <div class="chat" *ngIf="sectionMenuShow === CHAT">
         <app-chat class="w-100" (closeWindow)="close($event)"></app-chat>

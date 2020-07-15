@@ -65,6 +65,7 @@ import { LineChartComponent } from './components/line-chart/line-chart.component
 import { SearchComponent } from './components/search/search.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AddNewComponent } from './components/admin/users/add-new/add-new.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,8 @@ import { environment } from '../environments/environment';
     JobComponent,
     MediumPieChartComponent,
     LineChartComponent,
-    SearchComponent
+    SearchComponent,
+    AddNewComponent
   ],
   imports: [
     BrowserModule,

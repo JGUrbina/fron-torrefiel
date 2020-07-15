@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class UsersComponent implements OnInit {
 
   public allUsers: User[];
+  public displayNewUser: boolean = false;
 
   public showUser: boolean = false;
   public jobsOfUser: any[] = [
@@ -36,6 +37,14 @@ export class UsersComponent implements OnInit {
         console.error(err);
       }
     );
+  }
+
+  close(): void{
+    this.displayNewUser = false;
+  }
+
+  openNewUserModal(): void{
+    this.displayNewUser = true;
   }
 
 }

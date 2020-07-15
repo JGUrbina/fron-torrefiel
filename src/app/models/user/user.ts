@@ -13,6 +13,7 @@ export class User {
   public messages: [any];
   public rol: string;
   public isVerify: boolean;
+  public color: string;
 
   constructor(
     name: string,
@@ -26,6 +27,7 @@ export class User {
     messages: [any],
     rol: string,
     isVerify: boolean,
+    color: string
   ){
     this.name = name;
     this.password = password;
@@ -38,5 +40,6 @@ export class User {
     this.messages = messages;
     this.rol = rol;
     this.isVerify = isVerify;
+    this.color = color;
   }
 }

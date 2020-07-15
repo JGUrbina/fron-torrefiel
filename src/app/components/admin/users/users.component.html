@@ -1,39 +1,56 @@
 <section class="sectionUsers">
-  <div class="section-title">
-    <h3>TUS USUARIOS</h3>
-    <!-- <p>Elimina y revisa los trabajos<br> asignados de cada usuario</p> -->
-  </div>
-  <div class="search">
-    <figure class="icon">
-      <app-create-icon [class]="'color-gray'" [name]="'search'" [url]="'../../../../assets/svg_2/buscar.svg'"></app-create-icon>
-    </figure>
-    <input type="search" placeholder="Buscar">
-  </div>
-  <div class="list">
-    <div class="user__contain" *ngFor="let user of allUsers">
-      <div class="user__contain--title">
-        <figure class="icon">
-          <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg_2/perfil.svg'"></app-create-icon>
-        </figure>
-        <h4>{{user.name}}</h4>
+  <div class="description">
+    <div class="description__info">
+      <div class="section-title">
+        <h3>TUS USUARIOS</h3>
+        <!-- <p>Elimina y revisa los trabajos<br> asignados de cada usuario</p> -->
       </div>
-      <div class="user__contain--icons">
-        <figure class="icon" (click)="showUser = true">
-          <app-create-icon [class]="'color-gray bg-white button'" [name]="'only-eye'" [url]="'../../../../assets/svg_2/only-eye.svg'"></app-create-icon>
-        </figure>
+      <div class="search">
         <figure class="icon">
-          <app-create-icon [class]="'color-gray bg-white button'" [name]="'trash'" [url]="'../../../../assets/svg_2/trash.svg'"></app-create-icon>
+          <app-create-icon [class]="'color-gray'" [name]="'search'" [url]="'../../../../assets/svg_2/buscar.svg'"></app-create-icon>
         </figure>
+        <input type="search" placeholder="Buscar">
+      </div>
+              <app-add-new *ngIf="displayNewUser" class="w-100 adding-user" (closeWindow)="close()"></app-add-new>
+      
+
+      <div class="add__user">
+        <div class="user__contain" (click)="openNewUserModal()">
+          <div class="user__contain--title">
+            <figure class="icon">
+              <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg_2/perfil.svg'"></app-create-icon>
+            </figure>
+            <h4>Agregar usuario</h4>
+          </div>
+        </div>
+      </div>
+      <div class="list">
+        <div class="user__contain" *ngFor="let user of allUsers">
+          <div class="user__contain--title">
+            <figure class="icon">
+              <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg_2/perfil.svg'"></app-create-icon>
+            </figure>
+            <h4>{{user.name}}</h4>
+          </div>
+          <div class="user__contain--icons">
+            <figure class="icon" (click)="showUser = true">
+              <app-create-icon [class]="'color-gray bg-white button'" [name]="'only-eye'" [url]="'../../../../assets/svg_2/only-eye.svg'"></app-create-icon>
+            </figure>
+            <figure class="icon">
+              <app-create-icon [class]="'color-gray bg-white button'" [name]="'trash'" [url]="'../../../../assets/svg_2/trash.svg'"></app-create-icon>
+            </figure>
+          </div>
+        </div>
+        <div class="user__contain" *ngIf="!allUsers  || allUsers.length === 0">
+          <div class="user__contain--title d-flex justify-content-center text-center w-100">
+            <h4>No existen usuarios</h4>
+          </div>
+        </div>
+        <!-- <div>
+          paginacion
+        </div> -->
       </div>
     </div>
-    <div class="user__contain" *ngIf="!allUsers  || allUsers.length === 0">
-      <div class="user__contain--title d-flex justify-content-center text-center w-100">
-        <h4>No existen usuarios</h4>
-      </div>
-    </div>
-    <!-- <div>
-      paginacion
-    </div> -->
   </div>
 </section>
 

@@ -85,7 +85,7 @@
       top: -6%;
       left: 0;
 
-      .pdf, .bill, .calendar, .chat, .images, .firm, .note{
+      .pdf, .bill, .calendar, .scheduling, .chat, .images, .firm, .note{
         background-color: rgba($color: #000000, $alpha: .8);
       }
 
@@ -139,6 +139,12 @@
         position: absolute;
         bottom: 5%;
         right: 5px;
+      }
+      .scheduling {
+        width: 60%;
+        margin: 10% auto auto auto;
+        height: 70%;
+        border-radius: 6px;
       }
     }
   }

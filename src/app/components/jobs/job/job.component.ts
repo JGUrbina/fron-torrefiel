@@ -15,6 +15,7 @@ export class JobComponent implements OnInit {
 
   public nameClient: string;
   public nameWorker: string[] = [];
+  public worker: string[] = [];
 
   // views
   public DELIVERYNOTE: string = 'delivery note';
@@ -42,7 +43,9 @@ export class JobComponent implements OnInit {
 
     for (const id of ids) {
       this.userService.getUser(id).subscribe(
-        (data) => { this.nameWorker.push(data.name); },
+        (data) => { 
+          this.worker.push(data);
+        },
         (err) => {console.error('Error: ', err); }
       );
     }
