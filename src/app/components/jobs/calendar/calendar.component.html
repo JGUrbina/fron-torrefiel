@@ -14,28 +14,17 @@
         <label for="">Hora</label>
         <input type="time" placeholder="00:00" name="hour" [(ngModel)]="newService.startHours" required>
       </div>
-      <div class="addEmployee">
-        <div class="input__contain">
-          <label for=""><b>Asigna el trabajo</b></label>
-          <select class="w-100" name="workers" [(ngModel)]="newService.workers" *ngIf="allUsers">
-            <option value="">Busca tu trabajador</option>
-            <option *ngFor="let option of allUsers"  [value]="option._id">{{option.name}}</option>
-          </select>  
-          <p *ngIf="!allUsers" class="no-exist"><b>No existen trabajadores</b></p>
-        </div>
+      <div>
+        <p>Asignar trabajador(es)</p>
       </div>
-      <div ngFor="service.workers" class="addEmployee">
-        <div class="input__contain">
-          <label for=""><b>Asigna el trabajo</b></label>
-          <select class="w-100" name="workers" [(ngModel)]="newService.workers" *ngIf="allUsers">
-            <option value="">Busca tu trabajador</option>
-            <option *ngFor="let option of allUsers"  [value]="option._id">{{option.name}}</option>
-          </select>  
-          <p *ngIf="!allUsers" class="no-exist"><b>No existen trabajadores</b></p>
+      <div class="addEmployee">
+        <div class="div-checkboxes" *ngFor="let user of allUsers" [ngStyle]="{'color': user.color}">
+          <input [checked]="user._id" type="checkbox" id="{{ user._id }}">
+          <label for="{{ user._id }}"><strong>{{ user.name }}</strong></label>
         </div>
       </div>
       <div class="buttons w-50 d-flex align-items-center">
-        <button  class="buttonSave" (click)="scheduleService()">
+        <button class="buttonSave" (click)="scheduleService()">
           Agendar <br>
         </button>
       </div>

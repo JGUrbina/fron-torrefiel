@@ -92,3 +92,17 @@
     font-size: .9rem;  
   }
 }
+
+.addEmployee {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+}
+
+.div-checkboxes {
+  padding: 10px;
+
+  label {
+    margin-left: 10px;
+  }
+}

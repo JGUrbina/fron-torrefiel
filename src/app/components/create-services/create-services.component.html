@@ -238,20 +238,10 @@
       </div>
     </div>
     <aside class="containService__aside saveService flex-column">
-      <div class="addEmployee">
-        <div class="input__contain">
-          <label for=""><b>Asigna el trabajo</b></label>
-          <select class="w-100" name="workers" [(ngModel)]="newService.workers" *ngIf="allUsers">
-            <option value="">Busca tu trabajador</option>
-            <option *ngFor="let option of allUsers"  [value]="option._id">{{option.name}}</option>
-          </select>  
-          <p *ngIf="!allUsers" class="no-exist"><b>No existen trabajadores</b></p>
-        </div>
-      </div>
       <div class="mt-3">
         <div class="buttons w-50 d-flex align-items-center">
           <button  class="buttonSave" (click)="createClientAndService()">
-            Guardar y Agendar <br>
+            Guardar <br>
             <figure class="icon">
               <app-create-icon [class]="'color-gray bg-white button p-2x'" [name]="'calendar'" [url]="'../../../assets/svg_2/calendario.svg'"></app-create-icon>
             </figure>

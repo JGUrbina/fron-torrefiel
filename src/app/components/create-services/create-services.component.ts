@@ -17,7 +17,6 @@ export class CreateServicesComponent implements OnInit {
 
   public newService: Service;
   public newClient: Client;
-  public allUsers: User[];
   public allClients: Client[];
   public optionsActivities: string[];
   public optionsStatus: string[];
@@ -58,23 +57,10 @@ export class CreateServicesComponent implements OnInit {
     this.optionsStatus = this.dropDownOptions.getStatus();
     this.optionsProvince = this.dropDownOptions.getProvince();
     this.optionsMunicipality = this.dropDownOptions.getMunicipality('Castellón/Castelló');
-    this.allUsers = [];
   }
 
   ngOnInit(): void {
     this.getAllClient();
-    this.getAllUser();
-  }
-
-  getAllUser(): void{
-    this.userService.getUsers().subscribe(
-      (data) => {
-        this.allUsers = data;
-      },
-      (err) => {
-        console.error('error: \n', err);
-      }
-    );
   }
 
   getAllClient(): void{

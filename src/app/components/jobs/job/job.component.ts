@@ -35,22 +35,22 @@ export class JobComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getWorker(this.job.workers);
+    //this.getWorker(this.job.workers);
     this.getClient(this.job.client);
   }
 
-  getWorker(ids: string[]): void{
+  // getWorker(ids: string[]): void{
 
-    for (const id of ids) {
-      this.userService.getUser(id).subscribe(
-        (data) => { 
-          this.worker.push(data);
-        },
-        (err) => {console.error('Error: ', err); }
-      );
-    }
+  //   for (const id of ids) {
+  //     this.userService.getUser(id).subscribe(
+  //       (data) => { 
+  //         this.worker.push(data);
+  //       },
+  //       (err) => {console.error('Error: ', err); }
+  //     );
+  //   }
 
-  }
+  // }
 
   async getClient(id: string): Promise<any>{
     const client = await this.clientService.getClient(id);

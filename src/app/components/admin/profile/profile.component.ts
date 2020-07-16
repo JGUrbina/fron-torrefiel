@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
   private ALERTTIMESHOW: number = 3000;
 
   constructor(private userService: UserService) {
-    this.user = new User(null, null, null, null, null, null, null, null, [null], null, null);
+    this.user = new User(null, null, null, null, null, null, null, null, [null], null, null, null);
   }
 
   ngOnInit(): void {

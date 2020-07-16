@@ -4,6 +4,7 @@ import { Service } from '../../../models/service/service';
 import { User } from 'src/app/models/user/user';
 import { UserService } from 'src/app/services/user/user.service';
 
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -21,6 +22,7 @@ export class CalendarComponent implements OnInit {
   public allUsers: User[];
   public newService: Service;
   public allEvents: any;
+  public usersAssigned: any[];
 
   constructor(
     private userService: UserService
@@ -31,13 +33,13 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllUser();
-    console.log('asignados', this.getUserById(this.service.workers));
   }
 
   getUserById(idsWorkers){
     let workers = []
-    idsWorkers.forEach(id =>{
-      workers.push(this.worker.filter(worker => worker._id === id)[0].userName)
+    idsWorkers.forEach(id => {
+      const filteredUser = this.allUsers.filter(user => user._id === id)[0];
+      console.log('filtered', filteredUser.name);
     })
     return workers;
   }
@@ -59,8 +61,9 @@ export class CalendarComponent implements OnInit {
   getAllUser(): void{
     this.userService.getUsers().subscribe(
       (data) => {
-        console.log('datausers', data)
         this.allUsers = data;
+        console.log('datausers', this.allUsers)
+        this.service.workers ? this.getUserById(this.service.workers) : null;
       },
       (err) => {
         console.error('error: \n', err);
@@ -69,7 +72,7 @@ export class CalendarComponent implements OnInit {
   }
 
   scheduleService(): void{
-    
+    console.log('this', this);
   }
 
 }
