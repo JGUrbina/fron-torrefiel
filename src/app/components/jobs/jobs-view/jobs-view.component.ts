@@ -23,6 +23,7 @@ export class JobsViewComponent implements OnInit {
     this.serviceService.getServices().subscribe(
       (data) => {
         this.allJobs = data;
+        console.log('all', this.allJobs)
       },
       (err) => {
         console.error('Error: \n', err);
