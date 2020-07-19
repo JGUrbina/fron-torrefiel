@@ -1,0 +1,55 @@
+<section class="sectionCalendar">
+  <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
+    <header class="sectionCalendar__icons">
+      <figure class="icon exit" (click)="emitEvent()">
+        <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
+      </figure>
+    </header>
+    <main class="sectionCalendar__body">
+      <h4 class="sectionAdd__icons">
+        <figure class="icon">
+          <app-create-icon [class]="'color-white'" [name]="'profile'" [url]="'../../../../../assets/svg_2/perfil.svg'"></app-create-icon>
+        </figure>
+        Agregar nuevo usuario
+      </h4>
+      <form (submit)="createNewUser()">
+        <div class="input__contain">
+          <label for="">Nombre</label>
+          <input class="w-75" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Nombre" name="name" [(ngModel)]="newUser.name">
+        </div>
+        <div class="input__contain">
+          <label for="">Nombre Paterno</label>
+          <input class="w-75" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Apellido paterno" name="lastName" [(ngModel)]="newUser.lastName">
+        </div>
+        <div class="input__contain">
+          <label for="">Nombre materno</label>
+          <input class="w-75" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Apellido materno" name="motherLastName" [(ngModel)]="newUser.motherLastName">
+        </div>
+        <div class="input__contain">
+          <label for="">Nickname</label>
+          <input class="w-75" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Nombre de usuario" name="userName" [(ngModel)]="newUser.userName">
+        </div>
+        <div class="input__contain">
+          <label for="">Móvil</label>
+          <input class="w-75" type="tel" pattern="^[0-9]*$" placeholder="Teléfono" name="phone" [(ngModel)]="newUser.phone" required>
+        </div>
+        <div class="input__contain">
+          <label for="">Contraseña</label>
+          <input class="w-75" type="password" pattern="^[0-9]*[A-Za-z]$" placeholder="Contraseña" name="password" [(ngModel)]="newUser.password">
+        </div>
+        <div class="input__contain">
+          <label for="">Elige color</label>
+          <input class="w-75" type="color" pattern="#^[0-9]*[A-Za-z]$" placeholder="Color" name="color" [(ngModel)]="newUser.color">
+        </div>
+        <div class="input__contain">
+          <label for="">¿Es administrador?</label>
+          <input type="checkbox" name="rol" [(ngModel)]="newUser.rol">
+        </div>
+        <div class="mt-4 buttons d-flex justify-content-center align-items-center">
+          <button  class="buttonSave" type="submit">
+            Siguiente
+          </button>
+        </div>
+      </form>
+    </main>
+</section>

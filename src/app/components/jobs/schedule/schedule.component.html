@@ -1,0 +1,33 @@
+<section class="sectionCalendar">
+  <header class="sectionCalendar__icons">
+    <figure class="icon exit" (click)="emitEvent()">
+      <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
+    </figure>
+  </header>
+  <main class="sectionCalendar__body">
+    <form (submit)="scheduleService()">
+      <div class="input__contain dateContain">
+        <label for="" class="w-50">Fecha</label>
+        <input class="w-100" type="date" name="date" [(ngModel)]="startDate" placeholder="00/00/0000" required>
+      </div>
+      <div class="input__contain">
+        <label for="">Hora</label>
+        <input type="time" placeholder="00:00" name="hour" [(ngModel)]="startHours" required>
+      </div>
+      <div>
+        <p>Asignar trabajador(es)</p>
+      </div>
+      <div class="addEmployee">
+        <div class="div-checkboxes" *ngFor="let user of allUsers; let i = index" [ngStyle]="{'color': user.color}">
+          <input [(ngModel)]="checkeds[i]" [ngModelOptions]="{standalone: true}" type="checkbox" id="{{ user._id }}">
+          <label for="{{ user._id }}"><strong>{{ user.name }}</strong></label>
+        </div>
+      </div>
+      <div class="buttons w-50 d-flex align-items-center">
+        <button class="buttonSave" type="submit" [disabled]="!startHours || !startDate">
+          Agendar<br>
+        </button>
+      </div>
+    </form>
+  </main>
+</section>

@@ -1,0 +1,136 @@
+@import 'src/assets/scss/variables';
+
+.sectionCalendar{
+  //Aquí se le da tamaño al modal de nuevo usuario
+  height: 1000px;
+  width: 150%;
+  transform: translate(-10%, -130px);
+  background-color: rgba(0, 0, 0, .7);
+
+  &__icons{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 6px 10px;
+
+    .icon{
+      width: 31px;
+      height: 33px;
+      margin-bottom: 0;
+      margin-right: 7px;
+
+      &.exit{
+        width: 15px;
+        height: 16px;
+        border-radius: 5px;
+        background-color: white;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  &__body{
+    color: white;
+    margin: 15px;
+    margin-top: 3px;
+    height: 90%;
+    padding: 10px;
+  }
+}
+
+
+.buttons{
+  position: relative;
+  figure{
+    width: 22px;
+    height: 24px;
+    position: absolute;
+    margin: 0;
+    right: 12%;
+    top: 14%;
+  }
+
+  .buttonSave{
+    border: none;
+    padding: 7px 15px;
+    background-color: #cd2a00;
+    border-radius: 6px;
+    color: white;
+    font-size: .8rem;
+    width: 84%;
+    box-shadow: 0 2px 5px 1px #00000042;
+    outline: none;
+  }
+}
+.buttons{
+  margin-bottom: 1rem;
+  .buttonSave{
+    padding: 8px 19px 9px;
+    width: fit-content;
+    font-size: 1.5rem;
+  }
+  .buttonBefore{
+    border: none;
+    padding: 7px 15px;
+    background-color: #5b5b5f;
+    border-radius: 6px;
+    color: white;
+    font-size: 1.2rem;
+    width: fit-content;
+    box-shadow: 0 2px 5px 1px #00000042;
+    outline: none;    
+  }
+}
+.buttons{
+  margin-bottom: 1rem;
+  .buttonSave{
+    font-size: 1rem;
+    min-width: 220px;
+    margin-bottom: 1.5rem;
+  }
+  .buttonBefore{ 
+    font-size: .9rem;  
+  }
+}
+
+.input__contain {
+  font-size: .8rem;
+  width: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto 0 auto;
+  
+  input{
+    margin: 0 auto;
+  }
+
+}
+.sectionCalendar__body{
+  text-align: center;
+
+  .sectionAdd{
+    //Aquí se le da tamaño al modal de nuevo usuario
+    height: 1000px;
+    width: 150%;
+    transform: translate(-10%, -130px);
+    background-color: rgba(0, 0, 0, .7);
+  
+    &__icons{
+      display: flex;
+      padding: 6px 10px;
+  
+      .icon{
+        width: 40px;
+        height: 33px;
+        margin-bottom: 0;
+        margin-right: 7px;
+        color: #ffffff;
+      }
+    }
+  }
+
+}
