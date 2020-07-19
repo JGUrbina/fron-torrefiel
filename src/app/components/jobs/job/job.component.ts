@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Service } from '../../../models/service/service';
 import { ClientService } from 'src/app/services/client/client.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { TypeDateService } from 'src/app/services/typeDate/type-date.service';
+import { ScheduleComponent } from '../schedule/schedule.component';
+import { Client } from 'src/app/models/client/client';
 
 @Component({
   selector: 'app-job',
@@ -12,6 +14,11 @@ import { TypeDateService } from 'src/app/services/typeDate/type-date.service';
 export class JobComponent implements OnInit {
 
   @Input() public job: Service;
+  @Input() public clientData: Client;
+
+  @Output() serviceToViews: EventEmitter <Service> = new EventEmitter();
+
+  @ViewChild(ScheduleComponent ) child : ScheduleComponent ;
 
   public nameClient: string;
   public nameWorker: string[] = [];
@@ -54,13 +61,16 @@ export class JobComponent implements OnInit {
 
   async getClient(id: string): Promise<any>{
     const client = await this.clientService.getClient(id);
-    this.nameClient = client.name;
+    //this.nameClient = client.name;
+    this.clientData = client;
   }
 
   close(input: string): void{
     this.sectionMenuShow = input;
   }
-
+  receiveDataFromChild(data) {
+    this.serviceToViews.emit(data);
+}
   getDate(date: any){
     return this.typeDateService.generateDateOnly(date);
   }

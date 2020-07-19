@@ -36,4 +36,8 @@ export class ServiceService {
     return this.http.delete<object>(`${this.urlApi}/${id}`, { headers: this.headers });
   }
 
+  scheduleService(id: string, schedule: any): Observable<any> {
+    return this.http.put<object>(`${this.urlApi}/${id}`, schedule, { headers: this.headers });
+  }
+
 }

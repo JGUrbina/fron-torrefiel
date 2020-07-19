@@ -29,7 +29,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
 import { DeliveryNoteComponent } from './components/jobs/delivery-note/delivery-note.component';
 import { BillComponent } from './components/jobs/bill/bill.component';
-import { CalendarComponent } from './components/jobs/calendar/calendar.component';
+import { ScheduleComponent } from './components/jobs/schedule/schedule.component';
 import { ChatComponent } from './components/jobs/chat/chat.component';
 import { ImagesComponent } from './components/jobs/images/images.component';
 import { FirmComponent } from './components/jobs/firm/firm.component';
@@ -82,7 +82,7 @@ import { AddNewComponent } from './components/admin/users/add-new/add-new.compon
     MainComponent,
     DeliveryNoteComponent,
     BillComponent,
-    CalendarComponent,
+    ScheduleComponent,
     ChatComponent,
     ImagesComponent,
     FirmComponent,

@@ -1,5 +1,5 @@
 <div  *ngFor="let job of allJobs">
-  <app-job [job]="job"></app-job>
+  <app-job (serviceToViews)="updateJobsFromChilds($event)" [job]="job"></app-job>
 </div>
 <div class="no-data" *ngIf="!allJobs || allJobs.length === 0">
   <div class="text-center">

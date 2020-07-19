@@ -36,7 +36,7 @@ export class ClientService {
     return this.http.delete<any>(`${this.urlApi}/${id}`, { headers: this.headers });
   }
 
-  updateClient(id: string): Observable<any>{
-    return this.http.put<any>(`${this.urlApi}/update/${id}`, { headers: this.headers });
+  updateClient(id: string, client: Client): Observable<any>{
+    return this.http.put<any>(`${this.urlApi}/update/${id}`, client, { headers: this.headers });
   }
 }

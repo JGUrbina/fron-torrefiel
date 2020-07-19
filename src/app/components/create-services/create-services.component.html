@@ -9,7 +9,7 @@
           <div class="input__contain mr-4">
             <label for="">N° cliente registrado</label>
             <select class="w-100" name="searchNameClient" [(ngModel)]="searchNameClient" *ngIf="allClients">
-              <option value="">Buscalo</option>
+              <option (click)="clearClient()" value="">Buscalo</option>
               <option *ngFor="let option of allClients" (click)="searchClient(option)" [value]="option.numClient">{{option.numClient}}</option>
             </select>  
             <p *ngIf="!allClients" class="no-exist"><b>No existen Clientes</b></p>  
@@ -181,14 +181,6 @@
           <div class="input__contain dateContain">
             <label for="" class="w-50">N° de Factura</label>
             <input class="w-100" type="text" placeholder="000000" name="numBill" [(ngModel)]="newService.numBill" required>
-          </div>
-          <div class="input__contain dateContain">
-            <label for="" class="w-50">Fecha</label>
-            <input class="w-100" type="date" name="date" [(ngModel)]="newService.startDate" placeholder="00/00/0000" required>
-          </div>
-          <div class="input__contain">
-            <label for="">Hora</label>
-            <input type="time" placeholder="00:00" name="hour" [(ngModel)]="newService.startHours" required>
           </div>
           <div class="input__contain">
             <label for="" class="color-red">Urgente</label>

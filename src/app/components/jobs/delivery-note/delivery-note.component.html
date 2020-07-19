@@ -58,22 +58,22 @@
               <span><b>Fecha de emisión:</b> Valencia. 12 de marzo de 2020</span>
             </div>
             <div class="data__contain--item"><span>N° albarán:</span></div>
-            <div class="data__contain--item"><span>¿¿??</span></div>
+            <div class="data__contain--item"><span>{{ deliveryNoteData.numDeliveryNote }}</span></div>
           </div>
           <div class="data__contain">
-            <div class="data__contain--item"><span><b>Cliente:</b> ???????</span></div>
+            <div class="data__contain--item"><span><b>Cliente: </b>{{ clientData.name }}</span></div>
             <div class="data__contain--item"><span>Teléfono 1:</span></div>
-            <div class="data__contain--item"><span>¿¿??</span></div>
+            <div class="data__contain--item"><span>{{ clientData.phoneOne }}</span></div>
           </div>
           <div class="data__contain">
-            <div class="data__contain--item"><span><b>Correo electronico:</b> ??????? @gmail.com</span></div>
+            <div class="data__contain--item"><span><b>Correo electronico: </b>{{ clientData.email }}</span></div>
             <div class="data__contain--item"><span>Teléfono 2:</span></div>
-            <div class="data__contain--item"><span>¿¿??</span></div>
+            <div class="data__contain--item"><span>{{ clientData.phoneTwo }}</span></div>
           </div>
           <div class="data__contain">
-            <div class="data__contain--item"><span><b>Dirección trabajos:</b> ???????</span></div>
+            <div class="data__contain--item"><span><b>Dirección trabajos: </b>{{ deliveryNoteData.direction }}</span></div>
             <div class="data__contain--item"><span>Población 1:</span></div>
-            <div class="data__contain--item"><span>46004 - Valencia <br> Valencia</span></div>
+            <div class="data__contain--item"><span>C.P. {{ deliveryNoteData.postalCode}} - {{ deliveryNoteData.province }} <br>{{ deliveryNoteData.municipality }}</span></div>
           </div>
         </section>
         <section class="info">
@@ -87,7 +87,7 @@
               </p>
             </div>
             <div class="text">
-              <span>texto...</span>
+              <span>{{ deliveryNoteData.description }}</span>
             </div>
             <div>
               <p class="bg-purple mb-0">
@@ -95,7 +95,7 @@
               </p>
             </div>
             <div class="importe">
-              <span>texto...</span>
+              <span>{{ deliveryNoteData.amount }}</span>
             </div>
           </div>
         </section>

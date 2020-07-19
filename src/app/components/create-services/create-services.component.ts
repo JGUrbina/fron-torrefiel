@@ -25,6 +25,7 @@ export class CreateServicesComponent implements OnInit {
   public searchNameUser: string;
   public searchNameClient: string;
   public hour: any;
+  public isNewClient: boolean;
 
   public useDirectionEqual: boolean = true;
 
@@ -57,6 +58,7 @@ export class CreateServicesComponent implements OnInit {
     this.optionsStatus = this.dropDownOptions.getStatus();
     this.optionsProvince = this.dropDownOptions.getProvince();
     this.optionsMunicipality = this.dropDownOptions.getMunicipality('Castellón/Castelló');
+    this.isNewClient = true;
   }
 
   ngOnInit(): void {
@@ -67,6 +69,7 @@ export class CreateServicesComponent implements OnInit {
     this.clientService.getClients().subscribe(
       (data) => {
         this.allClients = data;
+        console.log('allclients', this.allClients);
       },
       (err) => {
         console.error('error: \n', err);
@@ -91,8 +94,15 @@ export class CreateServicesComponent implements OnInit {
     // agregar nuevo servicio al cliente
   }
 
+  clearClient(){
+    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+  }
+
   searchClient(option: any){
     const id = option._id;
+    console.log('new', this.newClient);
+    console.log('option', option)
+    this.newClient = option;
    /*  let result: Client;
     result = this.allClients.filter((client: Client) => client._id === id);
     console.log(result);
@@ -104,21 +114,45 @@ export class CreateServicesComponent implements OnInit {
     // this.idClientFinal = data.id;
 
     // si no existe lo creo y luego le asigno el trabajo
-    this.clientService.createClient(this.newClient).subscribe(
-      (data) => {
-        this.createService(data.client._id);
-      },
-      (err) => {
-        console.error('error: \n', err);
-        this.messageErrorCreate('cliente');
-        return;
-      }
-    );
+    const clientSelected = this.allClients.filter(client => client.numClient == this.newClient.numClient);
+
+
+    console.log('client', clientSelected[0]);
+
+    if(clientSelected.length > 0){
+      this.clientService.updateClient(clientSelected[0]._id, this.newClient).subscribe(
+        (data) => {
+          this.createService(data.client._id);
+        },
+        (err) => {
+          console.error('error: \n', err);
+          this.messageErrorCreate('cliente');
+          return;
+        }
+      );
+    }else{
+      this.clientService.createClient(this.newClient).subscribe(
+        (data) => {
+          this.createService(data.client._id);
+        },
+        (err) => {
+          console.error('error: \n', err);
+          this.messageErrorCreate('cliente');
+          return;
+        }
+      );
+    }
+
+    
   }
 
   createService(clientId: any): void{
+    this.newService.startDate = new Date(2000,1,1);
+    this.newService.startHours = "00:00"
+    this.newService.workers = [];
     this.serviceService.createService(this.newService, clientId).subscribe(
       (data) => {
+        console.log('data', data);
         const urlIcon = '../../../assets/svg_2/ok.svg';
         const header = 'Registro Correcto';
         const title = 'Si deseas editarlo puedes hacerlo en Administrador';
