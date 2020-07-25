@@ -3,32 +3,140 @@
     <div class="up">
       <div class="upContain">
         <span class="info code f-bold">#{{job.numService}}</span>
-        <span class="info hours">Servihogar 24 horas Valencia</span>
-        <div>
-          <label for="priority" class="info priority" [ngClass]="{'urgent': job.priority === 'true'}">
+
+        <span *ngIf="edit.bill === false" class="info code f-bold box-editing num-bill">
+          {{job.numBill}}
+          <figure (click)="edit.bill = true" class="edit-bill edit-icon description__icons--icon" [ngClass]="{'active': sectionMenuShow === FIRM}">
+            <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'firm'" [url]="'../../../assets/svg_2/firma-vector.svg'"></app-create-icon>
+          </figure>
+        </span>
+
+        <input (focusout)="submitJobBill()" class="beetween-index info code num-bill" *ngIf="edit.bill === true" [(ngModel)]="job.numBill">
+
+
+        <span *ngIf="edit.names === false" class="info hours box-editing names-box">
+          {{ job.name }} {{job.lastName}} {{job.motherLastName}}
+          <figure (click)="edit.names = true" class="edit-icon description__icons--icon" [ngClass]="{'active': sectionMenuShow === FIRM}">
+            <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'firm'" [url]="'../../../assets/svg_2/firma-vector.svg'"></app-create-icon>
+          </figure>
+        </span>
+
+        <span (focusout)="submitJobNames()" class="input-names" *ngIf="edit.names === true">
+          <input (focusout)="keep.input1 = false" (mousedown)="keep.input1 = true" [(ngModel)]="job.name" class="info hours box-editing">
+          <input (focusout)="keep.input2 = false" (mousedown)="keep.input2 = true" [(ngModel)]="job.lastName" class="info hours box-editing">
+          <input (focusout)="keep.input3 = false" (mousedown)="keep.input3 = true" [(ngModel)]="job.motherLastName" class="info hours box-editing">
+        </span>
+
+        <div class="priority-label">
+          <label (click)="submitNewPriority()" for="priority" class="priority-label priority info" [ngClass]="{'urgent': job.priority}">
             <span *ngIf="job.priority">Urgente</span>
+            <span *ngIf="!job.priority">Normal</span>
           </label>
+          
         </div>
       </div>
+
+      <!-- Se ponen clases condicionales ngClass para ajustar los z-index -->
+      <!-- 
+        Se cambia el valor de editStatus, se inicializa en false, si se cambia a true con el botón
+        de editar, entonces ya no se muestra el span con el trabajo, sino el input para modificar job.status
+     -->
+
       <div class="upContain">
-        <span class="info stage f-bold">{{job.status}}</span>
+        <span class="info box-editing stage f-bold" *ngIf="edit.status === false">
+          {{job.status}}
+          <figure (click)="edit.status = true" class="edit-icon description__icons--icon" [ngClass]="{'active': sectionMenuShow === FIRM}">
+            <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'firm'" [url]="'../../../assets/svg_2/firma-vector.svg'"></app-create-icon>
+          </figure>
+        </span>
+
+        <select (focusout)="submitJobStatus()" class="info stage f-bold beetween-index" name="status" [(ngModel)]="job.status" required *ngIf="edit.status === true">
+          <option value="">Selecciona un estado</option>
+          <option *ngFor="let option of optionsStatus" [value]="option">{{option}}</option>
+        </select>
+
+        <span class="info box-editing stage f-bold" *ngIf="edit.activities === false">
+          {{job.activities.length > 0 ? job.activities[0] : 'Sin actividad(es)'}} {{ job.activities.length > 1 ? ' ... + ' + (job.activities.length -1) : '' }}
+          <figure (click)="edit.activities = true" class="edit-icon description__icons--icon" [ngClass]="{'active': sectionMenuShow === FIRM}">
+            <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'firm'" [url]="'../../../assets/svg_2/firma-vector.svg'"></app-create-icon>
+          </figure>
+        </span>
+
+        <ng-multiselect-dropdown  
+          class="info stage f-bold beetween-index multiselect-index" 
+          (onDropDownClose)="submitJobActivities()" 
+          *ngIf="edit.activities === true"
+          [settings]="dropdownSettings"
+          [placeholder]="'Selecciona la(s) actividad(es)'"
+          [data]="dropdownList"
+          [(ngModel)]="selectedItems"
+          [ngModelOptions]="{standalone: true}"
+        >
+        </ng-multiselect-dropdown>
+
+
         <span class="info date">{{getDate(job.startDate) | date: 'dd/MM/yyyy'}} - {{job.startHours}}</span>
-        <span class="info price">{{job.amount}}€</span>
+
       </div>
-      <div class="upContain">
-        <span class="info direction">
+
+      <div *ngIf="edit.directions === false" class="upContain">
+        <span class="info direction box-editing">
           {{job.direction}} {{job.numberExternal}} - {{job.numberInternal}}, {{job.province}} - {{job.municipality}}
+          <figure (click)="edit.directions = true" class="edit-directions-icon edit-icon description__icons--icon" [ngClass]="{'active': sectionMenuShow === FIRM}">
+            <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'firm'" [url]="'../../../assets/svg_2/firma-vector.svg'"></app-create-icon>
+          </figure>
         </span>
       </div>
+
+      <span (focusout)="submitJobDirections()" class="upContain input-directions" *ngIf="edit.directions === true">
+        <input (focusout)="keep.direction1 = false" (mousedown)="keep.direction1 = true" [(ngModel)]="job.direction" class="info hours box-editing">
+        <input (focusout)="keep.direction2 = false" (mousedown)="keep.direction2 = true" [(ngModel)]="job.numberExternal" class="info hours box-editing">
+        <input (focusout)="keep.direction3 = false" (mousedown)="keep.direction3 = true" [(ngModel)]="job.numberInternal" class="info hours box-editing">
+        <input (focusout)="keep.direction4 = false" (mousedown)="keep.direction4 = true" [(ngModel)]="job.province" class="info hours box-editing">
+        <input (focusout)="keep.direction5 = false" (mousedown)="keep.direction5 = true" [(ngModel)]="job.municipality" class="info hours box-editing">
+      </span>
+
+      <div class="upContain">
+        <span *ngIf="edit.amount === false" class="info price box-editing">
+          {{job.amount}}€
+          <figure (click)="edit.amount = true" class="edit-amount-icon edit-icon description__icons--icon" [ngClass]="{'active': sectionMenuShow === FIRM}">
+            <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'firm'" [url]="'../../../assets/svg_2/firma-vector.svg'"></app-create-icon>
+          </figure>
+        </span>
+        <input click="imprimir()" (focusout)="submitJobAmount()" class="beetween-index input-amount info price" *ngIf="edit.amount === true" [(ngModel)]="job.amount">
+
+
+        <span class="info box-editing stage f-bold" *ngIf="edit.iva === false">
+          {{ job.typeIva === 10 ? 'Reducido' : 'Normal' }}
+          <figure (click)="edit.iva = true" class="edit-icon description__icons--icon" [ngClass]="{'active': sectionMenuShow === FIRM}">
+            <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'firm'" [url]="'../../../assets/svg_2/firma-vector.svg'"></app-create-icon>
+          </figure>
+        </span>
+
+        <select (focusout)="submitJobIva()" class="info stage f-bold beetween-index" name="status" [(ngModel)]="job.typeIva" required *ngIf="edit.iva === true">
+          <option value="21">Selecciona tipo de IVA</option>
+          <option value="10">Reducido</option>
+          <option value="21">Normal</option>
+        </select>
+      </div>
     </div>
-    <div class="dowm">
-      <P>
+    <div *ngIf="edit.description === false" class="dowm description-box">
+      <P class="box-editing">
         {{job.description}}
+        <figure (click)="edit.description = true" class="edit-directions-icon edit-icon description__icons--icon" [ngClass]="{'active': sectionMenuShow === FIRM}">
+          <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'firm'" [url]="'../../../assets/svg_2/firma-vector.svg'"></app-create-icon>
+        </figure>
       </P>
     </div>
-    <div class="sectionMenu">
+
+    <div *ngIf="edit.description === true" class="beetween-index">
+      <textarea class="area-description box-editing dowm" (focusout)="submitJobDescription()" [(ngModel)]="job.description"  ></textarea>
+    </div>
+
+
+    <div [ngClass]="{'conditional-section': sectionMenuShow != ''}" class="sectionMenu">
       <div class="pdf delivery-note d-flex justify-content-center" *ngIf="sectionMenuShow === DELIVERYNOTE">
-        <app-delivery-note [clientData]="clientData" [deliveryNoteData]="job" class="w-100" (closeWindow)="close($event)"></app-delivery-note>
+        <app-delivery-note [clientData]="clientData" [deliveryNoteData]="job" class="w-100"  (closeWindow)="close($event)"></app-delivery-note>
       </div>
       <div class="bill delivery-note d-flex justify-content-center" *ngIf="sectionMenuShow === BILL">
         <app-bill [clientData]="clientData" [deliveryNoteData]="job" class="w-100" (closeWindow)="close($event)"></app-bill>

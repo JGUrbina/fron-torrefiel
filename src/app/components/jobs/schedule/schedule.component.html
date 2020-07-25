@@ -20,7 +20,7 @@
       <div class="addEmployee">
         <div class="div-checkboxes" *ngFor="let user of allUsers; let i = index" [ngStyle]="{'color': user.color}">
           <input [(ngModel)]="checkeds[i]" [ngModelOptions]="{standalone: true}" type="checkbox" id="{{ user._id }}">
-          <label for="{{ user._id }}"><strong>{{ user.name }}</strong></label>
+          <label for="{{ user._id }}"><strong>{{ user.userName }}</strong></label>
         </div>
       </div>
       <div class="buttons w-50 d-flex align-items-center">

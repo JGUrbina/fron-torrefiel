@@ -385,16 +385,13 @@
   border-radius: 5px;
   width: 390px;
   position: absolute;
-  top: -2%;
+  top: -15%;
   left: 12px;
   margin: auto;
   height: 595px;
   overflow: hidden;
   padding: 30px;
   color: white;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
 
   &__header{
     display: flex;
@@ -424,6 +421,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100% !important;
+    margin-top: 30px;
 
     &--title{
       width: 100%;
@@ -443,13 +442,12 @@
       .left{
         color: #cd2a00;
         background-color: #c1c1c8;
-        width: 64%;
+        width: 100% !important;
         padding: 10px 13px;
         font-size: 0.8rem !important;
         border-radius: 4px;
         border: none;
         margin-right: 20px;
-        min-height: 90px;
 
         p{
           margin-bottom: 5px;
@@ -458,8 +456,8 @@
         .one{
           display: flex;
           justify-content: space-between;
-          align-items: center;
           flex-wrap: wrap;
+          flex-direction: column;
 
           p{
             margin: 0;
@@ -506,4 +504,38 @@
 
 .pt-6x100{
   padding-top: 6%;
+}
+
+.exit{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  right: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.urgent{
+  background-color: #cd2a00 !important;
+  color: white;
+}
+.info {
+  background-color: $color-gray;
+  padding: 12px 19px;
+  border-radius: 15px;
+  text-align: center;
+  min-height: 47px;
+}
+
+.clientAndStatus {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.priority-label {
+  position: absolute;
+  right: 0 !important;
 }

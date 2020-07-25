@@ -7,6 +7,9 @@ import { DropDownOptionsService } from '../../services/dropDownOptions/drop-down
 import { Service } from '../../models/service/service';
 import { User } from '../../models/user/user';
 import { Client } from '../../models/client/client';
+import { NgForm } from '@angular/forms';
+
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'app-create-services',
@@ -15,10 +18,15 @@ import { Client } from '../../models/client/client';
 })
 export class CreateServicesComponent implements OnInit {
 
+  //multiselect
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings: IDropdownSettings = {};
+
+
   public newService: Service;
   public newClient: Client;
   public allClients: Client[];
-  public optionsActivities: string[];
   public optionsStatus: string[];
   public optionsProvince: string[];
   public optionsMunicipality: string[];
@@ -27,7 +35,7 @@ export class CreateServicesComponent implements OnInit {
   public hour: any;
   public isNewClient: boolean;
 
-  public useDirectionEqual: boolean = true;
+  public sameDirection: boolean = true;
 
   // vistas
   public USER: string = 'user';
@@ -51,14 +59,26 @@ export class CreateServicesComponent implements OnInit {
     public router: Router,
   ) {
     // tslint:disable-next-line: max-line-length
-    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     // tslint:disable-next-line: max-line-length
     this.newClient = new Client(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-    this.optionsActivities = this.dropDownOptions.getActivities();
     this.optionsStatus = this.dropDownOptions.getStatus();
     this.optionsProvince = this.dropDownOptions.getProvince();
     this.optionsMunicipality = this.dropDownOptions.getMunicipality('Castellón/Castelló');
     this.isNewClient = true;
+    this.sameDirection = false;
+    //dropdown
+    this.dropdownList = this.dropDownOptions.getActivities();
+    this.selectedItems = [];
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 1,
+      enableCheckAll: false
+    };
   }
 
   ngOnInit(): void {
@@ -69,7 +89,7 @@ export class CreateServicesComponent implements OnInit {
     this.clientService.getClients().subscribe(
       (data) => {
         this.allClients = data;
-        console.log('allclients', this.allClients);
+        
       },
       (err) => {
         console.error('error: \n', err);
@@ -79,46 +99,22 @@ export class CreateServicesComponent implements OnInit {
 
   // if el cliente existe
   clientExisting(): void {
-    // autocompletar data :
-    /*
-      nombres
-      apellidos
-      telefono
-      correo electronico
-      provincia
-      municipio
-      direction
-      postalcode
-    */
-
-    // agregar nuevo servicio al cliente
   }
 
-  clearClient(){
-    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+  clearClient(form: NgForm){
+    form.resetForm(); 
+    this.getAllClient();
+
   }
 
   searchClient(option: any){
-    const id = option._id;
-    console.log('new', this.newClient);
-    console.log('option', option)
     this.newClient = option;
-   /*  let result: Client;
-    result = this.allClients.filter((client: Client) => client._id === id);
-    console.log(result);
-    this.newClient = result; */
+    
   }
 
   createClientAndService(): void{
-    // si existe con ese numero de cliente se actualiza
-    // this.idClientFinal = data.id;
-
-    // si no existe lo creo y luego le asigno el trabajo
     const clientSelected = this.allClients.filter(client => client.numClient == this.newClient.numClient);
-
-
     console.log('client', clientSelected[0]);
-
     if(clientSelected.length > 0){
       this.clientService.updateClient(clientSelected[0]._id, this.newClient).subscribe(
         (data) => {
@@ -142,14 +138,16 @@ export class CreateServicesComponent implements OnInit {
         }
       );
     }
-
-    
   }
 
   createService(clientId: any): void{
+    this.newService.email = this.newService.email.toLowerCase();
     this.newService.startDate = new Date(2000,1,1);
     this.newService.startHours = "00:00"
     this.newService.workers = [];
+    this.newService.activities = this.selectedItems
+    console.log('selected acts', this.selectedItems);
+    console.log('activities', this.newService.activities);
     this.serviceService.createService(this.newService, clientId).subscribe(
       (data) => {
         console.log('data', data);
@@ -167,6 +165,33 @@ export class CreateServicesComponent implements OnInit {
   }
 
   updateView(view: string): void{
+    if(this.sameDirection){
+      this.newService.name = this.newClient.name;
+      this.newService.lastName = this.newClient.lastName;
+      this.newService.motherLastName = this.newClient.motherLastName;
+      this.newService.email = this.newClient.email;
+      this.newService.phoneOne = this.newClient.phoneOne;
+      this.newService.phoneTwo = this.newClient.phoneTwo;
+      this.newService.direction = this.newClient.direction;
+      this.newService.numberExternal = this.newClient.numberExternal;
+      this.newService.numberInternal = this.newClient.numberInternal;
+      this.newService.province = this.newClient.province;
+      this.newService.municipality = this.newClient.municipality;
+      this.newService.postalCode = this.newClient.postalCode;
+    } else {
+      this.newService.name = null;
+      this.newService.lastName = null;
+      this.newService.motherLastName = null;
+      this.newService.email = null;
+      this.newService.phoneOne = null;
+      this.newService.phoneTwo = null;
+      this.newService.direction = null;
+      this.newService.numberExternal = null;
+      this.newService.numberInternal = null;
+      this.newService.province = null;
+      this.newService.municipality = null;
+      this.newService.postalCode = null;
+    }
     this.viewActual = view;
   }
 
@@ -188,6 +213,32 @@ export class CreateServicesComponent implements OnInit {
     setTimeout(() => {
       this.alertShow = false;
     }, this.ALERTTIMESHOW);
+  }
+
+  compareClient(form: NgForm){
+    //Se busca el cliente entre todos los clientes con el num ingresado en el input de cliente
+    let clientSelected = this.allClients.filter(client => client.numClient == this.newClient.numClient);
+    clientSelected.length > 0 ? this.searchClient(clientSelected[0]) : this.resetInputs() ;
+    console.log(clientSelected[0]);
+    this.getAllClient();
+  }
+
+  resetInputs(){
+    this.newClient.name = null;
+    this.newClient.lastName = null;
+    this.newClient.motherLastName = null;
+    this.newClient.nameCompany = null;
+    this.newClient.nif = null;
+    this.newClient.email = null;
+    this.newClient.phoneOne = null;
+    this.newClient.phoneTwo = null;
+    this.newClient.direction = null;
+    this.newClient.numberExternal = null;
+    this.newClient.numberInternal = null;
+    this.newClient.province = null;
+    this.newClient.municipality = null;
+    this.newClient.postalCode = null;
+
   }
 
 }

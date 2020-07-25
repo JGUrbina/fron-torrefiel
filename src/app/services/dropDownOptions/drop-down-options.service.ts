@@ -28,8 +28,7 @@ export class DropDownOptionsService {
       'Cerrajería',
       'Cortina técnica',
       'Reformas',
-      'Automatismos',
-      'Escribir opción.'
+      'Automatismos'
     ];
   }
 
@@ -40,7 +39,8 @@ export class DropDownOptionsService {
       'Visitado',
       'Pendiente de presupuesto',
       'Presupuesto entregado',
-      'Presupuesto aceptado. Pdte. de formalizar.',
+      'Presupuesto aceptado',
+      'Pendiente de formalizar',
       'Trabajo facturado',
       'Trabajo terminado',
       'Material para pedir',

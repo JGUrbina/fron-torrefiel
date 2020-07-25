@@ -10,6 +10,7 @@ import { SocketIoModule } from 'ngx-socket-io';
 import { ChartsModule } from 'ng2-charts';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { DataTablesModule } from 'angular-datatables';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 // Config
 import { SocketConfig } from './config/config';
@@ -131,7 +132,8 @@ import { AddNewComponent } from './components/admin/users/add-new/add-new.compon
     FullCalendarModule,
     ReactiveFormsModule,
     DataTablesModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [appRoutingProviders, MatIconModule],
   bootstrap: [AppComponent]

@@ -41,21 +41,12 @@ export class HeaderComponent implements OnInit {
   getAllService() {
     this.serviceService.getServices().subscribe(
       (data) => {
-        /* console.log('en funcion');
-        console.log(localStorage.getItem('services'));
-        if (localStorage.getItem('services') === null || localStorage.getItem('services') !== data){
-          console.log('en el if');
-          localStorage.setItem('services', data.toString());
-          this.setAllEvent(data);
-        } */
 
         if (this.contador === 0){
-          console.log('en contador');
           this.setAllEvent(data);
           this.contador += 1;
         }
 
-        console.log('fuera de if');
 
         this.showCalendar = !this.showCalendar;
       },
@@ -66,7 +57,6 @@ export class HeaderComponent implements OnInit {
   async setAllEvent(services: any): Promise<any>{
     if (!services) return;
 
-    console.log('ANtes del for');
 
     for (const service of services) {
 
@@ -78,10 +68,7 @@ export class HeaderComponent implements OnInit {
       };
 
       this.allEvents.push(newEvent);
-      console.log(this.allEvents);
 
     }
-
-    console.log('salio del for');
   }
 }

@@ -24,8 +24,8 @@ export class ServiceService {
     return this.http.get<any>(this.urlApi, { headers: this.headers });
   }
 
-  updateService(id: string): Observable<any> {
-    return this.http.post<object>(`${this.urlApi}/update/${id}`, {id}, { headers: this.headers });
+  updateService(id: string, job): Observable<any> {
+    return this.http.put<object>(`${this.urlApi}/update/${id}`, job, { headers: this.headers });
   }
 
   createService(service: Service, clientId: string): Observable<object>{
@@ -38,6 +38,10 @@ export class ServiceService {
 
   scheduleService(id: string, schedule: any): Observable<any> {
     return this.http.put<object>(`${this.urlApi}/${id}`, schedule, { headers: this.headers });
+  }
+
+  getWorks(id: string): Observable<any> {
+    return this.http.get<object>(`${this.urlApi}/userServices/${id}`, { headers: this.headers })
   }
 
 }

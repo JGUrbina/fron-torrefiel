@@ -39,4 +39,8 @@ export class ClientService {
   updateClient(id: string, client: Client): Observable<any>{
     return this.http.put<any>(`${this.urlApi}/update/${id}`, client, { headers: this.headers });
   }
+
+  getServices(id: string): Observable<any>{
+    return this.http.get<any>(`${this.urlApi}/${id}/services`, { headers: this.headers});
+  }
 }

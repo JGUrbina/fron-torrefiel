@@ -14,8 +14,8 @@ export class Client {
   public services: any;
 
   public direction: string;
-  public numberExternal: number;
-  public numberInternal: number;
+  public numberExternal: string;
+  public numberInternal: string;
   public province: string;
   public municipality: string;
   public postalCode: number;
@@ -31,8 +31,8 @@ export class Client {
     phoneOne: number,
     phoneTwo: number,
     direction: string,
-    numberExternal: number,
-    numberInternal: number,
+    numberExternal: string,
+    numberInternal: string,
     province: string,
     municipality: string,
     postalCode: number,

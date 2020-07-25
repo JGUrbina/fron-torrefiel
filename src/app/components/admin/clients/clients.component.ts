@@ -6,6 +6,7 @@ import { Service } from '../../../models/service/service';
 import { ServiceService } from '../../../services/service/service.service';
 import { User } from '../../../models/user/user';
 import { UserService } from '../../../services/user/user.service';
+import { TypeDateService } from 'src/app/services/typeDate/type-date.service';
 
 @Component({
   selector: 'app-clients',
@@ -14,13 +15,16 @@ import { UserService } from '../../../services/user/user.service';
 })
 export class ClientsComponent implements OnInit {
 
+  public alertShow: boolean = false;
+  public alertUrlIcon: string;
+  public alertHeader: string;
+  public alertTitle: string;
+  public alertSubtitle: string;
+  private ALERTTIMESHOW: number = 3500;
+
   public allClients: Client[];
   public allUsers: User[];
-  public allServiceOfClient: any[] = [
-    {numService: '#01', dateStart: '00/00/0000', name: 'Trabaja'},
-    {numService: '#02', dateStart: '00/00/0000', name: 'Trabaja'},
-    {numService: '#03', dateStart: '00/00/0000', name: 'Trabaja'},
-  ];
+  public allServiceOfClient: any;
 
 
   public newService: Service;
@@ -39,13 +43,14 @@ export class ClientsComponent implements OnInit {
   public EDITSERVICE: string = 'edit service';
 
   constructor(
+    private typeDateService: TypeDateService,
     private clientService: ClientService,
     private serviceService: ServiceService,
     private userService: UserService,
     private dropDownOptions: DropDownOptionsService,
   ) {
      // tslint:disable-next-line: max-line-length
-    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     // tslint:disable-next-line: max-line-length
     this.newClient = new Client(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     this.optionsActivities = this.dropDownOptions.getActivities();
@@ -56,6 +61,22 @@ export class ClientsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDataClient();
+  }
+
+  getDate(date: any){
+    return this.typeDateService.generateDateOnly(date);
+  }
+
+  showAlert(urlIcon: string, header: string, title: string, subtitle: string){
+    this.alertUrlIcon = urlIcon;
+    this.alertHeader = header;
+    this.alertTitle = title;
+    this.alertSubtitle = subtitle;
+    this.alertShow = true;
+
+    setTimeout(() => {
+      this.alertShow = false;
+    }, this.ALERTTIMESHOW);
   }
 
   getDataClient(): void{
@@ -69,9 +90,48 @@ export class ClientsComponent implements OnInit {
     );
   }
 
+  editClient(client, view: string){
+    console.log('client', client);
+    this.showOptions(view);
+    this.newClient = client;
+  }
+
   showOptions(view: string): void{
     this.show = this.OPTIONS;
     this.showView = view;
   }
 
+  showServices(client, view: string): void{
+    this.show = this.OPTIONS;
+    this.showView = view;
+    this.clientService.getServices(client._id).subscribe(
+      data => {
+        console.log('data', data);
+        this.allServiceOfClient = data.services;
+      }, err => {
+        console.log('err', err);
+      }
+    );
+  };
+
+  hideOptions(){
+    this.show = '';
+    this.showView = '';
+  }
+
+  updateClient(){
+    this.clientService.updateClient(this.newClient._id, this.newClient).subscribe(
+      data => {
+        console.log('edited!', data);
+        const urlIcon = '../../../assets/svg_2/ok.svg';
+        const header = 'Registro Correcto';
+        const title = 'Los datos del cliente se actualizaron correctamente';
+        const subtitle = '';
+        this.showAlert(urlIcon, header, title, subtitle);
+        this.hideOptions();
+      }, err => {
+        console.log('err', err);
+      }
+    )
+  }
 }

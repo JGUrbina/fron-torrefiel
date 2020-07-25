@@ -5,13 +5,7 @@
         <h3>TUS USUARIOS</h3>
         <!-- <p>Elimina y revisa los trabajos<br> asignados de cada usuario</p> -->
       </div>
-      <div class="search">
-        <figure class="icon">
-          <app-create-icon [class]="'color-gray'" [name]="'search'" [url]="'../../../../assets/svg_2/buscar.svg'"></app-create-icon>
-        </figure>
-        <input type="search" placeholder="Buscar">
-      </div>
-              <app-add-new *ngIf="displayNewUser" class="w-100 adding-user" (closeWindow)="close()"></app-add-new>
+        <app-add-new (newUserCreated)="updateUsers($event)" *ngIf="displayNewUser" class="w-100 adding-user" (closeWindow)="close()"></app-add-new>
       
 
       <div class="add__user">
@@ -30,13 +24,13 @@
             <figure class="icon">
               <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg_2/perfil.svg'"></app-create-icon>
             </figure>
-            <h4>{{user.name}}</h4>
+            <h4>{{ user.userName }}</h4>
           </div>
           <div class="user__contain--icons">
-            <figure class="icon" (click)="showUser = true">
+            <figure class="icon" (click)="openWorks(user._id)">
               <app-create-icon [class]="'color-gray bg-white button'" [name]="'only-eye'" [url]="'../../../../assets/svg_2/only-eye.svg'"></app-create-icon>
             </figure>
-            <figure class="icon">
+            <figure (click)="deleteUser(user._id)" class="icon">
               <app-create-icon [class]="'color-gray bg-white button'" [name]="'trash'" [url]="'../../../../assets/svg_2/trash.svg'"></app-create-icon>
             </figure>
           </div>
@@ -55,41 +49,34 @@
 </section>
 
 <section class="containUser" *ngIf="showUser">
+  <figure class="exit" (click)="showUser = false">
+    <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
+  </figure>
   <div class="containUser__header">
     <div class="title">
       <figure class="icon">
         <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg_2/perfil.svg'"></app-create-icon>
       </figure>
-      <h4>Jose grasmin</h4>
-    </div>
-    <div class="upAdmin">
-      Volver Administrador
+      <h4>{{ jobsOfUser.userName }}</h4>
     </div>
   </div>
   <div class="containUser__main">
-    <div class="containUser__main--title">
-      Trabajos de José
-    </div>
-    <div class="job" *ngFor="let job of jobsOfUser">
+    <div class="job" *ngFor="let job of jobsOfUser.works">
       <div class="left">
         <div class="one">
-          <p>#{{job.numClient}}</p>
-          <p>{{job.dateStart}}</p>
-        </div>
-        <div>
-          <p>{{job.name}}</p>
-        </div>
-        <div class="reAsignar">
-          <div>
-            <p>Re Asigna el trabajo</p>
-            <select name="" id="">
-              <option value="">trabajadores</option>
-            </select>
+          <div class="clientAndStatus">
+            <p><strong>Cliente: </strong>{{ job.name }} {{ job.lastName }}</p>
+            <div class="priority-label">
+              <label class="priority-label priority info" [ngClass]="{'urgent': job.priority}">
+                <span *ngIf="job.priority">Urgente</span>
+                <span *ngIf="!job.priority">Normal</span>
+              </label>
+            </div>
           </div>
+          <p><strong>Fecha: </strong>{{ getDate(job.startDate) }}</p>
+          <p><strong>Hora: </strong>{{ job.startHours }}</p>
+          <p><strong>Descripción: </strong>{{ job.description }}</p>
         </div>
-      </div>
-      <div class="button">
-        <button>Actualizar</button>
       </div>
     </div>
   </div>

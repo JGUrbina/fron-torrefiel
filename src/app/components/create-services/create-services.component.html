@@ -2,21 +2,21 @@
   <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
   
   <!-- client -->
-  <form class="p-3" *ngIf="viewActual === USER">
+  <form class="p-3" #myForm="ngForm" *ngIf="viewActual === USER">
     <div class="containService__data">
       <div class="whenService d-flex justify-content-between pb-2">
         <div class="client">
           <div class="input__contain mr-4">
             <label for="">N° cliente registrado</label>
             <select class="w-100" name="searchNameClient" [(ngModel)]="searchNameClient" *ngIf="allClients">
-              <option (click)="clearClient()" value="">Buscalo</option>
-              <option *ngFor="let option of allClients" (click)="searchClient(option)" [value]="option.numClient">{{option.numClient}}</option>
+              <option (click)="clearClient(myForm)" value="">Buscalo</option>
+              <option *ngFor="let option of allClients" (click)="searchClient(option)">{{option.numClient}}</option>
             </select>  
             <p *ngIf="!allClients" class="no-exist"><b>No existen Clientes</b></p>  
           </div>
           <div class="input__contain">
             <label for="">N° cliente nuevo</label>
-            <input class="w-75" type="text" pattern="^[0-9]*$" placeholder="Registralo" name="nameUser" #nameUser="ngModel" [(ngModel)]="newClient.numClient">
+            <input (focusout)="compareClient(myForm)" class="w-75" type="text" pattern="^[0-9]*$" placeholder="Registralo" name="nameUser" #nameUser="ngModel" [(ngModel)]="newClient.numClient">
           </div>
         </div>
       </div>
@@ -56,6 +56,7 @@
           <input type="text" minlength="7" pattern="^[0-9]*$" placeholder="000 000 000" name="numberTwo" [(ngModel)]="newClient.phoneTwo" required>
         </div>
       </div>
+      
       <div class="direccion">
         <h3 class="title">DIRECCIÓN (De quien contrata el servicio)</h3>
         <div class="direccion__contain">
@@ -74,19 +75,13 @@
             </div>
             <div class="input__contain">
               <label for="">Provincia</label>
-              <select class="w-200" name="province" [(ngModel)]="newClient.province" required>
-                <option value="">Selecciona Provincia</option>
-                <option *ngFor="let option of optionsProvince"  [value]="option">{{option}}</option>
-              </select>
+              <input class="w-200" name="province" [(ngModel)]="newClient.province" required>
             </div>
           </div>
           <div class="d-flex align-items-center flex-wrap pt-4">
             <div class="input__contain mr-12">
               <label for="">Municipio</label>
-              <select class="w-100" name="municipality" [(ngModel)]="newClient.municipality">
-                <option value="">Selecciona Municipio</option>
-                <option *ngFor="let option of optionsMunicipality" [value]="option">{{option}}</option>
-              </select>
+              <input class="w-100" name="municipalityService" [(ngModel)]="newClient.municipality">
             </div>
             <div class="input__contain code">
               <label for="">Código postal</label>
@@ -96,25 +91,60 @@
         </div>
       </div>
     </div>
-    <aside class="containService__aside">
+    <aside class="siguiente-container containService__aside">
       <div>
         <div class="buttons d-flex justify-content-center align-items-center">
           <button  class="buttonSave" (click)="updateView(SERVICEDIRECTION)">
             Siguiente
           </button>
         </div>
-        <div class="d-flex justify-content-center align-items-center flex-wrap">
-          <figure class="icon" [ngClass]="useDirectionEqual ? 'color-white' : 'color-gray'">
-            <app-create-icon [class]="'color-gray'"  [name]="'select'" [url]="'../../../assets/svg_2/select.svg'"></app-create-icon>
-          </figure>
-          <span (click)="useDirectionEqual = !useDirectionEqual" class="spanDirectionEqual">¿El cliente que registras recibirá el servicio?</span>
+        <div class="d-flex justify-content-center align-items-center">
+          <input id="input-same-client" type="checkbox" class="spanDirectionEqual" [(ngModel)]="sameDirection" [ngModelOptions]="{standalone: true}">
+          <label for="input-same-client" class="client-checkbox">¿El cliente que registras recibirá el servicio?</label>
         </div>
       </div>
     </aside>
   </form>
 
   <!-- service -->
-  <div class="d-flex justify-content-center align-items-center flex-wrap w-100 p-5" *ngIf="viewActual === SERVICEDIRECTION">
+
+  
+  <div class="d-flex  align-items-center flex-wrap w-100 p-5" *ngIf="viewActual === SERVICEDIRECTION">
+
+    <div class="containService__data direccion  ">
+      <h3 class="title">DATOS GENERALES (De quien recibe el servicio)</h3>
+      <div class="direccion__contain">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+          <div class="input__contain">
+            <label for="">Nombre (s)</label>
+            <input type="text" class="w-100" placeholder="Nombres" name="directionService" [(ngModel)]="newService.name" required>
+          </div>
+          <div class="input__contain">
+            <label for="">Apellido Paterno</label>
+            <input type="text" class="w-200" placeholder="Apellido Paterno" name="directionService" [(ngModel)]="newService.lastName" required>
+          </div>
+          <div class="input__contain">
+            <label for="">Apellido Materno</label>
+            <input type="text" class="w-200" placeholder="Apellido Materno" name="directionService" [(ngModel)]="newService.motherLastName" required>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center flex-wrap pt-4">
+          <div class="input__contain">
+            <label for="">Correo electrónico</label>
+            <input type="email" class="w-200" placeholder="correo@correo.com" name="directionService" [(ngModel)]="newService.email" required>
+          </div>
+          <div class="input__contain">
+            <label for="">Teléfono 1</label>
+            <input type="tel" placeholder="000 000 000" class="w-200" name="numExtService" [(ngModel)]="newService.phoneOne" required>
+          </div>
+          <div class="input__contain">
+            <label for="">Teléfono 2</label>
+            <input type="tel" placeholder="000 000 000" class="w-200" name="numExtService" [(ngModel)]="newService.phoneTwo" required>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="containService__data direccion">
       <h3 class="title">DIRECCIÓN (De quien recibe el servicio)</h3>
       <div class="direccion__contain">
@@ -133,19 +163,13 @@
           </div>
           <div class="input__contain">
             <label for="">Provincia</label>
-            <select class="w-200" name="provinceService" [(ngModel)]="newService.province" required>
-              <option value="">Selecciona Provincia</option>
-              <option *ngFor="let option of optionsProvince"  [value]="option">{{option}}</option>
-            </select>
+            <input class="w-200" name="provinceService" [(ngModel)]="newService.province" required>
           </div>
         </div>
         <div class="d-flex align-items-center flex-wrap pt-4">
           <div class="input__contain mr-12">
             <label for="">Municipio</label>
-            <select class="w-100" name="municipalityService" [(ngModel)]="newService.municipality">
-              <option value="">Selecciona Municipio</option>
-              <option *ngFor="let option of optionsMunicipality" [value]="option">{{option}}</option>
-            </select>
+            <input class="w-100" name="municipalityService" [(ngModel)]="newService.municipality">
           </div>
           <div class="input__contain code">
             <label for="">Código postal</label>
@@ -209,13 +233,20 @@
               <option *ngFor="let option of optionsStatus" [value]="option">{{option}}</option>
             </select>
           </div>
-          <div class="input__contain">
-            <label for="">Actividad</label>
-            <select class="w-100" name="activities" [(ngModel)]="newService.activities" required>
-              <option value="">Selecciona una o varias</option>
-              <option *ngFor="let option of optionsActivities" [value]="option">{{option}}</option>
-            </select>
+          <div class="input__contain activities">
+            <label>Actividad</label>
+            <div class="input-activities">
+              <ng-multiselect-dropdown
+                [settings]="dropdownSettings"
+                [placeholder]="'Selecciona la(s) actividad(es)'"
+                [data]="dropdownList"
+                [(ngModel)]="selectedItems"
+                [ngModelOptions]="{standalone: true}"
+              >
+              </ng-multiselect-dropdown> 
+            </div>
           </div>
+  
         </div>
         <div class="descriptionService w-100 d-flex justify-content-center pt-3">
           <div class="input__contain w-75 mr-5">
@@ -234,9 +265,6 @@
         <div class="buttons w-50 d-flex align-items-center">
           <button  class="buttonSave" (click)="createClientAndService()">
             Guardar <br>
-            <figure class="icon">
-              <app-create-icon [class]="'color-gray bg-white button p-2x'" [name]="'calendar'" [url]="'../../../assets/svg_2/calendario.svg'"></app-create-icon>
-            </figure>
           </button>
         </div>
         <div class="buttons w-50 d-flex align-items-center">

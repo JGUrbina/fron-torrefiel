@@ -8,7 +8,7 @@ export class Service {
   public description: string;
   public note: string;
   public status: string;
-  public activities: string;
+  public activities: string[];
   public priority: string;
   public amount: number;
   public typeIva: number;
@@ -23,9 +23,15 @@ export class Service {
   public postalCode: number;
   public client: any;
   public workers: any;
+  public name: string;
+  public lastName: string;
+  public motherLastName: string;
+  public email: string;
+  public phoneOne: number;
+  public phoneTwo: number;
 
   constructor(
-    activities: string,
+    activities: string[],
     amount: number,
     numService: number,
     numBill: number,
@@ -43,7 +49,13 @@ export class Service {
     province: string,
     municipality: string,
     postalCode: number,
-    typeIva: number
+    typeIva: number,
+    name: string,
+    lastName: string,
+    motherLastName: string,
+    email: string,
+    phoneOne: number,
+    phoneTwo: number,
   ){
     this.client = client;
     this.numService = numService;
@@ -64,5 +76,11 @@ export class Service {
     this.numberInternal = numberInternal;
     this.postalCode = postalCode;
     this.typeIva = typeIva;
+    this.name = name;
+    this.lastName = lastName;
+    this.motherLastName = motherLastName;
+    this.email = email;
+    this.phoneOne = phoneOne;
+    this.phoneTwo = phoneTwo;
   }
 }

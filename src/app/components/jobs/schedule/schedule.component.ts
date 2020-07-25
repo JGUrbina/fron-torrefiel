@@ -34,7 +34,7 @@ export class ScheduleComponent implements OnInit {
     private serviceService: ServiceService,
 
   ) {
-    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     this.allUsers = [];
     this.checkeds = [];
    }

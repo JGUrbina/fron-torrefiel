@@ -14,6 +14,7 @@ export class AddNewComponent implements OnInit {
   public newUser: User;
 
   @Output () closeWindow = new EventEmitter();
+  @Output () newUserCreated = new EventEmitter();
 
   // alert variables
   public alertShow: boolean = false;
@@ -43,13 +44,14 @@ export class AddNewComponent implements OnInit {
 
     this.userServices.createUser(this.newUser).subscribe(
       (data) => {
-        console.log('data', data)
+        console.log('data new user', data);
+        this.newUserCreated.emit(data);
         this.clearFormUser();
       },
       (err) => {
         this.newUser.rol = null;
-        console.error('error: \n', err);
-        this.messageErrorCreate('cliente');
+        console.error('error: \n', err.error);
+        this.messageErrorCreate(err.error);
         return;
       }
     );
@@ -59,10 +61,10 @@ export class AddNewComponent implements OnInit {
     this.newUser =new User(null, null, null, null, null, null, null, null, null, null, null, null);
   }
 
-  messageErrorCreate(where: string){
+  messageErrorCreate(message: string){
     const urlIcon = '';
-    const header = `Ha ocurrido un error ${where}`;
-    const title = 'No se a podido realizar el registro, verifique los datos.';
+    const header = `Ha ocurrido un error`;
+    const title = message;
     const subtitle = 'Intente nuevamente.';
     this.showAlert(urlIcon, header, title, subtitle);
   }
