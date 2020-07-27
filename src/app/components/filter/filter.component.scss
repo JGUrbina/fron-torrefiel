@@ -39,26 +39,15 @@
 
     .option{
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       margin: 0 13px;
 
       input, select{
-        width: 100%;
-        max-width: 165px;
         height: 35px;
         border-radius: 5px;
         border: 1px solid black;
         padding: 5px 7px;
-        font-size: .7rem;
-      }
-
-      label{
-        width: 100%;
         font-size: .8rem;
-      }
-
-      select{
-        width: 140px;
       }
     }
   }
@@ -66,4 +55,9 @@
 
 .transition{
   transform: rotate(180deg);
+}
+
+.all-inputs-filter {
+  display: flex !important;
+  justify-content: space-between !important;
 }

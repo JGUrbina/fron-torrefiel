@@ -12,6 +12,9 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { DataTablesModule } from 'angular-datatables';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
+// Search Module
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 // Config
 import { SocketConfig } from './config/config';
 
@@ -116,9 +119,10 @@ import { AddNewComponent } from './components/admin/users/add-new/add-new.compon
     MediumPieChartComponent,
     LineChartComponent,
     SearchComponent,
-    AddNewComponent
+    AddNewComponent,
   ],
   imports: [
+    Ng2SearchPipeModule,
     BrowserModule,
     NgbModule,
     HttpClientModule,

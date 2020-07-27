@@ -15,20 +15,18 @@ export class DropDownOptionsService {
     return [
       'Reclamación no conformidad',
       'Contado',
-      'Cobro mediante tarjeta SH',
       'Mantenimiento',
       'Persianas',
       'Toldos',
-      'Servieléctrico',
       'Bricohogar',
-      'Bricopersiandas',
       'Mosquiteras',
       'Ventanas',
       'Rejas',
       'Cerrajería',
       'Cortina técnica',
       'Reformas',
-      'Automatismos'
+      'Automatismos',
+      'Otros'
     ];
   }
 

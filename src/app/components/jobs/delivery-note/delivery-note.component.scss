@@ -152,10 +152,68 @@
           .text{
             min-height: 190px;
           }
+
+          .firma{
+            border: 1px solid #7f017e;
+            padding: 2px;
+            min-height: 95px;
+          }
+
+          .titulos-texto {
+            text-align: center;
+          }
+
+          .img-firma{
+            width: 300px;
+            display: block;
+            margin: auto;
+          }
         }
       }
     }
-  }
+  }  
+}
 
-  
+.div-input-email {
+  width: 100%;
+  background-color: rgba($color: #000000, $alpha: .8);
+  height: 100px;
+  margin-top: 21px;
+  border-radius: 0 0 6px 6px;
+}
+
+.form-input-email {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+
+  label {
+    color: #ffffff;
+  }
+}
+
+.div-label-input-email {
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  margin-top: 20px;
+}
+
+.button-email-albaran {
+  margin-top: 15px;
+  display: block;
+  width: 100px;
+  height: 50px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 0;
+  background-color: #CD2A00;
+  color: #ffffff;
+  box-shadow: 0px 4.90723px 4.90723px rgba(0, 0, 0, 0.15);
+}
+
+#email-albaran {
+  height: 50px;
+  padding-left: 10px;
 }

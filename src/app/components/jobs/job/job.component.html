@@ -14,7 +14,7 @@
         <input (focusout)="submitJobBill()" class="beetween-index info code num-bill" *ngIf="edit.bill === true" [(ngModel)]="job.numBill">
 
 
-        <span *ngIf="edit.names === false" class="info hours box-editing names-box">
+        <span *ngIf="edit.names === false" class="info hours box-editing">
           {{ job.name }} {{job.lastName}} {{job.motherLastName}}
           <figure (click)="edit.names = true" class="edit-icon description__icons--icon" [ngClass]="{'active': sectionMenuShow === FIRM}">
             <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'firm'" [url]="'../../../assets/svg_2/firma-vector.svg'"></app-create-icon>
@@ -55,7 +55,7 @@
           <option *ngFor="let option of optionsStatus" [value]="option">{{option}}</option>
         </select>
 
-        <span class="info box-editing stage f-bold" *ngIf="edit.activities === false">
+        <span class="info box-editing job-activities f-bold" *ngIf="edit.activities === false">
           {{job.activities.length > 0 ? job.activities[0] : 'Sin actividad(es)'}} {{ job.activities.length > 1 ? ' ... + ' + (job.activities.length -1) : '' }}
           <figure (click)="edit.activities = true" class="edit-icon description__icons--icon" [ngClass]="{'active': sectionMenuShow === FIRM}">
             <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'firm'" [url]="'../../../assets/svg_2/firma-vector.svg'"></app-create-icon>
@@ -63,7 +63,7 @@
         </span>
 
         <ng-multiselect-dropdown  
-          class="info stage f-bold beetween-index multiselect-index" 
+          class="info job-activities f-bold beetween-index multiselect-index" 
           (onDropDownClose)="submitJobActivities()" 
           *ngIf="edit.activities === true"
           [settings]="dropdownSettings"
@@ -106,15 +106,14 @@
         <input click="imprimir()" (focusout)="submitJobAmount()" class="beetween-index input-amount info price" *ngIf="edit.amount === true" [(ngModel)]="job.amount">
 
 
-        <span class="info box-editing stage f-bold" *ngIf="edit.iva === false">
+        <span class="info box-editing job-iva f-bold" *ngIf="edit.iva === false">
           {{ job.typeIva === 10 ? 'Reducido' : 'Normal' }}
           <figure (click)="edit.iva = true" class="edit-icon description__icons--icon" [ngClass]="{'active': sectionMenuShow === FIRM}">
             <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'firm'" [url]="'../../../assets/svg_2/firma-vector.svg'"></app-create-icon>
           </figure>
         </span>
 
-        <select (focusout)="submitJobIva()" class="info stage f-bold beetween-index" name="status" [(ngModel)]="job.typeIva" required *ngIf="edit.iva === true">
-          <option value="21">Selecciona tipo de IVA</option>
+        <select (focusout)="submitJobIva()" class="info job-iva f-bold beetween-index" name="status" [(ngModel)]="job.typeIva" required *ngIf="edit.iva === true">
           <option value="10">Reducido</option>
           <option value="21">Normal</option>
         </select>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { Service } from '../../../models/service/service';
 import { ServiceService } from 'src/app/services/service/service.service';
 import { JobComponent } from '../job/job.component';
@@ -9,6 +9,9 @@ import { JobComponent } from '../job/job.component';
   styleUrls: ['./jobs-view.component.scss']
 })
 export class JobsViewComponent implements OnInit {
+
+  @Input() searchFilter: string;
+  @Output() years = new EventEmitter<any>();
 
   @ViewChild(JobComponent) child: JobComponent;
 
@@ -29,8 +32,16 @@ export class JobsViewComponent implements OnInit {
   getDataService(): void{
     this.serviceService.getServices().subscribe(
       (data) => {
-        this.allJobs = data;
-        console.log('all jobs', this.allJobs)
+        const newData = [];
+        data.clients.forEach(el => {
+          delete el.createdAt;
+          delete el.updatedAt;
+          newData.push(el);
+        });
+        console.log('new', newData);
+        this.allJobs = newData;
+        console.log('all jobs', this.allJobs);
+        this.years.emit(data.years);
       },
       (err) => {
         console.error('Error: \n', err);

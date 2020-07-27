@@ -40,7 +40,13 @@
             margin-bottom: 0;
           }
           &.stage{
-            width: 53%;
+            width: 40%;
+          }
+          &.job-activities{
+            width: 55%;
+          }
+          &.job-iva{
+            width: 30%;
           }
           &.direction{
             width: 100%;
@@ -93,7 +99,7 @@
         width: 65%;
         margin: auto;
         height: 100%;
-        border-radius: 6px;
+        border-radius: 6px 6px 0 0;
       }
 
       .calendar{
@@ -282,9 +288,6 @@
   width: 250px;
 }
 
-.names-box {
-}
-
 .price {
   width: 140px;
 }
@@ -292,3 +295,4 @@
 .multiselect-index {
   z-index: 5 !important;
 }
+

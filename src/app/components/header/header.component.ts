@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
       (data) => {
 
         if (this.contador === 0){
-          this.setAllEvent(data);
+          this.setAllEvent(data.clients);
           this.contador += 1;
         }
 

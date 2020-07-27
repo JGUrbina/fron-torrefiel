@@ -26,6 +26,8 @@ export class ClientsComponent implements OnInit {
   public allUsers: User[];
   public allServiceOfClient: any;
 
+  public searchClient: string;
+
 
   public newService: Service;
   public newClient: Client;
@@ -50,7 +52,7 @@ export class ClientsComponent implements OnInit {
     private dropDownOptions: DropDownOptionsService,
   ) {
      // tslint:disable-next-line: max-line-length
-    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     // tslint:disable-next-line: max-line-length
     this.newClient = new Client(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     this.optionsActivities = this.dropDownOptions.getActivities();

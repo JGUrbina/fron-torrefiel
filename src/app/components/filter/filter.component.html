@@ -5,49 +5,37 @@
       <img src="../../../assets/svg_2/flecha-abajo.svg" alt="" [ngClass]="{'transition fadeIn': isCollapsed}">
     </button>
   </div>
-  <div class="filter__containOptions fadeInDown" *ngIf="isCollapsed">
+  <div class="filter__containOptions fadeInDown all-inputs-filter" *ngIf="isCollapsed">
     <div class="option">
-      <label for="status">Estado</label>
-      <select name="status" id="">
-        <option value="1">Selecciona el estado</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
+      <label for="">Número de servicio, cliente, palabras clave...</label>
+      <input (keyup)=emitFilter($event.target.value) type="text" placeholder="Número de servicio">
     </div>
     <div class="option">
-      <label for="">Número de servicio</label>
-      <input type="text" placeholder="Número de servicio">
+      <label for="status">Estado</label>
+      <select (change)="emitFilter($event.target.value)" name="status" id="">
+        <option value="">Todos</option>
+        <option *ngFor="let status of statusList" value="{{ status }}">{{ status }}</option>
+      </select>
     </div>
     <div class="option">
       <label for="">Actividad</label>
-      <select name="status" id="">
-        <option value="1">Selecciona Actividad</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+      <select (change)="emitFilter($event.target.value)" name="status" id="">
+        <option value="">Todas</option>
+        <option *ngFor="let activity of activitiesList" value="{{ activity }}">{{ activity }}</option>
       </select>
-    </div>
-    <div class="option">
-      <label for="">Cliente</label>
-      <input type="text" placeholder="Número de servicio">
-    </div>
-    <div class="option">
-      <label for="">Palabra clave</label>
-      <input type="text" placeholder="Busca por palabra clave">
     </div>
     <div class="option">
       <label for="">Año</label>
-      <select name="status" id="">
-        <option value="1">Año</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+      <select name="status" id="" (change)="handleYear($event.target.value)">
+        <option value="">Todos</option>
+        <option *ngFor="let year of years" value="{{year+'-'}}">{{ year }}</option>
       </select>
     </div>
-    <div class="option">
+    <div *ngIf="selectedYear.length > 0"class="option">
       <label for="">Mes</label>
-      <select name="status" id="">
-        <option value="1">Mes</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+      <select (change)="handleMonth($event.target.value)" name="status" id="">
+        <option value="">Todos</option>
+        <option *ngFor="let month of allMonths;let index=index;" value="{{ index + 1}}">{{ month }}</option>
       </select>
     </div>
   </div>

@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  public searchFilter: string;
   public showView: string;
   public JOBS: string = 'jobs';
   public CREATESERVICE: string = 'createService';
   public ADMIN: string = 'admin';
+  public years;
 
   constructor() { }
 
@@ -20,6 +22,14 @@ export class MainComponent implements OnInit {
 
   changeView(view: string): void {
     this.showView = view;
+  }
+
+  emitToJobs(filter){
+    this.searchFilter = filter;
+  }
+
+  setYears(years){
+    this.years = years;
   }
 
 }

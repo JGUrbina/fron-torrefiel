@@ -81,7 +81,7 @@
             <p><span>ALBARÁN</span></p>
           </div>
           <div>
-            <div>
+            <div class="titulos-texto">
               <p class="bg-purple mb-0">
                 Descripción de trabajos realizados
               </p>
@@ -89,7 +89,7 @@
             <div class="text">
               <span>{{ deliveryNoteData.description }}</span>
             </div>
-            <div>
+            <div class="titulos-texto">
               <p class="bg-purple mb-0">
                 <b>Importe a facturar</b> por los trabajos realizados en esta visita
               </p>
@@ -97,9 +97,26 @@
             <div class="importe">
               <span>{{ deliveryNoteData.amount }}</span>
             </div>
+            <div class="titulos-texto">
+              <p class="bg-purple mb-0">
+                Firma
+              </p>
+            </div>
+            <div class="firma">
+              <img class="img-firma" src="{{deliveryNoteData.signUrl}}" alt="Firma no encontrada">
+            </div>
           </div>
         </section>
       </main>
     </section>
+  </div>
+  <div class="div-input-email">
+    <form class="form-input-email">
+      <div class="div-label-input-email">
+        <label for="email-albaran">Escribe correo de cliente</label>
+        <input id="email-albaran" type="email" placeholder="correo@correo.com">
+      </div>
+      <button class="button-email-albaran" type="submit" >Envíar</button>
+    </form>
   </div>
 </section>

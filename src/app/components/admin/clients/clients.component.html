@@ -6,10 +6,10 @@
     <figure class="icon">
       <app-create-icon [class]="'color-gray'" [name]="'search'" [url]="'../../../../assets/svg_2/buscar.svg'"></app-create-icon>
     </figure>
-    <input type="search" placeholder="Buscar">
+    <input type="search" placeholder="Buscar" name="search" [(ngModel)]="searchClient" autocomplete="off" placeholder="Buscar un cliente">
   </div>
   <div class="list">
-    <div class="client__contain" *ngFor="let client of allClients">
+    <div class="client__contain" *ngFor="let client of allClients | filter:searchClient">
       <div class="client__contain--title">
         <h4>#{{client.numClient}}</h4>
         <p>{{ client.name }} {{ client.lastName }} {{client.motherLastName }}</p>
