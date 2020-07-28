@@ -27,8 +27,8 @@
   right: 0;
   margin: auto;
   z-index: 9;
-  width: 250px;
-  height: 150px;
+  width: 350px;
+  height: 250px;
   padding: 10px;
   border-radius: 6.5px;
   box-shadow: 0 2px 15px 1px #00000085;
@@ -38,4 +38,26 @@
 
 .fc-content{
   cursor: pointer;
+}
+
+.icon{
+  margin-right: 7px;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 2px;
+  position: absolute;
+  top: 7px;
+  right: 1%;
+
+  &.exit{
+    width: 15px;
+    height: 16px;
+    border-radius: 5px;
+    background-color: white;
+    align-items: center;
+  }
+}
+
+.fc-content {
+  white-space: normal;
 }

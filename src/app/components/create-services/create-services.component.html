@@ -8,9 +8,9 @@
         <div class="client">
           <div class="input__contain mr-4">
             <label for="">N° cliente registrado</label>
-            <select class="w-100" name="searchNameClient" [(ngModel)]="searchNameClient" *ngIf="allClients">
-              <option (click)="clearClient(myForm)" value="">Buscalo</option>
-              <option *ngFor="let option of allClients" (click)="searchClient(option)">{{option.numClient}}</option>
+            <select (change)="$event.target.value.length > 0 ? searchClient($event.target.value) : clearClient(myForm)" class="w-100" name="searchNameClient" [(ngModel)]="searchNameClient" *ngIf="allClients">
+              <option value="">Buscalo</option>
+              <option *ngFor="let option of allClients" value="{{option.numClient}}">{{option.name}}</option>
             </select>  
             <p *ngIf="!allClients" class="no-exist"><b>No existen Clientes</b></p>  
           </div>

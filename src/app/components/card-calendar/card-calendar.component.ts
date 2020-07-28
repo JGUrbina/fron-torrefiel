@@ -7,6 +7,7 @@ import timeGrigPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
 import { User } from 'src/app/models/user/user';
+import { Service } from 'src/app/models/service/service';
 
 @Component({
   selector: 'app-card-calendar',
@@ -25,9 +26,7 @@ export class CardCalendarComponent implements OnInit {
   public calendarEvents: EventInput[];
 
   public showEvent: boolean = false;
-  public user: string;
-  public client: string;
-  public description: string;
+  public selectedEvent: Service;
   public allWorkers: [User];
 
   constructor(
@@ -41,31 +40,14 @@ export class CardCalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pushInCalendar(this.events);
     this.getAllWorkers();
   }
 
-  pushInCalendar(events: any[]){
-    events.forEach(event => this.concatEvent(event));
-  }
-
-  concatEvent(input: any){
-    this.calendarEvents = this.calendarEvents.concat({
-      title: input.title,
-      start: input.start,
-      allDay: false,
-    });
-
-    if (input.data){
-      this.user = input.data.user;
-      this.client = input.title;
-      this.description = input.data.description;
-    }
-  }
-
   changeShowEvent(event){
-    const element = event.jsEvent.srcElement.innerText;
     this.showEvent = !this.showEvent;
+    const id = event.event.id;
+    const eventFiltered = this.events.filter(event => event._id === id);
+    this.selectedEvent = eventFiltered[0];
   }
 
   toggleVisible() {
@@ -74,8 +56,29 @@ export class CardCalendarComponent implements OnInit {
 
   getAllWorkers() {
     this.userService.getUsers().subscribe(
-      data => console.log('workers', data)
-    , err => console.log('err', err));
+      data => {
+        this.allWorkers = data;
+        this.showEvents();
+      }, err => console.log('err', err));
+  }
+
+  showEvents() {
+    this.allWorkers.forEach(worker => {
+      this.events.forEach(event => {
+        if(worker.works.includes(event._id)){
+          const start = event.startDate.split('T')[0];
+          let { _id: id, name: title, startHours } = event;
+          title = startHours;
+          title += ` ${worker.name}`;
+          const color = worker.color;
+          const calEvent = [{ id, start, title, color, startHours }];
+          //this.calendarEvents.push(calEvent); //no funciona así, ni con push de object :(
+          this.calendarEvents = this.calendarEvents.concat(calEvent);
+        };
+      });
+    });
+    this.calendarEvents.sort((a, b) => a.startHours.localeCompare(b.startHours));
+    console.log('eventos1', this.calendarEvents);
   }
 
 }

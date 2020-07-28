@@ -19,9 +19,12 @@
 
   <div class="show__event" *ngIf="showEvent">
     <div class="d-flex flex-column justify-content-between">
-      <p>Cliente: {{client}}</p>
-      <p>Trabajador: {{user}}</p>
-      <p>descripcion: {{description}}</p>
+      <figure class="icon exit" (click)="showEvent = false">
+        <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../assets/svg_2/cancelar.svg'"></app-create-icon>
+      </figure>
+      <p>Cliente: {{ selectedEvent.name }} {{ selectedEvent.lastName }} {{ selectedEvent.motherLastName }}</p>
+      <p>Teléfono(s): {{ selectedEvent.phoneOne }}-{{ selectedEvent.phoneOne }}</p>
+      <p>Descripcion: {{ selectedEvent.description }}</p>
     </div>
   </div>
 

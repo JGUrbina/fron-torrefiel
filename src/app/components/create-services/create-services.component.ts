@@ -108,8 +108,7 @@ export class CreateServicesComponent implements OnInit {
   }
 
   searchClient(option: any){
-    this.newClient = option;
-    
+    this.newClient = this.allClients.filter(client => client.numClient == option)[0];
   }
 
   createClientAndService(): void{
