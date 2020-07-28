@@ -17,8 +17,7 @@ export class HeaderComponent implements OnInit {
 
   public allServices: Service[];
   public allEvents: any[] = [];
-  public showCalendar: boolean = true;
-  public contador: number = 0;
+  public showCalendar: boolean = false;
 
   constructor(
     private router: Router,
@@ -30,7 +29,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllService();
   }
 
   closeSession(): void {
@@ -38,37 +36,18 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  getAllService() {
-    this.serviceService.getServices().subscribe(
-      (data) => {
-
-        if (this.contador === 0){
-          this.setAllEvent(data.clients);
-          this.contador += 1;
-        }
-
-
-        this.showCalendar = !this.showCalendar;
-      },
-      (err) => { console.error(err); }
-    );
-  }
-
-  async setAllEvent(services: any): Promise<any>{
-    if (!services) return;
-
-
-    for (const service of services) {
-
-      const client = await this.clientService.getClient(service.client);
-
-      const newEvent = {
-        title: client.name,
-        start: this.typeDateService.generateDate(service.startDate, service.startHours),
-      };
-
-      this.allEvents.push(newEvent);
-
+  toggleCalendar() {
+    if(this.showCalendar){
+      this.showCalendar = !this.showCalendar;
+    }else {
+      this.serviceService.getServices().subscribe(
+        (data) => {
+          console.log('peticion')
+          this.allEvents = data.services;
+          this.showCalendar = !this.showCalendar;
+        },
+        (err) => { console.error(err); }
+      );
     }
   }
 }

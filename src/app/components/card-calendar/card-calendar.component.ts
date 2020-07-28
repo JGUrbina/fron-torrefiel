@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user/user.service';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
@@ -5,6 +6,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGrigPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
+import { User } from 'src/app/models/user/user';
 
 @Component({
   selector: 'app-card-calendar',
@@ -26,8 +28,11 @@ export class CardCalendarComponent implements OnInit {
   public user: string;
   public client: string;
   public description: string;
+  public allWorkers: [User];
 
-  constructor() {
+  constructor(
+    private userService: UserService
+  ) {
     this.calendarVisible = true;
     this.calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
     this.calendarWeekends = true;
@@ -36,20 +41,12 @@ export class CardCalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.pushInCalendar(this.events);
-    }, 200);
+    this.pushInCalendar(this.events);
+    this.getAllWorkers();
   }
 
   pushInCalendar(events: any[]){
-    if (events. length > 1){
-      // tslint:disable-next-line: prefer-for-of
-      for (let i = 0; i < events.length; i++) {
-        const element = events[i];
-        this.concatEvent(element);
-      }
-    }
-    this.concatEvent(events);
+    events.forEach(event => this.concatEvent(event));
   }
 
   concatEvent(input: any){
@@ -75,7 +72,10 @@ export class CardCalendarComponent implements OnInit {
     this.calendarVisible = !this.calendarVisible;
   }
 
-  toggleWeekends() {
-    this.calendarWeekends = !this.calendarWeekends;
+  getAllWorkers() {
+    this.userService.getUsers().subscribe(
+      data => console.log('workers', data)
+    , err => console.log('err', err));
   }
+
 }

@@ -33,7 +33,7 @@ export class JobsViewComponent implements OnInit {
     this.serviceService.getServices().subscribe(
       (data) => {
         const newData = [];
-        data.clients.forEach(el => {
+        data.services.forEach(el => {
           delete el.createdAt;
           delete el.updatedAt;
           newData.push(el);
