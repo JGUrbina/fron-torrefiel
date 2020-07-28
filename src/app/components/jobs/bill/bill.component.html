@@ -172,4 +172,13 @@
       </tbody>
     </table>
   </div>
+  <div class="div-input-email">
+    <form class="form-input-email">
+      <div class="div-label-input-email">
+        <label for="email-albaran">Escribe correo de cliente</label>
+        <input [(ngModel)]="emailPdf" [ngModelOptions]="{standalone: true}" id="email-albaran" type="email" placeholder="correo@correo.com" name="emailPdf">
+      </div>
+      <button (click)="sendPdfToEmail()" class="button-email-albaran" type="submit" >Envíar</button>
+    </form>
+  </div>
 </section>

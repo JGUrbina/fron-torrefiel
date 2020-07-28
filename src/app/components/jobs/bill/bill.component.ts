@@ -15,17 +15,45 @@ export class BillComponent implements OnInit {
   @Input () deliveryNoteData: Service;
   @Input () clientData: Client;
 
+  public emailPdf: string;
   constructor(
     private pdfService: PdfService
-  ) { }
+  ) { 
+    this.emailPdf = '';
+  }
 
   ngOnInit(): void {
     console.log('delivery', this.deliveryNoteData)
   }
 
   downloadPdf(): void{
-    this.pdfService.onExportClick('pdf_factura_idUser', 'albaran', '');
+    this.pdfService.onExportClick('pdf_factura_idUser', 'factura', '').save();
   }
+
+  sendPdfToEmail(){
+    const pdf = this.pdfService.onExportClick('pdf_factura_idUser', 'factura', '').outputPdf('blob');
+    const email = this.emailPdf;
+
+    console.log('pdf', pdf)
+    console.log('email', email)
+
+    pdf.then(data => {
+      console.log('inpromise')
+      var pdfFormData = new FormData();
+      pdfFormData.append('pdf', data);
+      pdfFormData.append('email', email);
+      this.pdfService.sendPdf('send', pdfFormData).subscribe(
+        data => {
+          console.log(data);
+        }, 
+        err => {
+          console.log('error', err)
+        }
+      );
+    });
+    this.emailPdf = '';
+  }
+
 
   emitEvent(): void{
     this.closeWindow.emit('');
