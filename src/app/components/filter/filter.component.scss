@@ -61,3 +61,46 @@
   display: flex !important;
   justify-content: space-between !important;
 }
+
+@media (max-width: 767px){
+
+  .filter{
+
+    &__containButton{
+  
+      &--button{
+        font-size: 1.5rem;
+      }
+    }
+
+    &__containOptions{
+      display: inline !important;
+      background-color: transparent;
+      padding: 0px;
+      margin: 0px !important;
+     
+      .option{
+        margin: 0px !important;
+        position: relative;
+        z-index: 10 !important;
+        background-color: $color-gray;
+        width: 100%;
+
+        label{
+          padding-left: 10px;
+        }
+      
+        input, select{
+          height: 35px;
+          padding: 5px 7px;
+          margin-right: 10px;
+          margin-left: 10px;
+          font-size: .8rem;
+         
+        }
+      }
+     
+    }
+  }
+}
+

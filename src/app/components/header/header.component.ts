@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   public allServices: Service[];
   public allEvents: any[] = [];
   public showCalendar: boolean = false;
+  public showNotification: boolean = false;
 
   constructor(
     private router: Router,
@@ -48,6 +49,16 @@ export class HeaderComponent implements OnInit {
         },
         (err) => { console.error(err); }
       );
+    }
+  }
+
+  openNotifications() {
+    console.log('notificaciones')
+    if(this.showNotification){
+      this.showNotification = !this.showNotification;
+    }else {
+      this.showNotification = !this.showNotification;
+      
     }
   }
 }

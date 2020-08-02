@@ -6,7 +6,7 @@
     <figure class="icon">
       <app-create-icon [class]="'color-gray'" [name]="'search'" [url]="'../../../../assets/svg_2/buscar.svg'"></app-create-icon>
     </figure>
-    <input type="search" placeholder="Buscar" name="search" [(ngModel)]="searchClient" autocomplete="off" placeholder="Buscar un cliente">
+    <input type="search" placeholder="Buscar" name="search" [(ngModel)]="searchClient" autocomplete="off" placeholder="Buscar cliente">
   </div>
   <div class="list">
     <div class="client__contain" *ngFor="let client of allClients | filter:searchClient">
@@ -43,8 +43,8 @@
       <div class="whenService d-flex justify-content-between pb-2">
         <div class="client">
           <div class="input__contain">
-            <label for="">N° cliente</label>
-            <p>#{{newClient.numClient}}</p>
+            <label for="">Cliente #{{newClient.numClient}}</label>
+            <!-- <p>#{{newClient.numClient}}</p> -->
           </div>
         </div>
       </div>
@@ -72,7 +72,7 @@
           <input type="text" placeholder="A0000000" name="nif" [(ngModel)]="newClient.nif" required>
         </div>
         <div class="input__contain">
-          <label for="">Correo Electrónico</label>
+          <label for="">Correo electrónico</label>
           <input type="email" pattern="[\w0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="correo@correo.com" name="email" [(ngModel)]="newClient.email" required>
         </div>
         <div class="input__contain">
@@ -93,11 +93,11 @@
               <input type="text" class="w-200" placeholder="Dirección" name="localitation" [(ngModel)]="newClient.direction" required>
             </div>
             <div class="input__contain">
-              <label for="">Número externo</label>
+              <label for="">Núm. externo</label>
               <input type="text" class="max-width-95" placeholder="00" name="numExt" [(ngModel)]="newClient.numberExternal" required>
             </div>
             <div class="input__contain">
-              <label for="">Número interno</label>
+              <label for="">Núm. interno</label>
               <input type="text" class="max-width-95" placeholder="00" name="numInt" [(ngModel)]="newClient.numberInternal" required>
             </div>
             <div class="input__contain">
@@ -150,7 +150,7 @@
             </div>
             <p><strong>Fecha: </strong>{{ getDate(service.startDate) }}</p>
             <p><strong>Hora: </strong>{{ service.startHours }}</p>
-            <p><strong>Descripción: </strong>{{ service.description }}</p>
+            <p style="word-break: break-all;"><strong>Descripción: </strong>{{ service.description }}</p>
           </div>
         </div>
       </div>

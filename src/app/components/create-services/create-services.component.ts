@@ -217,7 +217,7 @@ export class CreateServicesComponent implements OnInit {
   compareClient(form: NgForm){
     //Se busca el cliente entre todos los clientes con el num ingresado en el input de cliente
     let clientSelected = this.allClients.filter(client => client.numClient == this.newClient.numClient);
-    clientSelected.length > 0 ? this.searchClient(clientSelected[0]) : this.resetInputs() ;
+    clientSelected.length > 0 ? this.searchClient(clientSelected[0].numClient) : this.resetInputs() ;
     console.log(clientSelected[0]);
     this.getAllClient();
   }

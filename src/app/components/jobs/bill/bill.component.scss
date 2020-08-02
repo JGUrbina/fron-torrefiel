@@ -1,6 +1,8 @@
+
+
 .sectionPdf{
   height: 100%;
-  width: 100%;
+  width: 100% !important;
 
   &__icons{
     display: flex;
@@ -15,8 +17,8 @@
       margin-right: 7px;
 
       &.exit{
-        width: 23px;
-        height: 23px;
+        width: 31px;
+        height: 33px;
         border-radius: 5px;
         background-color: white;
         overflow: hidden;
@@ -137,7 +139,7 @@
 
           .location{
             td{
-              height: 44px;
+              height: 55px;
             }
           }
         }

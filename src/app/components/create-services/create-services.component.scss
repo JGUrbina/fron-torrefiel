@@ -82,6 +82,9 @@
       .dateContain{
         width: 36%;
         margin-right: 10px;
+        input{
+          width: 70px !important;
+        }
       }
       .icon{
         width: 40px;
@@ -106,7 +109,7 @@
       height: 39px;
       border-radius: 5px;
       border: 1px solid black;
-      padding: 5px 10px;
+      padding: 5px 5px;
       padding-right: 0;
     }
 
@@ -117,7 +120,7 @@
     }
 
     .name{
-      max-width: 19%;
+     min-width: 19%;
 
       input{
         width: 100%;
@@ -141,6 +144,13 @@
       font-size: 1rem;
       color: #cd2a00;
     }
+    .direccion_div{
+      justify-content: flex-start !important;
+      .input__contain{
+        padding: 0px 20px 0px 0px;
+      }
+    }
+
 
     .max-width-95{
       max-width: 95px;
@@ -274,7 +284,36 @@
 .input-activities {
   background-color: white;
   background: white;
-  width: 250px;
+  width: 270px;
   border: 1px solid black;
   border-radius: 5px;
+  
+  .dropdown-btn{
+    padding: 0px 0px !important;
+  }
+}
+
+.datos_div{
+  .input__contain{
+    padding: 0px 20px 0px 0px;
+  }
+  input{
+    width: 75px !important;
+    margin-bottom: 15px;
+  }
+  select{
+    margin-bottom: 15px;
+    width: auto;
+  }
+
+}
+
+@media (max-width: 1200px){
+
+}
+
+@media (max-width: 780px){
+  .containService{
+    transform: translate(0%, 181px);
+  }
 }

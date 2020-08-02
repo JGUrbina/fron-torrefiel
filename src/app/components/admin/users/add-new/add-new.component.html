@@ -2,11 +2,11 @@
   <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
     <header class="sectionCalendar__icons">
       <figure class="icon exit" (click)="emitEvent()">
-        <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
-      </figure>
+        <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
+      </figure> 
     </header>
     <main class="sectionCalendar__body">
-      <h4 class="sectionAdd__icons">
+      <h4 class="sectionAdd__icons" align="center">
         <figure class="icon">
           <app-create-icon [class]="'color-white'" [name]="'profile'" [url]="'../../../../../assets/svg_2/perfil.svg'"></app-create-icon>
         </figure>
@@ -31,7 +31,7 @@
         </div>
         <div class="input__contain">
           <label for="">Móvil</label>
-          <input class="w-75" type="tel" pattern="^[0-9]*$" placeholder="Teléfono" name="phone" [(ngModel)]="newUser.phone" required>
+          <input class="w-75" type="tel" pattern="^[0-9]*$" placeholder="Móvil" name="phone" [(ngModel)]="newUser.phone" required>
         </div>
         <div class="input__contain">
           <label for="">Contraseña</label>

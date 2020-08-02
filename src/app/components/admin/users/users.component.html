@@ -10,11 +10,11 @@
 
       <div class="add__user">
         <div class="user__contain" (click)="openNewUserModal()">
-          <div class="user__contain--title">
+          <div class="user__contain--title h-auto">
             <figure class="icon">
               <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg_2/perfil.svg'"></app-create-icon>
             </figure>
-            <h4>Agregar usuario</h4>
+            <h4 class="newUser">Nuevo usuario</h4>
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@
           </div>
           <p><strong>Fecha: </strong>{{ getDate(job.startDate) }}</p>
           <p><strong>Hora: </strong>{{ job.startHours }}</p>
-          <p><strong>Descripción: </strong>{{ job.description }}</p>
+          <p style="word-break: break-all;"><strong>Descripción: </strong>{{ job.description }}</p>
         </div>
       </div>
     </div>

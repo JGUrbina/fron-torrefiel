@@ -21,9 +21,6 @@
     </div>
   </main>
   <footer class="sectionChat__footer">
-    <figure class="icon visit" (click)="changeStatusVisit()">
-      <app-create-icon [class]="'color-gray bg-white button p-0'" [name]="'visit'" [url]="'../../../../assets/svg_2/visitado-ok.svg'"></app-create-icon>
-    </figure>
     <div class="input">
       <label for="">
         <input type="text" placeholder="Mensaje" name="newMessageMe" #newMessageMe="ngModel" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()">

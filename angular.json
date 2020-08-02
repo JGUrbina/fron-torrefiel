@@ -135,5 +135,8 @@
       }
     }
   },
-  "defaultProject": "torrefiel-pwa"
+  "defaultProject": "torrefiel-pwa",
+  "cli": {
+    "analytics": "97a3e71e-5ed1-4be0-b7bd-ea392fc65214"
+  }
 }

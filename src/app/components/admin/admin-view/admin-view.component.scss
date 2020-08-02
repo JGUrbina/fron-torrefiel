@@ -93,3 +93,57 @@
     align-items: center;
   }
 }
+@media (max-width: 780px){
+  .sectionAdmin{
+    transform: translate(0%, 171px);
+    &__data{
+      text-align: center;
+    }
+  }
+  .containProfile{
+    display: inline-block !important;
+    text-align: center !important;
+  }
+  .title{
+    width: 100% !important;
+    display: inline-flex !important;
+  }
+  .data{
+    width: 75% !important;
+    margin: 2rem 0rem 0rem 0rem !important;
+    display: inline-block !important;
+    padding: 0px !important;
+    text-align: center;
+    .icon{
+      display: inline-block;
+    }
+  }
+  .summary{
+    width: 75% !important;
+    margin: 2rem 0rem 0rem 0rem !important;
+    display: inline-block !important;
+    padding: 0px !important;
+    text-align: center;
+    .icon{
+      display: inline-block;
+    }
+  }
+  h2{
+    font-size: 1.5rem !important;
+  }
+}
+
+@media (max-width: 535px){
+  h2{
+    font-size: 1.3rem !important;
+  }
+}
+
+@media (max-width: 481px){
+  .title{
+    width: 75% !important;
+  }
+  h2{
+    font-size: 1.1rem !important;
+  }
+}

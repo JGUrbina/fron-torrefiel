@@ -107,3 +107,62 @@ header{
 .fc-dayGrid-view .fc-body .fc-row {
   height: 55px !important
 }
+
+/* @media (max-width: 780px) { 
+  .contain__icons{
+    width: 150px !important;
+
+    .icon{
+      width: 37px !important;
+      height: 36px !important;
+    }
+  }
+} */
+
+@media (max-width: 416px) { 
+  .name{
+    font-size: 1.6rem !important;
+    min-width: 40%;
+  }
+  
+  header{
+    padding: 12px 20px !important;
+    justify-content: baseline;
+  }
+  .contain__icons{
+    display: inline;
+    width: auto !important;
+  }
+
+  .icon{
+    width: 27px !important;
+    height: 26px !important;
+  }
+}
+
+@media (max-width: 712px) { 
+  .name{
+    font-size: 1.8rem !important;
+    min-width: 50%;
+  }
+  
+  header{
+    padding: 12px 20px !important;
+    justify-content: baseline;
+  }
+  .contain__icons{
+    display: inline;
+    width: auto !important;
+  }
+
+  .icon{
+    margin-right: 5px;
+    width: 37px !important;
+    height: 36px !important;
+  }
+}
+
+
+
+
+

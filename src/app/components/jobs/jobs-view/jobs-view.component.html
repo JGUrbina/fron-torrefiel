@@ -2,7 +2,7 @@
   <app-job (serviceToViews)="updateJobsFromChilds($event)" [job]="job"></app-job>
 </div>
 <div class="no-data" *ngIf="!allJobs || allJobs.length === 0">
-  <div class="text-center">
+  <div class="text-center" style="float: bottom;">
     <h4>No existen trabajos</h4>
   </div>
 </div>

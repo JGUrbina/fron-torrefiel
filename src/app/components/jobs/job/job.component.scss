@@ -6,14 +6,14 @@
   background-color: $color-white;
   display: flex;
   border-radius: 16px;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
 
   &__info{
     position: relative;
     width: 89%;
 
     .up{
-      height: 47%;
       padding: 13px;
   
       &Contain{
@@ -31,26 +31,35 @@
           text-align: center;
           min-height: 47px;
           margin: 0 5px;
-  
-          &.hours{
-            width: 55%;
+
+          &.code{
+            width: 30%;
           }
-          &.priority{
-            width: 129px;
-            margin-bottom: 0;
-          }
-          &.stage{
+          &.date{
             width: 40%;
           }
-          &.job-activities{
-            width: 55%;
+          &.stage{
+            min-width: 50%;
           }
-          &.job-iva{
-            width: 30%;
+          &.hours{
+            width: 100%;
+          }
+          &.priority{
+            margin-bottom: 0;
           }
           &.direction{
             width: 100%;
           }
+          &.job-activities{
+            min-width: 50%;
+          }
+          &.urgent{
+           min-width: 140px;
+          }
+          &.priority{
+            min-width: 140px;
+           }
+
         }
       }
     }
@@ -59,10 +68,9 @@
       background-color: $color-gray;
       padding: 23px 28px;
       border-radius: 15px;
-      width: 95%;
+      width: 90%;
       margin: auto;
-      margin-top: 30px;
-      min-height: 205px;
+
   
       .descriptionService{
         margin-bottom: 3px;
@@ -84,6 +92,7 @@
     }
 
     .sectionMenu{
+      margin-top: 10px;
       position: absolute;
       width: 100%;
       height: 109%;
@@ -95,8 +104,15 @@
         background-color: rgba($color: #000000, $alpha: .8);
       }
 
-      .pdf, .bill{
-        width: 65%;
+      .bill{
+        width: 90%;
+        margin: auto;
+        height: 100%;
+        border-radius: 6px 6px 0 0;
+      }
+
+      .pdf{
+        width: 90%;
         margin: auto;
         height: 100%;
         border-radius: 6px 6px 0 0;
@@ -215,6 +231,8 @@
   justify-content: space-between;
   position: relative;
   z-index: 3;
+  min-height: 50px;
+  word-break: break-all;
 
   .edit-icon {
     position: absolute;
@@ -289,10 +307,70 @@
 }
 
 .price {
-  width: 140px;
+  min-width: 140px;
+}
+
+.job-iva{
+  min-width: 140px;
 }
 
 .multiselect-index {
   z-index: 5 !important;
 }
+
+@media (max-width: 1036px){
+  .stage{
+    min-width: 40% !important;
+  }
+  .job-iva{
+    min-width: 100px;
+  }
+  .price{
+    min-width: 100px;
+  }
+  .urgent{
+    min-width: 100px;
+  }
+  .priority-label{
+    min-width: 100px !important;
+  }
+}
+
+
+@media (max-width: 780px) { 
+  .description{
+    display: block;
+    &__info{
+      position: relative;
+      width: 100%;
+      padding-bottom: 5px;
+    }
+    &__icons{
+      flex-direction: row;
+      width: 100%;
+      border-top-right-radius: 0px;
+      border-bottom-left-radius: 16px;
+      &--icon{
+        margin-bottom: 5px;
+      }
+    }  
+  }
+}
+
+@media (max-width: 535px){
+  .description{
+    font-size: .8rem;
+  }
+  .stage{
+    min-width: 35% !important;
+  }
+  .job-iva{
+   min-width: 80px;
+  }
+  .price{
+    min-width: 80px;
+  }
+}
+
+
 

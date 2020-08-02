@@ -1,7 +1,7 @@
 @import '../../../../assets/scss/variables';
 
 %titleUser{
-  font-size: 1rem !important;
+  font-size: 1.75rem;
   color: #cd2a00;
   background-color: #c1c1c8;
   padding: 12px 20px;
@@ -14,7 +14,7 @@
   height: 70px;
 
   h4, p{
-    font-size: 1rem !important;
+    font-size: 1rem;
     margin: 0;
     margin-left: 8px;
   }
@@ -38,7 +38,7 @@
       color: #cd2a00;
       font-weight: bold;
       letter-spacing: 1px;
-      font-size: 1rem !important;
+      font-size: 1.5rem;
     }
   }
 
@@ -78,11 +78,11 @@
       margin-bottom: 2rem;
 
       &--title{
-        font-size: 1rem !important;
+        font-size: 1rem;
         color: #cd2a00;
 
         h4, p{
-          font-size: 1rem !important;
+          font-size: 1rem;
           margin: 0;
         }
       }
@@ -106,7 +106,7 @@
 .containService{
   min-height: 525px;
   position: absolute;
-  top: 14%;
+  top: 0;
   left: 0;
   z-index: 1;
   width: 100%;
@@ -219,6 +219,7 @@
       margin-bottom: 3px;
       display: block;
       color: white;
+      font-size: 2rem;
     }
 
     input, select, textarea{
@@ -236,7 +237,7 @@
     }
 
     .name{
-      max-width: 19%;
+      max-width: 5px;
 
       input{
         width: 100%;
@@ -383,17 +384,18 @@
 .services{
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
-  width: 390px;
+  overflow-y: auto;
+ /*  width: 390px; */
   position: absolute;
-  top: -15%;
   left: 12px;
+  right:12px;
   margin: auto;
   height: 595px;
   overflow: hidden;
   padding: 30px;
   color: white;
 
-  &__header{
+  &__header{ 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -538,4 +540,51 @@
 .priority-label {
   position: absolute;
   right: 0 !important;
+}
+
+@media (max-width: 780px){
+  .section-title{
+    h3{
+      font-size: 1rem !important;
+    }
+  }
+  .client__contain{
+    display: block !important;
+  }
+  p{
+    font-size: .8rem !important;
+  }
+  .sectionClient{
+    padding: 10px;
+  }
+}
+
+
+@media (max-width: 481px){
+  .services{
+     padding: 15px 15px;
+    }
+  .section-title{
+    h3{
+      font-size: .8rem !important;
+      margin-bottom: 40px;
+
+    }
+  }
+  .sectionClient{
+    padding: 5px;
+  }
+  .urgent {
+   top: -60px;
+  }
+  .left{
+    margin-bottom: 20px;
+  }
+
+}
+
+.containService__data{
+  label{
+    font-size: 1rem;
+  }
 }

@@ -16,7 +16,7 @@
       <app-create-icon [class]="'button color-gray bg-white h-color-red'" [name]="'calendar'" [url]="'../../../assets/svg_2/calendario.svg'"></app-create-icon>
       <span class="hoverIcon fadeIn">Calendario</span>
     </figure>
-    <figure class="icon">
+    <figure class="icon" (click)="openNotifications()">
       <app-create-icon [class]="'color-white'" [name]="'campana'" [url]="'../../../assets/svg_2/campana.svg'"></app-create-icon>
       <div class="d-none">
         notificaciones
@@ -34,4 +34,5 @@
       <app-card-calendar [events]="allEvents"></app-card-calendar>
     </div>
   </div>
+  
 </header>

@@ -6,24 +6,24 @@
   </header>
   <main class="sectionCalendar__body">
     <form (submit)="scheduleService()">
-      <div class="input__contain dateContain">
-        <label for="" class="w-50">Fecha</label>
-        <input class="w-100" type="date" name="date" [(ngModel)]="startDate" placeholder="00/00/0000" required>
+      <div class="input__contain dateContain margin">
+        <label for=""  >Fecha</label><br>
+        <input type="date" name="date" [(ngModel)]="startDate" placeholder="00/00/0000" required>
       </div>
-      <div class="input__contain">
-        <label for="">Hora</label>
+      <div class="input__contain margin">
+        <label for="" >Hora</label><br>
         <input type="time" placeholder="00:00" name="hour" [(ngModel)]="startHours" required>
       </div>
-      <div>
-        <p>Asignar trabajador(es)</p>
+      <div class= "margin">
+        <p >Asignar trabajador(es)</p>
       </div>
-      <div class="addEmployee">
+      <div class="addEmployee margin">
         <div class="div-checkboxes" *ngFor="let user of allUsers; let i = index" [ngStyle]="{'color': user.color}">
           <input [(ngModel)]="checkeds[i]" [ngModelOptions]="{standalone: true}" type="checkbox" id="{{ user._id }}">
           <label for="{{ user._id }}"><strong>{{ user.userName }}</strong></label>
         </div>
       </div>
-      <div class="buttons w-50 d-flex align-items-center">
+      <div class="buttons w-50 d-flex align-items-center margin">
         <button class="buttonSave" type="submit" [disabled]="!startHours || !startDate">
           Agendar<br>
         </button>

@@ -54,3 +54,37 @@
     }
   }
 }
+
+@media (max-width: 780px) { 
+
+  .main{
+      padding-top: 10px;
+    &__section{
+      width: auto;
+      min-height: 1100px !important;
+      &--buttons{ 
+        position: relative;
+        z-index: 9;
+        display: table;
+        .button{
+          display: table-cell;
+          width: 100%;
+          h1{
+            font-size: 1.5rem;
+          }
+        }
+      } 
+    }
+
+    .viewOptions{
+      position: relative;
+      z-index: 6;
+      &.jobs{
+        padding: 180px 10px 20px 10px;
+      }
+      &.admin{
+        padding: 20px 20px !important;
+      }
+    }
+  }
+}

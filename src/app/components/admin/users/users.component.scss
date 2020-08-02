@@ -1,7 +1,7 @@
 @import '../../../../assets/scss/variables';
 
 %titleUser{
-  font-size: 1rem !important;
+  font-size: 1.75rem;
   color: #cd2a00;
   background-color: #c1c1c8;
   padding: 12px 20px;
@@ -14,10 +14,12 @@
   height: 70px;
 
   h4, p{
-    font-size: 1rem !important;
+    font-size: 1rem; 
     margin: 0;
     margin-left: 8px;
   }
+
+  
 
   figure{
     width: 35px;
@@ -27,21 +29,21 @@
 }
 
 %titleAddUser{
-  font-size: 1rem !important;
+  font-size: 1rem;
   color: #cd2a00;
   background-color: #c1c1c8;
-  padding: 12px 20px;
+  padding: 5px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 6px;
   box-shadow: 0 3px 8px 3px #0000001f;
-  width: 40%;
-  height: 30px;
+  width: 50%;
+  height: 35px;
   cursor: pointer;
 
   h4, p{
-    font-size: .6rem !important;
+    font-size: 1rem !important;
     margin: 0;
     margin-left: 8px;
   }
@@ -63,7 +65,7 @@
     text-align: center;
 
     h3{
-      font-size: 1rem;
+      font-size: 1.5rem;
       color: #cd2a00;
       font-weight: bold;
       letter-spacing: 1px;
@@ -104,6 +106,12 @@
       justify-content: space-between;
       align-items: center;
       margin: 2.5rem auto;
+
+      .svg{
+        vertical-align: baseline !important;
+        width: 35px;
+        height: 40px;
+      }
 
       &--title{
         @extend %titleUser;
@@ -188,7 +196,7 @@
         font-size: 0.8rem !important;
         border-radius: 4px;
         border: none;
-        margin-right: 20px;
+    
 
         p{
           margin-bottom: 5px;
@@ -292,13 +300,13 @@
 .description{
   min-height: 465px;
   background-color: #ffffff;
-  display: flex;
+  /* display: flex; */
   border-radius: 16px;
   margin-bottom: 3rem;
 
   &__info{
     position: relative;
-    width: 89%;
+    width: 98%;
   
     .sectionMenu{
       position: absolute;
@@ -335,16 +343,12 @@
   cursor: pointer;
 }
 
-.urgent{
-  background-color: #cd2a00 !important;
-  color: white;
-}
 .info {
   background-color: $color-gray;
-  padding: 12px 19px;
-  border-radius: 15px;
+  padding: 5px 10px;
+  border-radius: 5px;
   text-align: center;
-  min-height: 47px;
+/*   min-height: 47px; */
 }
           
 .clientAndStatus {
@@ -356,5 +360,99 @@
 
 .priority-label {
   position: absolute;
-  right: 0 !important;
+  right: 0px;
+  .info{
+    background-color: white !important;
+    color: black;
+  }
+  .urgent{
+    background-color: #cd2a00 !important;
+    color: white;
+  }
+}
+
+@media(max-width: 1200px){
+  .user__contain{
+    &--title{
+      padding: 0px 0px !important;
+    }
+  }
+  .left{
+    margin-bottom: 0px;
+  }
+
+  .urgent {
+    top: -60px;
+  }
+}
+
+@media (max-width: 780px){
+  .containUser{
+    padding: 20px 10px;
+  }
+  .containUser__header{
+    .title{
+      padding: 10px 5px;
+      display: inline-block;
+      width: 100%;
+      .icon{
+        width: 100%;
+      }
+      h4{
+        text-align: center;
+        margin: 0px;
+      }
+    }
+  }
+  .section-title{
+    h3{
+      font-size: 1rem !important;
+    }
+  }
+  .sectionUsers{
+    padding: 10px;
+  }
+  .user__contain{
+    display: block !important;
+    margin: 30px 10px 0px 10px!important;
+    text-align: center;
+    &--title{
+      display: inline-block !important;
+      width: 100% !important;
+      padding: 0px 0px !important;
+      .icon{
+        margin: auto !important;
+      }
+      h4{
+        margin-left: 0px !important;
+      }
+      .list{
+        display: inline-flex;
+      }
+    }
+    &--icons{
+      display: flex;
+      width: auto !important;
+      justify-content: center !important;
+    }
+  }
+
+  .list{
+    margin-top: 30px;
+  }
+
+}
+
+@media (max-width: 481px){
+  .sectionUsers{
+    padding: 3px;
+  }
+.section-title{
+  h3{
+    font-size: .8rem !important;
+  }
+}
+.user__contain{
+  margin: 0px;
+}
 }
