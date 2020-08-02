@@ -48,8 +48,8 @@
           </div>
         </div>
       </div>
-      <div class="dataService d-flex justify-content-between pt-4 pb-2">
-        <div class="input__contain name">
+      <div class="dataService d-flex justify-flex-start pt-4 pb-2">
+        <div class="input__contain">
           <label for="">Nombre(s)</label>
           <input type="text" placeholder="Nombre" name="names" [(ngModel)]="newClient.name" required>
         </div>
@@ -61,12 +61,12 @@
           <label for="">Apellido Materno</label>
           <input type="text" placeholder="Apellido Materno" name="lastnameMother" [(ngModel)]="newClient.motherLastName" required>
         </div>
-        <div class="input__contain name">
-          <label for="">Nombre empresa</label>
+        <div class="input__contain">
+          <label for="">Empresa</label>
           <input type="text" placeholder="Nombre" name="nameCompany" [(ngModel)]="newClient.nameCompany" required>
         </div>
       </div>
-      <div class="dataService d-flex justify-content-between pt-4 pb-2">
+      <div class="dataService d-flex justify-flex-start pt-4 pb-2">
         <div class="input__contain name">
           <label for="">NIF</label>
           <input type="text" placeholder="A0000000" name="nif" [(ngModel)]="newClient.nif" required>
@@ -75,11 +75,11 @@
           <label for="">Correo electrónico</label>
           <input type="email" pattern="[\w0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="correo@correo.com" name="email" [(ngModel)]="newClient.email" required>
         </div>
-        <div class="input__contain">
+        <div class="input__contain name">
           <label for="">Teléfono 1</label>
           <input type="text" minlength="7" pattern="^[0-9]*$" placeholder="000 000 000" name="numberOne" [(ngModel)]="newClient.phoneOne" required>
         </div>
-        <div class="input__contain">
+        <div class="input__contain name">
           <label for="">Teléfono 2</label>
           <input type="text" minlength="7" pattern="^[0-9]*$" placeholder="000 000 000" name="numberTwo" [(ngModel)]="newClient.phoneTwo" required>
         </div>
@@ -87,26 +87,26 @@
       <div class="direccion">
         <h3 class="title">DIRECCIÓN (De quien contrata el servicio)</h3>
         <div class="direccion__contain">
-          <div class="d-flex justify-content-between align-items-center flex-wrap">
+          <div class="d-flex justify-flex-start align-items-center flex-wrap">
             <div class="input__contain">
               <label for="">Dirección</label>
-              <input type="text" class="w-200" placeholder="Dirección" name="localitation" [(ngModel)]="newClient.direction" required>
+              <input type="text" class="w-100" placeholder="Dirección" name="localitation" [(ngModel)]="newClient.direction" required>
             </div>
             <div class="input__contain">
-              <label for="">Núm. externo</label>
-              <input type="text" class="max-width-95" placeholder="00" name="numExt" [(ngModel)]="newClient.numberExternal" required>
+              <label for=""># Externo</label>
+              <input type="text" class="max-width-60" placeholder="00" name="numExt" [(ngModel)]="newClient.numberExternal" required>
             </div>
             <div class="input__contain">
-              <label for="">Núm. interno</label>
-              <input type="text" class="max-width-95" placeholder="00" name="numInt" [(ngModel)]="newClient.numberInternal" required>
+              <label for=""># Interno</label>
+              <input type="text" class="max-width-60" placeholder="00" name="numInt" [(ngModel)]="newClient.numberInternal" required>
             </div>
             <div class="input__contain">
               <label for="">Provincia</label>
-              <input class="w-200" name="province" [(ngModel)]="newClient.province" required>
+              <input class="w-100" name="province" [(ngModel)]="newClient.province" required>
             </div>
           </div>
-          <div class="d-flex align-items-center flex-wrap pt-4">
-            <div class="input__contain mr-12">
+          <div class="d-flex justify-flex-start align-items-center flex-wrap pt-4">
+            <div class="input__contain">
               <label for="">Municipio</label>
               <input class="w-100" name="municipality" [(ngModel)]="newClient.municipality">
             </div>

@@ -237,7 +237,7 @@
     }
 
     .name{
-      max-width: 5px;
+      max-width: 100px;
 
       input{
         width: 100%;
@@ -266,8 +266,14 @@
       max-width: 95px;
     }
 
+    .max-width-60{
+      max-width: 70px;
+    }
     .w-200{
       width: 200px;
+    }
+    .w-100{
+      width: 100px;
     }
 
     .mr-12{
@@ -542,6 +548,12 @@
   right: 0 !important;
 }
 
+.containService__data{
+  .input__contain{
+    margin-right: 25px;
+  }
+}
+
 @media (max-width: 780px){
   .section-title{
     h3{
@@ -584,6 +596,7 @@
 }
 
 .containService__data{
+
   label{
     font-size: 1rem;
   }
