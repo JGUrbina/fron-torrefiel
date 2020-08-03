@@ -109,13 +109,13 @@
       height: 39px;
       border-radius: 5px;
       border: 1px solid black;
-      padding: 5px 5px;
       padding-right: 0;
     }
 
     .input__contain{
       font-size: .8rem;
-      width: auto;
+      width: 150px;
+      margin-right: 20px;
       position: relative;
     }
 
@@ -123,12 +123,15 @@
      min-width: 19%;
 
       input{
-        width: 100%;
+        width: 150px;
       }
     }
 
     .code{
-      width: 18%;
+      input{
+          width: 90px;
+      }
+    
     }
 
     .statusService{
@@ -146,9 +149,7 @@
     }
     .direccion_div{
       justify-content: flex-start !important;
-      .input__contain{
-        padding: 0px 20px 0px 0px;
-      }
+  
     }
 
 
@@ -156,8 +157,12 @@
       max-width: 95px;
     }
 
+    .auto{
+     width: 80px !important;
+    }
+
     .w-200{
-      width: 200px;
+      width: 150px;
     }
 
     .mr-12{
@@ -244,7 +249,8 @@
         overflow: inherit !important;
         padding: 0 !important;
         padding-bottom: 5px !important;
-        margin-top: 5px !important;
+        margin-top: 2.5px !important;
+        margin-bottom: 2.5px !important;
       }
     }
   }
@@ -255,6 +261,11 @@
 
   .pt-6x100{
     padding-top: 6%;
+    .input__contain{
+       width: auto !important;
+       margin-bottom: 15px;
+    }
+
   }
 }
 
@@ -294,26 +305,52 @@
 }
 
 .datos_div{
-  .input__contain{
-    padding: 0px 20px 0px 0px;
-  }
+  
   input{
     width: 75px !important;
-    margin-bottom: 15px;
   }
   select{
-    margin-bottom: 15px;
     width: auto;
   }
 
 }
 
+.siguiente-container{
+  transform: translate(10px, 120px);
+}
+
 @media (max-width: 1200px){
+  input{
+    margin: 0px 5px 0px 0px !important;
+    width: 90% !important;
+  }
+  #input-same-client{
+    width: 25px !important;
+  }
+ 
 
 }
 
-@media (max-width: 780px){
+@media (max-width: 1024px){
+  input{
+    width: 90px;
+  }
+  #input-same-client{
+    width: 25px !important;
+  }
+ 
+}
+
+@media (max-width: 1011px){
+ 
+
+}
+
+@media (max-width: 780px) { 
+  .dataService{ 
+    display:  block !important;
+  }
   .containService{
-    transform: translate(0%, 181px);
+    transform: translate(0px, 171px);
   }
 }

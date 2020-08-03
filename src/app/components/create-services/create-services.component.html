@@ -20,8 +20,8 @@
           </div>
         </div>
       </div>
-      <div class="dataService d-flex justify-content-between pt-4 pb-2">
-        <div class="input__contain name">
+      <div class="dataService d-flex  pt-4 pb-2">
+        <div class="input__contain">
           <label for="">Nombre(s)</label>
           <input type="text" placeholder="Nombre" name="names" [(ngModel)]="newClient.name" required>
         </div>
@@ -33,13 +33,13 @@
           <label for="">Apellido Materno</label>
           <input type="text" placeholder="Apellido Materno" name="lastnameMother" [(ngModel)]="newClient.motherLastName" required>
         </div>
-        <div class="input__contain name">
+        <div class="input__contain">
           <label for="">Empresa</label>
           <input type="text" placeholder="Nombre" name="nameCompany" [(ngModel)]="newClient.nameCompany" required>
         </div>
       </div>
       <div class="dataService d-flex justify-content-between pt-4 pb-2">
-        <div class="input__contain name">
+        <div class="input__contain">
           <label for="">NIF</label>
           <input type="text" placeholder="A0000000" name="nif" [(ngModel)]="newClient.nif" required>
         </div>
@@ -60,18 +60,18 @@
       <div class="direccion">
         <h3 class="title">DIRECCIÓN (De quien contrata el servicio)</h3>
         <div class="direccion__contain">
-          <div class="d-flex justify-content-between align-items-center flex-wrap direccion_div">
+          <div class="d-flex justify-content-between align-items-center direccion_div">
             <div class="input__contain">
               <label for="">Dirección</label>
               <input type="text" class="w-200" placeholder="Dirección" name="localitation" [(ngModel)]="newClient.direction" required>
             </div>
-            <div class="input__contain">
+            <div class="input__contain auto">
               <label for="">N° externo</label>
-              <input type="text" class="max-width-95" placeholder="00" name="numExt" [(ngModel)]="newClient.numberExternal" required>
+              <input type="text" class="auto" placeholder="00" name="numExt" [(ngModel)]="newClient.numberExternal" required>
             </div>
-            <div class="input__contain">
+            <div class="input__contain auto">
               <label for="">N° interno</label>
-              <input type="text" class="max-width-95" placeholder="00" name="numInt" [(ngModel)]="newClient.numberInternal" required>
+              <input type="text" class="auto" placeholder="00" name="numInt" [(ngModel)]="newClient.numberInternal" required>
             </div>
           </div>
           <div class="d-flex align-items-center flex-wrap pt-4 direccion_div">
@@ -114,7 +114,7 @@
     <div class="containService__data direccion  ">
       <h3 class="title">DATOS GENERALES (De quien recibe el servicio)</h3>
       <div class="direccion__contain">
-        <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <div class="d-flex align-items-center flex-wrap">
           <div class="input__contain">
             <label for="">Nombre (s)</label>
             <input type="text" class="w-80" placeholder="Nombres" name="directionService" [(ngModel)]="newService.name" required>
@@ -128,7 +128,7 @@
             <input type="text" class="w-80" placeholder="Apellido Materno" name="directionService" [(ngModel)]="newService.motherLastName" required>
           </div>
         </div>
-        <div class="d-flex justify-content-between align-items-center flex-wrap pt-4">
+        <div class="d-flex  align-items-center flex-wrap pt-4">
           <div class="input__contain">
             <label for="">Correo electrónico</label>
             <input type="email" class="w-80" placeholder="correo@correo.com" name="directionService" [(ngModel)]="newService.email" required>
@@ -153,9 +153,9 @@
             <label for="">Dirección</label>
             <input type="text" class="w-200" placeholder="Dirección" name="directionService" [(ngModel)]="newService.direction" required>
           </div>
-          <div class="input__contain">
+          <div class="input__contain auto">
             <label for="">N° externo</label>
-            <input type="text" placeholder="00" class="max-width-95" name="numExtService" [(ngModel)]="newService.numberExternal" required>
+            <input type="text" placeholder="00" class="auto" name="numExtService" [(ngModel)]="newService.numberExternal" required>
           </div>
           <div class="input__contain">
             <label for="">N° interno</label>
@@ -250,7 +250,7 @@
           </div>
   
         </div>
-        <div class="descriptionService w-100 d-flex justify-content-center">
+        <div class="descriptionService d-flex justify-content-center">
           <div class="input__contain w-75 mr-5">
             <label for="">Descripción</label>
             <textarea class="w-100 h-85" name="description" [(ngModel)]="newService.description" cols="30" rows="10" placeholder="Descripción del trabajo sin Nota interna" required></textarea>

@@ -523,11 +523,18 @@
   padding: 0;
   cursor: pointer;
 }
-
-.urgent{
-  background-color: #cd2a00 !important;
-  color: white;
+.priority-label{
+  
+  .info{
+    background-color: white !important;
+    color: black;
+  }
+  .urgent{
+    background-color: #cd2a00 !important;
+    color: white;
+  }
 }
+
 .info {
   background-color: $color-gray;
   padding: 12px 19px;
