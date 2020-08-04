@@ -53,6 +53,11 @@ export class BillComponent implements OnInit {
     });
     this.emailPdf = '';
   }
+  
+  print(){
+  
+   window.print();
+  }
 
 
   emitEvent(): void{

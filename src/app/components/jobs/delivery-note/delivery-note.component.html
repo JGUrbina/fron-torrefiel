@@ -55,7 +55,7 @@
         <section class="data">
           <div class="data__contain">
             <div class="data__contain--item">
-              <span><b>Fecha de emisión:</b> Valencia. 12 de marzo de 2020</span>
+              <span><b>Fecha de emisión: </b> {{deliveryNoteData.startDate.split('T')[0]}}</span>
             </div>
             <div class="data__contain--item"><span>N° albarán:</span></div>
             <div class="data__contain--item"><span>{{ deliveryNoteData.numDeliveryNote }}</span></div>
@@ -71,9 +71,9 @@
             <div class="data__contain--item"><span>{{ deliveryNoteData.phoneTwo }}</span></div>
           </div>
           <div class="data__contain">
-            <div class="data__contain--item"><span><b>Dirección trabajos: </b>{{ deliveryNoteData.direction }}</span></div>
-            <div class="data__contain--item"><span>Población 1:</span></div>
-            <div class="data__contain--item"><span>C.P. {{ deliveryNoteData.postalCode}} - {{ deliveryNoteData.province }} <br>{{ deliveryNoteData.municipality }}</span></div>
+            <div class="data__contain--item"><span><b>Dirección trabajos: </b>{{ deliveryNoteData.direction }} #{{ deliveryNoteData.numberExternal }}</span></div>
+            <div class="data__contain--item"><span>Población:  {{ deliveryNoteData.province }} <br>{{ deliveryNoteData.municipality }}</span></div>
+            <div class="data__contain--item"><span>C.P. {{ deliveryNoteData.postalCode}}</span></div>
           </div>
         </section>
         <section class="info">
@@ -103,7 +103,7 @@
               </p>
             </div>
             <div class="firma">
-              <figure class="logo"><img width="300px" src="{{deliveryNoteData.signUrl}}" alt="Torre fiel"></figure>
+              <figure class="logo"><img width="300px" src="{{deliveryNoteData.signUrl}}" ></figure>
             </div>
           </div>
         </section>

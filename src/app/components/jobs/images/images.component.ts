@@ -34,7 +34,9 @@ export class ImagesComponent implements OnInit {
 
   downloadImage(url: string, title: string, message: string): void{
     console.log(url, title, message);
+  
 
+    
     /* const downloading = this.downloads.download({
       url,
       filename: `${title}.jpg`,

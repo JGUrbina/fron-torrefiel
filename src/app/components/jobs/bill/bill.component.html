@@ -3,7 +3,7 @@
     <figure class="icon" (click)="downloadPdf()">
       <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg_2/descargar.svg'"></app-create-icon>
     </figure>
-    <figure class="icon">
+    <figure class="icon" (click)="print()">
       <app-create-icon [class]="'color-gray bg-white button'" [name]="'print'" [url]="'../../../../assets/svg_2/impresora.svg'"></app-create-icon>
     </figure>
     <figure class="icon exit" (click)="emitEvent()">
@@ -71,9 +71,9 @@
               <tbody>
                 <tr>
                   <td>
-                    <span><b>Fecha de emisión:</b> Valencia. 12 de marzo de 2020</span>
+                    <span><b>Fecha de emisión: </b> {{deliveryNoteData.startDate.split('T')[0]}}</span>
                   </td>
-                  <td><span>N° albarán:</span></td>
+                  <td><span>N° factura:</span></td>
                   <td><span>{{ deliveryNoteData.numDeliveryNote }}</span></td>
                 </tr>
                 <tr>
@@ -88,14 +88,14 @@
                     <span><b>Correo electronico: </b>{{ clientData.email }} </span>
                   </td>
                   <td><span>Teléfono 2:</span></td>
-                  <td><span>{{ clientData.phoneTwo }}</span></td>
+                  <td><span>{{ clientData.phoneTwo? clientData.phoneTwo : "_" }}</span></td>
                 </tr>
                 <tr class="location">
                   <td>
-                    <span><b>Dirección trabajos: </b>{{ deliveryNoteData.direction }}</span>
+                    <span><b>Dirección trabajos: </b>{{ deliveryNoteData.direction }} #{{ deliveryNoteData.numberExternal }}</span>
                   </td>
-                  <td><span>Población 1:</span></td>
-                  <td><span>C.P. {{ deliveryNoteData.postalCode}} - {{ deliveryNoteData.province }} <br>{{ deliveryNoteData.municipality }}</span></td>
+                  <td><span>Población:  {{ deliveryNoteData.province }} <br>{{ deliveryNoteData.municipality }}</span></td>
+                  <td><span>C.P. {{ deliveryNoteData.postalCode}} </span></td>
                 </tr>
               </tbody>
             </table>
@@ -123,13 +123,13 @@
                       <span>1</span>
                     </td>
                     <td>
-                      <span>Destalle del Producto</span>
+                      <span>Detalle del Producto</span>
                     </td>
                     <td class="text-center">
-                      <span>289,67€</span>
+                      <span>{{deliveryNoteData.amount}}€</span>
                     </td>
                     <td class="text-center">
-                      <span>289,67€</span>
+                      <span>{{deliveryNoteData.amount}}€</span>
                     </td>
                   </tr>
                   <tr class="total b-bottom">
@@ -140,18 +140,18 @@
                     <td class="bg-yellow b-left b-right d-flex justify-content-center">
                       <span>Base imp.:</span>
                     </td>
-                    <td class="bg-white d-flex justify-content-center">
-                      <span>289,67€</span>
+                    <td class="bg-white d-flex costo">
+                      <span>{{deliveryNoteData.amount }}€</span>
                     </td>
                   </tr>
                   <tr>
                     <td></td>
                     <td></td>
                     <td class="bg-yellow b-left b-right b-bottom d-flex justify-content-center">
-                      <span>21% IVA:</span>
+                      <span>{{deliveryNoteData.typeIva }}% IVA:</span>
                     </td>
-                    <td class="bg-white b-bottom d-flex justify-content-center">
-                      <span>60,83€</span>
+                    <td class="bg-white b-bottom d-flex costo">
+                      <span>{{(deliveryNoteData.amount * deliveryNoteData.typeIva /100)}}€</span>
                     </td>
                   </tr>
                   <tr>
@@ -160,8 +160,8 @@
                     <td class="bg-yellow b-left b-right justify-content-center">
                       <span>TOTAL:</span>
                     </td>
-                    <td class="bg-purple justify-content-center">
-                      <span>350,50€</span>
+                    <td class="bg-purple costo">
+                      <span>{{deliveryNoteData.amount + (deliveryNoteData.amount * deliveryNoteData.typeIva /100)}}€ </span>
                     </td>
                   </tr>
                 </tbody>

@@ -11,7 +11,7 @@
   <div class="list">
     <div class="client__contain" *ngFor="let client of allClients | filter:searchClient">
       <div class="client__contain--title">
-        <h4>#{{client.numClient}}</h4>
+        <h4>N° {{client.numClient}}</h4>
         <p>{{ client.name }} {{ client.lastName }} {{client.motherLastName }}</p>
         <p>{{client.createdAt | date}}</p>
       </div>
@@ -43,7 +43,7 @@
       <div class="whenService d-flex justify-content-between pb-2">
         <div class="client">
           <div class="input__contain">
-            <label for="">Cliente #{{newClient.numClient}}</label>
+            <label for="">Cliente N°{{newClient.numClient}}</label>
             <!-- <p>#{{newClient.numClient}}</p> -->
           </div>
         </div>
@@ -93,11 +93,11 @@
               <input type="text" class="w-100" placeholder="Dirección" name="localitation" [(ngModel)]="newClient.direction" required>
             </div>
             <div class="input__contain">
-              <label for=""># Externo</label>
+              <label for="">N° Externo</label>
               <input type="text" class="auto" placeholder="00" name="numExt" [(ngModel)]="newClient.numberExternal" required>
             </div>
             <div class="input__contain">
-              <label for=""># Interno</label>
+              <label for="">N° Interno</label>
               <input type="text" class="max-width-60" placeholder="00" name="numInt" [(ngModel)]="newClient.numberInternal" required>
             </div>
             <div class="input__contain">

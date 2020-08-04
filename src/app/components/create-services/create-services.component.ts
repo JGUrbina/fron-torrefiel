@@ -196,9 +196,9 @@ export class CreateServicesComponent implements OnInit {
 
   messageErrorCreate(where: string){
     const urlIcon = '';
-    const header = `Ha ocurrido un error ${where}`;
-    const title = 'No se a podido realizar el registro, verifique los datos.';
-    const subtitle = 'Intente nuevamente.';
+    const header = `Ha ocurrido un error.`;
+    const title = 'No se ha podido realizar el registro, verifique los datos';
+    const subtitle = '';
     this.showAlert(urlIcon, header, title, subtitle);
   }
 
