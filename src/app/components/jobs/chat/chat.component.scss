@@ -67,7 +67,7 @@
         border-radius: 15px;
         padding: 4px 12px;
         font-size: .8rem;
-        width: 300px;
+        width: 280px;
         outline: none !important;
       }
 
@@ -88,4 +88,38 @@
     }
     
   }
+}
+
+@media (max-width: 1024px){
+
+  .input{
+     input{
+       width: 250px !important;
+    } 
+  }
+ 
+}
+
+@media (max-width: 900px){
+  .input{
+    input{
+      width: auto !important;
+    }
+  }
+ 
+}
+@media (max-width: 780px){
+ .sectionChat{
+  position: absolute;
+  top: -40px !important;
+
+  &__header{
+    background: black;
+    h3{
+      margin: 10px;
+    }
+  }
+ }
+
+
 }

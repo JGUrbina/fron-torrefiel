@@ -2,7 +2,7 @@
   <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
   
   <!-- client -->
-  <form class="p-5" #myForm="ngForm" *ngIf="viewActual === USER">
+  <form class="p-5 marco" #myForm="ngForm" *ngIf="viewActual === USER">
     <div class="containService__data">
       <div class="whenService d-flex justify-content-between pb-2">
         <div class="client">
@@ -109,7 +109,7 @@
   <!-- service -->
 
   
-  <div class="d-flex  align-items-center flex-wrap w-80 p-5" *ngIf="viewActual === SERVICEDIRECTION">
+  <div class="d-flex  align-items-center flex-wrap w-80 p-5 marco" *ngIf="viewActual === SERVICEDIRECTION">
 
     <div class="containService__data direccion pt-0">
       <h3 class="title pt-0">DATOS GENERALES (De quien recibe el servicio)</h3>
@@ -191,7 +191,7 @@
       </div>
     </div>
   </div>
-  <form class="p-5" *ngIf="viewActual === SERVICE">
+  <form class="p-5 marco" *ngIf="viewActual === SERVICE">
     <div class="containService__data pt-6x100">
       <div>
         <h3 class="title">DATOS DEL SERVICIO</h3>

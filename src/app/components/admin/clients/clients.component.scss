@@ -120,7 +120,7 @@
   .form{
     background-color: rgba(0, 0, 0, 0.8);
     display: flex;
-    border-radius: 16px;
+    border-radius: 5px;
     min-height: 525px;
     width: 100%;
     position: absolute;
@@ -564,24 +564,42 @@
 @media (max-width: 1024px){
   .buttonSave{
     font-size: 1rem !important;
+  }   
+
+  input{
+    font-size: .7rem;
   }
-  .input__contain{
-    input{
-      font-size: .6rem;
-    }
-    label{
+  .dataService{
+    label{   
       font-size: .7rem !important;
     }
   }
   
 
-}
+  .containService{
+    .input__contain{
+      input{
+        width: 80px;
+        height: 36px;
+      }
+    }
+  }
+
+  }
+  
 
 @media (max-width: 780px){
   .containService{
     &__data{
     padding: 20px 10px;
     padding-left: 10px;
+    }
+    .input__contain{
+      input{
+        width: 70px !important;
+        height: 30px !important;
+      }
+      
     }
   }
   .section-title{
@@ -601,6 +619,9 @@
   .containService__data{
     .input__contain{
       margin-right: 15px;
+      label {
+        height: 38px;
+      }
     }
   }
 }

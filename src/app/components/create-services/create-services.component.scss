@@ -340,7 +340,7 @@
   }
 
   #input-same-client{
-    width: 25px !important;
+    width: 15px !important;
   }
 
   .buttonSave{
@@ -366,9 +366,12 @@
   input{
     width: 90px;
     font-size: .7rem;
+    .spanDirectionEqual {
+      width: 20px !important;
+    }
   }
 
-  textarea, select{
+  textarea, select, .input-activities{
     font-size: .7rem !important;
   }
 
@@ -377,7 +380,7 @@
   }
 
   #input-same-client{
-    width: 25px !important;
+    width: 15px !important;
   }
 
   .buttonSave{
@@ -414,11 +417,12 @@
 
   .containService{
     transform: translate(0px, 171px);
-    height: 100px;
+    height: auto;
 
     &__data{
       width: 100%;
     }
+    
 
     &__aside{
       width: 60%;
@@ -430,7 +434,7 @@
       }
       .check{
         position: absolute;
-        top: 200px;
+        top: 210px;
         left: -250px;
       }
 
@@ -440,10 +444,19 @@
         margin: 0px 20px 0px 0px;
       }
     }
+
+    .saveService{
+      position: absolute;
+      bottom: 10px;
+    }
+  }
+
+  .marco{
+    padding: 2rem !important;
   }
 
   select{
-    height: 20px !important;
+    height: 25px !important;
     font-size: .6rem;
   }
 
@@ -454,8 +467,12 @@
   }
 
   input{
-    height: 20px !important;
+    height: 25px !important;
     font-size: .6rem;
+  }
+
+  #input-same-client{
+    width: 15px !important;
   }
 
   textarea , select{
