@@ -47,12 +47,13 @@
     }
 
     .buttonSave{
+      width: 150px;
       border: none;
       padding: 7px 15px;
       background-color: #cd2a00;
       border-radius: 6px;
       color: white;
-      font-size: .8rem;
+      font-size: 1.2rem;
       width: 84%;
       box-shadow: 0 2px 5px 1px #00000042;
       outline: none;
@@ -64,7 +65,6 @@
   }
 
   &__data{
-    padding: 26px 20px;
     padding-left: 35px;
     width: 70%;
 
@@ -113,7 +113,7 @@
     }
 
     .input__contain{
-      font-size: .8rem;
+      font-size: .8rem !important;
       width: 150px;
       margin-right: 20px;
       position: relative;
@@ -147,9 +147,11 @@
       font-size: 1rem;
       color: #cd2a00;
     }
+    input{
+      width: 90%;
+    }
     .direccion_div{
       justify-content: flex-start !important;
-  
     }
 
 
@@ -163,6 +165,9 @@
 
     .w-200{
       width: 150px;
+    }
+    .w-70{
+      width: 70px !important;
     }
 
     .mr-12{
@@ -183,7 +188,7 @@
       .buttonSave{
         padding: 8px 19px 9px;
         width: fit-content;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
       }
       .buttonBefore{
         border: none;
@@ -230,17 +235,21 @@
     }
 
     &.saveService{
+
       .buttons{
         margin-bottom: 1rem;
+
         .buttonSave{
-          font-size: 1rem;
-          min-width: 220px;
+          font-size: 1.2rem;
+          min-width: 150px;
           margin-bottom: 1.5rem;
         }
+
         .buttonBefore{ 
-          font-size: .9rem;  
+          font-size: 1.2rem;  
         }
       }
+
       .icon{
         position: relative !important;
         margin: auto !important;
@@ -252,6 +261,7 @@
         margin-top: 2.5px !important;
         margin-bottom: 2.5px !important;
       }
+
     }
   }
 
@@ -260,7 +270,7 @@
   }
 
   .pt-6x100{
-    padding-top: 6%;
+
     .input__contain{
        width: auto !important;
        margin-bottom: 15px;
@@ -272,9 +282,11 @@
 .w-90{
   width: 90% !important;
 }
+
 .w-95{
   width: 95% !important;
 }
+
 .h-85{
   height: 85px !important;
 }
@@ -309,6 +321,7 @@
   input{
     width: 75px !important;
   }
+
   select{
     width: auto;
   }
@@ -320,37 +333,146 @@
 }
 
 @media (max-width: 1200px){
+
   input{
     margin: 0px 5px 0px 0px !important;
     width: 90% !important;
   }
+
   #input-same-client{
     width: 25px !important;
   }
- 
 
+  .buttonSave{
+    font-size: 1rem !important;
+  }
+
+ .buttonBefore{ 
+   font-size: 1rem !important;  
+  }
+ 
 }
 
 @media (max-width: 1024px){
+
+  .containService{
+
+    &__data{
+      padding-left: 0px !important;
+    }
+
+  }
+
   input{
     width: 90px;
+    font-size: .7rem;
   }
+
+  textarea, select{
+    font-size: .7rem !important;
+  }
+
+  label{
+    font-size: .7rem;
+  }
+
   #input-same-client{
     width: 25px !important;
   }
- 
+
+  .buttonSave{
+     min-width: 100px !important;
+     font-size: .9rem;
+  }
+
+  .buttonBefore{ 
+    font-size: .9rem !important;  
+  }
+
+  select{
+    height: 30px !important;
+    font-size: .7rem;
+  }
+
+  .dropdown-btn{
+    height: 30px;
+    font-size: .7rem;
+  }
+
+  input{
+    height: 30px !important;
+  }
+
+  label{
+    font-size: .6rem !important;
+  }
+
 }
 
-@media (max-width: 1011px){
- 
-
-}
 
 @media (max-width: 780px) { 
-  .dataService{ 
-    display:  block !important;
-  }
+
   .containService{
     transform: translate(0px, 171px);
+    height: 100px;
+
+    &__data{
+      width: 100%;
+    }
+
+    &__aside{
+      width: 60%;
+      flex-direction: row !important;
+      flex-wrap: nowrap;
+
+      .buttons{
+        margin-right: 20px;
+      }
+      .check{
+        position: absolute;
+        top: 200px;
+        left: -250px;
+      }
+
+      div{
+        align-items: baseline;
+        display: flex;
+        margin: 0px 20px 0px 0px;
+      }
+    }
   }
+
+  select{
+    height: 20px !important;
+    font-size: .6rem;
+  }
+
+  span{
+    .dropdown-btn{
+      font-size: .6rem;
+    }
+  }
+
+  input{
+    height: 20px !important;
+    font-size: .6rem;
+  }
+
+  textarea , select{
+    font-size: .6rem;
+  }
+
+  .siguiente-container{
+    transform: translate(-130px, 210px);
+  }
+
+  .buttonSave{
+    min-width: 80px !important;
+    font-size: .8rem !important;
+  }
+
+ .buttonBefore{ 
+   font-size: .8rem !important;  
+  }
+
 }

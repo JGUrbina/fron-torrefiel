@@ -6,7 +6,7 @@
     <figure class="icon">
       <app-create-icon [class]="'color-gray'" [name]="'search'" [url]="'../../../../assets/svg_2/buscar.svg'"></app-create-icon>
     </figure>
-    <input type="search" placeholder="Buscar" name="search" [(ngModel)]="searchClient" autocomplete="off" placeholder="Buscar cliente">
+    <input type="search" placeholder="Buscar" name="search" [(ngModel)]="searchClient" autocomplete="off" placeholder="Buscar cliente" style="font-size: .8rem;">
   </div>
   <div class="list">
     <div class="client__contain" *ngFor="let client of allClients | filter:searchClient">
@@ -39,11 +39,11 @@
     <figure class="exit" (click)="hideOptions()">
       <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
     </figure>
-    <div class="containService__data">
+    <div class="containService__data" style="width: 100%">
       <div class="whenService d-flex justify-content-between pb-2">
         <div class="client">
           <div class="input__contain">
-            <label for="">Cliente N°{{newClient.numClient}}</label>
+            <label for="" style="font-size: 1rem;">Cliente N° {{newClient.numClient}}</label>
             <!-- <p>#{{newClient.numClient}}</p> -->
           </div>
         </div>
@@ -53,11 +53,11 @@
           <label for="">Nombre(s)</label>
           <input type="text" placeholder="Nombre" name="names" [(ngModel)]="newClient.name" required>
         </div>
-        <div class="input__contain">
+        <div class="input__contain name">
           <label for="">Apellido Paterno</label>
           <input type="text" placeholder="Apellido Paterno" name="lastname" [(ngModel)]="newClient.lastName" required>
         </div>
-        <div class="input__contain">
+        <div class="input__contain name">
           <label for="">Apellido Materno</label>
           <input type="text" placeholder="Apellido Materno" name="lastnameMother" [(ngModel)]="newClient.motherLastName" required>
         </div>
@@ -94,7 +94,7 @@
             </div>
             <div class="input__contain">
               <label for="">N° Externo</label>
-              <input type="text" class="auto" placeholder="00" name="numExt" [(ngModel)]="newClient.numberExternal" required>
+              <input type="text" class="max-width-60" placeholder="00" name="numExt" [(ngModel)]="newClient.numberExternal" required>
             </div>
             <div class="input__contain">
               <label for="">N° Interno</label>
@@ -112,7 +112,7 @@
             </div>
             <div class="input__contain code">
               <label for="">Código postal</label>
-              <input class="w-100" type="text" placeholder="Código postal" name="postalcode" [(ngModel)]="newClient.postalCode" required>
+              <input class="max-width-60" type="text" placeholder="Código postal" name="postalcode" [(ngModel)]="newClient.postalCode" required>
             </div>
           </div>
         </div>
@@ -128,7 +128,7 @@
       </div>
     </aside>
   </form>
-  <div class="services" *ngIf="showView === SERVICES">
+  <div class="services" *ngIf="showView === SERVICES" style="overflow-y: auto; width: 50%;">
     <figure class="exit" (click)="hideOptions()">
       <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
     </figure>

@@ -182,7 +182,7 @@
   }
 
   &__data{
-    padding: 26px 20px;
+    padding: 20px 10px;
     padding-left: 35px;
     width: 70%;
 
@@ -388,9 +388,10 @@
 }
 
 .services{
+
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
-  overflow-y: auto;
+  
  /*  width: 390px; */
   position: absolute;
   left: 12px;
@@ -527,7 +528,7 @@
   
   .info{
     background-color: white !important;
-    color: black;
+    color: black; 
   }
   .urgent{
     background-color: #cd2a00 !important;
@@ -537,10 +538,9 @@
 
 .info {
   background-color: $color-gray;
-  padding: 12px 19px;
-  border-radius: 15px;
+  padding: 5px 10px;
+  border-radius: 5px;
   text-align: center;
-  min-height: 47px;
 }
 
 .clientAndStatus {
@@ -561,7 +561,29 @@
   }
 }
 
+@media (max-width: 1024px){
+  .buttonSave{
+    font-size: 1rem !important;
+  }
+  .input__contain{
+    input{
+      font-size: .6rem;
+    }
+    label{
+      font-size: .7rem !important;
+    }
+  }
+  
+
+}
+
 @media (max-width: 780px){
+  .containService{
+    &__data{
+    padding: 20px 10px;
+    padding-left: 10px;
+    }
+  }
   .section-title{
     h3{
       font-size: 1rem !important;
@@ -575,6 +597,11 @@
   }
   .sectionClient{
     padding: 10px;
+  }
+  .containService__data{
+    .input__contain{
+      margin-right: 15px;
+    }
   }
 }
 
@@ -593,9 +620,16 @@
   .sectionClient{
     padding: 5px;
   }
-  .urgent {
-   top: -60px;
+
+  .services{
+    .urgent {
+      top: -40px;
+     }
+     .info {
+       top: -40px;
+      }
   }
+  
   .left{
     margin-bottom: 20px;
   }
@@ -605,6 +639,6 @@
 .containService__data{
 
   label{
-    font-size: 1rem;
+    font-size: .8rem;
   }
 }

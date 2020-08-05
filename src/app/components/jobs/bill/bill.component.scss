@@ -1,7 +1,7 @@
 
 
 .sectionPdf{
-  height: 100%;
+  min-height: 100%;
   width: 100% !important;
 
   &__icons{
@@ -84,6 +84,7 @@
           align-items: center;
         }
         .info{
+
           text-align: end;
           font-size: .7rem;
         }
@@ -92,9 +93,13 @@
       .services{
         /* height: 80px; */ 
         margin-bottom: 20px;
+        display: flex;
+        min-width: 100%;
+        
         tr{
           display: flex;
           justify-content: space-between;
+          min-width: 100%;
 
           th{
             width: 20%;
@@ -111,9 +116,12 @@
 
       .data{
         /* height: 80px; */ 
+        display: flex;
+        min-width: 100%;
         margin-bottom: 20px;
         background-color: #fdff99 !important;
         table{
+          min-width: 100%;
           tbody{
             background-color: #fdff99 !important;
             padding: 0px;
@@ -127,6 +135,7 @@
             flex-wrap: wrap;
 
             td{
+
               border: 1px solid #7f017e;
               padding: 5px;
 
@@ -150,6 +159,7 @@
 
       .info{
         .title{
+          justify-content: center;
           height: 30px;
           display: flex;
           text-align: center;

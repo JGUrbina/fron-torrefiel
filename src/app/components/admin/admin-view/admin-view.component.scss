@@ -99,6 +99,7 @@
     &__data{
       text-align: center;
     }
+    
   }
   .containProfile{
     display: inline-block !important;
@@ -117,6 +118,15 @@
     .icon{
       display: inline-block;
     }
+    h2{
+      font-size: 1rem !important;
+    }
+    h3{
+      font-size: .9rem !important;
+    }
+    h4{
+      font-size: .9rem !important;
+    }
   }
   .summary{
     width: 75% !important;
@@ -129,21 +139,12 @@
     }
   }
   h2{
-    font-size: 1.5rem !important;
+    font-size: 1rem !important;
   }
 }
 
 @media (max-width: 535px){
   h2{
-    font-size: 1.3rem !important;
-  }
-}
-
-@media (max-width: 481px){
-  .title{
-    width: 75% !important;
-  }
-  h2{
-    font-size: 1.1rem !important;
+    font-size: .9rem !important;
   }
 }

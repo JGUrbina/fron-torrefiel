@@ -140,7 +140,7 @@
   left: -10%;
   margin: auto;
   height: 104%;
-  overflow: scroll;
+  overflow-y: auto;
   padding: 30px;
   color: white;
   flex-wrap: wrap;
@@ -409,6 +409,7 @@
   }
   .sectionUsers{
     padding: 10px;
+    overflow-y: auto;
   }
   .user__contain{
     display: block !important;
