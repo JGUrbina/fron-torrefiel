@@ -54,8 +54,7 @@ export class BillComponent implements OnInit {
     this.emailPdf = '';
   }
   
-  print(){
-  
+  onPrint(){
    window.print();
   }
 

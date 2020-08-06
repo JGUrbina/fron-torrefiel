@@ -3,7 +3,7 @@
     <figure class="icon" (click)="downloadPdf()">
       <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg_2/descargar.svg'"></app-create-icon>
     </figure>
-    <figure class="icon">
+    <figure class="icon" (click)="onPrint()">
       <app-create-icon [class]="'color-gray bg-white button'" [name]="'print'" [url]="'../../../../assets/svg_2/impresora.svg'"></app-create-icon>
     </figure>
     <figure class="icon exit" (click)="emitEvent()">
@@ -58,7 +58,8 @@
               <span><b>Fecha de emisión: </b> {{deliveryNoteData.startDate.split('T')[0]}}</span>
             </div>
             <div class="data__contain--item"><span>N° albarán:</span></div>
-            <div class="data__contain--item"><span>{{ deliveryNoteData.numDeliveryNote }}</span></div>
+                                                    
+            <div class="data__contain--item"><span> formatNumber(value: {{deliveryNoteData.numDeliveryNote}}, locale: string) </span></div>
           </div>
           <div class="data__contain">
             <div class="data__contain--item"><span><b>Cliente: </b>{{ deliveryNoteData.name }} {{ deliveryNoteData.lastName }} {{ deliveryNoteData.motherLastName }}</span></div>

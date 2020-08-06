@@ -218,3 +218,40 @@
   padding-left: 10px;
 }
 
+
+@media print {
+  .main__section--buttons, .description{
+    display: none;
+  }
+
+  .pdf{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: white;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  
+
+  /* .sectionPdf{ 
+    &__viewpdf{  
+      section{
+        &.pdf{
+          position: fixed;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          background-color: white;
+          margin: 0px !important;
+          padding: 0px !important;
+          overflow: visible !important;
+          page-break-inside: avoid;
+        }
+      }
+    }
+  }   */ 
+}

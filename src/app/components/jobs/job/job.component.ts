@@ -44,6 +44,8 @@ export class JobComponent implements OnInit {
     iva: false
   }
 
+ 
+
   public keep = {
     input1: false,
     input2: false,

@@ -58,6 +58,10 @@ export class DeliveryNoteComponent implements OnInit {
     this.emailPdf = '';
   }
 
+  onPrint(){
+    window.print();
+   }
+
   emitEvent(): void{
     this.closeWindow.emit('');
   }

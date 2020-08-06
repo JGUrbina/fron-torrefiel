@@ -76,7 +76,7 @@
         margin-bottom: 3px;
         display: flex;
         align-items: center;
-        p{
+        p, textarea{
           margin-right: 5px;
           margin-bottom: 0;
         }
@@ -208,6 +208,8 @@
   }
 }
 
+
+
 .no-data{
   height: 465px;
   color: white;
@@ -233,6 +235,10 @@
   z-index: 3;
   min-height: 50px;
   word-break: break-all;
+  background-color: $color-gray;
+  border-radius: 15px;
+  width: 90%;
+  margin: auto;
 
   .edit-icon {
     position: absolute;

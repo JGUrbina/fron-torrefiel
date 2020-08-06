@@ -3,10 +3,7 @@
     <div class="up">
       <div class="upContain">
         <span class="info code f-bold">#{{job.numService}}</span>
-
-        <span *ngIf="edit.bill === false" class="info code f-bold box-editing num-bill" (click)="edit.bill = true">
-          {{job.numBill}}
-        </span> 
+          <input value={{job.numBill}} placeholder="N° Factura" *ngIf="edit.bill === false" class="info code f-bold box-editing num-bill" (click)="edit.bill = true" style="border-color:transparent;">
         <input (focusout)="submitJobBill()" class="beetween-index info code num-bill" *ngIf="edit.bill === true" [(ngModel)]="job.numBill">
         <span class="info date">{{getDate(job.startDate) | date: 'dd/MM/yyyy'}} - {{job.startHours}}</span>
       </div>
@@ -15,9 +12,9 @@
           {{ job.name }} {{job.lastName}} {{job.motherLastName}}
         </span>
         <span (focusout)="submitJobNames()" class="input-names" *ngIf="edit.names === true">
-          <input (focusout)="keep.input1 = false" (mousedown)="keep.input1 = true" [(ngModel)]="job.name" class="info hours box-editing">
-          <input (focusout)="keep.input2 = false" (mousedown)="keep.input2 = true" [(ngModel)]="job.lastName" class="info hours box-editing">
-          <input (focusout)="keep.input3 = false" (mousedown)="keep.input3 = true" [(ngModel)]="job.motherLastName" class="info hours box-editing">
+          <input (focusout)="keep.input1 = false" (mousedown)="keep.input1 = true" [(ngModel)]="job.name" class="info hours box-editing" placeholder="Nombre">
+          <input (focusout)="keep.input2 = false" (mousedown)="keep.input2 = true" [(ngModel)]="job.lastName" class="info hours box-editing" placeholder="Apellido Paterno">
+          <input (focusout)="keep.input3 = false" (mousedown)="keep.input3 = true" [(ngModel)]="job.motherLastName" class="info hours box-editing" placeholder="Apellido Materno">
         </span>
       </div>
 
@@ -35,11 +32,11 @@
       </div>
 
       <span (focusout)="submitJobDirections()" class="upContain input-directions" *ngIf="edit.directions === true">
-        <input (focusout)="keep.direction1 = false" (mousedown)="keep.direction1 = true" [(ngModel)]="job.direction" class="info hours box-editing">
-        <input (focusout)="keep.direction2 = false" (mousedown)="keep.direction2 = true" [(ngModel)]="job.numberExternal" class="info hours box-editing">
-        <input (focusout)="keep.direction3 = false" (mousedown)="keep.direction3 = true" [(ngModel)]="job.numberInternal" class="info hours box-editing">
-        <input (focusout)="keep.direction4 = false" (mousedown)="keep.direction4 = true" [(ngModel)]="job.province" class="info hours box-editing">
-        <input (focusout)="keep.direction5 = false" (mousedown)="keep.direction5 = true" [(ngModel)]="job.municipality" class="info hours box-editing">
+        <input (focusout)="keep.direction1 = false" (mousedown)="keep.direction1 = true" [(ngModel)]="job.direction" class="info hours box-editing" placeholder="Calle">
+        <input (focusout)="keep.direction2 = false" (mousedown)="keep.direction2 = true" [(ngModel)]="job.numberExternal" class="info hours box-editing" placeholder="N° Externo">
+        <input (focusout)="keep.direction3 = false" (mousedown)="keep.direction3 = true" [(ngModel)]="job.numberInternal" class="info hours box-editing" placeholder="N° Interno">
+        <input (focusout)="keep.direction4 = false" (mousedown)="keep.direction4 = true" [(ngModel)]="job.province" class="info hours box-editing" placeholder="Provincia">
+        <input (focusout)="keep.direction5 = false" (mousedown)="keep.direction5 = true" [(ngModel)]="job.municipality" class="info hours box-editing" placeholder="Municipio">
       </span>
 
       <div class="upContain">
@@ -58,9 +55,8 @@
           <option value="21">Normal</option>
         </select>
 
-        <span *ngIf="edit.amount === false" class="info price box-editing" (click)="edit.amount = true">
-          {{job.amount}}€
-        </span>
+       
+        <input placeholder="Importe" value="{{job.amount? job.amount + '€' : ''}}" *ngIf="edit.amount === false" class="info price box-editing" (click)="edit.amount = true" style="border-color:transparent;">
         <input click="imprimir()" (focusout)="submitJobAmount()" class="beetween-index input-amount info price" *ngIf="edit.amount === true" [(ngModel)]="job.amount">
        
        
@@ -90,14 +86,14 @@
       
 
     </div>
-    <div *ngIf="edit.description === false" class="dowm description-box">
-      <P class="box-editing" (click)="edit.description = true" >
-        {{job.description}}
-      </P>
+    <div *ngIf="edit.description === false" class="beetween-index">
+      <textarea placeholder="Descripción del trabajo" value={{job.description}}  class="area-description box-editing dowm" (click)="edit.description = true"  style="border-color: transparent;">
+       
+      </textarea>
     </div> 
 
     <div *ngIf="edit.description === true" class="beetween-index">
-      <textarea class="area-description box-editing dowm" (focusout)="submitJobDescription()" [(ngModel)]="job.description"  ></textarea>
+      <textarea class="area-description box-editing dowm" (focusout)="submitJobDescription()" [(ngModel)]="job.description"></textarea>
     </div>
 
 
