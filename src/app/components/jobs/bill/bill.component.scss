@@ -301,26 +301,23 @@
   padding-right: 15px !important;
 }
 
-
-
-@media print {
-  .main__section--buttons{
-    display: none;
-  }
-
+@media print{
   
   .sectionPdf{ 
     &__viewpdf{  
       table{
         &.pdf{
-          position: fixed;
+         /*  width: 612px;
+          height: 792px; */
+          display: block;
+          //position: fixed;
           left: 0;
           right: 0;
           top: 0;
           bottom: 0;
           background-color: white;
-          margin: 0px !important;
-          padding: 0px !important;
+          margin: 50px !important;
+          padding: 50px !important;
           //overflow: visible !important;
         
         }
@@ -328,6 +325,8 @@
     }
   }   
 }
+
+
 
 /*   #print {
      position: fixed;
