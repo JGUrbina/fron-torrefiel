@@ -26,9 +26,6 @@ export class UsersComponent implements OnInit {
   public alertTitle: string;
   public alertSubtitle: string;
   private ALERTTIMESHOW: number = 3500;
-
- 
-
   public jobsOfUser: any;
 
   constructor(
@@ -56,7 +53,6 @@ export class UsersComponent implements OnInit {
     );
   }
 
-  
 
   getWorks(id: string){
     this.serviceService.getWorks(id).subscribe(
@@ -76,12 +72,12 @@ export class UsersComponent implements OnInit {
       data => {
         console.log("ya editado", data)
         const urlIcon = '../../../../assets/svg_2/ok.svg';
-        const header = 'Usuario Editado Exitosamente';
-        const title = '';
-        const subtitle = '';
+        const header = '';
+        const title = 'Usuario Editado';
+        const subtitle = 'Exitosamente';
         this.showAlert(urlIcon, header, title, subtitle);
-      /*   this.getDataUser();
-        this.closeEditUser(); */
+        this.getDataUser();
+       // this.closeEditUser(); 
       },
       err => {
         console.log(err);
@@ -105,7 +101,7 @@ export class UsersComponent implements OnInit {
   }
 
   getEditUser(id: string){
-   console.log("Edit teoejro", id)
+   console.log("Edit usuario id", id)
    this.editUserShow = true;
    this.userService.getUser(id).subscribe(
     (data) => {
@@ -135,9 +131,6 @@ export class UsersComponent implements OnInit {
     this.editUserShow = false;
   }
  
-
-
-
   close(): void{
     this.displayNewUser = false;
   }
@@ -166,9 +159,6 @@ export class UsersComponent implements OnInit {
   getDate(date: any){
     return this.typeDateService.generateDateOnly(date);
   }
-
-  
-  
 
 }
   

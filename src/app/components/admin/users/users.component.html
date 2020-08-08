@@ -99,40 +99,40 @@
           <figure class="icon">
             <app-create-icon [class]="'color-white'" [name]="'profile'" [url]="'../../../../../assets/svg_2/perfil.svg'"></app-create-icon>
           </figure>
-          Agregar nuevo usuario 
+          Editar Usuario
         </h4>
         <form >
           <div class="input__contain">
-            <label for="">Nombre</label>
-            <input class="w-75" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Nombre" name="name" [(ngModel)]="newUser.name">
+            <label for="">Nombre</label><br>
+            <input class="w-90" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Nombre" name="name" [(ngModel)]="newUser.name">
           </div>
           <div class="input__contain">
-            <label for="">Apellido Paterno</label>
-            <input class="w-75" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Apellido paterno" name="lastName" [(ngModel)]="newUser.lastName">
+            <label for="">Apellido Paterno</label><br>
+            <input class="w-90" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Apellido paterno" name="lastName" [(ngModel)]="newUser.lastName">
           </div>
           <div class="input__contain">
-            <label for="">Apellido materno</label>
-            <input class="w-75" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Apellido materno" name="motherLastName" [(ngModel)]="newUser.motherLastName">
+            <label for="">Apellido materno</label><br>
+            <input class="w-90" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Apellido materno" name="motherLastName" [(ngModel)]="newUser.motherLastName">
           </div>
           <div class="input__contain">
-            <label for="">Nickname</label>
-            <input class="w-75" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Nombre de usuario" name="userName" [(ngModel)]="newUser.userName">
+            <label for="">Nickname</label><br>
+            <input class="w-90" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Nombre de usuario" name="userName" [(ngModel)]="newUser.userName">
           </div>
           <div class="input__contain">
-            <label for="">Móvil</label>
-            <input class="w-75" type="tel" pattern="^[0-9]*$" placeholder="Móvil" name="phone" [(ngModel)]="newUser.phone" required>
+            <label for="">Móvil</label><br>
+            <input class="w-90" type="tel" pattern="^[0-9]*$" placeholder="Móvil" name="phone" [(ngModel)]="newUser.phone" required>
           </div>
           <div class="input__contain">
-            <label for="">Elige color</label>
+            <label for="">Elige color</label><br>
             <input class="w-75" type="color" pattern="#^[0-9]*[A-Za-z]$" placeholder="Color" name="color" [(ngModel)]="newUser.color">
           </div>
           <div class="input__contain">
-            <label for="">¿Es administrador?</label>
-            <input type="checkbox" name="rol" [(ngModel)]="newUser.rol">
+            <label for="">¿Es administrador?  </label>
+            <input type="checkbox" name="rol" class="check" [(ngModel)]="newUser.rol">
           </div>
           <div class="mt-4 buttons d-flex justify-content-center align-items-center">
             <button  class="buttonSave" (click)="editUser(newUser._id, newUser)">
-              ACEPTAR
+              GUARDAR
             </button>
           </div>
         </form>
