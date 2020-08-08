@@ -32,6 +32,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
 import { DeliveryNoteComponent } from './components/jobs/delivery-note/delivery-note.component';
+import { EditComponent} from './components/admin/users/edit-user/edit-user.component';
 import { BillComponent } from './components/jobs/bill/bill.component';
 import { ScheduleComponent } from './components/jobs/schedule/schedule.component';
 import { ChatComponent } from './components/jobs/chat/chat.component';
@@ -85,6 +86,7 @@ import { AddNewComponent } from './components/admin/users/add-new/add-new.compon
     HeaderComponent,
     MainComponent,
     DeliveryNoteComponent,
+    EditComponent,
     BillComponent,
     ScheduleComponent,
     ChatComponent,

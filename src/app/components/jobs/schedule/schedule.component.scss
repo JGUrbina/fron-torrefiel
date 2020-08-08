@@ -23,17 +23,13 @@
       margin-right: 7px;
 
       &.exit{
-        width: 31px;
-        height: 33px;
-        border-radius: 5px;
-        background-color: white;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        width: 40px;
+        height: 40px;
         position: absolute;
-        right: auto;
-        top: 90px;
+        right: 2rem;
+        top: 2rem;
+        margin-top: 1rem;
+        margin-right: 1rem;
       }
     
     }
@@ -115,6 +111,12 @@
 
   label {
     margin-left: 10px;
+  }
+}
+@media(max-width:780px){
+  .exit{
+    margin-right: 0rem !important;
+    margin-top: 0rem !important;
   }
 }
 @media (max-width: 481px){

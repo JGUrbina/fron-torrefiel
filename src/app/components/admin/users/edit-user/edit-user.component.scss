@@ -1,0 +1,179 @@
+@import 'src/assets/scss/variables';
+
+.sectionCalendar{
+  //Aquí se le da tamaño al modal de nuevo usuari
+  min-height: 720px;
+  transform: translate(-13%, -71px);
+  width: 150%;
+  background-color: rgba(0, 0, 0, .7);
+  line-height: 1.5;
+  
+
+  &__icons{
+    display: block;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 6px 10px;
+
+    .icon{
+      width: 31px;
+      height: 33px;
+      margin-bottom: 0;
+      margin-right: 7px;
+
+      &.exit{
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 0;
+        right: 0;
+        padding: 0;
+        cursor: pointer;
+      }
+
+      /* &.exit{
+      
+        width: 15px;
+        height: 16px;
+        border-radius: 5px;
+        background-color: white;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      } */
+    }
+  }
+
+  &__body{
+    color: white;
+    /* margin: 15px;
+    margin-top: 3px;
+    height: 90%;
+    padding: 10px; */
+  }
+}
+
+
+.buttons{
+  position: relative;
+  figure{
+    width: 22px;
+    height: 24px;
+    position: absolute;
+    margin: 0;
+    right: 12%;
+    top: 14%;
+  }
+
+  .buttonSave{
+    border: none;
+    padding: 7px 15px;
+    background-color: #cd2a00;
+    border-radius: 6px;
+    color: white;
+    font-size: .8rem;
+    width: 84%;
+    box-shadow: 0 2px 5px 1px #00000042;
+    outline: none;
+    margin-bottom: 5px;
+  }
+}
+.buttons{
+  margin-bottom: 1rem;
+  .buttonSave{
+    padding: 8px 19px 9px;
+    width: fit-content;
+    font-size: 1.5rem;
+  }
+  .buttonBefore{
+    border: none;
+    padding: 7px 15px;
+    background-color: #5b5b5f;
+    border-radius: 6px;
+    color: white;
+    font-size: 1.2rem;
+    width: fit-content;
+    box-shadow: 0 2px 5px 1px #00000042;
+    outline: none;    
+  }
+}
+.buttons{
+  margin-bottom: 1rem;
+  .buttonSave{
+    font-size: 1rem;
+    min-width: 120px;
+
+  }
+  .buttonBefore{ 
+    font-size: .9rem;  
+  }
+}
+
+
+.input__contain {
+  
+  font-size: .8rem;
+  width: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto 0 auto;
+  
+  input{
+    margin: 0 auto;
+    border-radius: 5px;
+  }
+
+}
+.sectionCalendar__body{
+  text-align: center;
+
+  .sectionAdd{
+    //Aquí se le da tamaño al modal de nuevo usuario
+    height: 1000px;
+    width: 150%;
+    transform: translate(-10%, -130px);
+    background-color: rgba(0, 0, 0, .7);
+  
+    &__icons{
+      display: block;
+      padding: 2px 10px;
+      font-size: 1rem;
+  
+      .icon{
+        width: 40px;
+        height: 33px;
+        margin-bottom: 0;
+        margin-right: 7px;
+        color: #ffffff;
+      }
+    }
+  }
+
+}
+
+
+@media (max-width: 780px){
+  .sectionCalendar{
+    position: absolute;
+    top: 20px;
+  }
+  .sectionAdd__icons{
+    font-size: 1rem !important;
+    margin-bottom: 0px;
+    padding: 3px 10px !important;
+  }
+  .sectionClient{
+    min-width: auto !important;
+  }
+  .buttonSave{
+    margin-top: 3px !important;
+  }
+}
+
+@media (max-width: 481px){
+  .sectionAdd__icons{
+    font-size: .8rem !important;
+  }
+}

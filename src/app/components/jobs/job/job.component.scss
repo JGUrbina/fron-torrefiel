@@ -66,10 +66,11 @@
   
     .dowm{
       background-color: $color-gray;
-      padding: 23px 28px;
+      padding: 10px 18px;
       border-radius: 15px;
       width: 90%;
       margin: auto;
+      min-height: 110px;
 
   
       .descriptionService{
@@ -136,11 +137,12 @@
 
       .images{
         padding: 2px 20px 0px;
-        width: 50%;
-        height: 85%;
+        width: 60%;
+        height: 92%;
         position: absolute;
         bottom: 0;
         right: 0;
+        margin-bottom: 1.5rem;
       }
 
       .firm{
@@ -164,7 +166,7 @@
       }
       .scheduling {
         width: 90%;
-        margin: 10% auto auto auto;
+        margin: 5% auto auto auto;
         height: 80%;
         border-radius: 6px;
       }
@@ -365,6 +367,15 @@
     top: 130px;
     height: 66%;
   }
+ 
+    .images{
+      margin-bottom: 0px !important;
+      bottom: 25px !important;
+      width: 70% !important;
+      height: auto !important;
+    }
+    
+
 }
 
 @media (max-width: 535px){

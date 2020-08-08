@@ -12,17 +12,6 @@
       height: 33px;
       margin-bottom: 0;
       margin-right: 7px;
-
-      &.exit{
-        width: 15px;
-        height: 16px;
-        border-radius: 5px;
-        background-color: white;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
     }
   }
 
@@ -31,7 +20,7 @@
     justify-content: space-between;
     align-content: center;
     flex-wrap: wrap;
-    height: 355px;
+    height: 300px;
     overflow-y: scroll;
 
     &--containImgs{
@@ -70,6 +59,7 @@
           text-align: center;
           color: white;
           font-size: .8rem;
+          overflow-y: scroll;
         }
       }
     }
@@ -78,16 +68,36 @@
   &__footer{
     color: white;
     font-size: 0.8rem;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     padding: 5px 0;
+    min-height: 90px;
+    text-align: center;
+    
+    .info{
+      height: 60px;
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+    }
 
     figure{
       width: 30px;
       height: 30px;
       margin-bottom: 0;
       margin-right: 7px;
+      display: block;
+      margin: auto;
     }
   }
 }
+
+@media(max-width:780px){
+  .info{
+    height: 30px;
+  }
+}
+

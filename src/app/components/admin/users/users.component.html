@@ -6,8 +6,7 @@
         <!-- <p>Elimina y revisa los trabajos<br> asignados de cada usuario</p> -->
       </div>
         <app-add-new (newUserCreated)="updateUsers($event)" *ngIf="displayNewUser" class="w-100 adding-user" (closeWindow)="close()"></app-add-new>
-      
-
+    
       <div class="add__user">
         <div class="user__contain" (click)="openNewUserModal()">
           <div class="user__contain--title h-auto">
@@ -34,6 +33,11 @@
               <app-create-icon [class]="'color-gray bg-white button'" [name]="'trash'" [url]="'../../../../assets/svg_2/trash.svg'"></app-create-icon>
             </figure>
           </div>
+          <div class="user__contain--icons">
+            <figure class="icon" (click)="getEditUser(user._id)"> 
+              <app-create-icon [class]="'color-gray bg-white button'" [name]="'only-eye'" [url]="'../../../../assets/svg_2/only-eye.svg'"></app-create-icon>
+            </figure>
+          </div>
         </div>
         <div class="user__contain" *ngIf="!allUsers  || allUsers.length === 0">
           <div class="user__contain--title d-flex justify-content-center text-center w-100">
@@ -48,6 +52,7 @@
   </div>
 </section>
 
+<!--editar Usuario-->
 <section class="containUser" *ngIf="showUser">
   <figure class="exit" (click)="showUser = false">
     <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
@@ -57,7 +62,6 @@
       <figure class="icon">
         <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg_2/perfil.svg'"></app-create-icon>
       </figure>
-      <h4>{{ jobsOfUser.userName }}</h4>
     </div>
   </div>
   <div class="containUser__main">
@@ -81,3 +85,57 @@
     </div>
   </div>
 </section>
+
+<section class="containUser" *ngIf="editUserShow">
+  <section class="sectionCalendar">
+    <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
+      <header class="sectionCalendar__icons">
+        <figure class="icon exit" (click)="closeEditUser()">
+          <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
+        </figure> 
+      </header>
+      <main class="sectionCalendar__body">
+        <h4 class="sectionAdd__icons" align="center" style="margin-bottom: 2rem;">
+          <figure class="icon">
+            <app-create-icon [class]="'color-white'" [name]="'profile'" [url]="'../../../../../assets/svg_2/perfil.svg'"></app-create-icon>
+          </figure>
+          Agregar nuevo usuario 
+        </h4>
+        <form >
+          <div class="input__contain">
+            <label for="">Nombre</label>
+            <input class="w-75" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Nombre" name="name" [(ngModel)]="newUser.name">
+          </div>
+          <div class="input__contain">
+            <label for="">Apellido Paterno</label>
+            <input class="w-75" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Apellido paterno" name="lastName" [(ngModel)]="newUser.lastName">
+          </div>
+          <div class="input__contain">
+            <label for="">Apellido materno</label>
+            <input class="w-75" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Apellido materno" name="motherLastName" [(ngModel)]="newUser.motherLastName">
+          </div>
+          <div class="input__contain">
+            <label for="">Nickname</label>
+            <input class="w-75" type="text" pattern="^[0-9]*[A-Za-z]$" placeholder="Nombre de usuario" name="userName" [(ngModel)]="newUser.userName">
+          </div>
+          <div class="input__contain">
+            <label for="">Móvil</label>
+            <input class="w-75" type="tel" pattern="^[0-9]*$" placeholder="Móvil" name="phone" [(ngModel)]="newUser.phone" required>
+          </div>
+          <div class="input__contain">
+            <label for="">Elige color</label>
+            <input class="w-75" type="color" pattern="#^[0-9]*[A-Za-z]$" placeholder="Color" name="color" [(ngModel)]="newUser.color">
+          </div>
+          <div class="input__contain">
+            <label for="">¿Es administrador?</label>
+            <input type="checkbox" name="rol" [(ngModel)]="newUser.rol">
+          </div>
+          <div class="mt-4 buttons d-flex justify-content-center align-items-center">
+            <button  class="buttonSave" (click)="editUser(newUser._id, newUser)">
+              ACEPTAR
+            </button>
+          </div>
+        </form>
+      </main>
+  </section>
+</section> 

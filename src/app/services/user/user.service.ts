@@ -40,6 +40,10 @@ export class UserService {
     return this.http.put<any>(`${this.urlApi}/update/${id}`, { headers: this.headers });
   }
 
+  updateUser(id: string, user: User): Observable<any>{
+    return this.http.put<any>(`${this.urlApi}/update/${id}`, user, { headers: this.headers });
+  }
+
   login(params: object): Observable<any> {
     return this.http.post<any>(`${this.urlApi}/login`, params, { headers: this.headers });
   }

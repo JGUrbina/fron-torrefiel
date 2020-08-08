@@ -1,14 +1,14 @@
 <section class="sectionCalendar">
   <header class="sectionCalendar__icons">
     <figure class="icon exit" (click)="emitEvent()">
-      <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
+      <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
     </figure>
   </header>
   <main class="sectionCalendar__body">
     <form (submit)="scheduleService()">
       <div class="input__contain dateContain margin">
         <label for=""  >Fecha</label><br>
-        <input type="date" name="date" [(ngModel)]="startDate" placeholder="00/00/0000" value="date.getDate()" required>
+        <input type="date" name="date" [(ngModel)]="startDate" placeholder="00/00/0000"  required>
       </div>
       <div class="input__contain margin">
         <label for="" >Hora</label><br>
