@@ -153,8 +153,10 @@ export class CreateServicesComponent implements OnInit {
     this.newService.startHours = "00:00"
     this.newService.workers = [];
     this.newService.activities = this.selectedItems
-    console.log('selected acts', this.selectedItems);
-    console.log('activities', this.newService.activities);
+    if(this.newService.numDeliveryNote === undefined){
+      this.newService.numDeliveryNote = null;
+    };
+    console.log('servicio', this.newService);
     this.serviceService.createService(this.newService, clientId).subscribe(
       (data) => {
         console.log('data', data);
