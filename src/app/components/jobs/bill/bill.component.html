@@ -3,8 +3,8 @@
     <figure class="icon" (click)="downloadPdf()">
       <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg_2/descargar.svg'"></app-create-icon>
     </figure>
-    <figure class="icon" >
-      <!-- (click)="printToCart('printSectionId') "-->
+    <figure class="icon" (click)="printToCart('printSectionId')">
+  
       <app-create-icon [class]="'color-gray bg-white button'" [name]="'print'" [url]="'../../../../assets/svg_2/impresora.svg'"></app-create-icon>
     </figure>
     <figure class="icon exit" (click)="emitEvent()">
@@ -19,7 +19,7 @@
           <td>
             <tr>
               <td>
-                <span>PERSIANAS Y TOLDOS</span>
+                <span style="color: red;">PERSIANAS Y TOLDOS</span>
               </td>
             </tr>
             <tr class="logo">

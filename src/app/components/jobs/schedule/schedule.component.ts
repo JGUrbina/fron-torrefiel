@@ -41,11 +41,21 @@ export class ScheduleComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllUser();
+    this.startDate = this.dateChange();
     console.log('service oninit', this.service)
   }
 
+  
 
   dateChange(){
+    let Year : any, Month : any, Day : any;
+
+    Year = new Date().getFullYear();
+    Month = new Date().getMonth();
+    Day = new Date().getDay();
+    
+    return `${Year}-${Month}-${Day}`;
+
   };
 
   generateDate(fecha: any, hour: any): string{
@@ -78,12 +88,13 @@ export class ScheduleComponent implements OnInit {
   };
 
 
+
   scheduleService(){
     let workersIds = []
-
+    
     this.checkeds.forEach((check, index) => check ? workersIds.push(this.allUsers[index]._id) : null);
 
-    if(!this.startDate) this.startDate = "2000-01-01";
+    if(!this.startDate) this.startDate = this.dateChange();
 
     if(workersIds.length > 0){
       const id = this.service._id;

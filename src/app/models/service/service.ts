@@ -3,7 +3,7 @@ export class Service {
   // tslint:disable-next-line: variable-name
   public _id: string;
   public numService: number;
-  public numDeliveryNote: number;
+  public numDeliveryNote: string;
   public numBill: number;
   public description: string;
   public note: string;

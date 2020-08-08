@@ -139,9 +139,17 @@ export class CreateServicesComponent implements OnInit {
     }
   }
 
+  dateChange(){
+    let Year : any, Month : any, Day : any;
+    Year = new Date().getFullYear();
+    Month = new Date().getMonth();
+    Day = new Date().getDay();
+    return `${Year}-${Month}-${Day}`;
+  };
+
   createService(clientId: any): void{
     this.newService.email = this.newService.email.toLowerCase();
-    this.newService.startDate = new Date(2000,1,1);
+    this.newService.startDate = this.dateChange(); 
     this.newService.startHours = "00:00"
     this.newService.workers = [];
     this.newService.activities = this.selectedItems

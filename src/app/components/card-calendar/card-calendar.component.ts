@@ -29,6 +29,8 @@ export class CardCalendarComponent implements OnInit {
   public selectedEvent: Service;
   public allWorkers: [User];
 
+  
+
   constructor(
     private userService: UserService
   ) {
@@ -39,8 +41,28 @@ export class CardCalendarComponent implements OnInit {
     this.calendarLocale = esLocale;
   }
 
+  getBody(){
+    let body = document.getElementById('body');
+    let calendar = document.getElementById('show__calendar');
+    console.log("Entre body", body);
+    body.addEventListener('click',(e)=>{
+
+     /*  calendar.addEventListener('click',()=>{
+        this.calendarVisible = true;
+      }) */
+      console.log("evento", e.srcElement);
+      
+      this.calendarVisible = false;
+
+      console.log("Click en body", this.calendarVisible);
+    })
+    
+  }
+
+
   ngOnInit(): void {
     this.getAllWorkers();
+    this.getBody();
   }
 
   changeShowEvent(event){
@@ -63,10 +85,12 @@ export class CardCalendarComponent implements OnInit {
   }
 
   showEvents() {
+  
     this.allWorkers.forEach(worker => {
       this.events.forEach(event => {
         if(worker.works.includes(event._id)){
           const start = event.startDate.split('T')[0];
+          console.log("Start",start)
           let { _id: id, name: title, startHours } = event;
           title = startHours;
           title += ` ${worker.name}`;
@@ -80,5 +104,7 @@ export class CardCalendarComponent implements OnInit {
     this.calendarEvents.sort((a, b) => a.startHours.localeCompare(b.startHours));
     console.log('eventos1', this.calendarEvents);
   }
+
+
 
 }
