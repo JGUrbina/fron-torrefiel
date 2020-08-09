@@ -142,8 +142,10 @@ export class CreateServicesComponent implements OnInit {
   dateChange(){
     let Year : any, Month : any, Day : any;
     Year = new Date().getFullYear();
-    Month = new Date().getMonth();
-    Day = new Date().getDay();
+    Month = new Date().getMonth() + 1;
+    Day = new Date().getDate();
+    Month = Month.length === 1 ? '0' + Month : Month;
+    Day = Day.length === 1 ? '0' + Day : Day;
     return `${Year}-${Month}-${Day}`;
   };
 
@@ -154,7 +156,7 @@ export class CreateServicesComponent implements OnInit {
     this.newService.workers = [];
     this.newService.activities = this.selectedItems
     if(this.newService.numDeliveryNote === undefined){
-      this.newService.numDeliveryNote = null;
+      this.newService.numDeliveryNote = '';
     };
     console.log('servicio', this.newService);
     this.serviceService.createService(this.newService, clientId).subscribe(
