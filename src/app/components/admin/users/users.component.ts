@@ -57,7 +57,7 @@ export class UsersComponent implements OnInit {
   getWorks(id: string){
     this.serviceService.getWorks(id).subscribe(
       data => {
-        console.log(data)
+        console.log("data de los trabajos", data)
         this.jobsOfUser = data;
       },
       err => {
