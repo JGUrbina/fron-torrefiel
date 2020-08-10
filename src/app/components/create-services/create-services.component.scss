@@ -110,8 +110,13 @@
       border-radius: 5px;
       border: 1px solid black;
       padding-right: 0;
+
     }
 
+    .nombre{
+      min-width: 100px;
+    }
+    
     .input__contain{
       font-size: .8rem !important;
       width: 150px;

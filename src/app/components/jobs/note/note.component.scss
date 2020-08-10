@@ -1,6 +1,7 @@
 @import '../../../../assets/scss/components/chat';
 
-.sectionNote{
+.sectionChat{
+  
 
   &__header{
     display: flex;
@@ -30,79 +31,22 @@
     }
   }
 
-  /* &__main{
-    background-color: white;
-    height: 230px;
-    padding: 5px;
-    font-size: 0.7rem !important;
-    overflow: auto;
-
-    .date{
-      margin-bottom: 12px;
-      .chat__date{
-        background-color: #f2f2f2;
-        color: #c5c5c5;
-        font-size: .8rem;
-        padding: 3px 5px;
-        border-radius: 7px;
-      }
-    }
-
-    .chat__me{
-      font-size: .9rem;
-      margin: 7px 5px;
-      display: flex;
-      justify-content: flex-end;
-      color: white;
-
-      .burbuja{
-        width: 75%;
-        display: flex;
-        justify-content: flex-end;
-        padding: 7px 13px;
-        background-color: #cd2a00;
-        color: white;
-        border-radius: 25px;
-        border-bottom-right-radius: 0;
-        box-shadow: 0 2px 5px 1px #00000038;
-      }
-    }
-
-    .chat__other{
-      font-size: .9rem;
-      margin: 17px 5px;
-      color: white;
-      display: flex;
-      align-items: center;
-
-      .avatar{
-        width: 40px;
-        height: 40px;
-        margin: 0;
-        margin-right: 5px;
-      }
-
-      .burbuja{
-        width: 75%;
-        display: flex;
-        justify-content: flex-start;
-        padding: 7px 13px;
-        background-color: white;
-        color: #333;
-        border-radius: 25px;
-        box-shadow: 0 2px 5px 1px #00000038;
-      }
-      
-    }
-  } */
-
   &__main{
     @extend %chatSection;
-    height: 230px;
+    height: 345px;
   }
 
   &__footer{
     height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    .visit{
+      width: 30px;
+      height: 30px;
+      margin: 0;
+    }
 
     .input{
       display: flex;
@@ -120,7 +64,7 @@
         border-radius: 15px;
         padding: 4px 12px;
         font-size: .8rem;
-        width: 300px;
+        width: 280px;
         outline: none !important;
       }
 
@@ -134,7 +78,7 @@
         align-items: center;
         justify-content: center;
         position: absolute;
-        top: 1px;
+        top: 0;
         right: 5px;
         margin: 0;
       }
@@ -143,94 +87,36 @@
   }
 }
 
-@media (max-width: 1240px){
-  .sectionNote{
-    &__footer{
-    
-      .input{
-        
-        input{
-          width: 250px;
-        }
-      }
-    }
-  }
-}
+@media (max-width: 1024px){
 
-@media (max-width: 990px){
-  .sectionNote{
-    &__footer{
-    
-      .input{
-        
-        input{
-          width: 220px;
-        }
-      }
-    }
+  .input{
+     input{
+       width: 250px !important;
+    } 
   }
+ 
 }
 
 @media (max-width: 900px){
-  .sectionNote{
-    &__footer{
-    
-      .input{
-        
-        input{
-          width: 200px;
-        }
-      }
+  .input{
+    input{
+      width: auto !important;
     }
   }
+ 
 }
-
 @media (max-width: 780px){
-  .sectionNote{
-    &__footer{
-     background: black;
-      .input{
-        
-        input{
-          width: 250px;
-        }
-      }
-    }
-  }
-}
+ .sectionChat{
+  position: absolute;
+  top: -40px !important;
 
-@media (max-width: 660px){
-  .sectionNote{
-    &__footer{
-      .input{ 
-        input{
-          width: 220px;
-        }
-      }
+  &__header{
+    background: black;
+    h3{
+      margin: 10px;
     }
   }
-}
+ }
 
-@media (max-width: 600px){
-  .sectionNote{
-    &__footer{
-      .input{ 
-        input{
-          width: 190px;
-        }
-      }
-    }
-  }
-}
 
-@media (max-width: 480px){
-  .sectionNote{
-    &__footer{
-      .input{ 
-        input{
-          width: 170px;
-        }
-      }
-    }
-  }
 }

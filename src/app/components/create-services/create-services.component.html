@@ -8,8 +8,7 @@
         <div class="client">
           <div class="input__contain mr-4 ">
             <label for="">Nombre cliente registrado</label>
-            <select (change)="$event.target.value.length > 0 ? searchClient($event.target.value) : clearClient(myForm)" name="searchNameClient" [(ngModel)]="searchNameClient" *ngIf="allClients">
-              <option value="">Buscalo</option>
+            <select class="nombre" (change)="$event.target.value.length > 0 ? searchClient($event.target.value) : clearClient(myForm)" name="searchNameClient" [(ngModel)]="searchNameClient" *ngIf="allClients">
               <option *ngFor="let option of allClients" value="{{option.numClient}}">{{option.name}}</option>
             </select>  
             <p *ngIf="!allClients" class="no-exist"><b>No existen Clientes</b></p>  
@@ -258,11 +257,7 @@
           <div class="input__contain w-75 mr-5">
             <label for="">Descripción</label>
             <textarea class="w-100 h-85" name="description" [(ngModel)]="newService.description" cols="30" rows="10" placeholder="Descripción del trabajo sin Nota interna" required></textarea>
-          </div>
-          <div class="input__contain">
-            <label for="">Incluye <b>Nota interna</b></label>
-            <textarea class="w-100 h-85" name="note" [(ngModel)]="newService.note" cols="30" rows="10" placeholder="Escribe una breve nota interna"></textarea>
-          </div>
+          </div> 
         </div>
       </div>
     </div>

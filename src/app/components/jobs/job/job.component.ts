@@ -104,6 +104,7 @@ export class JobComponent implements OnInit {
   ngOnInit(): void {
     this.getClient(this.job.client);
     this.selectedItems = this.job.activities;
+    console.log("trabajos", this.job)
   }
 
   async getClient(id: string): Promise<any>{

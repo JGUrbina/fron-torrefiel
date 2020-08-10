@@ -42,22 +42,23 @@ export class CardCalendarComponent implements OnInit {
   }
 
   getBody(){
-    let body = document.getElementById('body');
-    let calendar = document.getElementById('show__calendar');
-    console.log("Entre body", body);
-    body.addEventListener('click',(e)=>{
-
-     /*  calendar.addEventListener('click',()=>{
-        this.calendarVisible = true;
-      }) */
-      console.log("evento", e.srcElement);
-      
-      this.calendarVisible = false;
-
-      console.log("Click en body", this.calendarVisible);
-    })
     
-  }
+
+    document.getElementById('body').onclick = function(e) {
+      console.log("evento",  e.target, e.currentTarget)
+      document.getElementById('show__calendar').onclick = function(ev){
+        if(ev.currentTarget == document.getElementById('show__calendar')){
+          console.log("inside");
+        }
+        else{
+          console.log("outside")
+        }
+      }
+
+    }
+  
+
+ }
 
 
   ngOnInit(): void {

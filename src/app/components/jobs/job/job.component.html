@@ -115,7 +115,7 @@
       </div>
     
       <div class="note" *ngIf="sectionMenuShow === NOTE">
-        <app-note class="w-100" (closeWindow)="close($event)" [message]="job.note"></app-note>
+        <app-note class="w-100" (closeWindow)="close($event)" [message]="job.note" [id]="job._id"></app-note>
       </div>
     </div>
   </div>

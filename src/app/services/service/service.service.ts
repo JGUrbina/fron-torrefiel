@@ -44,4 +44,7 @@ export class ServiceService {
     return this.http.get<object>(`${this.urlApi}/userServices/${id}`, { headers: this.headers })
   }
 
+  addNote(id: string, note): Observable<any> {
+    return this.http.put<object>(`${this.urlApi}/addNote/${id}`, {note}, { headers: this.headers });
+  }
 }
