@@ -60,7 +60,8 @@ export class DeliveryNoteComponent implements OnInit {
 
   onPrint(){
       let popupWinindow : any;
-      popupWinindow = window.open('', '_blank', 'width=800,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+     
+      popupWinindow = window.open('', '_blank');
       popupWinindow.document.open();
       popupWinindow.document.write(`<!DOCTYPE html>
       <html lang="en">
@@ -240,7 +241,7 @@ export class DeliveryNoteComponent implements OnInit {
                       <h1 class="name">PERSIANAS Y TOLDOS</h1>
                     </div>
                     <div>
-                      <figure class="logo"><img src="https://scontent.fmzt1-1.fna.fbcdn.net/v/t31.0-8/1606336_1411154385799124_2121415536_o.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=ct9kCcPvq5QAX8rd6Vm&_nc_ht=scontent.fmzt1-1.fna&oh=d7e0f3855897b7837abef782944300a1&oe=5F4D8847" alt="Torre fiel"></figure>
+                    <figure class="logo"><img src="../../../assets/images/logo-color.png" alt="Torre fiel"></figure>
                     </div>
                   </div>
                   <div class="info">
@@ -335,9 +336,11 @@ export class DeliveryNoteComponent implements OnInit {
       </body>
       </html>
       </html>`);
+   
+      setTimeout(function() {popupWinindow.print();},500);
       popupWinindow.document.close();
-      popupWinindow.print();
-      popupWinindow.close();
+      popupWinindow.onfocus = function () { setTimeout(function () { popupWinindow.close(); }, 500); }
+       //popupWinindow.close();
     }
 
   emitEvent(): void{

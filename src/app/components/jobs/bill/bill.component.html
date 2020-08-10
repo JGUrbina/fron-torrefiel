@@ -1,4 +1,4 @@
-<section class="sectionPdf">
+<div  class="sectionPdf">
   <div class="sectionPdf__icons">
     <figure class="icon" (click)="downloadPdf()">
       <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg_2/descargar.svg'"></app-create-icon>
@@ -12,166 +12,109 @@
     </figure>
   </div>
   <div class="sectionPdf__viewpdf " id="pdf_factura_idUser">
-    <table id="printSectionId" class="pdf" width="fit-content" border="0" cellpadding="0" cellspacing="0" align="center" style="border:1px solid #c1c1c8; overflow: hidden; min-width: 100%; min-height: 100%;">
-      <tbody style="min-width: 100%; min-height: 100%;">
-        <!-- header -->
-        <tr class="header">
-          <td>
-            <tr>
-              <td>
-                <span>PERSIANAS Y TOLDOS</span>
-              </td>
-            </tr>
-            <tr class="logo">
-              <td>
-                <img src="../../../../assets/images/logo-color.png" alt="Torre fiel">
-              </td>
-            </tr>
-          </td>
-          <td class="info">
-            <tr class="mb-2">
-              <span><b>Persionas y Toldos Torrefiel, CB</b></span><br>
-              <span>c/ Librero Esclapes, 2 Bajo dcha.</span><br>
-              <span>46019- Valencia</span><br>
-              <span>CIF: E97681472</span>
-            </tr>
-            <tr>
-              <span>Telf.: 961337760</span><br>
-              <span>963284410</span><br>
-              <span>Correo electrónico: <a href="mailto:info@mejorarhogar.com">info@mejorarhogar.com</a></span>
-            </tr>
-          </td>
-        </tr>
-        <!-- actividades -->
-        <tr class="services">
-          <td style="width: 100%;">
-            <table border="0" cellpadding="0" cellspacing="0" align="center" style="width: 100%;">
-              <thead>
-                <tr>
-                  <th scope="col" class="purple">Persianas</th>
-                  <th scope="col">Toldos</th>
-                  <th scope="col" class="purple">Ventanas</th>
-                  <th scope="col">Mosquiteras</th>
-                  <th scope="col" class="purple">Electricidad</th>
-                </tr>
-                <tr>
-                  <th scope="col">Mamparas de<br>baño</th>
-                  <th scope="col" class="purple">Decoración</th>
-                  <th scope="col">Rejas</th>
-                  <th scope="col" class="purple">Motorizaciones</th>
-                  <th scope="col">Reparaciones<br> a domicilio</th>
-                </tr>
-              </thead>
-            </table>
-          </td>
-        </tr>
-        <!-- data -->
-        <tr class="data">
-          <td style= "min-width: 100%;">
-            <table border="0" cellpadding="0" cellspacing="0" align="center" style="border:1px solid #c1c1c8; min-width: 100%;">
-              <tbody>
-                <tr>
-                  <td>
-                    <span><b>Fecha de emisión: </b> {{deliveryNoteData.startDate.split('T')[0]}}</span>
-                  </td>
-                  <td><span>N° factura:</span></td>
-                  <td><span>{{ deliveryNoteData.numDeliveryNote }}</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <span><b>Cliente: </b>{{ clientData.name }} {{ clientData.lastName }} {{ clientData.motherLastName }}</span>
-                  </td>
-                  <td><span>Teléfono 1:</span></td>
-                  <td><span>{{ clientData.phoneOne }}</span></td>
-                </tr>
-                <tr>
-                  <td>
-                    <span><b>Correo electronico: </b>{{ clientData.email }} </span>
-                  </td>
-                  <td><span>Teléfono 2:</span></td>
-                  <td><span>{{ clientData.phoneTwo? clientData.phoneTwo : "_" }}</span></td>
-                </tr>
-                <tr class="location">
-                  <td>
-                    <span><b>Dirección trabajos: </b>{{ deliveryNoteData.direction }} #{{ deliveryNoteData.numberExternal }}</span>
-                  </td>
-                  <td><span>Población:  {{ deliveryNoteData.province }} <br>{{ deliveryNoteData.municipality }}</span></td>
-                  <td><span>C.P. {{ deliveryNoteData.postalCode}} </span></td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-        <!-- albaran -->
-        <tr class="info" style="min-width: 100%; display: flex;">
-          <td style= "min-width: 100%;">
-            <tr class="title">
-              <span>FACTURA</span>
-            </tr>
-            <tr>
-              <table border="0" cellpadding="0" cellspacing="0" align="center" style="min-width: 100%;">
-                <thead class="bg-purple">
-                  <tr>
-                    <td>UND</td>
-                    <td>DESCRIPCIÓN</td>
-                    <td>PRECIO/UND</td>
-                    <td>SUBTOTAL</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="text">
-                    <td class="text-center">
-                      <span>1</span>
-                    </td>
-                    <td>
-                      <span>Detalle del Producto</span>
-                    </td>
-                    <td class="text-center">
-                      <span>{{deliveryNoteData.amount}}€</span>
-                    </td>
-                    <td class="text-center">
-                      <span>{{deliveryNoteData.amount}}€</span>
-                    </td>
-                  </tr>
-                  <tr class="total b-bottom">
-                    <td class="bg-yellow"></td>
-                    <td class="bg-yellow d-flex justify-content-center">
-                      <span>IMPORTE TOTAL:</span>
-                    </td>
-                    <td class="bg-yellow b-left b-right d-flex justify-content-center">
-                      <span>Base imp.:</span>
-                    </td>
-                    <td class="bg-white d-flex costo">
-                      <span>{{deliveryNoteData.amount }}€</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td class="bg-yellow b-left b-right b-bottom d-flex justify-content-center">
-                      <span>{{deliveryNoteData.typeIva }}% IVA:</span>
-                    </td>
-                    <td class="bg-white b-bottom d-flex costo">
-                      <span>{{(deliveryNoteData.amount * deliveryNoteData.typeIva /100)}}€</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td class="bg-yellow b-left b-right justify-content-center">
-                      <span>TOTAL:</span>
-                    </td>
-                    <td class="bg-purple costo">
-                      <span>{{deliveryNoteData.amount + (deliveryNoteData.amount * deliveryNoteData.typeIva /100)}}€ </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </tr>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <section class="pdf">
+      <header class="pdf__header">
+        <div class="title">
+          <div>
+            <h1 class="name">PERSIANAS Y TOLDOS</h1>
+          </div>
+          <div>
+            <figure class="logo"><img src="../../../../assets/images/logo-color.png" alt="Torre fiel"></figure>
+          </div>
+        </div>
+        <div class="info">
+          <div class="mb-3">
+            <span><b>Persionas y Toldos Torrefiel, CB</b></span><br>
+            <span>c/ Librero Esclapes, 2 Bajo dcha.</span><br>
+            <span>46019- Valencia</span><br>
+            <span>CIF: E97681472</span>
+          </div>
+          <div>
+            <span>Telf.: 961337760</span><br>
+            <span>963284410</span><br>
+            <span>Correo electrónico: <a href="mailto:info@mejorarhogar.com">info@mejorarhogar.com</a></span>
+          </div>
+        </div>
+      </header>
+      <section class="pdf__services">
+        <div class="one">
+          <p class="purple">Persianas</p>
+          <p>Toldos</p>
+          <p class="purple">Ventanas</p>
+          <p>Mosquiteras</p>
+          <p class="purple">Electricidad</p>
+        </div>
+        <div class="two">
+          <p>Mamparas de<br>baño</p>
+          <p class="purple">Decoración</p>
+          <p>Rejas</p>
+          <p class="purple">Motorizaciones</p>
+          <p>Reparaciones<br> a domicilio</p>
+        </div>
+      </section>
+      <main class="pdf__main">
+        <section class="data">
+          <div class="data__contain">
+            <div class="data__contain--item">
+              <span><b>Fecha de emisión: </b> {{deliveryNoteData.startDate.split('T')[0]}}</span>
+            </div>
+            <div class="data__contain--item"><span>N° Factura:</span></div>
+           
+            <div class="data__contain--item"><span> {{deliveryNoteData.numBill}} </span></div>
+          </div>
+          <div class="data__contain">
+            <div class="data__contain--item"><span><b>Cliente: </b>{{ deliveryNoteData.name }} {{ deliveryNoteData.lastName }} {{ deliveryNoteData.motherLastName }}</span></div>
+            <div class="data__contain--item"><span>Teléfono 1:</span></div>
+            <div class="data__contain--item"><span>{{ deliveryNoteData.phoneOne }}</span></div>
+          </div>
+          <div class="data__contain">
+            <div class="data__contain--item"><span><b>Correo electronico: </b>{{ deliveryNoteData.email }}</span></div>
+            <div class="data__contain--item"><span>Teléfono 2:</span></div>
+            <div class="data__contain--item"><span>{{ deliveryNoteData.phoneTwo }}</span></div>
+          </div>
+          <div class="data__contain">
+            <div class="data__contain--item"><span><b>Dirección trabajos: </b>{{ deliveryNoteData.direction }} #{{ deliveryNoteData.numberExternal }}</span></div>
+            <div class="data__contain--item"><span>Población:  {{ deliveryNoteData.province }} <br>{{ deliveryNoteData.municipality }}</span></div>
+            <div class="data__contain--item"><span>C.P. {{ deliveryNoteData.postalCode}}</span></div>
+          </div>
+        </section>
+        <section class="info">
+          <div class="title">
+            <p><span>FACTURA</span></p>
+          </div>
+
+          <div>
+            <div class="titulos-texto">
+              <div class="bg-purple mb-0 col-2"><span>UND</span></div>
+              <div class="bg-purple mb-0 col-6"><span>DESCRIPCIÓN</span></div>
+              <div class="bg-purple mb-0 col-2"><span>PRECIO/UND</span></div>
+              <div class="bg-purple mb-0 col-2"><span>SUBTOTAL</span></div>
+            </div>
+            <div class="texto">
+              <div class="col-2 mb-0 b-right"><span>1</span></div>
+              <div class="col-6 mb-0 b-right"><span>Detalle del Producto</span></div>
+              <div class="col-2 mb-0 right b-right"><span>{{ deliveryNoteData.amount }}€</span></div>
+              <div class="col-2 mb-0 right b-right"><span>{{ deliveryNoteData.amount }}€</span></div>
+            </div>
+            <div class="data__contain">
+              <div class="data__contain--item2  col-8"><span>IMPORTE TOTAL</span></div>
+              <div class="data__contain--item2  col-2"><span>Base imp.:</span></div>
+              <div class="col-2 right b-right"><span>{{ deliveryNoteData.amount }}€</span></div>
+            </div>
+            <div class="texto2">
+              <div class="col-8 b-left"></div>
+              <div class="data__contain--item2  col-2"><span>{{deliveryNoteData.typeIva}}% IVA:</span></div>
+              <div class="col-2 right b-right"><span>{{(deliveryNoteData.amount * deliveryNoteData.typeIva /100)}}€</span></div>
+            </div>
+            <div class="data__contain">
+              <div class="col-8 b-left b-bottom"></div>
+              <div class="data__contain--item2  col-2"><span>TOTAL</span></div>
+              <div class="data__contain--item2 right col-2 purple"><span>{{deliveryNoteData.amount + (deliveryNoteData.amount * deliveryNoteData.typeIva /100)}}€</span></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </section>
   </div>
   <div class="div-input-email">
     <form class="form-input-email">
@@ -182,4 +125,4 @@
       <button (click)="sendPdfToEmail()" class="button-email-albaran" type="submit" >Envíar</button>
     </form>
   </div>
-</section>
+</div>
