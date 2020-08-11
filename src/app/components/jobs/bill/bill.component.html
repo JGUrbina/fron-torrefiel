@@ -109,7 +109,7 @@
             <div class="data__contain">
               <div class="col-8 b-left b-bottom"></div>
               <div class="data__contain--item2  col-2"><span>TOTAL</span></div>
-              <div class="data__contain--item2 right col-2 purple"><span>{{deliveryNoteData.amount + (deliveryNoteData.amount * deliveryNoteData.typeIva /100)}}€</span></div>
+              <div class="data__contain--item2 right col-2 purple"><span>{{(deliveryNoteData.amount*deliveryNoteData.typeIva/100) + deliveryNoteData.amount }}€</span></div>
             </div>
           </div>
         </section>

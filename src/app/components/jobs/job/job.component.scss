@@ -161,7 +161,7 @@
         width: 40%;
         height: 60%;
         position: absolute;
-        bottom: 5%;
+        top: 10%;
         right: 5px;
       }
       .scheduling {
@@ -362,6 +362,15 @@
         margin-bottom: 5px;
       }
     }  
+
+    .note{
+      padding: 8px 0px;
+      width: 40%;
+      height: 60%;
+      position: absolute;
+      top: 10%;
+      right: 5px;
+    }
   }
   .note{
     top: 130px;
@@ -376,6 +385,12 @@
     }
     
 
+}
+@media (max-width: 780px){
+  .note{
+    background-color: transparent !important;
+    
+  }
 }
 
 @media (max-width: 535px){

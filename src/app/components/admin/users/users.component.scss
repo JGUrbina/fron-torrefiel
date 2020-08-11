@@ -22,9 +22,10 @@
   
 
   figure{
-    width: 35px;
-    height: 35px;
-    margin: 0;
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+    display: inline-block;
   }
 }
 
@@ -49,9 +50,10 @@
   }
 
   figure{
-    width: 35px;
-    height: 35px;
-    margin: 0;
+    width: 40px;
+    height: 40px;
+    margin: 2px;
+    display: inline-block;
   }
 }
 
@@ -161,6 +163,7 @@
   }
 
   .buttonSave{
+    border: none;
     border-radius: 5px;
     padding: 5px;
     font-size: 0.8rem;
@@ -181,12 +184,12 @@
   
   label{
     font-size: 1rem;
-    margin: 12px 0px 5px 0px !important;
+    margin: 10px 0px 0px 0px !important;
   }
 
   .w-90{
     width: 90%;
-    padding: 5px 3px;
+    padding: 3px 3px;
   }
 
   .w-75{
@@ -450,6 +453,9 @@
 }
 
 @media(max-width: 1200px){
+  .containUser{
+    width: 200%;
+  }
   .user__contain{
     &--title{
       padding: 0px 0px !important;
@@ -459,6 +465,14 @@
     margin-bottom: 0px;
   }
 
+  .info{
+   
+      position: absolute;
+      top: -60px;
+    
+    
+  }
+
  
 }
 
@@ -466,11 +480,15 @@
   .containUser{
     padding: 20px 10px;
   }
+  
+ 
   .containUser__header{
     .title{
       padding: 10px 5px;
-      display: inline-block;
+      display: block;
       width: 100%;
+      height: auto !important;
+      margin: 0px 0px 7px 0px;
       .icon{
         width: 100%;
       }

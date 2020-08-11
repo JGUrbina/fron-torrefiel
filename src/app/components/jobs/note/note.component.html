@@ -1,15 +1,12 @@
-<section class="sectionChat">
-  <header class="sectionChat__header">
+<section class="sectionNotes">
+  <header class="sectionNotes__header">
     <h3>Notas Internas</h3>
     <figure class="icon exit" (click)="emitEvent()">
       <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
     </figure>
   </header>
-  <main class="sectionChat__main">
-    <div class="sectionChat__main--containChat">
-      <div class="text-center date">
-        <span class="chat__date">MIER - 14:48PM</span>
-      </div>
+  <main class="sectionNotes__main">
+    <div class="sectionNotes__main--containChat">
       <div [ngClass]="itemMessage.person === 'admin' ? 'chat__other':'chat__me'" *ngFor="let itemMessage of allNotes">
         <figure class="avatar" *ngIf="itemMessage.person === 'admin'">
           <app-create-icon [class]="'color-gray'" [name]="'avatar'" [url]="itemMessage.avatar"></app-create-icon>
@@ -20,7 +17,7 @@
       </div>
     </div>
   </main>
-  <footer class="sectionChat__footer">
+  <footer class="sectionNotes__footer">
     <div class="input">
       <label for="">
         <input type="text" placeholder="Mensaje" name="newMessageMe" #newMessageMe="ngModel" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()">

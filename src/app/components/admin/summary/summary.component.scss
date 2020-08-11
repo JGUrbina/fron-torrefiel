@@ -1,5 +1,5 @@
 .sectionSummary{
-  width: 40%;
+  width: 60%;
   background-color: rgba(0, 0, 0, 0.8);
   padding: 20px;
   margin: auto;
@@ -83,6 +83,9 @@
     text-transform: uppercase;
     input{
       border-radius: 5px;
+    }
+    span{
+      font-size: .8rem;
     }
   }
 }
