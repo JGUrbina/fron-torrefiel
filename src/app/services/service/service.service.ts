@@ -47,4 +47,8 @@ export class ServiceService {
   addNote(id: string, note): Observable<any> {
     return this.http.put<object>(`${this.urlApi}/addNote/${id}`, {note}, { headers: this.headers });
   }
+
+  downloadData(year: string, month: string): Observable<any> {
+    return this.http.get<object>(`${this.urlApi}/downloadPdf/${year}${month}`,{responseType: 'arraybuffer' as 'json',headers:this.headers} );
+  }
 }

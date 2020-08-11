@@ -31,30 +31,12 @@ export class NoteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.allMessages=[];
-    
-    //console.log("mensaje y id", this.message, this.id);
-   
-    if(this.message!=null){
-     // console.log("this message", this.message)
-      this.message.forEach(msg=>{
-        //console.log("msg", msg)
-        this.allMessages.push(msg);
-      })
-    } else{
-      this.allMessages = [];
-    }
-    console.log("prueba",this.prueba,this.allMessages[0])
-    if(this.prueba[0]!=this.allMessages[0]){
-      this.prueba=this.allMessages;
-    } 
     this.getNote()
-
   }
 
   sendMessage(): void{
-    this.newMessage!='' ?  this.allNotes.push({ note: this.newMessage }) : null
-    console.log("allNotes",this.allNotes)
+    (this.newMessage==undefined || this.newMessage=='') ?  null : this.allNotes.push({ note: this.newMessage })
+    console.log("newMessage",(this.newMessage!=undefined || this.newMessage!=''))
     this.noteService.addNotes(this.id, this.newMessage).subscribe(
       (data)=>{
         console.log("dataSend",data)
@@ -63,7 +45,6 @@ export class NoteComponent implements OnInit {
         console.log("error",err)
       }
     )
-
     this.newMessage = '';
   }
 
