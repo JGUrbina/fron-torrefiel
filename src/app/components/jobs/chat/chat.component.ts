@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit, Output, Input, OnDestroy } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { Service } from '../../../models/service/service';
 import  { ServiceService }  from '../../../services/service/service.service';
@@ -10,12 +10,13 @@ import { Subscription } from 'rxjs';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
 
   @Output () closeWindow = new EventEmitter();
   @Input() message: any[];
   @Input() id: string;
 
+  ioConnection: any;
   public allMessages: any[];
   public prueba = [];
   public nota: string;
@@ -32,21 +33,20 @@ export class ChatComponent implements OnInit {
   }
 
   ngOnInit() {
-   this.chatService.connectSocket();
-   this.chatService.getHistoryChat().subscribe(
-     data=>{
-       console.log("entro a histo", data)
-     },err=>{console.log("error", err)}
-   );
-
-  // this.getMessage();
-
-  } 
-
+    this.loadMessages();
+    this.getMessages();
+  }
   ngOnDestroy(): void{
-    console.log("cierra")
-   // this._docSub.unsubscribe();
-    this.chatService.destroyMessage()
+    this.chatService.closeAllConections();
+  }
+
+  loadMessages(){
+    this.chatService.initSocket();
+    this.chatService.getHistory().subscribe(data => this.allMessages = data.reverse()), err => console.log('err', err);
+  }
+
+  getMessages(){
+    this.chatService.getMessage().subscribe(data => this.allMessages.push(data)), err => console.log('err', err);
   }
 
   getHistoryMessage(){
@@ -54,25 +54,13 @@ export class ChatComponent implements OnInit {
   }
 
   sendMessage(){
-    console.log("entro a sendMessage")
-    this.chatService.sendMessage(this.newMessage, null).subscribe(
-      data=>{
-        const msg = {
-          text: this.newMessage,
-            user: {
-                userName: 'Marina',
-              //  _id
-            }
-          }
-        this.allMessages.push(msg);
-       // this.getMessage()
-        console.log("algo se ejecuta")
-      },err=>{
-        console.log("error", err)
-      }
-    
-    )
-    this.newMessage = ''
+    const msg = {
+      text: this.newMessage,
+      user: { userName: 'Yo', _id: 12331412 }
+    };
+    this.chatService.sendMessage(msg);
+    this.allMessages.push(msg);
+    this.newMessage = '';
   }
 
   getMessage(){

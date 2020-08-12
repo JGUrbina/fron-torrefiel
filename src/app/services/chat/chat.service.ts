@@ -34,39 +34,39 @@ export class ChatService {
     return this.http.post<any>(`${this.urlApi}/add/${id}`, {note}, { headers: this.headers });
   }
 
-  sendMessage(message: any , user: any): Observable<any>{
-    return new Observable((observer: any) => {
-      const msg = {
-      text: message,
-        user: {
-            userName: 'Marina',
-          //  _id
-        }
-      };
-      this.socket.emit('Chat', msg);
-      observer.next(msg);
-    });
-  }
+  // sendMessage(message: any , user: any): Observable<any>{
+  //   return new Observable((observer: any) => {
+  //     const msg = {
+  //     text: message,
+  //       user: {
+  //           userName: 'Marina',
+  //         //  _id
+  //       }
+  //     };
+  //     this.socket.emit('Chat', msg);
+  //     observer.next(msg);
+  //   });
+  // }
 
-  newMessage(): Observable<any>{
-    return new Observable((observer: any) => {
-    this.socket.on('New message', msg => {
-      console.log('msg', msg);
-      observer.next(msg);
-     // msgHistory.innerHTML += `${msg.user.userName}: ${msg.text}<br>`;
-    });
-  });
-  }
+  // newMessage(): Observable<any>{
+  //   return new Observable((observer: any) => {
+  //   this.socket.on('New message', msg => {
+  //     console.log('msg', msg);
+  //     observer.next(msg);
+  //    // msgHistory.innerHTML += `${msg.user.userName}: ${msg.text}<br>`;
+  //   });
+  // });
+  // }
 
-  public connectSocket() : void{
-    this.socket = socketIo(this.urlApi);
-  }
+  // public connectSocket() : void{
+  //   this.socket = socketIo(this.urlApi);
+  // }
 
-  public getHistoryChat(): Observable<any> {
-    return new Observable<any>(observer => {
-        this.socket.on('Chat history', (data: any) => observer.next(data));
-    });
-  }
+  // public getHistoryChat(): Observable<any> {
+  //   return new Observable<any>(observer => {
+  //       this.socket.on('Chat history', (data: any) => observer.next(data));
+  //   });
+  // }
 
   // getHistoryChat() :void{
   //   this.socket.on('Chat history', data=>{
@@ -74,12 +74,12 @@ export class ChatService {
   //   })
   // }
 
-  destroyMessage(){
-      this.socket.disconnect()
-      //this.socket.emit('forceDisconnect');
-      console.log("entro a destroy")
+  // destroyMessage(){
+  //     this.socket.disconnect()
+  //     //this.socket.emit('forceDisconnect');
+  //     console.log("entro a destroy")
     
-  }
+  // }
 
 
   // getHistoryMessage(): Observable<any> {
@@ -92,4 +92,31 @@ export class ChatService {
   //   return this.mensajes;
   // }
 
+  public initSocket(): void {
+    console.log('url', UrlApiGlobal);
+    this.socket = socketIo(UrlApiGlobal);
+  }
+
+
+  public getHistory(): Observable<any> {
+    return new Observable<any>(observer => {
+      this.socket.once('Chat history', (data: any) => observer.next(data));
+    });
+  };
+
+  public sendMessage(message: any): void {
+    console.log('send message', message);
+    this.socket.emit('Chat', message);
+  };
+
+  public getMessage(): Observable<any> {
+    return new Observable<any>(observer => {
+        this.socket.on('New message', msg => observer.next(msg));
+    });
 }
+
+  public closeAllConections(): void {
+    this.socket.removeAllListeners();
+  };
+
+};
