@@ -13,14 +13,24 @@
     </div>
     <div class="contentMes">
       <div class="mes">
-        <input placeholder="🔍 Buscar por año" [(ngModel)]="year">
+        <div class=search>
+          <figure class="icon">
+            <app-create-icon [class]="'color-gray'" [name]="'search'" [url]="'../../../../assets/svg_2/buscar.svg'"></app-create-icon>
+          </figure>
+          <input placeholder="Buscar por año (2020)" [(ngModel)]="year">
+        </div>
         <figure class="icon descarga">
           <app-create-icon (click)="downloadDataYear()" [class]="'color-white'" [name]="'download'" [url]="'../../../../assets/svg_2/descarga.svg'"></app-create-icon>
         </figure>
         <span>Descarga por año</span>
       </div>
       <div class="mes">
-        <input placeholder="🔍 Buscar por mes" [(ngModel)]="month">
+        <div class=search>
+          <figure class="icon">
+            <app-create-icon [class]="'color-gray'" [name]="'search'" [url]="'../../../../assets/svg_2/buscar.svg'"></app-create-icon>
+          </figure>
+          <input placeholder="Buscar por mes (09)" [(ngModel)]="month">
+        </div>
         <figure class="icon descarga">
           <app-create-icon  (click)="downloadDataMonth()" [class]="'color-white'" [name]="'download'" [url]="'../../../../assets/svg_2/descarga.svg'"></app-create-icon>
         </figure>

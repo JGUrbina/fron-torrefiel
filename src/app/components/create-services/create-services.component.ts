@@ -101,14 +101,20 @@ export class CreateServicesComponent implements OnInit {
   clientExisting(): void {
   }
 
-  clearClient(form: NgForm){
-    form.resetForm(); 
-    this.getAllClient();
+  clearClient(){
+    this.newClient.name = '';
+    //form.resetForm(); 
+    //this.getAllClient();
 
   }
 
   searchClient(option: any){
+    //let cliente = this.allClients.filter(client => client.numClient == option)[0];
+    //console.log("cliente", cliente)
     this.newClient = this.allClients.filter(client => client.numClient == option)[0];
+   
+    console.log("all clients", this.allClients)
+    console.log("new client", this.newClient)
   }
 
   createClientAndService(): void{
@@ -176,6 +182,7 @@ export class CreateServicesComponent implements OnInit {
   }
 
   updateView(view: string): void{
+    console.log("updateView")
     if(this.sameDirection){
       this.newService.name = this.newClient.name;
       this.newService.lastName = this.newClient.lastName;
@@ -226,12 +233,20 @@ export class CreateServicesComponent implements OnInit {
     }, this.ALERTTIMESHOW);
   }
 
-  compareClient(form: NgForm){
+  compareClient(){
     //Se busca el cliente entre todos los clientes con el num ingresado en el input de cliente
     let clientSelected = this.allClients.filter(client => client.numClient == this.newClient.numClient);
-    clientSelected.length > 0 ? this.searchClient(clientSelected[0].numClient) : this.resetInputs() ;
-    console.log(clientSelected[0]);
-    this.getAllClient();
+    //clientSelected.length > 0 ? this.searchClient(clientSelected[0].numClient) : this.resetInputs() ;
+    if( clientSelected.length > 0){
+      this.searchClient(clientSelected[0].numClient);
+      console.log("num cliente",clientSelected[0].numClient)
+      this.getAllClient();
+    }
+    else{
+      this.resetInputs() ;
+    }
+    console.log("clientSelected", clientSelected.length > 0);
+    //this.getAllClient();
   }
 
   resetInputs(){

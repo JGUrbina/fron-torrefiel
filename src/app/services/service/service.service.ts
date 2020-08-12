@@ -51,4 +51,13 @@ export class ServiceService {
   downloadData(year: string, month: string): Observable<any> {
     return this.http.get<object>(`${this.urlApi}/downloadPdf/${year}${month}`,{responseType: 'arraybuffer' as 'json',headers:this.headers} );
   }
+
+  getImages(id: string): Observable<any> {
+    return this.http.get<object>(`${this.urlApi}/images/${id}`, { headers: this.headers })
+  }
+
+  downloadImages(id: string): Observable<any> {
+    return this.http.get<object>(`${this.urlApi}/downloadImages/${id}`,{responseType: 'arraybuffer' as 'json',headers:this.headers} );
+  }
+
 }

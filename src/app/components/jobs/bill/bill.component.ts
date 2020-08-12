@@ -17,6 +17,7 @@ export class BillComponent implements OnInit {
   @Input () clientData: Client;
 
   public emailPdf: string;
+  public monto: any;
   constructor(
     private pdfService: PdfService
   ) { 
@@ -24,13 +25,14 @@ export class BillComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('delivery', this.deliveryNoteData)
+    console.log('delivery', this.deliveryNoteData);
+    this.monto = (this.deliveryNoteData.amount + (this.deliveryNoteData.amount * this.deliveryNoteData.typeIva /100)).toFixed(2);
   }
   
 
   onPrint(){
     let popupWinindow : any;
-     
+    console.log("monto", this.monto)
     popupWinindow = window.open('', '_blank');
     popupWinindow.document.open();
   
@@ -362,12 +364,12 @@ export class BillComponent implements OnInit {
         <div class="texto2">
           <div class="col-8 b-left"></div>
           <div class="data__contain--item2  col-2"><span>${this.deliveryNoteData.typeIva}% IVA:</span></div>
-          <div class="col-2 right b-right"><span>${(this.deliveryNoteData.amount * this.deliveryNoteData.typeIva /100)}€</span></div>
+          <div class="col-2 right b-right"><span>${(this.deliveryNoteData.amount * this.deliveryNoteData.typeIva /100).toFixed(2)}€</span></div>
         </div>
         <div class="data__contain">
           <div class="col-8 b-left b-bottom"></div>
           <div class="data__contain--item2  col-2"><span>TOTAL</span></div>
-          <div class="data__contain--item2 right col-2 purple"><span>${this.deliveryNoteData.amount + (this.deliveryNoteData.amount * this.deliveryNoteData.typeIva /100)}€</span></div>
+          <div class="data__contain--item2 right col-2 purple"><span>${this.monto}€</span></div>
         </div>
         </div>
       </section>

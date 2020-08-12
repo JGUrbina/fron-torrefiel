@@ -1,5 +1,6 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input} from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { ServiceService } from '../../../services/service/service.service'
 
 @Component({
   selector: 'app-images',
@@ -8,33 +9,60 @@ import { EventEmitter } from '@angular/core';
 })
 export class ImagesComponent implements OnInit {
 
+ 
   @Output () closeWindow = new EventEmitter();
+  @Input() id: string;
+  
 
   public allImages: any[];
+  public description: string;
 
-  constructor() { }
+  constructor(
+    private service : ServiceService
+  ) { }
+
+
 
   ngOnInit(): void {
-    this.allImages = [
-      {url: 'https://geeksroom.com/wp-content/uploads/2019/07/carpintero-pixabay.jpg', name: 'prueba', date: new Date(), message: 'texto'},
-      {url: 'https://www.aloreparaciones.cl/image/reparaciones-generales.jpg', name: 'test 2', date: new Date(), message: 'texto'},
-      {url: 'https://geeksroom.com/wp-content/uploads/2019/07/carpintero-pixabay.jpg', name: 'test', date: new Date(), message: 'texto'},
-      {url: 'https://www.todomecanica.com/images/blog/2017/junio/reparacion-taller.jpg', name: 'test 1', date: new Date(), message: 'texto'},
-      {url: 'https://www.galiciae.com/media/galiciae/images/2017/06/22/herramientas.jpg', name: 'evento', date: new Date(), message: 'texto'},
-      {url: 'https://geeksroom.com/wp-content/uploads/2019/07/carpintero-pixabay.jpg', name: 'asd', date: new Date(), message: 'texto'},
-      {url: 'https://mbnoticias.es/wp-content/uploads/2019/05/Las-reparaciones-m%C3%A1s-frecuentes-en-el-hogar.jpg', name: 'asd dfdf', date: new Date(), message: 'texto'},
-      {url: 'https://mbnoticias.es/wp-content/uploads/2019/05/Las-reparaciones-m%C3%A1s-frecuentes-en-el-hogar.jpg', name: 'asd dfdf', date: new Date(), message: 'texto'},
-      {url: 'https://mbnoticias.es/wp-content/uploads/2019/05/Las-reparaciones-m%C3%A1s-frecuentes-en-el-hogar.jpg', name: 'asd dfdf', date: new Date(), message: 'texto'},
-      {url: 'https://mbnoticias.es/wp-content/uploads/2019/05/Las-reparaciones-m%C3%A1s-frecuentes-en-el-hogar.jpg', name: 'asd dfdf', date: new Date(), message: 'texto'},
-      {url: 'https://mbnoticias.es/wp-content/uploads/2019/05/Las-reparaciones-m%C3%A1s-frecuentes-en-el-hogar.jpg', name: 'asd dfdf', date: new Date(), message: 'texto'},
-      {url: 'https://mbnoticias.es/wp-content/uploads/2019/05/Las-reparaciones-m%C3%A1s-frecuentes-en-el-hogar.jpg', name: 'asd dfdf', date: new Date(), message: 'texto'},
-      {url: 'https://geeksroom.com/wp-content/uploads/2019/07/carpintero-pixabay.jpg', name: 'dfgfgfg', date: new Date(), message: 'texto'},
-    ];
+    this.getImages(this.id);
   }
 
-  downloadImage(url: string, title: string, message: string): void{
-    console.log(url, title, message);
-  
+  getImages(id){
+    console.log("id", id)
+    this.service.getImages(id).subscribe(
+      data=>{
+        console.log("length", data.length)
+        if(data.length > 0 ){
+         // this.description = data[0].description
+          this.allImages = data;
+        }
+        console.log("all Images", this.allImages)
+      }, (err)=>{
+        console.log("err", err)
+      }
+    )
+  }
+
+  downloadImages(): void{
+    console.log("id", this.id);
+
+   this.service.downloadImages(this.id).subscribe(data=>{
+        let blob = new Blob([data], {  type: 'application/zip' });
+        let url = window.URL.createObjectURL(blob);
+        let pwa = window.open(url);
+        if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
+          //this.messageErrorCreate('De permiso para descargar archivos');
+          //alert( 'Please disable your Pop-up blocker and try again.');
+        }
+        console.log("data download", data)
+      },err=>{
+        console.log("error", err)
+        if(err.status==404){
+          alert('No hay imagenes para descargar')
+         // this.messageErrorCreate('No hay archivos guardados en este año');
+          //alert('No hay archivos guardados en este año');
+        }
+      })
 
     
     /* const downloading = this.downloads.download({

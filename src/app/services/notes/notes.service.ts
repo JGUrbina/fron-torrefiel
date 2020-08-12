@@ -8,7 +8,7 @@ import { UrlApiGlobal } from '../../config/config';
 @Injectable({
   providedIn: 'root'
 })
-export class NotesService {
+export class NotesService { 
 
   private headers: HttpHeaders = new HttpHeaders();
   public urlApi: string;

@@ -6,6 +6,32 @@
   border-radius: 7.8px;
   position: relative;
 
+  
+  .search{
+    border-radius: 13px;
+    display: flex;
+    padding: 3px 5px;
+    overflow: hidden;
+    box-shadow: 0 3px 4px 1px #0000001f;
+    background-color: white;
+
+    figure{
+      width: 33px;
+      height: 25px;
+      margin: 0;
+    }
+
+    input{
+      border: none;
+      outline: none !important;
+      border-radius: 5px;
+    }
+  }
+
+  .alertCenter{
+    color: #cd2a00;
+  }
+
   .exit{
     position: absolute;
     width: 40px;

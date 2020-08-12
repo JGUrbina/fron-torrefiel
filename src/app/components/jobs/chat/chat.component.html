@@ -4,7 +4,7 @@
     <figure class="icon exit" (click)="emitEvent()">
       <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
     </figure>
-  </header>
+  </header> 
   <main class="sectionChat__main">
     <div class="sectionChat__main--containChat">
       <div class="text-center date">
@@ -14,8 +14,9 @@
         <figure class="avatar" *ngIf="itemMessage.person === 'admin'">
           <app-create-icon [class]="'color-gray'" [name]="'avatar'" [url]="itemMessage.avatar"></app-create-icon>
         </figure>
-        <div class="burbuja">
-          <span>{{itemMessage.message}}</span>
+        <div class="burbuja" style="display: flex; flex-wrap: wrap; flex-direction: column; justify-content: space-between;">
+          <span><strong>{{itemMessage.user.userName}}:</strong></span>
+          <span>{{itemMessage.text}}</span>
         </div>
       </div>
     </div>

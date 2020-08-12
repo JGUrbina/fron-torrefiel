@@ -7,29 +7,33 @@
   <main class="sectionImages__body">
     <div class="sectionImages__body--containImgs">
       <div class="img__contain" *ngFor="let image of allImages">
+        <div style="display: flex; flex-wrap: wrap;">
+          <figure class="image"  *ngFor="let img of image.images" style="width: 50%; padding: 4px;">
+            <img [src]="img" alt="imagen">
+          </figure>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <span style="color: white; margin-bottom: 10px;">{{ image.description }}</span>
+        </div>
+        <div >
+         
+        </div>
        <!--  <figure class="icon descarga" (click)="downloadImage(image.url, image.name, image.message)">
           <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg_2/descargar.svg'"></app-create-icon>
         </figure> -->
        <!--  <a  download target="_blank">
         </a> -->
-        <figure class="image">
-          <img [src]="image.url" alt="imagen">
-        </figure>
+        
       </div>
     </div>
    
-  </main>
+  </main> 
   <footer class="sectionImages__footer">
-    <div class="info">
-      <span>Descripción del trabajo</span>
-    </div>
-    
-   <div>
-    <figure class="icon descarga">
+   <div style="display: flex; justify-content: center;">
+    <figure class="icon descarga" (click)="downloadImages()">
       <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg_2/descargar.svg'"></app-create-icon>
     </figure>
     <span>Descargar</span>
    </div>
-    
   </footer>
 </section>

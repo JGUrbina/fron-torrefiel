@@ -35,29 +35,34 @@ export class NoteComponent implements OnInit {
   }
 
   sendMessage(): void{
-    (this.newMessage==undefined || this.newMessage=='') ?  null : this.allNotes.push({ note: this.newMessage })
-    console.log("newMessage",(this.newMessage!=undefined || this.newMessage!=''))
-    this.noteService.addNotes(this.id, this.newMessage).subscribe(
-      (data)=>{
-        console.log("dataSend",data)
-      },
-      (err)=>{
-        console.log("error",err)
-      }
-    )
-    this.newMessage = '';
+    if(this.newMessage==undefined || this.newMessage=='') {
+      return
+    }else{
+      this.allNotes.push({ note: this.newMessage })
+      console.log("newMessage",(this.newMessage!=undefined || this.newMessage!=''))
+      this.noteService.addNotes(this.id, this.newMessage).subscribe(
+        (data)=>{
+          console.log("dataSend",data)
+        },
+        (err)=>{
+          console.log("error",err)
+        }
+      )
+      this.newMessage = '';
+    }
+   
   }
 
   getNote(){
-    this.noteService.getNotes(this.id).subscribe(
-      data=>{
-        console.log("dataGet", data)
-        this.allNotes = data;
-      },
-      (err)=>{
-        console.log("error", err)
-      }
-    )
+      this.noteService.getNotes(this.id).subscribe(
+        data=>{
+          console.log("dataGet", data)
+          this.allNotes = data;
+        },
+        (err)=>{
+          console.log("error", err)
+        }
+      )  
   }
  
   emitEvent(): void{

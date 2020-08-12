@@ -30,7 +30,6 @@ export class SummaryComponent implements OnInit {
 
   downloadDataYear(){
     //console.log(this.year)
-
     if(this.year==undefined || this.year==''){
       return
     }else{
@@ -39,7 +38,7 @@ export class SummaryComponent implements OnInit {
         let url = window.URL.createObjectURL(blob);
         let pwa = window.open(url);
         if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
-          this.messageErrorCreate('Da permiso para descargar archivos');
+          this.messageErrorCreate('De permiso para descargar archivos');
           //alert( 'Please disable your Pop-up blocker and try again.');
         }
         console.log("data download", data)
@@ -56,7 +55,7 @@ export class SummaryComponent implements OnInit {
   downloadDataMonth(){
     console.log("entre a download")
     if(this.year==undefined || this.year=='' || this.month==undefined || this.month==''){
-      this.messageErrorCreate('Debes llenar ambos campos');
+      this.messageErrorCreate('Debe llenar año y mes');
       //alert('Debes llenar ambos campos')
       return
     }else{
@@ -65,14 +64,14 @@ export class SummaryComponent implements OnInit {
         let url = window.URL.createObjectURL(blob);
         let pwa = window.open(url);
         if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
-          this.messageErrorCreate('Da permiso para descargar archivos');
+          this.messageErrorCreate('De permiso para descargar archivos');
           //alert( 'Please disable your Pop-up blocker and try again.');
         }
         console.log("data download", data)
       },err=>{
         console.log("error", err)
         if(err.status==404){
-          this.messageErrorCreate('No hay archivos guardados en este año');
+          this.messageErrorCreate('No hay archivos guardados en este periodo');
           //alert('No hay archivos guardados en este año');
         }
       })

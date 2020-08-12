@@ -111,11 +111,11 @@
         <app-chat class="w-100" (closeWindow)="close($event)"></app-chat>
       </div>
       <div class="images" *ngIf="sectionMenuShow === IMAGES">
-        <app-images class="w-100" (closeWindow)="close($event)"></app-images>
+        <app-images class="w-100" (closeWindow)="close($event)" [id]="job._id"></app-images>
       </div>
     
       <div class="note" *ngIf="sectionMenuShow === NOTE">
-        <app-note class="w-100" (closeWindow)="close($event)" [message]="job.note" [id]="job._id"></app-note>
+        <app-note class="w-100" (closeWindow)="close($event)" [message]="job.note" [id]="job._id"></app-note> 
       </div>
     </div>
   </div>
@@ -139,13 +139,13 @@
       </div>
     </figure>
     <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === CHAT}" (click)="sectionMenuShow = CHAT">
-      <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'chat'" [url]="'../../../assets/svg_2/comentar.svg'"></app-create-icon>
+      <app-create-icon [class]="'color-gray bg-white button h-color-red'" [name]="'chat'" [url]="'../../../assets/svg_2/comentar.svg'" ></app-create-icon>
       <div class="hoverIcon fadeIn">
         Chat
       </div>
     </figure>
-    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === IMAGES}" (click)="sectionMenuShow = IMAGES">
-      <app-create-icon [class]="'color-gray bg-white button h-color-red p-7'" [name]="'img'" [url]="'../../../assets/svg_2/img-firma.svg'"></app-create-icon>
+    <figure class="description__icons--icon" [ngClass]="{'active': sectionMenuShow === IMAGES}" (click)="sectionMenuShow = IMAGES" >
+      <app-create-icon [class]="'color-gray bg-white button h-color-red p-7'" [name]="'img'" [url]="'../../../assets/svg_2/img-firma.svg'" ></app-create-icon>
       <div class="hoverIcon fadeIn">
         Imagenes cliente
       </div>

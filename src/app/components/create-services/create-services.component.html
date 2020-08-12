@@ -2,20 +2,20 @@
   <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
   
   <!-- client -->
-  <form class="p-5 marco" #myForm="ngForm" *ngIf="viewActual === USER">
+  <section class="p-5 marco form" *ngIf="viewActual === USER">
     <div class="containService__data">
       <div class="whenService d-flex justify-content-between pb-2">
         <div class="client">
           <div class="input__contain mr-4 ">
             <label for="">Nombre cliente registrado</label>
-            <select class="nombre" (change)="$event.target.value.length > 0 ? searchClient($event.target.value) : clearClient(myForm)" name="searchNameClient" [(ngModel)]="searchNameClient" *ngIf="allClients">
+            <select class="nombre" (change)="$event.target.value.length > 0 ? searchClient($event.target.value) : clearClient()" name="searchNameClient" [(ngModel)]="searchNameClient" *ngIf="allClients">
               <option *ngFor="let option of allClients" value="{{option.numClient}}">{{option.name}}</option>
             </select>  
             <p *ngIf="!allClients" class="no-exist"><b>No existen Clientes</b></p>  
           </div>
           <div class="input__contain">
             <label for="">N° cliente nuevo</label>
-            <input (focusout)="compareClient(myForm)"  type="text" pattern="^[0-9]*$" placeholder="Registralo" name="nameUser" #nameUser="ngModel" [(ngModel)]="newClient.numClient" style="width:  80px !important;" >
+            <input (keyup.enter)="compareClient()"  type="text" pattern="^[0-9]*$" placeholder="Registralo" name="nameUser" #nameUser="ngModel" [(ngModel)]="newClient.numClient" style="width:  80px !important;" >
           </div>
         </div>
       </div>
@@ -103,7 +103,7 @@
         </div>
       </div>
     </aside>
-  </form>
+  </section>
 
   <!-- service -->
 
@@ -190,7 +190,7 @@
       </div>
     </div>
   </div>
-  <form class="p-5 marco" *ngIf="viewActual === SERVICE">
+  <form class="p-5 marco form" *ngIf="viewActual === SERVICE">
     <div class="containService__data pt-6x100">
       <div>
         <h3 class="title">DATOS DEL SERVICIO</h3>
