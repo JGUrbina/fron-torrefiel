@@ -1,9 +1,7 @@
 import { Component, OnInit, Output, Input, OnDestroy } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { Service } from '../../../models/service/service';
-import  { ServiceService }  from '../../../services/service/service.service';
 import { ChatService } from '../../../services/chat/chat.service'
-import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-chat',
@@ -22,12 +20,9 @@ export class ChatComponent implements OnInit, OnDestroy {
   public nota: string;
   public newMessage: string;
   public allNotes: any[];
-  private _docSub: Subscription;
 
   constructor(
-    private serviceService: ServiceService,
     private chatService: ChatService,
-   
   ) { 
     this.allMessages = [];
   }
@@ -49,10 +44,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatService.getMessage().subscribe(data => this.allMessages.push(data)), err => console.log('err', err);
   }
 
-  getHistoryMessage(){
-   //this.chatService.getHistoryMessage()
-  }
-
   sendMessage(){
     const msg = {
       text: this.newMessage,
@@ -63,31 +54,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.newMessage = '';
   }
 
-  getMessage(){
-    console.log("entro a get")
-    //this.allMessages.push(this.newMessage);
-    this.chatService.newMessage().subscribe(
-      data=>{
-        console.log("data de get", data)
-        //this.allMessages = data;
-      }, err=>{
-        console.log("error", err)
-      }
-    )
-  }
-
-  getNote(){
-  //     this.noteService.getNotes(this.id).subscribe(
-  //       data=>{
-  //         console.log("dataGet", data)
-  //         this.allNotes = data;
-  //       },
-  //       (err)=>{
-  //         console.log("error", err)
-  //       }
-  //     )  
-   }
- 
   emitEvent(): void{
     this.closeWindow.emit('');
   }
