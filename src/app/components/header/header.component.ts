@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   public allEvents: any[] = [];
   public showCalendar: boolean = false;
   public showNotification: boolean = false;
+  public nickName: string;
 
   constructor(
     private router: Router,
@@ -30,6 +31,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.nickName = localStorage.getItem('some-key')==null ? 'nickName' :  JSON.parse(localStorage.getItem('some-key')).name
+    
   }
 
   closeSession(): void {

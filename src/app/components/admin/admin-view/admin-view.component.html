@@ -20,9 +20,12 @@
         <app-create-icon [class]="'color-white'" [name]="'graphic'" [url]="'../../../../assets/svg_2/grafica.svg'"></app-create-icon>
       </figure>
     </div>
-    <div class="summary" (click)="showView(SUMMARY)">
+    <div class="summary" >
       <h2>Resumen Facturas<br>y Albaranes</h2>
-      <figure class="icon ml-2">
+      <figure class="icon ml-2" (click)="showView(SUMMARY)">
+        <app-create-icon [class]="'color-white'" [name]="'calendar'" [url]="'../../../../assets/svg_2/calendario.svg'"></app-create-icon>
+      </figure>
+      <figure class="icon ml-2" (click)="showView(SUMMARY)">
         <app-create-icon [class]="'color-white'" [name]="'delivery-note'" [url]="'../../../../assets/svg_2/albaran-menu.svg'"></app-create-icon>
       </figure>
       

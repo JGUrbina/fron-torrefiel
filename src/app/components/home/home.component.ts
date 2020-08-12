@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public Logeado: string;
+
+  constructor(
+    public router: Router,
+  ) { }
 
   ngOnInit(): void {
+    this.Logeado = localStorage.getItem('some-key')
+    console.log(this.Logeado)
+    if(this.Logeado==null){
+      this.router.navigate(['/login']);
+    }
   }
 
 }

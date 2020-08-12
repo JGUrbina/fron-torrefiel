@@ -41,29 +41,11 @@ export class CardCalendarComponent implements OnInit {
     this.calendarLocale = esLocale;
   }
 
-  getBody(){
-    
-
-    document.getElementById('body').onclick = function(e) {
-      console.log("evento",  e.target, e.currentTarget)
-      document.getElementById('show__calendar').onclick = function(ev){
-        if(ev.currentTarget == document.getElementById('show__calendar')){
-          console.log("inside");
-        }
-        else{
-          console.log("outside")
-        }
-      }
-
-    }
   
-
- }
-
 
   ngOnInit(): void {
     this.getAllWorkers();
-    this.getBody();
+ 
   }
 
   changeShowEvent(event){

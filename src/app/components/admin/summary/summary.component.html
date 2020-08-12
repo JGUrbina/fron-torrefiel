@@ -8,7 +8,7 @@
   <main class="sectionSummary__main">
     <div class="sections">
       <div class="title">
-        <h2 class="text-uppercase">FACTURAS Y ALBARANES</h2>
+        <h2 class="text-uppercase">FACTURAS Y ALBARANES DESCARGA POR MES</h2>
       </div>
     </div>
     <div class="contentMes">
@@ -17,24 +17,24 @@
           <figure class="icon">
             <app-create-icon [class]="'color-gray'" [name]="'search'" [url]="'../../../../assets/svg_2/buscar.svg'"></app-create-icon>
           </figure>
-          <input placeholder="Buscar por año (2020)" [(ngModel)]="year">
+          <input placeholder="AÑO" [(ngModel)]="year">
         </div>
-        <figure class="icon descarga">
+        <!-- <figure class="icon descarga">
           <app-create-icon (click)="downloadDataYear()" [class]="'color-white'" [name]="'download'" [url]="'../../../../assets/svg_2/descarga.svg'"></app-create-icon>
-        </figure>
-        <span>Descarga por año</span>
+        </figure> -->
+        <!-- <span>Descarga por año</span> -->
       </div>
       <div class="mes">
         <div class=search>
           <figure class="icon">
             <app-create-icon [class]="'color-gray'" [name]="'search'" [url]="'../../../../assets/svg_2/buscar.svg'"></app-create-icon>
           </figure>
-          <input placeholder="Buscar por mes (09)" [(ngModel)]="month">
+          <input placeholder="MES" [(ngModel)]="month">
         </div>
         <figure class="icon descarga">
           <app-create-icon  (click)="downloadDataMonth()" [class]="'color-white'" [name]="'download'" [url]="'../../../../assets/svg_2/descarga.svg'"></app-create-icon>
         </figure>
-        <span>Descarga por mes</span>
+        <!-- <span>Descarga por mes</span> -->
       </div>      
     </div>
   </main>
