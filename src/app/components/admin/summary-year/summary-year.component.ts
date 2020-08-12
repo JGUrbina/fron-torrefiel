@@ -3,12 +3,12 @@ import { EventEmitter } from '@angular/core';
 import { ServiceService } from '../../../services/service/service.service'
 
 @Component({
-  selector: 'app-summary',
-  templateUrl: './summary.component.html',
-  styleUrls: ['./summary.component.scss']
+  selector: 'app-year',
+  templateUrl: './summary-year.component.html',
+  styleUrls: ['./summary-year.component.scss']
 })
 
-export class SummaryComponent implements OnInit {
+export class SummaryYearComponent implements OnInit {
 
   @Output () closeWindow = new EventEmitter();
 
@@ -28,14 +28,14 @@ export class SummaryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  downloadDataMonth(){
-    console.log("entre a download")
-    if(this.year==undefined || this.year=='' || this.month==undefined || this.month==''){
-      this.messageErrorCreate('Agregue año y mes a consultar');
-      //alert('Debes llenar ambos campos')
+  downloadDataYear(){
+    //console.log(this.year)
+    if(this.year==undefined || this.year==''){
+      this.messageErrorCreate('Agregue el año a consultar')
       return
     }else{
-      this.service.downloadData(this.year, `-${this.month}`).subscribe(data=>{
+      this.service.downloadData(this.year, '').subscribe(data=>{
+        
         let blob = new Blob([data], {  type: 'application/zip' });
         let url = window.URL.createObjectURL(blob);
         let pwa = window.open(url);
@@ -47,12 +47,13 @@ export class SummaryComponent implements OnInit {
       },err=>{
         console.log("error", err)
         if(err.status==404){
-          this.messageErrorCreate('No hay archivos guardados en este periodo');
+          this.messageErrorCreate('Este año no tiene archivos');
           //alert('No hay archivos guardados en este año');
         }
       })
     }
   }
+
 
   messageErrorCreate(message: string){
     const urlIcon = '';

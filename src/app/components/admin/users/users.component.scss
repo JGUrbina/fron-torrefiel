@@ -454,7 +454,7 @@
 
 @media(max-width: 1200px){
   .containUser{
-    width: 200%;
+    width: 120%;
   }
   .user__contain{
     &--title{
@@ -466,13 +466,9 @@
   }
 
   .info{
-   
       position: absolute;
       top: -60px;
-    
-    
   }
-
  
 }
 
@@ -480,8 +476,7 @@
   .containUser{
     padding: 20px 10px;
   }
-  
- 
+
   .containUser__header{
     .title{
       padding: 10px 5px;

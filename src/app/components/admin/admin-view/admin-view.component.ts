@@ -10,6 +10,7 @@ export class AdminViewComponent implements OnInit {
   public PROFILE: string = 'profile';
   public DATA: string = 'data';
   public SUMMARY: string = 'summary';
+  public YEAR: string = 'summary-year'
 
   public view: string;
 

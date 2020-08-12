@@ -22,13 +22,12 @@
     </div>
     <div class="summary" >
       <h2>Resumen Facturas<br>y Albaranes</h2>
-      <figure class="icon ml-2" (click)="showView(SUMMARY)">
-        <app-create-icon [class]="'color-white'" [name]="'calendar'" [url]="'../../../../assets/svg_2/calendario.svg'"></app-create-icon>
+      <figure class="icon" (click)="showView(SUMMARY)">
+        <app-create-icon  [name]="'mes'" [url]="'../../../../assets/svg_2/mes.svg'"></app-create-icon>
       </figure>
-      <figure class="icon ml-2" (click)="showView(SUMMARY)">
-        <app-create-icon [class]="'color-white'" [name]="'delivery-note'" [url]="'../../../../assets/svg_2/albaran-menu.svg'"></app-create-icon>
+      <figure class="icon" (click)="showView(YEAR)"> 
+        <app-create-icon  [name]="'año'" [url]="'../../../../assets/svg_2/año.svg'"></app-create-icon>
       </figure>
-      
     </div>
   </div>
 
@@ -36,5 +35,6 @@
     <app-profile *ngIf="view === PROFILE" (closeWindow)="closeView($event)"></app-profile>
     <app-data *ngIf="view === DATA" (closeWindow)="closeView($event)"></app-data>
     <app-summary *ngIf="view === SUMMARY" class="w-100" (closeWindow)="closeView($event)"></app-summary>
+    <app-year *ngIf="view === YEAR" class="w-100" (closeWindow)="closeView($event)"></app-year>
   </div>
 </section>

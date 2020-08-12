@@ -44,6 +44,7 @@ import { ClientsComponent } from './components/admin/clients/clients.component';
 import { UsersComponent } from './components/admin/users/users.component';
 import { DataComponent } from './components/admin/data/data.component';
 import { SummaryComponent } from './components/admin/summary/summary.component';
+import { SummaryYearComponent} from './components/admin/summary-year/summary-year.component'
 import { ProfileComponent } from './components/admin/profile/profile.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { FilterComponent } from './components/filter/filter.component';
@@ -98,6 +99,7 @@ import { AddNewComponent } from './components/admin/users/add-new/add-new.compon
     UsersComponent,
     DataComponent,
     SummaryComponent,
+    SummaryYearComponent,
     ProfileComponent,
     NotificationsComponent,
     FilterComponent,

@@ -70,7 +70,7 @@ export class AddNewComponent implements OnInit {
   messageErrorCreate(message: string){
     const urlIcon = '';
     const header = `Ha ocurrido un error`;
-    const title = message;
+    const title = message
     const subtitle = 'Intente nuevamente.';
     this.showAlert(urlIcon, header, title, subtitle);
   }

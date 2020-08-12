@@ -61,7 +61,7 @@
         position: relative;
 
         input{
-          padding: 12px;
+          padding: 2px;
           border-radius: $size-border-radius-secondary;
           border: 1px solid #989696;
           margin-bottom: 5px;
@@ -89,7 +89,7 @@
     .button{
       width: 43%;
       margin-top: 15px;
-      padding: 14px 10px;
+      padding: 8px 10px;
       background-color: black;
       color: white;
       border: none;
@@ -103,5 +103,17 @@
         background-color: $color-green;
       }
     }
+  }
+}
+
+@media(max-width:1080px){
+  .sectionProfile{
+    width: 70%;
+  }
+}
+
+@media(max-width: 780px){
+  .sectionProfile{
+    width: 90%;
   }
 }

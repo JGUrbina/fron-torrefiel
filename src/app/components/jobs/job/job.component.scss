@@ -138,7 +138,6 @@
       .images{
         padding: 2px 20px 0px;
         width: 60%;
-        height: 92%;
         position: absolute;
         bottom: 0;
         right: 0;
@@ -303,6 +302,8 @@
 
 .area-description { 
   background-color: $color-gray;
+  border-color: transparent;
+  
 }
 
 .priority-label {
