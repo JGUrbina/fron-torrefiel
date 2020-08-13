@@ -1,7 +1,46 @@
 @import 'src/assets/scss/variables';
 
+.overflow-auto::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.overflow-auto::-webkit-scrollbar:vertical {
+  width: 15px;
+}
+
+.overflow-auto::-webkit-scrollbar-button:increment,.overflow-auto::-webkit-scrollbar-button {
+  display: none;
+  border-radius: 10px;
+} 
+
+
+.overflow-auto::-webkit-scrollbar-thumb {
+  background-color: #f3eded;
+  border-radius: 20px;
+  height: 15px;
+  border: 2px solid #f1f2f3;
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px white; 
+  border-radius: 10px;  
+}
+
+.overflow-auto::-webkit-scrollbar-thumb:hover {
+  border: transparent;
+}
+
+.overflow-auto::-webkit-scrollbar-corner{
+  visibility: hidden;
+  border-radius: 10px;
+}
+
 .app-top {
   margin: 0 0 3em;
+}
+
+.w-90{
+  min-width: 95%;
 }
 
 .app-calendar {

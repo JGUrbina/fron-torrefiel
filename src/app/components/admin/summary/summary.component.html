@@ -27,17 +27,18 @@
           </figure>
           <input placeholder="MES (01)" [(ngModel)]="month">
         </div>
-        <!-- <span>Descarga por mes</span> -->
       </div>      
-      <div class="mes">
-        <div class="mes">
-          <figure class="icon descarga">
-            <app-create-icon  (click)="downloadDataMonth()"  [name]="'download'" [url]="'../../../../assets/svg_2/descarga.svg'"></app-create-icon>
-          </figure>
-        </div>
-      </div>
     </div>
   </main>
+  <div>
+    <div class="mes">
+      <div class="mes">
+        <figure class="icon descarga">
+          <app-create-icon  (click)="downloadDataMonth()"  [name]="'download'" [url]="'../../../../assets/svg_2/descarga.svg'"></app-create-icon>
+        </figure>
+      </div>
+    </div>
+  </div>
   <footer>
     <!-- <div>
       pagination

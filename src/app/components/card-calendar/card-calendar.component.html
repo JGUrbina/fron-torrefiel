@@ -18,13 +18,13 @@
   </div>
 
   <div class="show__event" *ngIf="showEvent">
-    <div class="d-flex flex-column justify-content-between">
+    <div class="d-flex flex-column justify-content-between w-90">
       <figure class="icon exit" (click)="showEvent = false">
         <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../assets/svg_2/cancelar.svg'"></app-create-icon>
       </figure>
       <p>Cliente: {{ selectedEvent.name }} {{ selectedEvent.lastName }} {{ selectedEvent.motherLastName }}</p>
       <p>Teléfono(s): {{ selectedEvent.phoneOne }}</p>
-      <p>Descripción: {{ selectedEvent.description }}</p>
+      <textarea class="overflow-auto" style="overflow-y: auto; min-height: 120px; background-color: transparent; border: none; color: white;">Descripción: {{ selectedEvent.description }}</textarea>
     </div>
   </div>
 

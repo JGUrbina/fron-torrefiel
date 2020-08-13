@@ -2,9 +2,9 @@
   <div class="description__info">
     <div class="up">
       <div class="upContain">
-        <span class="info code f-bold">#{{job.numService}}</span>
+        <span class="info code f-bold ">#{{job.numService}}</span>
           <input value={{job.numBill}} placeholder="N° Factura" *ngIf="edit.bill === false" class="info code f-bold box-editing num-bill" (click)="edit.bill = true" style="border-color:transparent;">
-        <input (focusout)="submitJobBill()" class="beetween-index info code num-bill" *ngIf="edit.bill === true" [(ngModel)]="job.numBill">
+          <input (focusout)="submitJobBill()" class="beetween-index info code input-bill" *ngIf="edit.bill === true" [(ngModel)]="job.numBill">
         <span class="info date">{{getDate(job.startDate) | date: 'dd/MM/yyyy'}} - {{job.startHours}}</span>
       </div>
       <div class="upContain">
@@ -87,13 +87,12 @@
 
     </div>
     <div *ngIf="edit.description === false" class="beetween-index">
-      <textarea placeholder="Descripción del trabajo" value={{job.description}}  class="area-description box-editing dowm" (click)="edit.description = true">
-       
+      <textarea placeholder="Descripción del trabajo" value={{job.description}}  class="area-description box-editing dowm" (click)="edit.description = true"> 
       </textarea>
     </div> 
 
     <div *ngIf="edit.description === true" class="beetween-index">
-      <textarea class="area-description box-editing dowm" (focusout)="submitJobDescription()" [(ngModel)]="job.description"></textarea>
+      <textarea class="area-description box-editing dowm input-description" (focusout)="submitJobDescription()" [(ngModel)]="job.description"></textarea>
     </div>
 
 

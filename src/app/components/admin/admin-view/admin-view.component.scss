@@ -1,3 +1,6 @@
+@import '../../../../assets/scss/variables';
+@import '../../../../assets/scss/components/hoverIcon';
+
 .sectionAdmin{
   display: flex;
   justify-content: space-between;
@@ -78,6 +81,27 @@
       flex-wrap: wrap;
       .icon{
         width: 80px;
+        min-height: 110px;
+
+        &:hover{
+          .hoverIcon{
+            display: block !important;
+          }
+        }
+  
+        .hoverIcon{
+          @extend %hoverIcon;
+          display: none;
+          position: relative;
+          top: 0px;
+          right: 0px;
+          bottom: 0px;
+          left: 0px;
+          color: black;
+          background-attachment: $color-gray;
+
+        }
+
       }
       figure{
         margin: 0px !important;

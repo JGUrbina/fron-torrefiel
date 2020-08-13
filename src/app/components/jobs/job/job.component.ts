@@ -172,6 +172,7 @@ export class JobComponent implements OnInit {
   }
 
   submitJobBill(){
+    
     this.requestJobChanges();
     this.edit.bill = false;
     console.log('job', this.job)

@@ -41,16 +41,16 @@ export class LoginComponent implements OnInit {
       (data) => {
         const urlIcon = '../../../assets/svg_2/ok.svg';
         const header = 'Registro Correcto';
-        const title = '¡Felicidades! Tu cuenta se a creado correctamente.';
-        const subtitle = 'Espera el mail de confirmación';
+        const title = '¡Felicidades! Tu cuenta se ha creado correctamente';
+        const subtitle = 'Espera el correo de confirmación';
         this.showAlert(urlIcon, header, title, subtitle);
       },
       (err) => {
         console.error('err', err);
         const urlIcon = '';
         const header = 'Ha ocurrido un error';
-        const title = 'No se a podido realizar el registro, verifique sus datos.';
-        const subtitle = 'Intente nuevamente.';
+        const title = 'No se ha podido realizar el registro, verifique sus datos';
+        const subtitle = 'Intente nuevamente';
         this.showAlert(urlIcon, header, title, subtitle);
       }
     );
@@ -59,9 +59,9 @@ export class LoginComponent implements OnInit {
   logIn(): void{
     if (!this.userName && !this.password){
       const urlIcon = '';
-      const header = 'ha ocurrido un error';
-      const title = 'Verifique los datos ingresados.';
-      const subtitle = 'No tienes acceso para esta acción';
+      const header = 'Ha ocurrido un error';
+      const title = 'Verifique los datos ingresados';
+      const subtitle = 'No tiene acceso para esta acción';
       this.showAlert(urlIcon, header, title, subtitle);
       return;
     }
@@ -79,7 +79,7 @@ export class LoginComponent implements OnInit {
         console.error(err);
         const urlIcon = '';
         const header = 'Ha ocurrido un error';
-        const title = 'Verifique los datos ingresados. he intente nuevamente.';
+        const title = 'Verifique los datos ingresados e intente nuevamente';
         const subtitle = '';
         this.showAlert(urlIcon, header, title, subtitle);
       }

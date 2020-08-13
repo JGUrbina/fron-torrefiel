@@ -14,9 +14,7 @@ export class FilterComponent implements OnInit {
 
   public statusList: string[];
   public activitiesList: string[];
-
   public isCollapsed: boolean;
-
   public selectedYear;
   public allMonths;
   public currentYear;
@@ -35,7 +33,7 @@ export class FilterComponent implements OnInit {
   }
 
   getAllMonths(){
-    return ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octumbre', 'Noviembre', 'Diciembre'];
+    return ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
   }
 
   ngOnInit(): void {

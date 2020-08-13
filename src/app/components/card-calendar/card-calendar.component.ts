@@ -45,7 +45,6 @@ export class CardCalendarComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllWorkers();
- 
   }
 
   changeShowEvent(event){
