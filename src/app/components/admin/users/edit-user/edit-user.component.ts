@@ -49,7 +49,7 @@ export class EditComponent implements OnInit {
         console.log('data new user', data);
         const urlIcon = '../../../../assets/svg_2/ok.svg';
         const header = '';
-        const title = 'Usuario Agregado Exitosamente';
+        const title = 'Usuario agregado exitosamente';
         const subtitle = '';
         this.showAlert(urlIcon, header, title, subtitle);
         this.newUserCreated.emit(data);

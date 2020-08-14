@@ -73,8 +73,8 @@ export class UsersComponent implements OnInit {
         console.log("ya editado", data)
         const urlIcon = '../../../../assets/svg_2/ok.svg';
         const header = '';
-        const title = 'Usuario Editado';
-        const subtitle = 'Exitosamente';
+        const title = 'Usuario editado';
+        const subtitle = 'exitosamente';
         this.showAlert(urlIcon, header, title, subtitle);
         this.getDataUser();
        // this.closeEditUser(); 
@@ -122,7 +122,7 @@ export class UsersComponent implements OnInit {
     const urlIcon = '';
     const header = `Ha ocurrido un error`;
     const title = message;
-    const subtitle = 'Intente nuevamente.';
+    const subtitle = 'Intente nuevamente';
     this.showAlert(urlIcon, header, title, subtitle);
   }
   

@@ -20,6 +20,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   public nota: string;
   public newMessage: string;
   public allNotes: any[];
+  public nickName: any[];
+  public chat: any;
 
   constructor(
     private chatService: ChatService,
@@ -30,9 +32,16 @@ export class ChatComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loadMessages();
     this.getMessages();
+    console.log("chat", this.chat);
+    setInterval(function(){
+      this.chat = document.getElementById('main'); 
+      this.chat==null? null : this.chat.scrollTop=this.chat.scrollHeight 
+    },500)
   }
+
   ngOnDestroy(): void{
     this.chatService.closeAllConections();
+    console.log("chat destroy", this.chat )
   }
 
   loadMessages(){
@@ -45,9 +54,10 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   sendMessage(){
+    this.nickName = localStorage.getItem('some-key')==null ? 'nickName' :  JSON.parse(localStorage.getItem('some-key')).name
     const msg = {
       text: this.newMessage,
-      user: { userName: 'Yo', _id: 12331412 }
+      user: { userName: this.nickName , _id: 12331412 }
     };
     this.chatService.sendMessage(msg);
     this.allMessages.push(msg);

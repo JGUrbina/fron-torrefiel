@@ -212,6 +212,7 @@ export class DeliveryNoteComponent implements OnInit {
                   padding: 2px;
                   min-height: 95px;
                   border: 1px solid rgb(127, 1, 126);
+                  text-align: center;
                 }
       
                 .titulos-texto {

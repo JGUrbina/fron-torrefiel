@@ -63,6 +63,10 @@
       }
     }
 
+    .summary{
+      padding: 1.5rem 2rem .5rem 2rem !important;
+    }
+
     .data{
       h2{
         font-size: 2rem;
@@ -76,20 +80,46 @@
     }
 
     .summary{
-      padding: 1rem 1rem;
+      //padding: 1rem 1rem;
       display: flex;
       flex-wrap: wrap;
       .icon{
         width: 80px;
-        min-height: 110px;
-
+  
         &:hover{
           .hoverIcon{
+            position: absolute;
+            height: 30px;
+            top: 345px;
+            left: 485px;
             display: block !important;
           }
         }
   
         .hoverIcon{
+          @extend %hoverIcon;
+          display: none;
+          position: relative;
+          top: 0px;
+          right: 0px;
+          bottom: 0px;
+          left: 0px;
+          color: black;
+          background-attachment: $color-gray;
+
+        }
+
+        &:hover{
+          .hoverIcon2{
+            display: block !important;
+            position: absolute;
+            height: 30px;
+            left: 655px;
+            top: 345px;
+          }
+        }
+  
+        .hoverIcon2{
           @extend %hoverIcon;
           display: none;
           position: relative;

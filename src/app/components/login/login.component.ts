@@ -34,7 +34,9 @@ export class LoginComponent implements OnInit {
     this.newUser = new User('', '', '', '', '', '', null, null, [null], null, null, null);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   register(): void{
     this.userService.createUser(this.newUser).subscribe(
@@ -69,10 +71,9 @@ export class LoginComponent implements OnInit {
     const userLogin = { userName: this.userName, password: this.password};
     this.userService.login(userLogin).subscribe(
       (data) => {
-       
-        console.log("data login", data)
-        const { token, name }  = data;
-        localStorage.setItem('some-key', JSON.stringify({ token: token, name: name }));
+        console.log("data login", data.user.userName)
+        const { token }  = data;
+        localStorage.setItem('some-key', JSON.stringify({ token: token, name: data.user.userName }));
         this.router.navigate(['/home']);
       },
       (err) => {
