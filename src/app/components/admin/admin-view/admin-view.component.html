@@ -24,12 +24,16 @@
       <h2>Resumen Facturas<br>y Albaranes</h2>
       <figure class="icon" (click)="showView(SUMMARY)">
         <app-create-icon  [name]="'mes'" [url]="'../../../../assets/svg_2/mes.svg'"></app-create-icon>
-        <span class="hoverIcon fadeIn">Por Mes</span> 
+        <div class="hoverIcon fadeIn">
+          Mes
+        </div>
       </figure>
       
       <figure class="icon" (click)="showView(YEAR)"> 
         <app-create-icon  [name]="'año'" [url]="'../../../../assets/svg_2/año.svg'"></app-create-icon>
-        <span class="hoverIcon2 fadeIn">Por Año</span> 
+        <div class="hoverIcon fadeIn">
+          Año
+        </div>
       </figure>
     </div>
   </div>

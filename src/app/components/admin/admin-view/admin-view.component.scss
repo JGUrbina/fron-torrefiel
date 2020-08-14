@@ -85,52 +85,38 @@
       flex-wrap: wrap;
       .icon{
         width: 80px;
-  
-        &:hover{
-          .hoverIcon{
-            position: absolute;
-            height: 30px;
-            top: 345px;
-            left: 485px;
-            display: block !important;
-          }
-        }
-  
+        margin-bottom: 0;
+        height: 80px;
+        position: relative;
+        transition: all 0.5s;
+        margin-top: 5px;
+      
+
         .hoverIcon{
           @extend %hoverIcon;
           display: none;
           position: relative;
           top: 0px;
-          right: 0px;
           bottom: 0px;
+          right: 0px;
           left: 0px;
           color: black;
           background-attachment: $color-gray;
-
-        }
-
-        &:hover{
-          .hoverIcon2{
-            display: block !important;
-            position: absolute;
-            height: 30px;
-            left: 655px;
-            top: 345px;
-          }
         }
   
-        .hoverIcon2{
-          @extend %hoverIcon;
-          display: none;
-          position: relative;
-          top: 0px;
-          right: 0px;
-          bottom: 0px;
-          left: 0px;
-          color: black;
-          background-attachment: $color-gray;
-
+        &:hover{
+          .hoverIcon{
+            display: block !important;
+            position: relative;
+            top: 0px;
+            right: 0px;
+          }
+          .icon{
+            height: 110px !important;
+          }
         }
+
+       
 
       }
       figure{
