@@ -105,6 +105,7 @@ export class UsersComponent implements OnInit {
    this.editUserShow = true;
    this.userService.getUser(id).subscribe(
     (data) => {
+      data.rol==="Administrador" ? data.rol = true : data.rol = false
       console.log('data new user', data);
       this.newUser = data; 
     },

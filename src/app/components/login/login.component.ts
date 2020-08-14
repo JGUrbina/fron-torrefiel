@@ -71,10 +71,24 @@ export class LoginComponent implements OnInit {
     const userLogin = { userName: this.userName, password: this.password};
     this.userService.login(userLogin).subscribe(
       (data) => {
-        console.log("data login", data.user.userName)
-        const { token }  = data;
-        localStorage.setItem('some-key', JSON.stringify({ token: token, name: data.user.userName }));
-        this.router.navigate(['/home']);
+        const urlIcon = '';
+        const header = 'Ha ocurrido un error';
+        const title = 'No tiene los permisos necesarios';
+        const subtitle = '';
+       console.log("retorno", data.user.rol==="Administrador")
+        if(data.user.rol==="Administrador"){
+          const { token }  = data;
+          localStorage.setItem('some-key', JSON.stringify({ token: token, name: data.user.userName }));
+          this.router.navigate(['/home']);
+        }
+        else{
+          console.log("data login", data.user.rol)
+          return this.showAlert(urlIcon, header, title, subtitle);
+        
+        }
+         
+        
+       
       },
       (err) => {
         console.error(err);
