@@ -242,7 +242,7 @@ export class DeliveryNoteComponent implements OnInit {
                       <h1 class="name">PERSIANAS Y TOLDOS</h1>
                     </div>
                     <div>
-                    <figure class="logo"><img src="../../../assets/images/logo-color.png" alt="Torre fiel"></figure>
+                    <figure class="logo"><img src="assets/images/logo-color.png" alt="Torre fiel"></figure>
                     </div>
                   </div>
                   <div class="info">

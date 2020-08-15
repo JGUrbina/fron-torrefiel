@@ -35,6 +35,7 @@ export class UsersComponent implements OnInit {
 
   ) {
      this.newUser = new User(null, null, null, null, null, null, null, [null], [null], null, null, null);
+     this.jobsOfUser = [];
   }
  
 
