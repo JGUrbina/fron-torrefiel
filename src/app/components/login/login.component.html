@@ -18,7 +18,7 @@
         </div>
         <div class="contain-input mb-0">
           <figure class="eye" [ngClass]="{'active': showPass}" (click)="showPass = !showPass">
-            <img src="dist/src/assets/svg_2/eye.svg" alt="">
+            <img src="assets/svg_2/eye.svg" alt="">
           </figure>
           <label for="user" class="label">Contraseña</label>
           <input [type]="showPass ? 'text' : 'password'" class="input" minlength="4" placeholder="******" name="passwordLogin" #passwordLogin="ngModel" [(ngModel)]="password" required>
