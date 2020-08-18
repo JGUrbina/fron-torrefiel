@@ -10,7 +10,7 @@ import { now } from 'jquery';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit, OnDestroy {
+export class ChatComponent implements OnInit, OnDestroy { 
 
   @Output () closeWindow = new EventEmitter();
   @Input() message: any[];
@@ -41,7 +41,6 @@ export class ChatComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loadMessages();
     this.getMessages();
-
   }
 
   ngOnDestroy(): void{
@@ -64,6 +63,10 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   getMessages(){
     this.chatService.getMessage().subscribe(data => this.allMessages.push(data)), err => console.log('err', err);
+    setTimeout(function(){
+      this.chat = document.getElementById('main'); 
+      this.chat==null? null : this.chat.scrollTop=this.chat.scrollHeight 
+    },500)
   }
 
   sendMessage(){

@@ -29,7 +29,7 @@ export class ChatService {
     this.socket = socketIo(UrlApiGlobal);
   }
 
-  public getHistory(): Observable<any> {
+  public getHistory(): Observable<any> { 
     return new Observable<any>(observer => {
       this.socket.once('Chat history', (data: any) => observer.next(data));
     });

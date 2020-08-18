@@ -28,6 +28,7 @@ export class ScheduleComponent implements OnInit {
   public checkeds: any[];
   public startHours: any;
   public startDate: any;
+  public workersIds: any[];
 
   constructor(
     private userService: UserService,
@@ -35,17 +36,21 @@ export class ScheduleComponent implements OnInit {
 
   ) {
     this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
-    this.allUsers = [];
+    this.allUsers = []; 
     this.checkeds = [];
+    this.workersIds = [];
    }
 
   ngOnInit(): void {
     this.getAllUser();
     this.startDate = this.dateChange();
     console.log('service oninit', this.service)
+    this.connectSocket()
   }
 
-  
+  connectSocket(){
+    this.serviceService.initSocket();
+  }
 
   dateChange(){
     let Year : any, Month : any, Day : any;
@@ -90,22 +95,23 @@ export class ScheduleComponent implements OnInit {
 
 
   scheduleService(){
-    let workersIds = []
+  
     
-    this.checkeds.forEach((check, index) => check ? workersIds.push(this.allUsers[index]._id) : null);
+    this.checkeds.forEach((check, index) => check ? this.workersIds.push(this.allUsers[index]._id) : null);
 
     if(!this.startDate) this.startDate = this.dateChange();
 
-    if(workersIds.length > 0){
+    if(this.workersIds.length > 0){
       const id = this.service._id;
       const payload = {
-        workers: workersIds,
+        workers: this.workersIds,
         startDate: this.startDate,
         startHours: this.startHours
       };
       
       this.serviceService.scheduleService(id, payload)
         .subscribe(data =>{
+          this.serviceService.createNotification(this.workersIds)
           console.log('respuesta', data);
           this.serviceToJobs.emit(data.services);
         }, err => console.log('error', err));

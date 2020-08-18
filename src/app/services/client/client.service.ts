@@ -8,16 +8,13 @@ import { UrlApiGlobal } from '../../config/config';
   providedIn: 'root'
 })
 export class ClientService {
-
-  private headers: HttpHeaders = new HttpHeaders();
+  private headers: HttpHeaders = new HttpHeaders({Authorization: `Bearer ${localStorage.getItem('some-key')!=null? JSON.parse(localStorage.getItem('some-key')).token : ' ' }`});
   public urlApi: string;
 
   constructor(
     private http: HttpClient
   ) {
     this.urlApi = `${UrlApiGlobal}/client`;
-    this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
   }
 
   getClients(): Observable<any> {

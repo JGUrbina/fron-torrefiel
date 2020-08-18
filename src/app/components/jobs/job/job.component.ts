@@ -8,6 +8,7 @@ import { Client } from 'src/app/models/client/client';
 import { DropDownOptionsService } from '../../../services/dropDownOptions/drop-down-options.service';
 import { ServiceService } from 'src/app/services/service/service.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 
 @Component({
   selector: 'app-job',
@@ -105,6 +106,7 @@ export class JobComponent implements OnInit {
     this.getClient(this.job.client);
     this.selectedItems = this.job.activities;
     console.log("trabajos", this.job)
+    this.serviceService.initSocket();
   }
 
   async getClient(id: string): Promise<any>{
@@ -126,6 +128,8 @@ export class JobComponent implements OnInit {
   requestJobChanges(){
     this.serviceService.updateService(this.job._id, this.job).subscribe(
       data => {
+        console.log("num serv", this.job)
+        this.serviceService.editNotifications(this.job.numService,this.job.workers)
         this.job = data;
       }, err => console.log('err', err)
     )

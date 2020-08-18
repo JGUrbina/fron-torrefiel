@@ -1,9 +1,22 @@
 <div class='app'>
 
-    <div class='app-notification' *ngIf="notificationVisible">
-
-        <p>notifications works!</p>
-
+    <div class='app-calendar' *ngIf="calendarVisible">
+        <div *ngFor="let Notification of allNotifications; index as i;" class="Notificacion">
+            
+            <p class="texto">{{Notification.text}}</p>
+            <figure class="icon exit" (click)="deleteNotification(i)">
+                <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../assets/svg_2/cancelar.svg'"></app-create-icon>
+            </figure>
+            <div>{{Notification.createdAt}}</div>
+        </div>
     </div>
-</div>
-
+  
+    <div class="show__event" *ngIf="showEvent">
+      <div class="d-flex flex-column justify-content-between w-90">
+       
+       
+       
+      </div>
+    </div>
+  
+  </div>

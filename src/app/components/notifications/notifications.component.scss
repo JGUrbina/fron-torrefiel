@@ -1,0 +1,111 @@
+@import 'src/assets/scss/variables';
+
+.overflow-auto::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.overflow-auto::-webkit-scrollbar:vertical {
+  width: 15px;
+}
+
+.overflow-auto::-webkit-scrollbar-button:increment,.overflow-auto::-webkit-scrollbar-button {
+  display: none;
+  border-radius: 10px;
+} 
+
+
+.overflow-auto::-webkit-scrollbar-thumb {
+  background-color: #f3eded;
+  border-radius: 20px;
+  height: 15px;
+  border: 2px solid #f1f2f3;
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px white; 
+  border-radius: 10px;  
+}
+
+.overflow-auto::-webkit-scrollbar-thumb:hover {
+  border: transparent;
+}
+
+.overflow-auto::-webkit-scrollbar-corner{
+  visibility: hidden;
+  border-radius: 10px;
+}
+
+.app-top {
+  margin: 0 0 3em;
+}
+
+.w-90{
+  min-width: 95%;
+}
+
+.app-calendar {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.fc-button-primary{
+  background-color: $color-red !important;
+  border-color: $color-red !important;
+}
+.fc-icon{
+  font-size: 1rem;
+}
+
+.show__event{
+  background-color: #cc2900;
+  color: white;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 9;
+  width: 350px;
+  height: 250px;
+  padding: 10px;
+  border-radius: 6.5px;
+  box-shadow: 0 2px 15px 1px #00000085;
+  display: flex;
+  align-items: center;
+}
+
+.fc-content{
+  cursor: pointer;
+
+}
+
+.icon{
+  margin-right: 7px;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 2px;
+  position: absolute;
+  margin-top: -10px;
+  right: 1%;
+
+  &.exit{
+    width: 15px;
+    height: 16px;
+    border-radius: 5px;
+    background-color: white;
+    align-items: center;
+  }
+}
+
+.fc-content {
+  white-space: normal;
+}
+
+.texto{
+  margin: 0px !important;
+}
+
+.Notificacion{
+  margin-bottom: 10px !important;
+}

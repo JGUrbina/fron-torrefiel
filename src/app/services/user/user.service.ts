@@ -8,19 +8,18 @@ import { UrlApiGlobal } from '../../config/config';
   providedIn: 'root'
 })
 export class UserService {
-
-  private headers: HttpHeaders = new HttpHeaders();
+  private headers: HttpHeaders = new HttpHeaders({Authorization: `Bearer ${localStorage.getItem('some-key')!=null? JSON.parse(localStorage.getItem('some-key')).token : ' ' }`});
   public urlApi: string;
 
   constructor(
     private http: HttpClient
   ) {
     this.urlApi = `${UrlApiGlobal}/user`;
-    this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
+  
   }
 
   getUsers(): Observable<any> {
+    console.log("headers", this.headers)
     return this.http.get<any>(this.urlApi, { headers: this.headers });
   }
 
@@ -29,7 +28,7 @@ export class UserService {
   }
 
   createUser(user: User): Observable<any>{
-    return this.http.post<any>(`${this.urlApi}/register`, user);
+    return this.http.post<any>(`${this.urlApi}/register`, user, { headers: this.headers });
   }
 
   deleteUser(id: string): Observable<any> {
@@ -45,7 +44,8 @@ export class UserService {
   }
 
   login(params: object): Observable<any> {
-    return this.http.post<any>(`${this.urlApi}/login`, params, { headers: this.headers });
+    console.log("local Storage", localStorage.getItem('some-key'))
+    return this.http.post<any>(`${this.urlApi}/login`, params);
   }
 
   setPassword(token: string, password: string): Observable<any>{
@@ -56,7 +56,7 @@ export class UserService {
     return this.http.get<any>(`${this.urlApi}/confirmation/${token}`, { headers: this.headers });
   }
 
-  sendMailResetPassword(params: any): Observable<any>{
-    return this.http.post<any>(`${this.urlApi}/emailpassreset`, params);
-  }
+   sendMailResetPassword(params: any): Observable<any>{
+     return this.http.post<any>(`${this.urlApi}/emailpassreset`, params);
+   }
 }
