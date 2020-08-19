@@ -388,7 +388,7 @@
 }
 
 .services{
-  overflow-y: auto; 
+  overflow-y: auto !important; 
   width: 50%;
 }
 
@@ -659,13 +659,17 @@
     padding: .5rem 0rem .5rem;
   }
 
-  .actualizar{
-    right: 0%;
+  form{
+    min-height: 670px !important;
   }
+
 }
 
 
 @media (max-width: 481px){
+  label{
+    width: 100px;
+  }
   .services{
      padding: 15px 15px;
     }
@@ -680,10 +684,14 @@
     padding: 5px;
   }
 
-  
-  
   .left{
     margin-bottom: 20px;
+  }
+
+  .info{
+    width: 50px !important;
+    font-size: .7rem !important;
+    padding: 4px 2px;
   }
 
 }
