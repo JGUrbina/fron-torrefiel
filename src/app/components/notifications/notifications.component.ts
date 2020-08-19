@@ -22,6 +22,7 @@ moment.locale('es')
 
 export class NotificationsComponent implements OnInit { 
   
+  @Output() newNotification = new EventEmitter<any>();
 
   @Output() usuarioSeleccionado: EventEmitter<Number> = new EventEmitter();
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
@@ -109,7 +110,8 @@ export class NotificationsComponent implements OnInit {
     this.serviceService.Notifications().subscribe(
       data => {
         this.allNotifications.push(data);
-        this.onUsuarioSeleccionado(this.allNotifications.length)
+        this.onUsuarioSeleccionado(this.allNotifications.length);
+        this.newNotification.emit(data);
       },err=>console.log("Error",err)
     )
   }
