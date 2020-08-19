@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { TypeDateService } from '../../services/typeDate/type-date.service';
 import { ServiceService } from '../../services/service/service.service';
@@ -7,6 +7,7 @@ import { UserService } from '../../services/user/user.service';
 import { User } from '../../models/user/user';
 import { ClientService } from '../../services/client/client.service';
 import { Client } from '../../models/client/client';
+import { NotificationComponent } from '../utils/notification/notification.component';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,9 @@ import { Client } from '../../models/client/client';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  //@Input() usuarioSeleccionado;
+
+  @ViewChild(NotificationComponent) child: NotificationComponent;
 
   public allServices: Service[];
   public allEvents: any[] = [];
@@ -35,9 +39,29 @@ export class HeaderComponent implements OnInit {
     this.numberNotifications = '';
   }
 
+  setSeleccionado(usuario) {
+    this.numberNotifications = usuario
+    console.log("number Notific", this.numberNotifications)
+    if(this.numberNotifications==0){
+      console.log("entro if", this.numberNotifications==0)
+      this.showNotification = !this.showNotification;
+      console.log("usuario", usuario)
+    }
+  }
+   
   ngOnInit(): void {
     this.nickName = localStorage.getItem('some-key')==null ? 'nickName' :  JSON.parse(localStorage.getItem('some-key')).name
+    this.serviceService.initSocket();
+    this.setId();
+    this.Notifications();
     this.getHistory();
+  }
+
+  setId(){
+    if(localStorage.getItem('some-key')!=null){
+      const {userName, _id} = JSON.parse(localStorage.getItem('some-key'))
+      this.serviceService.setId({userName, _id});
+    } 
   }
 
   closeSession(): void {
@@ -46,17 +70,26 @@ export class HeaderComponent implements OnInit {
   }
 
   getHistory(){
-    console.log("entro a getHistory")
     this.serviceService.getHistoryNotifications().subscribe(
       data => {
         this.allNotifications = data.filter(notification => notification.seenStatus === false)
         this.numberNotifications = this.allNotifications.length;
-        console.log("numero ", this.numberNotifications)
-        console.log("allNotifications", this.allNotifications)
+        console.log("allnotifications header", this.allNotifications.length)
       },err=>{console.log("Error", err)}
     );
   }
 
+
+  Notifications(){
+    this.serviceService.Notifications().subscribe(
+      data => {
+        this.allNotifications.push(data);
+        console.log("notificaciones", this.allNotifications.length)
+        this.numberNotifications = this.allNotifications.length
+      },err=>console.log("Error",err)
+    )
+  }
+  
   toggleCalendar() {
     if(this.showCalendar){
       this.showCalendar = !this.showCalendar;
@@ -73,7 +106,6 @@ export class HeaderComponent implements OnInit {
   }
 
   openNotifications() {
-    console.log('notificaciones')
     if(this.showNotification){
       this.showNotification = !this.showNotification;
     }else { 

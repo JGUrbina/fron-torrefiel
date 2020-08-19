@@ -1,10 +1,8 @@
 @import '../../../../assets/scss/components/chat';
 
-.sectionChat{
 
-  .date{
-    margin-bottom: 3px !important;
-  }
+.sectionChat{
+  
 
   &__header{
     display: flex;
@@ -44,6 +42,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background: black;
 
     .visit{
       width: 30px;
@@ -109,16 +108,19 @@
  
 }
 @media (max-width: 780px){
- .sectionChat{
-  position: absolute;
-  top: -40px !important;
-
-  &__header{
-    background: black;
-    h3{
-      margin: 10px;
+  .sectionChat{
+    position: absolute;
+    right: 5%;
+    top: -30px !important;
+    width: 250px;
+  
+    &__header{
+      background: black;
+      h3{
+        margin: 10px;
+      }
     }
-  }
+   
  }
 
 

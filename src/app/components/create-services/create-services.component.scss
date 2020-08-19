@@ -344,8 +344,8 @@
     width: 90% !important;
   }
 
-  #input-same-client{
-    width: 15px !important;
+  .spanDirectionEqual{
+    width: auto !important;
   }
 
   .buttonSave{
@@ -384,10 +384,6 @@
     font-size: .7rem;
   }
 
-  #input-same-client{
-    width: 15px !important;
-  }
-
   .buttonSave{
      min-width: 100px !important;
      font-size: .9rem;
@@ -412,13 +408,51 @@
   }
 
   label{
-    font-size: .6rem !important;
+    font-size: .6rem;
+  }
+
+  .client-checkbox{
+    font-size: .8rem;
+    min-width: 150px;
   }
 
 }
 
+@media(max-width: 860px){
+  .primera{
+   display: block !important;
+   width: auto !important;
+   .siguiente-container{
+    transform: translate(0px, 0px);
+  }
+  }
+}
+
 
 @media (max-width: 780px) { 
+
+  .primera{
+    display: block !important;
+    width: auto !important;
+    .siguiente-container{
+      transform: translate(0px, 0px);
+    }
+   }
+
+  .dataService{
+    flex-wrap: wrap;
+  }
+
+  .siguiente-container{
+    position: relative;
+  }
+
+  .input-activities {
+    width: auto;
+    span{
+      padding: 1px;
+    }
+  }
 
   .containService{
     transform: translate(0px, 171px);
@@ -433,15 +467,13 @@
       width: 60%;
       flex-direction: row !important;
       flex-wrap: nowrap;
+      bottom: -40px;
+      justify-content: normal;
 
       .buttons{
         margin-right: 20px;
       }
-      .check{
-        position: absolute;
-        top: 210px;
-        left: -250px;
-      }
+     
 
       div{
         align-items: baseline;
@@ -452,7 +484,9 @@
 
     .saveService{
       position: absolute;
-      bottom: 10px;
+      .botones{
+        width: 80%;
+      }
     }
   }
 
@@ -476,9 +510,6 @@
     font-size: .6rem;
   }
 
-  #input-same-client{
-    width: 15px !important;
-  }
 
   textarea , select{
     font-size: .6rem;
@@ -497,4 +528,32 @@
    font-size: .8rem !important;  
   }
 
+}
+
+@media(max-width: 480px){
+  .client{
+    display: block !important;
+  }
+
+  .dataService{
+    display: block !important;
+  }
+  .direccion_div{
+    display: block !important;
+  }
+
+  h3{
+    font-size: .8rem !important;  
+    word-wrap: break-word !important;
+  }
+
+  .client-checkbox{
+    font-size: .6rem;
+    min-width: 100px !important;
+  }
+
+  .buttonSave, .buttonBefore{
+    padding: 4px 2px !important;
+    margin-right: 5px;
+  }
 }

@@ -15,14 +15,15 @@
 
   h4, p{
     font-size: 1rem; 
-    margin: 0;
-    margin-left: 8px;
+    margin: auto;
+    padding: 4px;
   }
+  
 
   
 
   figure{
-    width: 40px;
+   
     height: 40px;
     margin: 2px;
     display: inline-block;
@@ -50,7 +51,7 @@
   }
 
   figure{
-    width: 40px;
+  
     height: 40px;
     margin: 2px;
     display: inline-block;
@@ -124,7 +125,7 @@
         width: 20%;
 
         figure{
-          width: 40px;
+         
           height: 40px;
           margin: 0;
           padding: 5px;
@@ -153,7 +154,7 @@
   }
 
   .icon{
-    width: 40px;
+   
     height: 40px;
   }
 
@@ -213,9 +214,11 @@
         left: 2rem;
         top: 1.5rem;
     }
+
     h4{
       margin-bottom: 1rem !important;
     }
+
   }
 
   &__header{
@@ -258,7 +261,8 @@
 
     .sectionAdd__icons{
       height: 40px;
-      width: 40px;
+      
+
     }
    
 
@@ -349,7 +353,7 @@
       width: 20%;
 
       figure{
-        width: 40px;
+     
         height: 40px;
         margin: 0;
         padding: 5px;
@@ -467,6 +471,13 @@
 }
 
 @media(max-width:980px){
+  h4{
+    font-size: .8rem !important;
+  }
+
+  figure{
+    width: 30px;
+  }
   .info{
     position: absolute;
     top: -60px;

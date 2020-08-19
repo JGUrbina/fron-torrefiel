@@ -2,7 +2,7 @@
   <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
   
   <!-- client -->
-  <section class="p-5 marco form" *ngIf="viewActual === USER">
+  <section class="p-5 marco form primera" *ngIf="viewActual === USER">
     <div class="containService__data">
       <div class="whenService d-flex justify-content-between pb-2">
         <div class="client">
@@ -37,7 +37,7 @@
           <input type="text" placeholder="Nombre" name="nameCompany" [(ngModel)]="newClient.nameCompany" required>
         </div>
       </div>
-      <div class="dataService d-flex justify-content-between  pb-2">
+      <div class="dataService d-flex pb-2">
         <div class="input__contain">
           <label for="">NIF</label>
           <input type="text" placeholder="A0000000" name="nif" [(ngModel)]="newClient.nif" required>
@@ -262,7 +262,7 @@
       </div>
     </div>
     <aside class="containService__aside saveService flex-column">
-      <div>
+      <div class="botones">
         <div class="buttons w-50 d-flex align-items-center">
           <button  class="buttonSave" (click)="createClientAndService()">
             Guardar <br>

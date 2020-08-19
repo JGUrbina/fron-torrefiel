@@ -140,6 +140,12 @@
   }
 }
 @media (max-width: 780px){
+  .sectionAdmin__data{
+    display: none !important;
+  }
+  .sectionAdmin__users, .sectionAdmin__clients{
+    width: 45%;
+  }
   .sectionAdmin{
     transform: translate(0%, 171px);
     &__data{

@@ -38,7 +38,7 @@ export class JobsViewComponent implements OnInit {
           delete el.updatedAt;
           newData.push(el);
         });
-        console.log('new', newData);
+        //console.log('new', newData);
         this.allJobs = newData;
         console.log('all jobs', this.allJobs);
         this.years.emit(data.years);

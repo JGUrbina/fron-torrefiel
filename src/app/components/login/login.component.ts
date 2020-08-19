@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
         const title = 'No tiene los permisos necesarios';
         const subtitle = '';
        console.log("retorno", data.user.rol==="Administrador")
-        if(data.user.rol==="Administrador" || data.user.rol){
+        if(data.user.rol==="Administrador"){ 
           const { token }  = data;
           localStorage.setItem('some-key', JSON.stringify({ token: token, name: data.user.userName, _id: data.user._id}));
           this.router.navigate(['/home']);

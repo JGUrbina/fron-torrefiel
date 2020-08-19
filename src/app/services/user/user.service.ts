@@ -8,6 +8,7 @@ import { UrlApiGlobal } from '../../config/config';
   providedIn: 'root'
 })
 export class UserService {
+  
   private headers: HttpHeaders = new HttpHeaders({Authorization: `Bearer ${localStorage.getItem('some-key')!=null? JSON.parse(localStorage.getItem('some-key')).token : ' ' }`});
   public urlApi: string;
 
@@ -19,11 +20,12 @@ export class UserService {
   }
 
   getUsers(): Observable<any> {
-    console.log("headers", this.headers)
+    //console.log("headers", this.headers)
     return this.http.get<any>(this.urlApi, { headers: this.headers });
   }
 
   getUser(id: string): Observable<any> {
+    //console.log("local Storage", localStorage.getItem('some-key'))
     return this.http.get<any>(`${this.urlApi}/${id}`, { headers: this.headers });
   }
 
@@ -44,7 +46,7 @@ export class UserService {
   }
 
   login(params: object): Observable<any> {
-    console.log("local Storage", localStorage.getItem('some-key'))
+    //console.log("local Storage", localStorage.getItem('some-key'))
     return this.http.post<any>(`${this.urlApi}/login`, params);
   }
 

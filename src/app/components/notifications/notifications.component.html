@@ -7,7 +7,7 @@
             <figure class="icon exit" (click)="deleteNotification(i)">
                 <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../assets/svg_2/cancelar.svg'"></app-create-icon>
             </figure>
-            <div>{{Notification.createdAt}}</div>
+            <div class="fecha">{{setFecha(Notification.createdAt)}}</div>
         </div>
     </div>
   

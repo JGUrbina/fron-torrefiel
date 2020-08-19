@@ -15,7 +15,7 @@
 
   h4, p{
     font-size: 1rem; 
-    margin: 0;
+    margin: 2px 2px;
     margin-left: 8px;
   }
 
@@ -44,7 +44,7 @@
 
   h4, p{
     font-size: 1rem !important;
-    margin: 0;
+    margin: 2px 2px;
     margin-left: 8px;
   }
 
@@ -58,7 +58,8 @@
 .sectionCalendar{
   //Aquí se le da tamaño al modal de nuevo usuari
  
-  
+
+    z-index: 5;
     width: 150%;
     transform: translate(-10%, -80px);
     background-color: rgba(0, 0, 0, .8);
@@ -238,18 +239,21 @@
 
 }
 
-@media(max-width: 1200px){
-  .sectionCalendar{
-    width: 200%;
-  }
+figure{
+  width: 30px !important;
 }
 
-
+h4{
+  margin: 2px 2px !important;
+}
 
 @media (max-width: 780px){
   .sectionCalendar{
-    position: absolute;
-    top: 20px;
+    
+    position: relative;
+    top: 38px;
+    left: -137px;
+    padding: 20px;
   }
   .sectionAdd__icons{
     font-size: 1rem !important;
@@ -265,6 +269,9 @@
 }
 
 @media (max-width: 481px){
+  .sectionCalendar{
+    width: 150%;
+  }
   .sectionAdd__icons{
     font-size: .8rem !important;
   }

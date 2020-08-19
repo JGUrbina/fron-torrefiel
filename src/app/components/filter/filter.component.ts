@@ -39,7 +39,7 @@ export class FilterComponent implements OnInit {
   ngOnInit(): void {
     this.currentYear = new Date().getFullYear();
     this.currentMonth = new Date().getMonth() + 1;
-    console.log('allmonths', this.allMonths);
+   // console.log('allmonths', this.allMonths);
   }
 
   handleMonth(data){

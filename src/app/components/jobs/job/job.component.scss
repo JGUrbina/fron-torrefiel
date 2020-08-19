@@ -164,9 +164,9 @@
       .chat{
         padding: 8px 0px;
         width: 40%;
-        height: 83%;
+        height: 60%;
         position: absolute;
-        bottom: 5%;
+        top: 10%;
         right: 5px;
       }
 
@@ -190,7 +190,7 @@
         padding-top: 30px;
       }
 
-      .note{
+      .note, .chat{
         padding: 8px 0px;
         width: 40%;
         height: 60%;
@@ -231,7 +231,7 @@
   
       &:hover, &.active{
         .hoverIcon{
-          display: block !important;
+          display: block ;
         }
       }
   
@@ -410,6 +410,11 @@ textarea.area-description:focus{
 }
 
 @media (max-width: 780px) { 
+
+  .hoverIcon{
+    display: none !important;
+  }
+
   .description{
     display: block;
     &__info{
@@ -427,7 +432,7 @@ textarea.area-description:focus{
       }
     }  
 
-    .note{
+    .note, .chat{
       padding: 8px 0px;
       width: 40%;
       height: 60%;
@@ -436,7 +441,7 @@ textarea.area-description:focus{
       right: 5px;
     }
   }
-  .note{
+  .note, .chat{
     top: 130px;
     height: 66%;
   }
@@ -446,15 +451,15 @@ textarea.area-description:focus{
       bottom: 25px !important;
       width: 70% !important;
       height: auto !important;
+    
+    }
+    .note, .chat{
+      background-color: transparent !important;
+      
     }
 }
 
-@media (max-width: 780px){
-  .note{
-    background-color: transparent !important;
-    
-  }
-}
+
 
 @media (max-width: 535px){
   .description{

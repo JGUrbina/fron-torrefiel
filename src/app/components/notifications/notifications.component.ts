@@ -1,5 +1,5 @@
 import { UserService } from 'src/app/services/user/user.service';
-import { Component, OnInit, ViewChild, Input , OnDestroy} from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter} from '@angular/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -9,7 +9,9 @@ import esLocale from '@fullcalendar/core/locales/es';
 import { User } from 'src/app/models/user/user';
 import { Service } from 'src/app/models/service/service';
 import { ServiceService } from 'src/app/services/service/service.service';
-
+import * as moment from 'moment';
+import 'moment/locale/es'  // without this line it didn't work
+moment.locale('es')
 
 
 @Component({
@@ -18,9 +20,10 @@ import { ServiceService } from 'src/app/services/service/service.service';
   styleUrls: ['./notifications.component.scss']
 })
 
-
-export class NotificationsComponent implements OnInit, OnDestroy { 
+export class NotificationsComponent implements OnInit { 
   
+
+  @Output() usuarioSeleccionado: EventEmitter<Number> = new EventEmitter();
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
   @Input() events: any[];
 
@@ -38,7 +41,6 @@ export class NotificationsComponent implements OnInit, OnDestroy {
 
 
   constructor(
-   
     private userService: UserService,
     private serviceService: ServiceService
   ) {
@@ -55,15 +57,17 @@ export class NotificationsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getAllWorkers();
     this.serviceService.initSocket();
-    this.Notifications();
     this.setId();
+    this.Notifications();
     this.getHistory();
-    
   }
 
-  ngOnDestroy(): void{
-    this.serviceService.closeAllConections();
-    console.log("Notification destroy" )
+  setFecha(createdAt){
+    return moment(new Date(createdAt)).fromNow()
+  }
+
+  onUsuarioSeleccionado(usuario) {
+    this.usuarioSeleccionado.emit(usuario);
   }
 
   setId(){
@@ -73,32 +77,39 @@ export class NotificationsComponent implements OnInit, OnDestroy {
     } 
   }
 
+ 
+
+
   getHistory(){
-    console.log("entro a getHistory")
+    //console.log("entro a getHistory")
     this.serviceService.getHistoryNotifications().subscribe(
       data => {
         this.allNotifications = data.filter(notification => notification.seenStatus === false)
         this.numberNotifications = this.allNotifications.length;
-        console.log("numero ", this.numberNotifications)
-        console.log("allNotifications", this.allNotifications)
+        //console.log("numero ", this.numberNotifications)
+        //this.onUsuarioSeleccionado(this.numberNotifications)
+        console.log("allNotifications notifications", this.allNotifications.length)
       },err=>{console.log("Error", err)}
     );
   }
 
   deleteNotification(id){
-    console.log("index", id)
+    //console.log("index", id)
     let noti = this.allNotifications.splice(id, 1)
-    console.log("noti", typeof(noti[0]._id))
+    if(this.allNotifications.length < 1){
+      this.calendarVisible = false
+    }
+    this.onUsuarioSeleccionado(this.allNotifications.length)
     this.serviceService.RemoveNotification(noti[0]._id).subscribe(
       data => {console.log("Se eliminó correctamente") },err => console.log("Error", err)
     )
-    //this.allNotifications.splice(id, 1)
   }
 
   Notifications(){
     this.serviceService.Notifications().subscribe(
       data => {
         this.allNotifications.push(data);
+        this.onUsuarioSeleccionado(this.allNotifications.length)
       },err=>console.log("Error",err)
     )
   }
@@ -123,12 +134,11 @@ export class NotificationsComponent implements OnInit, OnDestroy {
   }
 
   showEvents() {
-  
     this.allWorkers.forEach(worker => {
       this.events.forEach(event => {
         if(worker.works.includes(event._id)){
           const start = event.startDate.split('T')[0];
-          console.log("Start",start)
+          //console.log("Start",start)
           let { _id: id, name: title, startHours } = event;
           title = startHours;
           title += ` ${worker.name}`;
@@ -140,7 +150,7 @@ export class NotificationsComponent implements OnInit, OnDestroy {
       });
     });
     this.calendarEvents.sort((a, b) => a.startHours.localeCompare(b.startHours));
-    console.log('eventos1', this.calendarEvents);
+    //console.log('eventos1', this.calendarEvents);
   }
 
 }

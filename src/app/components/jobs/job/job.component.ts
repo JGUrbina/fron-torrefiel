@@ -128,7 +128,7 @@ export class JobComponent implements OnInit {
   requestJobChanges(){
     this.serviceService.updateService(this.job._id, this.job).subscribe(
       data => {
-        console.log("num serv", this.job)
+        //console.log("num serv", this.job)
         this.serviceService.editNotifications(this.job.numService,this.job.workers)
         this.job = data;
       }, err => console.log('err', err)
@@ -142,10 +142,10 @@ export class JobComponent implements OnInit {
 
   submitJobNames(){
     if(this.keep.input1 || this.keep.input2 || this.keep.input3){
-      console.log('a true');
+      //console.log('a true');
       this.edit.names = true;
     }else {
-        console.log('a false');
+        //console.log('a false');
         this.requestJobChanges();
         this.edit.names = false;
     };
@@ -156,10 +156,10 @@ export class JobComponent implements OnInit {
 
   submitJobDirections(){
     if(this.keep.direction1 || this.keep.direction2 || this.keep.direction3 || this.keep.direction4 || this.keep.direction5){
-      console.log('a true');
+      //console.log('a true');
       this.edit.directions = true;
     }else {
-        console.log('a false');
+        //console.log('a false');
         this.requestJobChanges();
         this.edit.directions = false;
     };
@@ -179,7 +179,7 @@ export class JobComponent implements OnInit {
     
     this.requestJobChanges();
     this.edit.bill = false;
-    console.log('job', this.job)
+    //console.log('job', this.job)
   }
 
   submitJobDescription(){
@@ -188,7 +188,7 @@ export class JobComponent implements OnInit {
   }
 
   submitNewPriority(){
-    console.log('priority')
+    //console.log('priority')
     this.job.priority = this.job.priority ? 'false' : 'true';
     this.requestJobChanges();
   }

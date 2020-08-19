@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.Logeado = localStorage.getItem('some-key')
-    console.log(this.Logeado)
+    //console.log(this.Logeado)
     if(this.Logeado==null){
       this.router.navigate(['/login']);
     }

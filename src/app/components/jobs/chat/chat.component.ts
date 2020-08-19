@@ -53,20 +53,24 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatService.getHistory().subscribe(data => {
       console.log("chat", data)
       this.allMessages = data.reverse();
+      setTimeout(function(){
+        this.chat = document.getElementById('main'); 
+        this.chat==null? null : this.chat.scrollTop=this.chat.scrollHeight 
+      },300)
      
     }), err => console.log('err', err);
-    setTimeout(function(){
-      this.chat = document.getElementById('main'); 
-      this.chat==null? null : this.chat.scrollTop=this.chat.scrollHeight 
-    },500)
+   
   }
 
   getMessages(){
-    this.chatService.getMessage().subscribe(data => this.allMessages.push(data)), err => console.log('err', err);
-    setTimeout(function(){
-      this.chat = document.getElementById('main'); 
-      this.chat==null? null : this.chat.scrollTop=this.chat.scrollHeight 
-    },500)
+    this.chatService.getMessage().subscribe(data =>{
+      this.allMessages.push(data)
+      setTimeout(function(){
+        this.chat = document.getElementById('main'); 
+        this.chat==null? null : this.chat.scrollTop=this.chat.scrollHeight 
+      },30)
+    }), err => console.log('err', err);
+    
   }
 
   sendMessage(){
@@ -91,7 +95,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     setTimeout(function(){
       this.chat = document.getElementById('main'); 
       this.chat==null? null : this.chat.scrollTop=this.chat.scrollHeight 
-    },500)
+    },30)
   }
 
   emitEvent(): void{

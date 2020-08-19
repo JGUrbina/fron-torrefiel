@@ -26,7 +26,7 @@ export class ServiceService {
   }
 
   public initSocket(): void {
-    console.log('url', UrlApiGlobal);
+    //console.log('url', UrlApiGlobal);
     this.socket = socketIo(UrlApiGlobal);
   }
 
@@ -36,7 +36,7 @@ export class ServiceService {
   };
 
   createNotification(workers): void{
-    console.log("local storage", localStorage.getItem('some-key'))
+   // console.log("local storage", localStorage.getItem('some-key'))
     //this.userName = localStorage.getItem('some-key')!=null? JSON.parse(localStorage.getItem('some-key')).name : ' ' 
     const notification = { text: `${this.userName} te ha asignado un nuevo servicio`, workers }
     this.socket.emit('Create Notification', notification);
@@ -55,7 +55,7 @@ export class ServiceService {
   };
 
   RemoveNotification(id){
-    console.log("id recibido", `${this.urlNotification}/${id}`)
+   // console.log("id recibido", `${this.urlNotification}/${id}`)
     return this.http.put<object>(`${this.urlNotification}/${id}`, { headers: this.headers });
   }
 
