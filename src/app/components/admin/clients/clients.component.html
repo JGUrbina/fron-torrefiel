@@ -34,6 +34,7 @@
 </section>
 
 <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
+
 <!--Editar cliente-->
 <section class="containService" *ngIf="show === OPTIONS">
   <form class="p-3 form" #userForm="ngForm" *ngIf="showView === EDITUSER">
@@ -45,7 +46,6 @@
         <div class="client">
           <div class="input__contain">
             <label for="" style="font-size: 1rem;">Cliente N° {{newClient.numClient}}</label>
-            <!-- <p>#{{newClient.numClient}}</p> -->
           </div>
         </div>
       </div>
@@ -119,7 +119,7 @@
         </div>
       </div>
     </div>
-    <aside class="containService__aside">
+    <aside class="containService__aside actualizar">
       <div>
         <div class="buttons d-flex justify-content-center align-items-center">
           <button (click)="updateClient()" class="buttonSave">
@@ -129,7 +129,7 @@
       </div>
     </aside>
   </form>
-  <div class="services" *ngIf="showView === SERVICES" style="overflow-y: auto; width: 50%;">
+  <div class="services" *ngIf="showView === SERVICES" >
     <figure class="exit" (click)="hideOptions()">
       <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
     </figure>

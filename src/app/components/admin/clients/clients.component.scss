@@ -107,9 +107,9 @@
   min-height: 525px;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 5%;
   z-index: 1;
-  width: 100%;
+  width: 90%;
 
   form{
     width: 100%;
@@ -570,7 +570,7 @@
     font-size: 1rem !important;
   }   
 
-  input{
+  input, .input__contain{
     font-size: .7rem;
   }
   .dataService{
@@ -593,7 +593,6 @@
   
 
 @media (max-width: 780px){
-
   .services{
     width: 90% !important;
   }
@@ -603,35 +602,65 @@
     padding: 20px 10px;
     padding-left: 10px;
     }
+
     .input__contain{
       input{
-        width: 70px !important;
+        width: 98px !important;
         height: 30px !important;
       }
-      
     }
   }
+
   .section-title{
     h3{
       font-size: 1rem !important;
     }
   }
+
   .client__contain{
     display: block !important;
   }
+
   p{
     font-size: .8rem !important;
   }
+
   .sectionClient{
     padding: 10px;
   }
+
   .containService__data{
+    position: absolute;
+    top: 2%;
     .input__contain{
       margin-right: 15px;
       label {
-        height: 38px;
+        font-size: 0.7rem;
+        height: 20px;
       }
     }
+  }
+
+  .actualizar{
+   position: absolute;
+   bottom: 0%; 
+  }
+
+}
+
+@media (max-width: 580px){
+
+  h3{
+    padding: 1rem 0rem 0rem !important;
+  }
+
+  .dataService{
+    flex-wrap: wrap;
+    padding: .5rem 0rem .5rem;
+  }
+
+  .actualizar{
+    right: 0%;
   }
 }
 
