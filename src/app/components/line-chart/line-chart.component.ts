@@ -28,8 +28,13 @@ export class LineChartComponent implements OnInit {
   public lineChartType = 'line';
 
   constructor() {
+    // Así lo tenía Karen
+    // this.lineChartData = [
+    //   { data: [1000, 5000, 2500] }
+    // ];
+    // Así lo dejo yo para que muestre en 0% de porcentaje. (Ricardo)
     this.lineChartData = [
-      { data: [1000, 5000, 2500] }
+      { data: [0, 0, 0] }
     ];
     this.lineChartLabels = ['antes', 'ultimos 30 días', 'actual'];
   }

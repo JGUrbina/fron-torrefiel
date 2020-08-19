@@ -29,7 +29,7 @@ export class MediumPieChartComponent implements OnInit {
     const el = document.getElementById(this.searchId); // get canvas
 
     const options: any = {
-      percent: porcentage || 25,
+      percent: porcentage || 0,
       size: size || 50,
       lineWidth: lineWidth || 3,
       rotate: rotate || 0
@@ -48,7 +48,10 @@ export class MediumPieChartComponent implements OnInit {
     const radius = (options.size - (options.lineWidth * 2)) / 2;
 
     const drawCircle = (color: string, lineWidthCircle: number, percent: number) => {
-      percent = Math.min(Math.max(0, percent || 1), 1);
+      // Así lo tenía Karen
+      // percent = Math.min(Math.max(0, percent || 1), 1);
+      // Así lo deje yo para que se mostrara con 0% de porcentaje (RICARDO)
+      percent = Math.min(Math.max(0, percent || 0), 1);
       ctx.beginPath();
       ctx.arc(0, 0, radius, 0, Math.PI * 1.05 * percent, false); // tamaño del circulo
       ctx.strokeStyle = color;

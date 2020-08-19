@@ -28,7 +28,7 @@ export class PieChartComponent implements OnInit {
     const el = document.getElementById(this.searchId); // get canvas
 
     const options: any = {
-      percent: porcentage || 25,
+      percent: porcentage || 0,
       size: size || 50,
       lineWidth: lineWidth || 3,
       rotate: rotate || 0
@@ -46,7 +46,10 @@ export class PieChartComponent implements OnInit {
     const radius = (options.size - options.lineWidth) / 2;
 
     const drawCircle = (color: string, lineWidthCircle: number, percent: number) => {
-      percent = Math.min(Math.max(0, percent || 1), 1);
+      // Así lo tenía karen
+      // percent = Math.min(Math.max(0, percent || 1), 1);
+      // Así lo dejé yo para que se mostrara en 0% de porcentaje
+      percent = Math.min(Math.max(0, percent || 0), 1);
       ctx.beginPath();
       ctx.arc(0, 0, radius, 0, Math.PI * 2 * percent, false);
       ctx.strokeStyle = color;
