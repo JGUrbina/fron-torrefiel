@@ -52,7 +52,6 @@
   padding: 20px;
   max-height: 400px;
   overflow-y: auto;
-
 }
 
 .fc-button-primary{
@@ -92,8 +91,8 @@
   display: flex;
   justify-content: flex-end;
   padding-bottom: 2px;
-  position: absolute;
-  right: 1%;
+  position: relative;
+  right: -89%;
 
   &.exit{
     width: 18px;
@@ -118,7 +117,12 @@
   margin-bottom: 10px !important;
 }
 
+.fecha{
+  color: #c5c5c5;
+}
+
 @media(max-width:780px){
+
   p{
     font-size: .8rem;
   }
@@ -126,3 +130,4 @@
     font-size: .8rem;
   }
 }
+

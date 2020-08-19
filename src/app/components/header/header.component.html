@@ -35,7 +35,7 @@
       <app-card-calendar [events]="allEvents"></app-card-calendar>
     </div>
   </div>
-  <div class="show__calendar" *ngIf="showNotification" id="show__calendar">
+  <div class="show__notifications" *ngIf="showNotification" id="show__calendar">
     <div>
       <app-notifications  [events]="allEvents" (usuarioSeleccionado)="setSeleccionado($event)"  (newNotification)="addNewNotification($event)"></app-notifications>
     </div>

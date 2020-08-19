@@ -248,31 +248,50 @@ h4{
 }
 
 @media (max-width: 780px){
+
   .sectionCalendar{
-    
     position: relative;
     top: 38px;
     left: -137px;
     padding: 20px;
   }
+
   .sectionAdd__icons{
     font-size: 1rem !important;
     margin-bottom: 0px;
     padding: 3px 10px !important;
   }
+
   .sectionClient{
     min-width: auto !important;
   }
+
   .buttonSave{
     margin-top: 3px !important;
   }
+
 }
 
 @media (max-width: 481px){
+
   .sectionCalendar{
-    width: 150%;
+    width: 200%;
   }
+
   .sectionAdd__icons{
     font-size: .8rem !important;
+    figure{
+      top: 21px !important;
+    }
+   
+  }
+
+}
+
+@media(max-width: 320px){
+  .sectionAdd__icons{
+    figure{
+      display: none;
+    }
   }
 }

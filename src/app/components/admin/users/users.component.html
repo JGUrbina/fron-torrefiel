@@ -10,7 +10,7 @@
       <div class="add__user">
         <div class="user__contain" (click)="openNewUserModal()">
           <div class="user__contain--title h-auto">
-            <figure class="icon">
+            <figure class="icon avatar">
               <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg_2/perfil.svg'"></app-create-icon>
             </figure>
             <h4 class="newUser" style="padding: 10px 5px;">Nuevo usuario</h4>
@@ -21,7 +21,7 @@
       <div class="list">
         <div class="user__contain" *ngFor="let user of allUsers">
           <div class="user__contain--title">
-            <figure class="icon">
+            <figure class="icon avatar">
               <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg_2/perfil.svg'"></app-create-icon>
             </figure>
             <h4>{{ user.userName }}</h4>
@@ -55,7 +55,7 @@
 </section>
 
 <!--mostrar Usuario-->
-<section class="containUser" *ngIf="showUser">
+<section class="containUser trabajador" *ngIf="showUser">
   <figure class="exit" (click)="showUser = false">
     <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
   </figure>
@@ -90,7 +90,7 @@
 </section>
 
 <!--Editar Usuario-->
-<section class="containUser" *ngIf="editUserShow">
+<section class="containUser Editar" *ngIf="editUserShow">
   <section class="sectionCalendar">
     <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
       <header class="sectionCalendar__icons">

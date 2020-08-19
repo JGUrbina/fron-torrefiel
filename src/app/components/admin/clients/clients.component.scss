@@ -388,7 +388,11 @@
 }
 
 .services{
+  overflow-y: auto; 
+  width: 50%;
+}
 
+.services{
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
   
@@ -589,6 +593,11 @@
   
 
 @media (max-width: 780px){
+
+  .services{
+    width: 90% !important;
+  }
+
   .containService{
     &__data{
     padding: 20px 10px;
@@ -642,14 +651,7 @@
     padding: 5px;
   }
 
-  .services{
-    .urgent {
-      top: -40px;
-     }
-     .info {
-       top: -40px;
-      }
-  }
+  
   
   .left{
     margin-bottom: 20px;

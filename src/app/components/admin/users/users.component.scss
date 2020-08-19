@@ -15,18 +15,15 @@
 
   h4, p{
     font-size: 1rem; 
-    margin: auto;
     padding: 4px;
   }
-  
 
-  
 
   figure{
-   
     height: 40px;
     margin: 2px;
     display: inline-block;
+    min-width: 30px;
   }
 }
 
@@ -211,8 +208,9 @@
   .sectionCalendar__body{
     figure{
         position: absolute;
-        left: 2rem;
-        top: 1.5rem;
+        left: 3%;
+        top: 2%;
+        
     }
 
     h4{
@@ -456,10 +454,19 @@
   }
 }
 
+figure{
+  width: 35px;
+}
+
 @media(max-width: 1200px){
-  .containUser{
-    width: 120%;
+
+  .trabajador{
+    width: 180%;
+    position: absolute;
+    top: 0%;
+    left: -96%;
   }
+
   .user__contain{
     &--title{
       padding: 0px 0px !important;
@@ -471,59 +478,83 @@
 }
 
 @media(max-width:980px){
+  
   h4{
-    font-size: .8rem !important;
-  }
-
-  figure{
-    width: 30px;
-  }
-  .info{
-    position: absolute;
-    top: -60px;
+    font-size: 1rem !important;
   }
 }
 
 @media (max-width: 780px){
+  .Editar{
+    width: 180%;
+    top: 0%;
+    left: -100%;
+    .icon{
+      left: 3%;
+      top: 2%;
+    }
+    figure{
+      width: 30px;
+    }
+    .exit{
+      top: 1%;
+      left: 83%;
+    }
+   
+  }
+
+  .user__contain{
+    flex-wrap: wrap;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
   .containUser{
     padding: 20px 10px;
   }
+
   .containUser__header{
+
     .title{
       padding: 10px 5px;
       display: block;
-      width: 100%;
       height: auto !important;
       margin: 0px 0px 7px 0px;
+
       .icon{
         width: 100%;
       }
+
       h4{
         text-align: center;
         margin: 0px;
       }
+
     }
+    
   }
+
   .section-title{
+
     h3{
       font-size: 1rem !important;
     }
+
   }
+
   .sectionUsers{
     padding: 10px;
- 
   }
+
   .user__contain{
-    display: block !important;
-    margin: 30px 10px 0px 10px!important;
+    display: block;
+    margin: 30px 10px 0px 10px;
     text-align: center;
     &--title{
-      display: inline-block !important;
+      display: inline-block;
       width: 100% !important;
       padding: 0px 0px !important;
-      .icon{
-        margin: auto !important;
-      }
+      
       h4{
         margin-left: 0px !important;
       }
@@ -541,20 +572,27 @@
   .list{
     margin-top: 30px;
   }
-
 }
 
 
 @media (max-width: 481px){
-  .sectionUsers{
-    padding: 3px;
+
+  .avatar{
+    display: none !important;
   }
+
+  .Editar{
+    text-align: center;
+  }
+
 .section-title{
   h3{
     font-size: .8rem !important;
   }
 }
+
 .user__contain{
   margin: 0px;
 }
+
 }
