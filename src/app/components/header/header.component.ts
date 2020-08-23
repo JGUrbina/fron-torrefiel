@@ -98,6 +98,7 @@ export class HeaderComponent implements OnInit {
         (data) => {
           console.log('peticion')
           this.allEvents = data.services;
+          this.showNotification = false;
           this.showCalendar = !this.showCalendar;
         },
         (err) => { console.error(err); }
@@ -110,11 +111,15 @@ export class HeaderComponent implements OnInit {
       this.showNotification = !this.showNotification;
     }else { 
       this.showNotification = !this.showNotification;
-      
+      this.showCalendar = false;
     }
   }
 
   addNewNotification(newNotification) {
     this.allNotifications.push(newNotification);
+  }
+
+  deleteNotification(oldNotification) {
+    this.allNotifications.splice(oldNotification, 1);
   }
 }

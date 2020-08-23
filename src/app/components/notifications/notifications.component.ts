@@ -23,6 +23,7 @@ moment.locale('es')
 export class NotificationsComponent implements OnInit { 
   
   @Output() newNotification = new EventEmitter<any>();
+  @Output() deleteOneNotification = new EventEmitter<any>();
 
   @Output() usuarioSeleccionado: EventEmitter<Number> = new EventEmitter();
   @ViewChild('calendar') calendarComponent: FullCalendarComponent;
@@ -102,7 +103,10 @@ export class NotificationsComponent implements OnInit {
     }
     this.onUsuarioSeleccionado(this.allNotifications.length)
     this.serviceService.RemoveNotification(noti[0]._id).subscribe(
-      data => {console.log("Se eliminó correctamente") },err => console.log("Error", err)
+      data => {
+        console.log("Se eliminó correctamente");
+        this.deleteOneNotification.emit(id);
+      },err => console.log("Error", err)
     )
   }
 
