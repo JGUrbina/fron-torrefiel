@@ -53,7 +53,6 @@ export class NotificationsComponent implements OnInit {
     this.calendarLocale = esLocale;
     this.allNotifications = [];
     this.numberNotifications = '';
-
   }
 
   ngOnInit(): void {
@@ -78,9 +77,6 @@ export class NotificationsComponent implements OnInit {
       this.serviceService.setId({userName, _id});
     } 
   }
-
- 
-
 
   getHistory(){
     //console.log("entro a getHistory")

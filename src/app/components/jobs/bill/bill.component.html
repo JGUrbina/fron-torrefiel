@@ -82,7 +82,6 @@
           <div class="title">
             <p><span>FACTURA</span></p>
           </div>
-
           <div>
             <div class="titulos-texto">
               <div class="bg-purple mb-0 col-2"><span>UND</span></div>
@@ -92,7 +91,7 @@
             </div>
             <div class="texto">
               <div class="col-2 mb-0 b-right"><span>1</span></div>
-              <div class="col-6 mb-0 b-right"><span>Detalle del Producto</span></div>
+              <div class="col-6 mb-0 b-right" style="word-break: break-word"><span>{{ deliveryNoteData.description }}</span></div>
               <div class="col-2 mb-0 right b-right"><span>{{ deliveryNoteData.amount }}€</span></div>
               <div class="col-2 mb-0 right b-right"><span>{{ deliveryNoteData.amount }}€</span></div>
             </div>
@@ -119,6 +118,7 @@
   <div class="div-input-email">
     <form class="form-input-email">
       <div class="div-label-input-email">
+        
         <label for="email-albaran">Escribe correo de cliente</label>
         <input [(ngModel)]="emailPdf" [ngModelOptions]="{standalone: true}" id="email-albaran" type="email" placeholder="correo@correo.com" name="emailPdf">
       </div>
@@ -126,3 +126,4 @@
     </form>
   </div>
 </div>
+<app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>

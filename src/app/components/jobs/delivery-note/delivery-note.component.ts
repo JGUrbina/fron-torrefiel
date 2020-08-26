@@ -49,6 +49,7 @@ export class DeliveryNoteComponent implements OnInit {
       this.pdfService.sendPdf('send', pdfFormData).subscribe(
         data => {
           console.log(data);
+          this.emitEvent();
         }, 
         err => {
           console.log('error', err)
@@ -311,7 +312,7 @@ export class DeliveryNoteComponent implements OnInit {
                         </p>
                       </div>
                       <div class="text">
-                        <span style="word-break: break-all;">${this.deliveryNoteData.description}</span>
+                        <span style="word-break: break-word;">${this.deliveryNoteData.description}</span>
                       </div>
                       <div class="titulos-texto">
                         <p class="bg-purple mb-0">

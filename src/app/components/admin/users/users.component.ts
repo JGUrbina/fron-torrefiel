@@ -17,10 +17,12 @@ export class UsersComponent implements OnInit {
   @ViewChild( EditComponent ) child : EditComponent ;
 
   public allUsers: User[];
+  public userId: string;
   public displayNewUser: boolean = false;
   public editUserShow: boolean = false;
   public showUser: boolean = false;
-  public alertShow: boolean = false;
+  public alertShow: boolean = false; 
+  public alertButton: boolean = false;
   public alertUrlIcon: string;
   public alertHeader: string;
   public alertTitle: string;
@@ -54,6 +56,15 @@ export class UsersComponent implements OnInit {
     );
   }
 
+  openAlert(id){
+    this.alertButton = true;
+    this.userId = id;
+    console.log("id alerta", id)
+  }
+
+  closeAlert(){
+    this.alertButton = false;
+  }
 
   getWorks(id: string){
     this.serviceService.getWorks(id).subscribe(
@@ -145,9 +156,13 @@ export class UsersComponent implements OnInit {
     this.displayNewUser = true;
   }
 
-  deleteUser(id: string) {
-    this.userService.deleteUser(id)
-    .subscribe(users => this.allUsers = users), (err: any) => console.log('err', err);
+  deleteUser() {
+    this.userService.deleteUser(this.userId)
+    .subscribe(users => {
+      this.allUsers = users
+      this.alertButton = false;
+    }), (err: any) => console.log('err', err);
+    
   }
 
   updateUsers(user: User){

@@ -18,6 +18,13 @@ export class BillComponent implements OnInit {
 
   public emailPdf: string;
   public monto: any;
+  public alertShow: boolean = false;
+  public alertUrlIcon: string;
+  public alertHeader: string;
+  public alertTitle: string;
+  public alertSubtitle: string;
+  private ALERTTIMESHOW: number = 5000;
+
   constructor(
     private pdfService: PdfService
   ) { 
@@ -29,6 +36,59 @@ export class BillComponent implements OnInit {
     this.monto = (this.deliveryNoteData.amount + (this.deliveryNoteData.amount * this.deliveryNoteData.typeIva /100)).toFixed(2);
   }
   
+  showAlert(urlIcon: string, header: string, title: string, subtitle: string){
+    console.log("titulo y sub", title, subtitle)
+    this.alertUrlIcon = urlIcon;
+    this.alertHeader = header;
+    this.alertTitle = title;
+    this.alertSubtitle = subtitle;
+    this.alertShow = true;
+
+    setTimeout(() => {
+      this.alertShow = false;
+    }, this.ALERTTIMESHOW);
+  }
+
+  messageErrorCreate(message: string){
+    const urlIcon = '';
+    const header = `Ha ocurrido un error`;
+    const title = message;
+    const subtitle = 'Intente nuevamente';
+    this.showAlert(urlIcon, header, title, subtitle);
+  }
+
+  downloadPdf(): void{
+    this.pdfService.onExportClick('pdf_factura_idUser', 'factura', '').save();
+  }
+
+  sendPdfToEmail(){
+    const pdf = this.pdfService.onExportClick('pdf_factura_idUser', 'factura', '').outputPdf('blob');
+    const email = this.emailPdf;
+
+    console.log('pdf', pdf)
+    console.log('email', email)
+
+    pdf.then(data => {
+      console.log('inpromise')
+      var pdfFormData = new FormData();
+      pdfFormData.append('pdf', data);
+      pdfFormData.append('email', email);
+      this.pdfService.sendPdf('send', pdfFormData).subscribe(
+        data => {
+          console.log("data pdf", data);
+          this.emitEvent();
+        }, 
+        err => {
+          console.log('error', err)
+        }
+      );
+    });
+    this.emailPdf = '';
+  }
+
+  emitEvent(): void{
+    this.closeWindow.emit('');
+  }
 
   onPrint(){
     let popupWinindow : any;
@@ -352,7 +412,7 @@ export class BillComponent implements OnInit {
         </div>
         <div class="texto">
           <div class="col-2 mb-0 b-right"><span>1</span></div>
-          <div class="col-6 mb-0 b-right"><span>Detalle del Producto</span></div>
+          <div class="col-6 mb-0 b-right"><span>${ this.deliveryNoteData.description }</span></div>
           <div class="col-2 mb-0 right b-right"><span>${ this.deliveryNoteData.amount }€</span></div>
           <div class="col-2 mb-0 right b-right"><span>${ this.deliveryNoteData.amount }€</span></div>
         </div>
@@ -386,40 +446,7 @@ export class BillComponent implements OnInit {
   }
 
   
-  downloadPdf(): void{
-    this.pdfService.onExportClick('pdf_factura_idUser', 'factura', '').save();
-  }
-
-  sendPdfToEmail(){
-    const pdf = this.pdfService.onExportClick('pdf_factura_idUser', 'factura', '').outputPdf('blob');
-    const email = this.emailPdf;
-
-    console.log('pdf', pdf)
-    console.log('email', email)
-
-    pdf.then(data => {
-      console.log('inpromise')
-      var pdfFormData = new FormData();
-      pdfFormData.append('pdf', data);
-      pdfFormData.append('email', email);
-      this.pdfService.sendPdf('send', pdfFormData).subscribe(
-        data => {
-          console.log(data);
-        }, 
-        err => {
-          console.log('error', err)
-        }
-      );
-    });
-    this.emailPdf = '';
-  }
   
- 
-
-
-  emitEvent(): void{
-    this.closeWindow.emit('');
-  }
 
 }
 

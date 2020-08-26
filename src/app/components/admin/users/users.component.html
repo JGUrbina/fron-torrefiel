@@ -24,13 +24,13 @@
             <figure class="icon avatar">
               <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg_2/perfil.svg'"></app-create-icon>
             </figure>
-            <h4>{{ user.userName }}</h4>
+            <h4 style="margin-bottom: 0px;">{{ user.userName }}</h4>
           </div>
           <div class="user__contain--icons">
             <figure class="icon" (click)="openWorks(user._id)">
               <app-create-icon [class]="'color-gray bg-white button'" [name]="'only-eye'" [url]="'../../../../assets/svg_2/only-eye.svg'"></app-create-icon>
             </figure>
-            <figure (click)="deleteUser(user._id)" class="icon">
+            <figure (click)="openAlert(user._id)" class="icon">
               <app-create-icon [class]="'color-gray bg-white button'" [name]="'trash'" [url]="'../../../../assets/svg_2/trash.svg'"></app-create-icon>
             </figure>
           </div>
@@ -48,6 +48,22 @@
         <!-- <div>
           paginacion
         </div> -->
+        <!--alerta -->
+        <div class="alert__contain fadeInDown" *ngIf="alertButton">
+          <div class="alert__contain--header">
+            <!-- <figure *ngIf="alertUrlIcon">
+              <app-create-icon [class]="'color-gray'" [name]="'calendar'"></app-create-icon>
+            </figure> -->
+            <span>¿Estás seguro que quieres eliminar este usuario? </span><br>
+          </div>
+          <div class="alert__contain--body">
+           
+            <button (click)="deleteUser()">Confirmar</button>  
+            <button (click)="closeAlert()">Cancelar</button>
+          </div>
+        </div>
+        <!--fin alerta  deleteUser(user._id) -->
+
       </div>
 
     </div>
@@ -64,7 +80,7 @@
       <figure class="icon">
         <app-create-icon [class]="'color-gray'" [name]="'profile'" [url]="'../../../../assets/svg_2/perfil.svg'"></app-create-icon>
       </figure>
-      <h4>{{jobsOfUser.userName}}</h4> 
+      <h4 style="margin-bottom: 0px;">{{jobsOfUser.userName}}</h4> 
     </div>
   </div>
   <div class="containUser__main">
@@ -82,7 +98,7 @@
           </div>
           <p><strong>Fecha: </strong>{{ getDate(job.startDate) }}</p>
           <p><strong>Hora: </strong>{{ job.startHours }}</p>
-          <p style="word-break: break-all;"><strong>Descripción: </strong>{{ job.description }}</p>
+          <p style="word-break: break-word;"><strong>Descripción: </strong>{{ job.description }}</p>
         </div>
       </div>
     </div>
