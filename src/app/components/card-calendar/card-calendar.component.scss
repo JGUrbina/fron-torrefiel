@@ -1,5 +1,9 @@
 @import 'src/assets/scss/variables';
 
+.fc-title{
+  color: gray !important;
+}
+
 .overflow-auto::-webkit-scrollbar {
   -webkit-appearance: none;
 }
@@ -46,6 +50,7 @@
 .app-calendar {
   margin: 0 auto;
   max-width: 900px;
+
 }
 
 .fc-button-primary{
