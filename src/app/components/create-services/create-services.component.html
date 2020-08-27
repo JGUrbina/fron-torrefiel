@@ -9,6 +9,7 @@
           <div class="input__contain mr-4 ">
             <label for="">Nombre cliente registrado</label>
             <select class="nombre" (change)="$event.target.value.length > 0 ? searchClient($event.target.value) : clearClient()" name="searchNameClient" [(ngModel)]="searchNameClient" *ngIf="allClients">
+              <option selected></option>
               <option *ngFor="let option of allClients" value="{{option.numClient}}">{{option.name}}</option>
             </select>  
             <p *ngIf="!allClients" class="no-exist"><b>No existen Clientes</b></p>  
