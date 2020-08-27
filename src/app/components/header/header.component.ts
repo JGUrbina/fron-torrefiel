@@ -116,7 +116,7 @@ export class HeaderComponent implements OnInit {
   }
 
   addNewNotification(newNotification) {
-   // this.allNotifications.push(newNotification);
+    this.allNotifications.unshift(newNotification);
   }
 
   deleteNotification(oldNotification) {
