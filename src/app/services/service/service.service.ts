@@ -38,7 +38,7 @@ export class ServiceService {
   createNotification(workers): void{
    // console.log("local storage", localStorage.getItem('some-key'))
     //this.userName = localStorage.getItem('some-key')!=null? JSON.parse(localStorage.getItem('some-key')).name : ' ' 
-    const notification = { text: `${this.userName} te ha asignado un nuevo servicio`, workers }
+    const notification = { text: `${localStorage.getItem('some-key')!=null? JSON.parse(localStorage.getItem('some-key')).name : 'Administrador'} te ha asignado un nuevo servicio`, workers }
     this.socket.emit('Create Notification', notification);
   }
 
@@ -60,7 +60,7 @@ export class ServiceService {
   }
 
   editNotifications(numService, workers):void{
-    const notification = { text: `${this.userName} ha modificado el servicio #${numService}`, workers }
+    const notification = { text: `${localStorage.getItem('some-key')!=null? JSON.parse(localStorage.getItem('some-key')).name : 'Administrador'} ha modificado el servicio #${numService}`, workers }
     this.socket.emit('Create Notification', notification);
     
   }
