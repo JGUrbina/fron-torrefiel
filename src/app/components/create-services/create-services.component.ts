@@ -175,8 +175,8 @@ export class CreateServicesComponent implements OnInit {
         this.showAlert(urlIcon, header, title, subtitle);
       },
       (err) => {
-        console.error('error: \n', err);
-        this.messageErrorCreate('servicio');
+        console.error('error: \n', err.error);
+        this.messageErrorCreateService(err.error);
       }
     );
   }
@@ -217,6 +217,14 @@ export class CreateServicesComponent implements OnInit {
     const urlIcon = '';
     const header = `Ha ocurrido un error.`;
     const title = 'No se ha podido realizar el registro, verifique los datos';
+    const subtitle = '';
+    this.showAlert(urlIcon, header, title, subtitle);
+  }
+
+  messageErrorCreateService(error){
+    const urlIcon = '';
+    const header = `Ha ocurrido un error.`;
+    const title = error;
     const subtitle = '';
     this.showAlert(urlIcon, header, title, subtitle);
   }

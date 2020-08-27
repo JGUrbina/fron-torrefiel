@@ -60,7 +60,7 @@ export class ServiceService {
   }
 
   editNotifications(numService, workers):void{
-    const notification = { text: `${this.userName} ha modificado el servicio ${numService}`, workers }
+    const notification = { text: `${this.userName} ha modificado el servicio #${numService}`, workers }
     this.socket.emit('Create Notification', notification);
     
   }

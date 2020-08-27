@@ -82,7 +82,7 @@ export class NotificationsComponent implements OnInit {
     //console.log("entro a getHistory")
     this.serviceService.getHistoryNotifications().subscribe(
       data => {
-        this.allNotifications = data.filter(notification => notification.seenStatus === false)
+        this.allNotifications = data.filter(notification => notification.seenStatus === false).reverse();
         this.numberNotifications = this.allNotifications.length;
         //console.log("numero ", this.numberNotifications)
         //this.onUsuarioSeleccionado(this.numberNotifications)
