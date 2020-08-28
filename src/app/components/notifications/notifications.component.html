@@ -2,21 +2,15 @@
 
     <div class='app-calendar' *ngIf="calendarVisible">
         <div *ngFor="let Notification of allNotifications; index as i;" class="Notificacion">
-            
+
             <p class="texto">{{Notification.text}}</p>
             <figure class="icon exit" (click)="deleteNotification(i)">
-                <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../assets/svg_2/cancelar.svg'"></app-create-icon>
+                <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../assets/svg_2/cancelar.svg'">
+                </app-create-icon>
             </figure>
             <div class="fecha">{{setFecha(Notification.createdAt)}}</div>
         </div>
     </div>
-  
-    <div class="show__event" *ngIf="showEvent">
-      <div class="d-flex flex-column justify-content-between w-90">
-       
-       
-       
-      </div>
-    </div>
-  
-  </div>
+
+
+</div>
