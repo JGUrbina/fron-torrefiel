@@ -55,7 +55,6 @@ export class ServiceService {
   };
 
   RemoveNotification(id){
-   // console.log("id recibido", `${this.urlNotification}/${id}`)
     return this.http.put<object>(`${this.urlNotification}/${id}`, { headers: this.headers });
   }
 
@@ -107,6 +106,10 @@ export class ServiceService {
 
   public closeAllConections(): void {
     this.socket.removeAllListeners();
+  }
+
+  public closeNotification(): void {
+    this.socket.off('Notification');
   }
 
 }

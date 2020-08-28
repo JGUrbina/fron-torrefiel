@@ -17,7 +17,7 @@
       <span class="hoverIcon fadeIn">Calendario</span>
     </figure>
     <figure class="icon" (click)="openNotifications()">
-      <p *ngIf="numberNotifications > 0" class="burbujaNotificacion">{{numberNotifications}}</p>
+      <p *ngIf="allNotifications.length > 0" class="burbujaNotificacion">{{allNotifications.length}}</p>
       <app-create-icon [class]="'color-white'" [name]="'campana'" [url]="'../../../assets/svg_2/campana.svg'"></app-create-icon>
       <div class="d-none">
         notificaciones
@@ -37,7 +37,7 @@
   </div>
   <div class="show__notifications" *ngIf="showNotification" id="show__calendar">
     <div>
-      <app-notifications  [events]="allEvents" (usuarioSeleccionado)="setSeleccionado($event)" (deleteOneNotification)="deleteNotification($event)" (newNotification)="addNewNotification($event)"></app-notifications>
+      <app-notifications [allNotifications]="allNotifications" (deleteNotificationIndex)="deleteNotification($event)"></app-notifications>
     </div>
   </div>
   

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { TypeDateService } from '../../services/typeDate/type-date.service';
 import { ServiceService } from '../../services/service/service.service';
@@ -14,7 +14,7 @@ import { NotificationComponent } from '../utils/notification/notification.compon
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   //@Input() usuarioSeleccionado;
 
   @ViewChild(NotificationComponent) child: NotificationComponent;
@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
   public showNotification: boolean = false;
   public nickName: string;
   public allNotifications: any[];
-  public numberNotifications: any;
 
   constructor(
     private router: Router,
@@ -36,25 +35,26 @@ export class HeaderComponent implements OnInit {
 
   ) {
     this.allNotifications = [];
-    this.numberNotifications = '';
   }
 
   setSeleccionado(usuario) {
-    this.numberNotifications = usuario
-    console.log("number Notific", this.numberNotifications)
-    if(this.numberNotifications==0){
-      console.log("entro if", this.numberNotifications==0)
+    if(this.allNotifications.length==0){
       this.showNotification = !this.showNotification;
-      console.log("usuario", usuario)
     }
   }
    
   ngOnInit(): void {
+    console.log('oninit header');
     this.nickName = localStorage.getItem('some-key')==null ? 'nickName' :  JSON.parse(localStorage.getItem('some-key')).name
     this.serviceService.initSocket();
     this.setId();
     this.Notifications();
     this.getHistory();
+  }
+
+  ngOnDestroy(): void {
+    console.log('ondestroy header');
+    this.serviceService.closeNotification();
   }
 
   setId(){
@@ -72,8 +72,7 @@ export class HeaderComponent implements OnInit {
   getHistory(){
     this.serviceService.getHistoryNotifications().subscribe(
       data => {
-        this.allNotifications = data.filter(notification => notification.seenStatus === false)
-        this.numberNotifications = this.allNotifications.length;
+        this.allNotifications = data.filter(notification => notification.seenStatus === false).reverse();
         console.log("allnotifications header", this.allNotifications.length)
       },err=>{console.log("Error", err)}
     );
@@ -83,11 +82,20 @@ export class HeaderComponent implements OnInit {
   Notifications(){
     this.serviceService.Notifications().subscribe(
       data => {
-        this.allNotifications.push(data);
+        this.allNotifications.unshift(data);
         console.log("notificaciones", this.allNotifications.length)
-        this.numberNotifications = this.allNotifications.length
       },err=>console.log("Error",err)
     )
+  }
+
+  deleteNotification(id){
+    const notificationId = this.allNotifications[id]._id;
+    this.allNotifications.splice(id, 1);
+    this.serviceService.RemoveNotification(notificationId).subscribe(
+      data => {
+        console.log('respuesta', data);
+      }, err => console.log('err', err)
+    );
   }
   
   toggleCalendar() {
@@ -113,13 +121,5 @@ export class HeaderComponent implements OnInit {
       this.showNotification = !this.showNotification;
       this.showCalendar = false;
     }
-  }
-
-  addNewNotification(newNotification) {
-    this.allNotifications.unshift(newNotification);
-  }
-
-  deleteNotification(oldNotification) {
-    this.allNotifications.splice(oldNotification, 1);
   }
 }
