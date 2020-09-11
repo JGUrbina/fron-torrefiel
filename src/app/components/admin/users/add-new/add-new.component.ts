@@ -41,8 +41,14 @@ export class AddNewComponent implements OnInit {
   createNewUser(){
     this.newUser.color = this.newUser.color === null ? '#000000' : this.newUser.color;
     console.log('user', this.newUser);
+    const userData = { ...this.newUser };
+    if(userData.phone === null || !userData.phone) {
+      userData.phone = "";
+    };
 
-    this.userServices.createUser(this.newUser).subscribe(
+    console.log('userdata', userData);
+
+    this.userServices.createUser(userData).subscribe(
       (data) => {
         console.log('data new user', data);
         const urlIcon = '../../../../assets/svg_2/ok.svg';

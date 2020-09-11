@@ -1,9 +1,5 @@
 @import 'src/assets/scss/variables';
 
-.fc-title{
-  color: gray !important;
-}
-
 .overflow-auto::-webkit-scrollbar {
   -webkit-appearance: none;
 }
@@ -50,6 +46,8 @@
 .app-calendar {
   margin: 0 auto;
   max-width: 900px;
+  display: flex;
+  justify-content: center;
 
 }
 
@@ -64,24 +62,17 @@
 .show__event{
   background-color: #cc2900;
   color: white;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  z-index: 9;
-  width: 350px;
-  height: 250px;
-  padding: 10px;
-  border-radius: 6.5px;
   box-shadow: 0 2px 15px 1px #00000085;
-  display: flex;
-  align-items: center;
+  border-radius: 6.5px;
+  z-index: 9;
+  padding: 10px;
+  position: fixed;
+  top: 10%;
+  min-width: 30%;
 }
 
 .fc-content{
-  cursor: pointer;
+  cursor: pointer !important;
 
 }
 
@@ -103,6 +94,41 @@
   }
 }
 
-.fc-content {
-  white-space: normal;
+@media (max-width: 535px){
+  
+  .show__event{
+    background-color: #cc2900;
+    color: white;
+    box-shadow: 0 2px 15px 1px #00000085;
+    border-radius: 6.5px;
+    z-index: 9;
+    padding: 10px;
+    position: fixed;
+    top: 10%;
+    min-width: 30%;
+    overflow: auto;
+  }
+  .overflow-auto{
+    max-height: 150px;
+  }
+}
+
+
+@media (max-width: 780px) { 
+
+  .show__event{
+    background-color: #cc2900;
+    color: white;
+    box-shadow: 0 2px 15px 1px #00000085;
+    border-radius: 6.5px;
+    z-index: 9;
+    padding: 10px;
+    position: fixed;
+    top: 10%;
+    min-width: 30%;
+    overflow: auto;
+  }
+  .overflow-auto{
+    max-height: 250px;
+  }
 }

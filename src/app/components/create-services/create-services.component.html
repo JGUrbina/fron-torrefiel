@@ -16,7 +16,7 @@
           </div>
           <div class="input__contain">
             <label for="">N° cliente nuevo</label>
-            <input (keyup.enter)="compareClient()"  type="text" pattern="^[0-9]*$" placeholder="Registralo" name="nameUser" #nameUser="ngModel" [(ngModel)]="newClient.numClient" style="width:  80px !important;" >
+            <input (keyup)="compareClient()" type="text" pattern="^[0-9]*$" placeholder="Registralo" name="nameUser" #nameUser="ngModel" [(ngModel)]="newClient.numClient" style="width:  80px !important;" >
           </div>
         </div>
       </div>
@@ -186,7 +186,7 @@
       </div>
       <div class="buttons w-50 d-flex align-items-center">
         <button  class="buttonBefore" (click)="viewActual = USER">
-          Atras
+          Atrás
         </button>
       </div>
     </div>
@@ -207,7 +207,7 @@
             <input class="w-70" type="text" placeholder="000000" name="numBill" [(ngModel)]="newService.numBill" required>
           </div>
           <div class="input__contain dateContain">
-            <label for="" class="w-70">N° de Albaran</label>
+            <label for="" class="w-70">N° de Albarán</label>
             <input class="w-70" type="text" placeholder="000000" name="numBill" [(ngModel)]="newService.numDeliveryNote" required>
           </div>
           <div class="input__contain">
@@ -271,7 +271,7 @@
         </div>
         <div class="buttons w-50 d-flex align-items-center">
           <button class="buttonBefore" (click)="viewActual = SERVICEDIRECTION">
-            Atras
+            Atrás
           </button>
         </div>
       </div>

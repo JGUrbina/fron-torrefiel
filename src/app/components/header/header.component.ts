@@ -96,6 +96,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
         console.log('respuesta', data);
       }, err => console.log('err', err)
     );
+    if(this.allNotifications.length === 0) {
+      this.showNotification = !this.showNotification;
+    }
   }
   
   toggleCalendar() {
@@ -115,11 +118,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   openNotifications() {
-    if(this.showNotification){
-      this.showNotification = !this.showNotification;
-    }else { 
-      this.showNotification = !this.showNotification;
-      this.showCalendar = false;
+    if(this.allNotifications.length > 0) {
+      if(this.showNotification){
+        this.showNotification = !this.showNotification;
+      }else { 
+        this.showNotification = !this.showNotification;
+        this.showCalendar = false;
+      }
     }
   }
 }

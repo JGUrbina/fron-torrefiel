@@ -3,7 +3,7 @@
   <div class='app-calendar' *ngIf="calendarVisible">
     <full-calendar
       #calendar
-      defaultView="dayGridWeek"
+      defaultView="dayGridDay"
       [header]="{
         left: 'prev',
         center: 'title',
@@ -12,20 +12,21 @@
       [locale]="calendarLocale"
       [plugins]="calendarPlugins"
       [weekends]="calendarWeekends"
-      [events]="calendarEvents"
+      [events]="customEvents"
+      [allDaySlot]="allDaySlot"
       (eventClick)="changeShowEvent($event)"
-    ></full-calendar>
-  </div>
 
-  <div class="show__event" *ngIf="showEvent">
-    <div class="d-flex flex-column justify-content-between w-90">
-      <figure class="icon exit" (click)="showEvent = false">
-        <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../assets/svg_2/cancelar.svg'"></app-create-icon>
-      </figure>
-      <p>Cliente: {{ selectedEvent.name }} {{ selectedEvent.lastName }} {{ selectedEvent.motherLastName }}</p>
-      <p>Teléfono(s): {{ selectedEvent.phoneOne }}</p>
-      <textarea class="overflow-auto" style="overflow-y: auto; min-height: 120px; background-color: transparent; border: none; color: white;">Descripción: {{ selectedEvent.description }}</textarea>
+    ></full-calendar>
+    <div class="show__event" *ngIf="showEvent">
+      <div class="d-flex flex-column justify-content-between w-90">
+        <figure class="icon exit" (click)="showEvent = false">
+          <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../assets/svg_2/cancelar.svg'"></app-create-icon>
+        </figure>
+        <p>Cliente: {{ selectedEvent.name }} {{ selectedEvent.lastName }} {{ selectedEvent.motherLastName }}</p>
+        <p>Teléfono(s): {{ selectedEvent.phoneOne }}</p>
+        <p class="overflow-auto" style="overflow-y: auto; min-height: 120px; background-color: transparent; border: none; color: white;">Descripción: {{ selectedEvent.description }}</p>
+        <p>Dirección: {{ selectedEvent.direction }} #{{ selectedEvent.numberExternal }} {{ selectedEvent.province }} {{ selectedEvent.municipality }}</p>
+      </div>
     </div>
   </div>
-
 </div>

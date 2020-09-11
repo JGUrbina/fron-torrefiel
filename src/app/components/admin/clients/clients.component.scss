@@ -391,6 +391,22 @@
   overflow-y: auto !important; 
   width: 50%;
 }
+.delete-user-main {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  position: fixed;
+  overflow: hidden;
+  padding: 35px;
+  color: white;
+  text-align: center;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.delete-user-text {
+  align-self: center;
+}
 
 .services{
   background-color: rgba(0, 0, 0, 0.8);
@@ -672,7 +688,10 @@
   }
   .services{
      padding: 15px 15px;
-    }
+  }
+  .delete-user-main{
+      padding: 15px 15px;
+  }
   .section-title{
     h3{
       font-size: .8rem !important;
@@ -701,4 +720,34 @@
   label{
     font-size: .8rem;
   }
+}
+
+.delete-users-button-div {
+  display: 'flex';
+  flex-direction: row;
+  padding: 20px;
+}
+
+.delete-users-button {
+  border: none;
+  padding: 7px 15px;
+  background-color: #cd2a00;
+  border-radius: 6px;
+  color: white;
+  font-size: .8rem;
+  box-shadow: 0 2px 5px 1px #00000042;
+  outline: none;
+  margin: 15px 15px 5px 15px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+
+.delete-service-icon{
+  max-width: 23.1px;
+  height: 25px;
+  z-index: 5;
+  position: absolute;
+  right: 18px;
+  top: 40px;
 }

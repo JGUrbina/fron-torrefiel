@@ -26,12 +26,14 @@ export class JobsViewComponent implements OnInit {
   }
 
   updateJobsFromChilds(data){
+    data.reverse();
     this.allJobs = data;
   }
 
   getDataService(): void{
     this.serviceService.getServices().subscribe(
       (data) => {
+        data.services.reverse();
         const newData = [];
         data.services.forEach(el => {
           delete el.createdAt;

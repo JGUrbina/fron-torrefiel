@@ -29,6 +29,7 @@ export class ScheduleComponent implements OnInit {
   public startHours: any;
   public startDate: any;
   public workersIds: any[];
+  public config: any;
 
   constructor(
     private userService: UserService,
@@ -39,12 +40,49 @@ export class ScheduleComponent implements OnInit {
     this.allUsers = []; 
     this.checkeds = [];
     this.workersIds = [];
+    this.config = {
+      firstDayOfWeek: 'su',
+      monthFormat: 'MMM, YYYY',
+      disableKeypress: false,
+      allowMultiSelect: false,
+      closeOnSelect: undefined,
+      closeOnSelectDelay: 100,
+      onOpenDelay: 0,
+      weekDayFormat: 'ddd',
+      appendTo: document.body,
+      drops: 'down',
+      opens: 'right',
+      showNearMonthDays: true,
+      showWeekNumbers: false,
+      enableMonthSelector: true,
+      format: "DD-MM-YYYY",
+      yearFormat: 'YYYY',
+      showGoToCurrent: true,
+      dayBtnFormat: 'DD',
+      monthBtnFormat: 'MMM',
+      hours12Format: 'hh',
+      hours24Format: 'HH',
+      meridiemFormat: 'A',
+      minutesFormat: 'mm',
+      minutesInterval: 1,
+      secondsFormat: 'ss',
+      secondsInterval: 1,
+      showSeconds: false,
+      showTwentyFourHours: true,
+      multipleYearsNavigateBy: 10,
+      showMultipleYearsNavigation: false,
+      locale: 'es-es',
+      // min:'2017-08-29 15:50',
+      // minTime:'2017-08-29 15:50'
+    }
+    this.startDate = this.dateChange()
    }
+   
 
   ngOnInit(): void {
     this.getAllUser();
-    this.startDate = this.dateChange();
-    console.log('service oninit', this.service)
+    //console.log('service oninit', this.service)
+    console.log('date oninit', this.startDate)
     this.connectSocket()
   }
 
@@ -56,19 +94,14 @@ export class ScheduleComponent implements OnInit {
     let Year : any, Month : any, Day : any;
 
     Year = new Date().getFullYear();
-    Month = new Date().getMonth();
-    Day = new Date().getDay();
+    Month = new Date().getMonth() + 1;
+    Day = new Date().getDate();
     
-    return `${Year}-${Month}-${Day}`;
-
+    Day = Day <= 9 ? '0' + Day.toString() : Day;
+    Month = Month <= 9 ? '0' + Month : Month;
+    //return `${Year}-${Month}-${Day}`;
+    return `${Day}-${Month}-${Year}`;
   };
-
-  generateDate(fecha: any, hour: any): string{
-    fecha = fecha.toString().slice(0, 10);
-    fecha += ` ${hour}`;
-
-    return fecha;
-  }
 
   emitEvent(): void{
     this.closeWindow.emit('');
@@ -89,17 +122,18 @@ export class ScheduleComponent implements OnInit {
   setInputs(){
     this.allUsers.forEach((user, index) => this.checkeds[index] = this.service.workers.includes(user._id) ? true : false)
     this.startDate = this.service.startDate.split('T')[0];
+    this.startDate = this.startDate.split('-').reverse().join('-');
     this.startHours = this.service.startHours;
   };
 
 
 
   scheduleService(){
-  
-    
-    this.checkeds.forEach((check, index) => check ? this.workersIds.push(this.allUsers[index]._id) : null);
 
-    if(!this.startDate) this.startDate = this.dateChange();
+    this.startDate = this.startDate.split('-').reverse().join('-');
+    console.log('thisdate', this.startDate)
+
+    this.checkeds.forEach((check, index) => check ? this.workersIds.push(this.allUsers[index]._id) : null);
 
     if(this.workersIds.length > 0){
       const id = this.service._id;
@@ -116,5 +150,7 @@ export class ScheduleComponent implements OnInit {
           this.serviceToJobs.emit(data.services);
         }, err => console.log('error', err));
     };
+
+    this.startDate = this.startDate.split('-').reverse().join('-');
   };
 };

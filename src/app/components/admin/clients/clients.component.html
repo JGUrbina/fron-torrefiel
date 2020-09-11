@@ -5,9 +5,11 @@
   </div>
   <div class="search">
     <figure class="icon">
-      <app-create-icon [class]="'color-gray'" [name]="'search'" [url]="'../../../../assets/svg_2/buscar.svg'"></app-create-icon>
+      <app-create-icon [class]="'color-gray'" [name]="'search'" [url]="'../../../../assets/svg_2/buscar.svg'">
+      </app-create-icon>
     </figure>
-    <input type="search" placeholder="Buscar" name="search" [(ngModel)]="searchClient" autocomplete="off" placeholder="Buscar cliente" style="font-size: .8rem;">
+    <input type="search" placeholder="Buscar" name="search" [(ngModel)]="searchClient" autocomplete="off"
+      placeholder="Buscar cliente" style="font-size: .8rem;">
   </div>
   <div class="list">
     <div class="client__contain" *ngFor="let client of allClients | filter:searchClient">
@@ -20,8 +22,11 @@
         <div class="client__contain--icon mb-3" (click)="editClient(client, EDITUSER)">
           Editar
         </div>
-        <div class="client__contain--icon" (click)="showServices(client, SERVICES)">
+        <div class="client__contain--icon mb-3" (click)="showServices(client, SERVICES)">
           Servicios
+        </div>
+        <div class="client__contain--icon" (click)="showDelete(client, DELETEUSER)">
+          Borrar
         </div>
       </div>
     </div>
@@ -33,13 +38,15 @@
   </div>
 </section>
 
-<app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
+<app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader"
+  [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
 
 <!--Editar cliente-->
 <section class="containService" *ngIf="show === OPTIONS">
   <form class="p-3 form" #userForm="ngForm" *ngIf="showView === EDITUSER">
     <figure class="exit" (click)="hideOptions()">
-      <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
+      <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'">
+      </app-create-icon>
     </figure>
     <div class="containService__data" style="width: 100%">
       <div class="whenService d-flex justify-content-between pb-2">
@@ -60,7 +67,8 @@
         </div>
         <div class="input__contain name">
           <label for="">Apellido Materno</label>
-          <input type="text" placeholder="Apellido Materno" name="lastnameMother" [(ngModel)]="newClient.motherLastName" required>
+          <input type="text" placeholder="Apellido Materno" name="lastnameMother" [(ngModel)]="newClient.motherLastName"
+            required>
         </div>
         <div class="input__contain">
           <label for="">Empresa</label>
@@ -74,15 +82,18 @@
         </div>
         <div class="input__contain">
           <label for="">Correo electrónico</label>
-          <input type="email" pattern="[\w0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="correo@correo.com" name="email" [(ngModel)]="newClient.email" required>
+          <input type="email" pattern="[\w0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="correo@correo.com"
+            name="email" [(ngModel)]="newClient.email" required>
         </div>
         <div class="input__contain name">
           <label for="">Teléfono 1</label>
-          <input type="text" minlength="7" pattern="^[0-9]*$" placeholder="000 000 000" name="numberOne" [(ngModel)]="newClient.phoneOne" required>
+          <input type="text" minlength="7" pattern="^[0-9]*$" placeholder="000 000 000" name="numberOne"
+            [(ngModel)]="newClient.phoneOne" required>
         </div>
         <div class="input__contain name">
           <label for="">Teléfono 2</label>
-          <input type="text" minlength="7" pattern="^[0-9]*$" placeholder="000 000 000" name="numberTwo" [(ngModel)]="newClient.phoneTwo" required>
+          <input type="text" minlength="7" pattern="^[0-9]*$" placeholder="000 000 000" name="numberTwo"
+            [(ngModel)]="newClient.phoneTwo" required>
         </div>
       </div>
       <div class="direccion">
@@ -91,15 +102,18 @@
           <div class="d-flex justify-flex-start align-items-center flex-wrap">
             <div class="input__contain">
               <label for="">Dirección</label>
-              <input type="text" class="w-100" placeholder="Dirección" name="localitation" [(ngModel)]="newClient.direction" required>
+              <input type="text" class="w-100" placeholder="Dirección" name="localitation"
+                [(ngModel)]="newClient.direction" required>
             </div>
             <div class="input__contain">
               <label for="">N° Externo</label>
-              <input type="text" class="max-width-60" placeholder="00" name="numExt" [(ngModel)]="newClient.numberExternal" required>
+              <input type="text" class="max-width-60" placeholder="00" name="numExt"
+                [(ngModel)]="newClient.numberExternal" required>
             </div>
             <div class="input__contain">
               <label for="">N° Interno</label>
-              <input type="text" class="max-width-60" placeholder="00" name="numInt" [(ngModel)]="newClient.numberInternal" required>
+              <input type="text" class="max-width-60" placeholder="00" name="numInt"
+                [(ngModel)]="newClient.numberInternal" required>
             </div>
             <div class="input__contain">
               <label for="">Provincia</label>
@@ -113,7 +127,8 @@
             </div>
             <div class="input__contain code">
               <label for="">Código postal</label>
-              <input class="max-width-60" type="text" placeholder="Código postal" name="postalcode" [(ngModel)]="newClient.postalCode" required>
+              <input class="max-width-60" type="text" placeholder="Código postal" name="postalcode"
+                [(ngModel)]="newClient.postalCode" required>
             </div>
           </div>
         </div>
@@ -129,9 +144,10 @@
       </div>
     </aside>
   </form>
-  <div class="services" *ngIf="showView === SERVICES" >
+  <div class="services" *ngIf="showView === SERVICES">
     <figure class="exit" (click)="hideOptions()">
-      <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'"></app-create-icon>
+      <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'">
+      </app-create-icon>
     </figure>
     <div class="services__header">
       <h3>Servicios</h3>
@@ -148,6 +164,9 @@
                   <span *ngIf="!service.priority">Normal</span>
                 </label>
               </div>
+              <figure (click)="showDeleteService(service, DELETESERVICE)" class="delete-service-icon">
+                <app-create-icon [class]="'color-gray bg-white button'" [name]="'trash'" [url]="'../../../../assets/svg_2/trash.svg'"></app-create-icon>
+              </figure>
             </div>
             <p><strong>Fecha: </strong>{{ getDate(service.startDate) }}</p>
             <p><strong>Hora: </strong>{{ service.startHours }}</p>
@@ -155,6 +174,48 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Borrar cliente view -->
+  <div class="delete-user-main" *ngIf="showView === DELETEUSER">
+    <figure class="exit" (click)="hideOptions()">
+      <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'">
+      </app-create-icon>
+    </figure>
+    <div class="delete-user-text">
+      ¿Estás seguro que deseas borrar al cliente <b>{{ selectedClient.name }} {{ selectedClient.lastName }} {{ selectedClient.motherLastName }}</b>?
+    </div>
+    <div class="delete-users-button-div">
+
+      <button (click)="deleteClient()" class="delete-users-button">
+        Aceptar
+      </button>
+      <button (click)="hideOptions()" class="delete-users-button">
+        Cancelar
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Borrar servicio de cliente -->
+  <div class="delete-user-main" *ngIf="showView === DELETESERVICE">
+    <figure class="exit" (click)="hideOptions()">
+      <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'">
+      </app-create-icon>
+    </figure>
+    <div class="delete-user-text">
+      ¿Estás seguro de que deseas borrar el servicio?
+    </div>
+    <div class="delete-users-button-div">
+
+      <button (click)="deleteService()" class="delete-users-button">
+        Aceptar
+      </button>
+      <button (click)="hideOptions()" class="delete-users-button">
+        Cancelar
+      </button>
+
     </div>
   </div>
 </section>

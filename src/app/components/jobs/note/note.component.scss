@@ -1,6 +1,7 @@
 @import '../../../../assets/scss/components/chat';
 
-.sectionNotes{
+
+.sectionChat{
   
 
   &__header{
@@ -42,6 +43,7 @@
     justify-content: space-around;
     align-items: center;
     background: black;
+    
 
     .visit{
       width: 30px;
@@ -107,7 +109,7 @@
  
 }
 @media (max-width: 780px){
-  .sectionNotes{
+  .sectionChat{
     position: absolute;
     right: 5%;
     top: -30px !important;

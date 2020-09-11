@@ -36,12 +36,15 @@ export class ClientsComponent implements OnInit {
   public optionsProvince: string[];
   public optionsMunicipality: string[];
   public searchNameClient: string;
-
+  public selectedClient: Client;
+  public selectedService: Service;
   public show: string = '';
   public showView: string = '';
   public OPTIONS: string = 'options';
   public EDITUSER: string = 'edit user';
   public SERVICES: string = 'service';
+  public DELETEUSER: string = 'delete user';
+  public DELETESERVICE: string = 'delete service';
   public EDITSERVICE: string = 'edit service';
 
   constructor(
@@ -135,5 +138,54 @@ export class ClientsComponent implements OnInit {
         console.log('err', err);
       }
     )
+  }
+
+  showDelete(client, view: string){
+    this.show = this.OPTIONS;
+    this.showView = view;
+    this.selectedClient = client;
+  }
+
+  deleteClient(){
+    this.clientService.deleteClient(this.selectedClient._id).subscribe(
+      data => {
+        console.log('Borrado', data);
+        const urlIcon = '../../../assets/svg_2/ok.svg';
+        const header = 'Cliente borrado';
+        const title = 'El cliente y sus servicios asignados se han eliminado correctamente';
+        const subtitle = '';
+        this.showAlert(urlIcon, header, title, subtitle);
+        this.getDataClient();
+      }, err => {
+        console.log('err', err);
+      }
+    );
+    this.getDataClient();
+    this.hideOptions();
+  }
+
+  showDeleteService(service, view: string){
+    this.show = this.OPTIONS;
+    this.showView = view;
+    this.selectedService = service;
+    console.log('service selected', this.selectedService);
+  }
+
+  deleteService(){
+    console.log('borrar', this.selectedService._id);
+    this.serviceService.deleteService(this.selectedService._id).subscribe(
+      data => {
+        console.log('Borrado', data);
+        const urlIcon = '../../../assets/svg_2/ok.svg';
+        const header = 'Servicio borrado';
+        const title = 'El servicio se ha eliminado correctamente';
+        const subtitle = '';
+        this.showAlert(urlIcon, header, title, subtitle);
+        this.hideOptions();
+      }, err => {
+        console.log('err', err);
+      }
+    )
+    this.hideOptions();
   }
 }

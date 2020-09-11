@@ -29,7 +29,7 @@ export class NotesService {
 
   addNotes(id: string, note): Observable<any>{
     console.log("headers", this.headers)
-    return this.http.post<any>(`${this.urlApi}/add/${id}`, {note}, { headers: this.headers });
+    return this.http.post<any>(`${this.urlApi}/add/${id}`, note, { headers: this.headers });
   }
 
   sendMessage(message: Notes): Observable<any>{

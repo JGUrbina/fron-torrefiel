@@ -11,6 +11,7 @@ import { ChartsModule } from 'ng2-charts';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { DataTablesModule } from 'angular-datatables';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { DpDatePickerModule } from 'ng2-date-picker';
 
 // Search Module
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -141,7 +142,8 @@ import { AddNewComponent } from './components/admin/users/add-new/add-new.compon
     ReactiveFormsModule,
     DataTablesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    DpDatePickerModule
   ],
   providers: [appRoutingProviders, MatIconModule],
   bootstrap: [AppComponent]

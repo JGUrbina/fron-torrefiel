@@ -24,21 +24,24 @@ export class CardCalendarComponent implements OnInit {
   public calendarPlugins: any[];
   public calendarWeekends: boolean;
   public calendarEvents: EventInput[];
+  public allDaySlot: boolean;
 
   public showEvent: boolean = false;
   public selectedEvent: Service;
   public allWorkers: [User];
 
+  public customEvents: any;
   
 
   constructor(
     private userService: UserService
   ) {
     this.calendarVisible = true;
-    this.calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
+    this.calendarPlugins = [timeGrigPlugin, interactionPlugin, dayGridPlugin];
     this.calendarWeekends = true;
     this.calendarEvents = [];
     this.calendarLocale = esLocale;
+    this.allDaySlot = false;
   }
 
   
@@ -85,6 +88,7 @@ export class CardCalendarComponent implements OnInit {
     });
     this.calendarEvents.sort((a, b) => a.startHours.localeCompare(b.startHours));
     console.log('eventos1', this.calendarEvents);
+    this.customEvents = { events: this.calendarEvents, color: 'yellow', textColor: 'black' }
   }
 
 

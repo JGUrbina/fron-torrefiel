@@ -143,6 +143,10 @@
             <input class="w-90" type="tel" pattern="^[0-9]*$" placeholder="Móvil" name="phone" [(ngModel)]="newUser.phone" required>
           </div>
           <div class="input__contain">
+            <label for="">Contraseña</label>
+            <input class="w-90" type="password" pattern="^[0-9]*[A-Za-z]$" placeholder="Contraseña" name="password" [(ngModel)]="newUser.password">
+          </div>
+          <div class="input__contain">
             <label for="">Elige color</label><br>
             <input class="w-75" type="color" pattern="#^[0-9]*[A-Za-z]$" placeholder="Color" name="color" [(ngModel)]="newUser.color">
           </div>

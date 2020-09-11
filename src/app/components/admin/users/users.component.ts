@@ -120,6 +120,7 @@ export class UsersComponent implements OnInit {
     (data) => {
       data.rol==="Administrador" ? data.rol = true : data.rol = false
       console.log('data new user', data);
+      data.password = "";
       this.newUser = data; 
     },
     (err) => {

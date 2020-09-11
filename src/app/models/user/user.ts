@@ -8,7 +8,7 @@ export class User {
   public motherLastName: string;
   public userName: string;
   public email: string;
-  public phone: number;
+  public phone: string;
   public works: [any];
   public messages: [any];
   public rol: string;
@@ -22,7 +22,7 @@ export class User {
     motherLastName: string,
     userName: string,
     email: string,
-    phone: number,
+    phone: string,
     works: [any],
     messages: [any],
     rol: string,

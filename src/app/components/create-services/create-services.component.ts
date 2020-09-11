@@ -89,7 +89,7 @@ export class CreateServicesComponent implements OnInit {
     this.clientService.getClients().subscribe(
       (data) => {
         this.allClients = data;
-        
+        console.log('clients', this.allClients);
       },
       (err) => {
         console.error('error: \n', err);
@@ -156,11 +156,11 @@ export class CreateServicesComponent implements OnInit {
   };
 
   createService(clientId: any): void{
-    this.newService.email = this.newService.email.toLowerCase();
-    this.newService.startDate = this.dateChange(); 
-    this.newService.startHours = "00:00"
-    this.newService.workers = [];
+    this.newService.email !== null ? this.newService.email = this.newService.email.toLowerCase() : null;
+    this.newService.startDate = this.dateChange();
+    this.newService.startHours = "00:00";
     this.newService.activities = this.selectedItems
+    this.newService.workers = [];
     if(this.newService.numDeliveryNote === undefined){
       this.newService.numDeliveryNote = '';
     };
