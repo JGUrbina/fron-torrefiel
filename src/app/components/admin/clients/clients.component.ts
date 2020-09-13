@@ -4,6 +4,7 @@ import { Client } from '../../../models/client/client';
 import { ClientService } from 'src/app/services/client/client.service';
 import { Service } from '../../../models/service/service';
 import { ServiceService } from '../../../services/service/service.service';
+import { HistoryService } from '../../../services/history/history.service';
 import { User } from '../../../models/user/user';
 import { UserService } from '../../../services/user/user.service';
 import { TypeDateService } from 'src/app/services/typeDate/type-date.service';
@@ -38,6 +39,7 @@ export class ClientsComponent implements OnInit {
   public searchNameClient: string;
   public selectedClient: Client;
   public selectedService: Service;
+  public selectedHistory: any[];
   public show: string = '';
   public showView: string = '';
   public OPTIONS: string = 'options';
@@ -46,11 +48,13 @@ export class ClientsComponent implements OnInit {
   public DELETEUSER: string = 'delete user';
   public DELETESERVICE: string = 'delete service';
   public EDITSERVICE: string = 'edit service';
+  public HISTORYSERVICE: string = 'history service';
 
   constructor(
     private typeDateService: TypeDateService,
     private clientService: ClientService,
     private serviceService: ServiceService,
+    private historyService: HistoryService,
     private userService: UserService,
     private dropDownOptions: DropDownOptionsService,
   ) {
@@ -62,6 +66,7 @@ export class ClientsComponent implements OnInit {
     this.optionsStatus = this.dropDownOptions.getStatus();
     this.optionsProvince = this.dropDownOptions.getProvince();
     this.optionsMunicipality = this.dropDownOptions.getMunicipality('Castellón/Castelló');
+    this.selectedHistory = [];
   }
 
   ngOnInit(): void {
@@ -124,6 +129,12 @@ export class ClientsComponent implements OnInit {
     this.showView = '';
   }
 
+  hideServiceOptions() {
+    this.show = this.OPTIONS;
+    this.showView = "service";
+    
+  }
+
   updateClient(){
     this.clientService.updateClient(this.newClient._id, this.newClient).subscribe(
       data => {
@@ -169,6 +180,19 @@ export class ClientsComponent implements OnInit {
     this.showView = view;
     this.selectedService = service;
     console.log('service selected', this.selectedService);
+  }
+
+  showHistoryService(service, view: string){
+    this.show = this.OPTIONS;
+    this.showView = view;
+    this.selectedService = service;
+    console.log('service selected', this.selectedService);
+    this.historyService.getHistoryPerService(this.selectedService._id).subscribe(
+      data => {
+        this.selectedHistory = data.history;
+        console.log('data de history', this.selectedHistory)
+      }, err => console.log('err', err)
+    )
   }
 
   deleteService(){

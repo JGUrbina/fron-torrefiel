@@ -164,6 +164,9 @@
                   <span *ngIf="!service.priority">Normal</span>
                 </label>
               </div>
+              <figure (click)="showHistoryService(service, HISTORYSERVICE)" class="history-service-icon">
+                <app-create-icon [class]="'color-gray bg-white button'" [name]="'history'" [url]="'../../../../assets/svg_2/history.svg'"></app-create-icon>
+              </figure>
               <figure (click)="showDeleteService(service, DELETESERVICE)" class="delete-service-icon">
                 <app-create-icon [class]="'color-gray bg-white button'" [name]="'trash'" [url]="'../../../../assets/svg_2/trash.svg'"></app-create-icon>
               </figure>
@@ -200,7 +203,7 @@
 
   <!-- Borrar servicio de cliente -->
   <div class="delete-user-main" *ngIf="showView === DELETESERVICE">
-    <figure class="exit" (click)="hideOptions()">
+    <figure class="exit" (click)="hideServiceOptions()">
       <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'">
       </app-create-icon>
     </figure>
@@ -212,10 +215,70 @@
       <button (click)="deleteService()" class="delete-users-button">
         Aceptar
       </button>
-      <button (click)="hideOptions()" class="delete-users-button">
+      <button (click)="hideServiceOptions()" class="delete-users-button">
         Cancelar
       </button>
 
+    </div>
+  </div>
+
+  <!-- Borrar servicio de cliente -->
+  <div class="history-service-container" *ngIf="showView === HISTORYSERVICE">
+    <figure class="exit" (click)="hideServiceOptions()">
+      <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'">
+      </app-create-icon>
+    </figure>
+    <div class="history-service-main">
+      <div class="history-titles">
+        <div>
+          <p>Modificado por</p>
+        </div>
+        <div>
+          <p>Fecha asignada</p>
+        </div>
+        <div>
+          <p>Descripción</p>
+        </div>
+        <div>
+          <p>Estado</p>
+        </div>
+        <div>
+          <p>Nota interna</p>
+        </div>
+        <div>
+          <p>Actividades</p>
+        </div>
+        <div>
+          <p>Trabajadores asignados</p>
+        </div>
+      </div>
+      <hr>
+      <div class="history-data-container">
+        <div class="history-data" *ngFor="let history of selectedHistory">
+          <div>
+            <p>{{history.createdAt.split('T')[0].split('-').reverse().join('/')}} {{history.createdAt.split('T')[1].split('.')[0].substring(0, 5)}}</p>
+            <p>{{history.userName}}</p>
+          </div>
+          <div>
+            <p>{{history.startDate}}</p>
+          </div>
+          <div>
+            <p>{{history.description}}</p>
+          </div>
+          <div>
+            <p>{{history.status}}</p>
+          </div>
+          <div>
+            <p>{{history.lastNote}}</p>
+          </div>
+          <div>
+            <p *ngFor="let activity of history.activities">{{activity}}</p>
+          </div>
+          <div>
+            <p>{{history.assignedWorkers}}</p>
+          </div>
+      </div>
+      </div>
     </div>
   </div>
 </section>
