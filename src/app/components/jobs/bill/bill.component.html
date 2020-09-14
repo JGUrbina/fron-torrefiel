@@ -103,7 +103,7 @@
             <div class="texto2">
               <div class="col-8 b-left"></div>
               <div class="data__contain--item2  col-2"><span>{{deliveryNoteData.typeIva}}% IVA:</span></div>
-              <div class="col-2 right b-right"><span>{{(deliveryNoteData.amount * deliveryNoteData.typeIva /100)}}€</span></div>
+              <div class="col-2 right b-right"><span>{{(deliveryNoteData.amount * deliveryNoteData.typeIva / 100).toFixed(2)}}€</span></div>
             </div>
             <div class="data__contain">
               <div class="col-8 b-left b-bottom"></div>
