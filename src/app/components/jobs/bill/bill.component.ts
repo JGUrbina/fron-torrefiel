@@ -376,7 +376,7 @@ export class BillComponent implements OnInit {
       <section class="data">
         <div class="data__contain">
         <div class="data__contain--item">
-          <span><b>Fecha de emisión: </b> ${this.deliveryNoteData.startDate.split('T')[0]}</span>
+          <span><b>Fecha de emisión: </b> ${this.deliveryNoteData.startDate.split('T')[0].split('-').reverse().join('/')}</span>
         </div>
         <div class="data__contain--item"><span>N° Factura:</span></div>
          

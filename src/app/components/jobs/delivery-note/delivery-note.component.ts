@@ -280,7 +280,7 @@ export class DeliveryNoteComponent implements OnInit {
                   <section class="data">
                     <div class="data__contain">
                       <div class="data__contain--item">
-                        <span><b>Fecha de emisión:</b> ${this.deliveryNoteData.startDate.split('T')[0]}</span>
+                        <span><b>Fecha de emisión:</b> ${this.deliveryNoteData.startDate.split('T')[0].split('-').reverse().join('/')}</span>
                       </div>
                       <div class="data__contain--item"><span>N° albarán:</span></div>
                       <div class="data__contain--item"><span>${this.deliveryNoteData.numDeliveryNote}</span></div>
