@@ -406,7 +406,7 @@
   input{
     height: 30px !important;
   }
-
+ 
   label{
     font-size: .6rem;
   }
@@ -417,7 +417,12 @@
   }
 
 }
-
+input[type=text], 
+input[type=email], 
+input[type=tel],
+textarea{
+  padding-left: 10px;
+}
 @media(max-width: 860px){
   .primera{
    display: block !important;
