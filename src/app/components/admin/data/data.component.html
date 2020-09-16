@@ -8,17 +8,17 @@
   <main class="sectionData__main">
     <div class="before">
       <div class="contain">
-        <div class="cancels data-card xs">
+        <!-- <div class="cancels data-card xs">
           <p>Cancelaciones</p>
           <div>
             <app-pie-chart [id]="'number-01'" [porcentage]='0' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
           </div>
           <p class="number">0</p>
-        </div>
+        </div> -->
         <div class="newJobs data-card xs">
           <p>Nuevos Trabajos</p>
-          <app-pie-chart [id]="'number-02'" [porcentage]='0' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
-          <p class="number">0</p>
+          <!-- <app-pie-chart [id]="'number-02'" [porcentage]='0' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart> -->
+          <p class="number">{{array}}</p>
         </div>
       </div>
       <div class="ingresos data-card flex-row">
@@ -65,26 +65,26 @@
         <div class="topUser data-card xs p-15">
           <p>Usuario con más<br> trabajos</p>
           <div>
-            <app-pie-chart [id]="'number-06'" [porcentage]='0' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
+            <p class="number">{{numWorks}}</p>
           </div>
-          <p class="text">Nickname</p>
+          <p class="text">{{nickName}}</p>
         </div>
         <div class="newJobs data-card xs">
           <p>Estado más <br> utilizado</p>
           <div>
-            <app-pie-chart [id]="'number-07'" [porcentage]='0' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
+            <app-pie-chart [id]="'number-07'" [porcentage]="cont.toFixed(3)" [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
           </div>
-          <p class="text">Pendiente de cita</p>
+          <p class="text">{{masRepetida}}</p>
         </div>
       </div>
       <div class="uso data-card">
         <p class="mb-2">Clientes con mayor número de servicios mensuales</p>
         <div class="d-flex justify-content-between align-items-center">
-          <div>
-            <p class="mb-2 f-07">Cliente A</p>
-            <app-pie-chart [id]="'number-08'" [porcentage]='0' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
+          <div *ngFor="let client of clients; let i = index">
+            <p class="mb-2 f-07">{{client.name}}</p>
+            <app-pie-chart [id]="i" [porcentage]='(client.services.length * 100 / allservice.length).toFixed(3)' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
           </div>
-          <div>
+          <!-- <div>
             <p class="mb-2 f-07">Cliente B</p>
             <app-pie-chart [id]="'number-09'" [porcentage]='0' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
           </div>
@@ -95,7 +95,7 @@
           <div>
             <p class="mb-2 f-07">Cliente D</p>
             <app-pie-chart [id]="'number-11'" [porcentage]='0' [size]='65' [lineWidth]='4' [rotate]='0'></app-pie-chart>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
