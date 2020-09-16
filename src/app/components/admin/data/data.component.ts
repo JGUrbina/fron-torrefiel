@@ -18,9 +18,11 @@ public nickName: any
 public numWorks: any
 public masRepetida: string
 public cont: number
-public arr: any
+
 public clients: any
 public allservice: any
+public activitiesServices: any
+public mostUsedActivity: any
 
   constructor(
     private services : ServiceService,
@@ -28,20 +30,21 @@ public allservice: any
     private clientService : ClientService
   ) { 
     this.array= []
-    this.arr = []
     this.cont = 0
+    this.mostUsedActivity  = []
   }
 
 ngOnInit() {
-  this.allService() 
-   this.userWorks()
-   this.allClient()
+  this.mostUsedState() 
+   this.userWithMoreJobs()
+   this.clientsWithMoreServices()
+   this.mostRequestedActivities()
   }
 
   emitEvent(): void{
     this.closeWindow.emit('');
   }
-  allService() {
+  mostUsedState() {
    
     this.services.getServices().subscribe(
       data => {
@@ -58,14 +61,13 @@ ngOnInit() {
         let cont = this.array.split('-').filter(s => s=== this.masRepetida).length
         this.cont = (cont * 100 / all)
         this.cont.toFixed(3)
-        console.log(this.masRepetida, this.cont)
       },
        err => { console.log(err)}
     )
   }
   
  
-  userWorks(){
+  userWithMoreJobs(){
     this.userService.getUsers().subscribe(
       data => {
         let user = data.sort(((a, b) => a.works.length - b.works.length))[data.length-1]
@@ -77,17 +79,76 @@ ngOnInit() {
     )
   }
 
-allClient() {
+  clientsWithMoreServices() {
   this.clientService.getClients().subscribe(
     data => {
     this.clients =  data.sort(((a, b) => a.services.length - b.services.length)).slice(-4).reverse()
-    this.clients.forEach(client => console.log(client.services.length, this.allservice.length ))
+    // this.clients.forEach(client => console.log(client.services.length, this.allservice.length ))
       // console.log(this.clients)
     },
     err => {
       console.log(err)
     }
   )
+}
+mostRequestedActivities() {
+  
+  this.services.getServices().subscribe(
+    data => {
+      let arrayAux = []
+        let arrayActivities = []
+      data.services.forEach(service => {
+        
+        if(arrayActivities.length < 1) {
+          arrayActivities = service.activities
+          
+        }else {
+          arrayActivities = arrayActivities.concat(service.activities)
+        }
+        
+      })
+      const obj = arrayActivities.reduce((countActivities, activitie) => {
+        countActivities[activitie] = (countActivities[activitie] || 0) + 1
+        return countActivities
+      },{})
+      
+      for (var key in obj) {
+        arrayAux.push({activitie: key, count: obj[key]})
+      }
+      let aux = arrayAux.sort(((a, b) => a.count - b.count)).slice(-3).reverse()
+      this.percentageOfJobsByActivity(aux, this.allservice)
+     
+    },
+    err => {
+      console.log('Error: hubo un problema al traer los servicios en la funcion mostRequestedActivities()', err)
+    }
+  )
+
+}
+
+
+percentageOfJobsByActivity(activities, services) {
+  let pos1= 0, pos2= 0,pos3=0
+  
+  services.forEach(service => {
+    
+    for(let i = 0; i < service.activities.length; i++) {
+      if(service.activities[i] == activities[0].activitie) {
+        pos1++
+      }
+      if(service.activities[i] == activities[1].activitie) {
+        pos2++
+      }
+      if(service.activities[i] == activities[2].activitie) {
+        pos3++
+      }
+    }
+  })
+  let post = [pos1 *100/services.length,pos2 *100/services.length,pos3 *100/services.length]
+  for(let i = 0; i < activities.length; i++) {
+    this.mostUsedActivity.push({activity: activities[i].activitie, persentageService: post[i].toFixed(0)  })
+  }
+  console.log(this.mostUsedActivity)
 }
 
 
