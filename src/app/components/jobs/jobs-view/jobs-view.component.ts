@@ -9,7 +9,7 @@ import { JobComponent } from '../job/job.component';
   styleUrls: ['./jobs-view.component.scss']
 })
 export class JobsViewComponent implements OnInit {
-
+  
   @Input() searchFilter: string;
   @Output() years = new EventEmitter<any>();
 

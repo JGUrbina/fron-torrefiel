@@ -18,7 +18,7 @@ import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 export class JobComponent implements OnInit {
 
   @Input() public job: Service;
-  @Input() public clientData: Client;
+  @Input() public clientData: any;
 
   @Output() serviceToViews: EventEmitter <Service> = new EventEmitter();
 
@@ -103,17 +103,19 @@ export class JobComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.getClient(this.job.client);
+    // this.getClient(this.job.client);
+    this.clientData = this.job.client
+    console.log('Client Data ------>',this.clientData)
     this.selectedItems = this.job.activities;
     console.log("trabajos", this.job)
     this.serviceService.initSocket();
   }
 
-  async getClient(id: string): Promise<any>{
-    const client = await this.clientService.getClient(id);
-    //this.nameClient = client.name;
-    this.clientData = client;
-  }
+  // async getClient(id: string): Promise<any>{
+  //   const client = await this.clientService.getClient(id);
+  //   //this.nameClient = client.name;
+  //   this.clientData = client;
+  // }
 
   close(input: string): void{
     this.sectionMenuShow = input;
@@ -126,13 +128,14 @@ export class JobComponent implements OnInit {
   }
 
   requestJobChanges(){
-    this.serviceService.updateService(this.job._id, this.job).subscribe(
-      data => {
-        //console.log("num serv", this.job)
-        this.serviceService.editNotifications(this.job.numService,this.job.workers)
-        this.job = data;
-      }, err => console.log('err', err)
-    )
+    this.clientData = this.job.client
+    // this.serviceService.updateService(this.job._id, this.job).subscribe(
+    //   data => {
+    //     //console.log("num serv", this.job)
+    //     this.serviceService.editNotifications(this.job.numService,this.job.workers)
+    //     this.job = data;
+    //   }, err => console.log('err', err)
+    // )
   }
 
   submitJobStatus(){

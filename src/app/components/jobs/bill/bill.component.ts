@@ -32,7 +32,7 @@ export class BillComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('delivery', this.deliveryNoteData);
+    console.log('delivery', this.clientData.name);
     this.monto = (this.deliveryNoteData.amount + (this.deliveryNoteData.amount * this.deliveryNoteData.typeIva /100)).toFixed(2);
   }
   
