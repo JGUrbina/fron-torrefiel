@@ -32,6 +32,7 @@ export class JobComponent implements OnInit {
   public nameClient: string;
   public nameWorker: string[] = [];
   public worker: string[] = [];
+  public clientWhoContractsTheService: string;
 
   //edits
   public edit = {
@@ -104,11 +105,13 @@ export class JobComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getClient(this.job.client);
-    this.clientData = this.job.client
+    // this.clientData = this.job.client
     console.log('Client Data ------>',this.clientData)
     this.selectedItems = this.job.activities;
-    console.log("trabajos", this.job)
+    // console.log("trabajos", this.job)
     this.serviceService.initSocket();
+    console.log(`Name Client: ${this.job.client.name} ${this.job.client.lastName}`)
+    this.clientWhoContractsTheService = `${this.job.client.name}`
   }
 
   // async getClient(id: string): Promise<any>{

@@ -8,6 +8,11 @@
         <span class="info date">{{getDate(job.startDate) | date: 'dd/MM/yyyy'}} - {{job.startHours}}</span>
       </div>
       <div class="upContain">
+        <span  class="info hours box-editing" >
+          Cliente que contrata el servicio: {{ clientWhoContractsTheService }}
+        </span>
+      </div>
+      <div class="upContain">
         <span *ngIf="edit.names === false" class="info hours box-editing" (click)="edit.names = true">
           {{ job.name }} {{job.lastName}} {{job.motherLastName}}
         </span>
