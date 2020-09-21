@@ -34,7 +34,7 @@
       </label>
       <input id="file-upload" multiple type="file" style="display: none; " (change)="selectFile($event)"/>
       <div class="container-input-text" style="width: 100%;"> 
-        <input type="text" id="text" (keyup.enter)="uploadImgs($event.target.value) "> 
+        <input type="text" id="text" placeholder="Notas sobre fotos subidas" (keyup.enter)="uploadImgs($event.target.value) "> 
       </div>
    </div>
    
