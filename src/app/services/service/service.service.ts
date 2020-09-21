@@ -15,6 +15,7 @@ export class ServiceService {
   public urlNotification: string;
   private headers: HttpHeaders = new HttpHeaders({Authorization: `Bearer ${localStorage.getItem('some-key')!=null? JSON.parse(localStorage.getItem('some-key')).token : ' ' }`});
   public userName: any;
+  public urlImages: any;
 
   constructor(
     private http: HttpClient,
@@ -22,6 +23,7 @@ export class ServiceService {
     this.urlApi = `${UrlApiGlobal}/service`;
     this.urlNotification = `${UrlApiGlobal}/notification`;
     this.userName = localStorage.getItem('some-key')!=null? JSON.parse(localStorage.getItem('some-key')).name : ' ' 
+    this.urlImages = `${UrlApiGlobal}/img`;
 
   }
 
@@ -102,6 +104,10 @@ export class ServiceService {
 
   downloadImages(id: string): Observable<any> {
     return this.http.get<object>(`${this.urlApi}/downloadImages/${id}`,{responseType: 'arraybuffer' as 'json',headers:this.headers} );
+  }
+
+  addImages(id: string, imgs): Observable<any> {
+    return this.http.post<object>(`${this.urlImages}/add/${id}`, imgs, { headers: this.headers });
   }
 
   public closeAllConections(): void {

@@ -15,25 +15,32 @@
         <div style="display: flex; justify-content: center;">
           <span style="color: white; margin-bottom: 10px;">{{ image.description }}</span>
         </div>
-        <div >
-         
-        </div>
-       <!--  <figure class="icon descarga" (click)="downloadImage(image.url, image.name, image.message)">
-          <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg_2/descargar.svg'"></app-create-icon>
-        </figure> -->
-       <!--  <a  download target="_blank">
-        </a> -->
-        
       </div>
     </div>
    
   </main> 
   <footer class="sectionImages__footer">
-   <div style="display: flex; justify-content: center;">
+  <div class="container-preview">
+    <div class="img-preview" *ngFor="let url of imgsPreview">
+      <img [src]="url" alt="Girl in a jacket" width="500" height="600">
+    </div>
+  </div>
+   <div style="display: flex; justify-content: space-between; width: 100%;">
+   <div style="display: flex; width: 80%;">
+      <label for="file-upload" class="subir">
+        <figure class="description__icons--icon">
+          <app-create-icon [class]="'color-gray bg-white button h-color-red p-7'" [name]="'img'" [url]="'../../../assets/svg_2/img-firma.svg'" ></app-create-icon>
+        </figure>
+      </label>
+      <input id="file-upload" multiple type="file" style="display: none; " (change)="selectFile($event)"/>
+      <div class="container-input-text" style="width: 100%;"> 
+        <input type="text" id="text" (keyup.enter)="uploadImgs($event.target.value) "> 
+      </div>
+   </div>
+   
     <figure class="icon descarga" (click)="downloadImages()">
       <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg_2/descargar.svg'"></app-create-icon>
     </figure>
-    <span>Descargar</span>
    </div>
   </footer>
 </section>

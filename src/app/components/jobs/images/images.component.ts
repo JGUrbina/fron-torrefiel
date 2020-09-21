@@ -1,12 +1,16 @@
 import { Component, OnInit, Output, Input} from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { ServiceService } from '../../../services/service/service.service'
+import { DomSanitizer } from '@angular/platform-browser'
+
 
 @Component({
   selector: 'app-images',
   templateUrl: './images.component.html',
   styleUrls: ['./images.component.scss']
 })
+
+
 export class ImagesComponent implements OnInit {
 
  
@@ -16,24 +20,33 @@ export class ImagesComponent implements OnInit {
 
   public allImages: any[];
   public description: string;
+  public imgs: any;
+  public imgsPreview: any[];
 
   constructor(
+    private domSanitizer: DomSanitizer,
     private service : ServiceService
-  ) { }
+  ) {
+    this.imgsPreview = [];
+     
+   }
 
 
 
   ngOnInit(): void {
     this.getImages(this.id);
+    console.log(this.allImages)
+    
+    
   }
 
   getImages(id){
     console.log("id", id)
     this.service.getImages(id).subscribe(
       data=>{
-        console.log("length", data.length)
+        
         if(data.length > 0 ){
-         // this.description = data[0].description
+        
           this.allImages = data;
         }
         console.log("all Images", this.allImages)
@@ -65,18 +78,42 @@ export class ImagesComponent implements OnInit {
       })
 
     
-    /* const downloading = this.downloads.download({
-      url,
-      filename: `${title}.jpg`,
-      conflictAction: 'uniquity'
-    });
-
-    downloading.then(
-      (data: any) => {console.log(data); },
-      (err: any) => {console.log(err); },
-    ); */
+    
   }
-
+selectFile(event) {
+  
+  if(event != '') {
+     this.imgs = event.target.files
+    
+    Array.from(this.imgs).forEach((img, index )=> {
+      this.imgsPreview.push(this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(img)))
+    });
+    
+  } else {
+    this.imgsPreview = []
+  }
+}
+uploadImgs(event) {
+  let id = this.id;
+  this.allImages.push({images: this.imgsPreview, description: event})
+  const form = new FormData()
+  form.append('description', event)
+  for(let i =0; i < this.imgs.length; i++){
+        form.append("images[]", this.imgs[i]);
+    }
+    
+  this.service.addImages(id,form).subscribe(
+    data => {
+      console.log(data)
+    }, err => {
+      console.log('error al subir las images', err)
+    }
+  )
+  this.selectFile('');
+  var inputValue = (<HTMLInputElement>document.getElementById('text')).value = '';
+  
+  
+}
   emitEvent(): void{
     this.closeWindow.emit('');
   }
