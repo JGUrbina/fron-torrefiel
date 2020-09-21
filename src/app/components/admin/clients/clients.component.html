@@ -152,8 +152,19 @@
     <div class="services__header">
       <h3>Servicios</h3>
     </div>
+    <div class="sectionService">
+      <div class="search" >
+        <figure class="icon">
+          <app-create-icon [class]="'color-gray'" [name]="'search'" [url]="'../../../../assets/svg_2/buscar.svg'">
+          </app-create-icon>
+        </figure>
+        <input type="search"  name="search" [(ngModel)]="searchService" autocomplete="off"
+          placeholder="Buscar Servicio" style="font-size: .8rem;">
+      </div>
+    </div>
+    
     <div class="services__main">
-      <div class="service" *ngFor="let service of allServiceOfClient">
+      <div class="service" *ngFor="let service of allServiceOfClient | filter:searchService">
         <div class="left">
           <div class="one">
             <div class="clientAndStatus">

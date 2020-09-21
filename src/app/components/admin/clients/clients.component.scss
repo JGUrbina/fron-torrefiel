@@ -103,6 +103,75 @@
   }
 }
 
+.sectionService{
+  padding: 10px 25px;
+
+  
+  background-color: white;
+  border-radius: 4.5px;
+  height: 50px;
+
+
+  .search{
+    border-radius: 13px;
+    display: flex;
+    padding: 3px 5px;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 80%;
+    box-shadow: 0 3px 4px 1px #0000001f;
+
+    figure{
+      width: 33px;
+      height: 25px;
+      margin: 0;
+    }
+
+    input{
+      border: none;
+      outline: none !important;
+      width: 65%;
+    }
+  }
+
+  .list{
+    margin-top: 30px;
+
+    .client__contain{
+      background-color: #c1c1c8;
+      padding: 15px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px 3px #0000001f;
+      margin-bottom: 2rem;
+
+      &--title{
+        font-size: 1rem;
+        color: #cd2a00;
+
+        h4, p{
+          font-size: 1rem;
+          margin: 0;
+        }
+      }
+
+      &--icon{
+        padding: 5px;
+        padding-top: 6px;
+        background-color: white;
+        border-radius: 5px;
+        font-size: .8rem;
+        font-weight: bold;
+        font-weight: bold;
+        text-align: center;
+        box-shadow: 0 2px 5px 1px #00000057;
+        cursor: pointer;
+      }
+    }
+  }
+}
 .containService{
   min-height: 525px;
   position: absolute;

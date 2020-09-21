@@ -28,6 +28,7 @@ export class ClientsComponent implements OnInit {
   public allServiceOfClient: any;
 
   public searchClient: string;
+  public searchService: string;
 
 
   public newService: Service;
