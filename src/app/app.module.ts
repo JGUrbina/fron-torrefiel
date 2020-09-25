@@ -73,6 +73,8 @@ import { SearchComponent } from './components/search/search.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AddNewComponent } from './components/admin/users/add-new/add-new.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -143,7 +145,8 @@ import { AddNewComponent } from './components/admin/users/add-new/add-new.compon
     DataTablesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     NgMultiSelectDropDownModule.forRoot(),
-    DpDatePickerModule
+    DpDatePickerModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [appRoutingProviders, MatIconModule],
   bootstrap: [AppComponent]

@@ -1,23 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
-@import './assets/scss/animations';
-@import './assets/scss/base';
+@import "./assets/scss/animations";
+@import "./assets/scss/base";
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
-@import '~@fullcalendar/core/main.css';
-@import '~@fullcalendar/daygrid/main.css';
+@import "~@fullcalendar/core/main.css";
+@import "~@fullcalendar/daygrid/main.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-.fc-scroller.fc-day-grid-container{
+.fc-scroller.fc-day-grid-container {
   height: auto !important;
   overflow-x: hidden !important;
   overflow-y: auto !important;
 }
 
-body > app-root > div > app-home > app-main > main > section > div.jobs.viewOptions > div > app-jobs-view > div > div.description__info > div.sectionMenu > div > app-calendar > section > main > app-card-calendar > div > div > full-calendar > div.fc-view-container > div > table > tbody > tr > td > div.fc-day-grid > div > div.fc-content-skeleton > table > tbody > tr > td.fc-axis{
+body
+  > app-root
+  > div
+  > app-home
+  > app-main
+  > main
+  > section
+  > div.jobs.viewOptions
+  > div
+  > app-jobs-view
+  > div
+  > div.description__info
+  > div.sectionMenu
+  > div
+  > app-calendar
+  > section
+  > main
+  > app-card-calendar
+  > div
+  > div
+  > full-calendar
+  > div.fc-view-container
+  > div
+  > table
+  > tbody
+  > tr
+  > td
+  > div.fc-day-grid
+  > div
+  > div.fc-content-skeleton
+  > table
+  > tbody
+  > tr
+  > td.fc-axis {
   height: 40px;
 }
 
@@ -26,7 +65,7 @@ body > app-root > div > app-home > app-main > main > section > div.jobs.viewOpti
 //  font-size: 0.8rem !important;
 // }
 
-h1{
+h1 {
   font-weight: 300;
 }
 
@@ -57,6 +96,17 @@ h1{
   padding-bottom: 4px;
 }
 
-.fc .fc-row .fc-content-skeleton td{
-  padding: 4px 12px
+.fc .fc-row .fc-content-skeleton td {
+  padding: 4px 12px;
+}
+.cal-event-container {
+  text-align: center;
+}
+
+.cal-event-title {
+  background-color: white;
+  color: black;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: bold;
 }

@@ -20,9 +20,9 @@ export class JobComponent implements OnInit {
   @Input() public job: Service;
   @Input() public clientData: any;
 
-  @Output() serviceToViews: EventEmitter <Service> = new EventEmitter();
+  @Output() serviceToViews: EventEmitter<Service> = new EventEmitter();
 
-  @ViewChild(ScheduleComponent ) child : ScheduleComponent ;
+  @ViewChild(ScheduleComponent) child: ScheduleComponent;
 
   public optionsActivities: string[];
   public optionsStatus: string[];
@@ -36,7 +36,7 @@ export class JobComponent implements OnInit {
 
   //edits
   public edit = {
-    names: false, 
+    names: false,
     status: false,
     directions: false,
     amount: false,
@@ -46,7 +46,7 @@ export class JobComponent implements OnInit {
     iva: false
   }
 
- 
+
 
   public keep = {
     input1: false,
@@ -101,12 +101,12 @@ export class JobComponent implements OnInit {
       itemsShowLimit: 1,
       enableCheckAll: false
     };
-   }
+  }
 
   ngOnInit(): void {
     // this.getClient(this.job.client);
     // this.clientData = this.job.client
-    console.log('Client Data ------>',this.clientData)
+    console.log('Client Data ------>', this.clientData)
     this.selectedItems = this.job.activities;
     // console.log("trabajos", this.job)
     this.serviceService.initSocket();
@@ -120,17 +120,17 @@ export class JobComponent implements OnInit {
   //   this.clientData = client;
   // }
 
-  close(input: string): void{
+  close(input: string): void {
     this.sectionMenuShow = input;
   }
   receiveDataFromChild(data) {
     this.serviceToViews.emit(data);
-}
-  getDate(date: any){
+  }
+  getDate(date: any) {
     return this.typeDateService.generateDateOnly(date);
   }
 
-  requestJobChanges(){
+  requestJobChanges() {
     this.clientData = this.job.client
     // this.serviceService.updateService(this.job._id, this.job).subscribe(
     //   data => {
@@ -141,33 +141,33 @@ export class JobComponent implements OnInit {
     // )
   }
 
-  submitJobStatus(){
+  submitJobStatus() {
     this.requestJobChanges();
     this.edit.status = false;
   }
 
-  submitJobNames(){
-    if(this.keep.input1 || this.keep.input2 || this.keep.input3){
+  submitJobNames() {
+    if (this.keep.input1 || this.keep.input2 || this.keep.input3) {
       //console.log('a true');
       this.edit.names = true;
-    }else {
-        //console.log('a false');
-        this.requestJobChanges();
-        this.edit.names = false;
+    } else {
+      //console.log('a false');
+      this.requestJobChanges();
+      this.edit.names = false;
     };
     this.keep.input1 = false;
     this.keep.input2 = false;
     this.keep.input3 = false;
   }
 
-  submitJobDirections(){
-    if(this.keep.direction1 || this.keep.direction2 || this.keep.direction3 || this.keep.direction4 || this.keep.direction5){
+  submitJobDirections() {
+    if (this.keep.direction1 || this.keep.direction2 || this.keep.direction3 || this.keep.direction4 || this.keep.direction5) {
       //console.log('a true');
       this.edit.directions = true;
-    }else {
-        //console.log('a false');
-        this.requestJobChanges();
-        this.edit.directions = false;
+    } else {
+      //console.log('a false');
+      this.requestJobChanges();
+      this.edit.directions = false;
     };
     this.keep.direction1 = false;
     this.keep.direction2 = false;
@@ -176,32 +176,32 @@ export class JobComponent implements OnInit {
     this.keep.direction5 = false;
   }
 
-  submitJobAmount(){
+  submitJobAmount() {
     this.requestJobChanges();
     this.edit.amount = false;
   }
 
-  submitJobBill(){
-    
+  submitJobBill() {
+
     this.requestJobChanges();
     this.edit.bill = false;
     //console.log('job', this.job)
   }
 
-  submitJobDescription(){
+  submitJobDescription() {
     this.requestJobChanges();
     this.edit.description = false;
   }
 
-  submitNewPriority(){
+  submitNewPriority() {
     //console.log('priority')
     this.job.priority = this.job.priority ? 'false' : 'true';
     this.requestJobChanges();
   }
 
-  submitJobActivities(){
+  submitJobActivities() {
     this.dropdownFlag++;
-    if(this.dropdownFlag > 1){
+    if (this.dropdownFlag > 1) {
       this.edit.activities = false;
       this.dropdownFlag = 0;
       this.job.activities = this.selectedItems;

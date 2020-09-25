@@ -1,134 +1,49 @@
-@import 'src/assets/scss/variables';
-
-.overflow-auto::-webkit-scrollbar {
-  -webkit-appearance: none;
+h3 {
+  margin: 0 0 10px;
 }
 
-.overflow-auto::-webkit-scrollbar:vertical {
-  width: 15px;
+pre {
+  background-color: #f5f5f5;
+  padding: 15px;
 }
 
-.overflow-auto::-webkit-scrollbar-button:increment,.overflow-auto::-webkit-scrollbar-button {
-  display: none;
-  border-radius: 10px;
-} 
-
-
-.overflow-auto::-webkit-scrollbar-thumb {
-  background-color: #f3eded;
-  border-radius: 20px;
-  height: 15px;
-  border: 2px solid #f1f2f3;
-}
-
-.overflow-auto::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px white; 
-  border-radius: 10px;  
-}
-
-.overflow-auto::-webkit-scrollbar-thumb:hover {
-  border: transparent;
-}
-
-.overflow-auto::-webkit-scrollbar-corner{
-  visibility: hidden;
-  border-radius: 10px;
-}
-
-.app-top {
-  margin: 0 0 3em;
-}
-
-.w-90{
-  min-width: 95%;
-}
-
-.app-calendar {
-  margin: 0 auto;
-  max-width: 900px;
+.calendar-header {
   display: flex;
-  justify-content: center;
-
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  padding: 15px;
 }
 
-.fc-button-primary{
-  background-color: $color-red !important;
-  border-color: $color-red !important;
-}
-.fc-icon{
-  font-size: 1rem;
-}
-
-.show__event{
-  background-color: #cc2900;
-  color: white;
-  box-shadow: 0 2px 15px 1px #00000085;
-  border-radius: 6.5px;
-  z-index: 9;
-  padding: 10px;
-  position: fixed;
-  top: 10%;
-  min-width: 30%;
-}
-
-.fc-content{
-  cursor: pointer !important;
-
-}
-
-.icon{
-  margin-right: 7px;
+.buttons-day {
   display: flex;
   justify-content: flex-end;
-  padding-bottom: 2px;
-  position: absolute;
-  top: 7px;
-  right: 1%;
-
-  &.exit{
-    width: 15px;
-    height: 16px;
-    border-radius: 5px;
-    background-color: white;
-    align-items: center;
-  }
 }
 
-@media (max-width: 535px){
-  
-  .show__event{
-    background-color: #cc2900;
-    color: white;
-    box-shadow: 0 2px 15px 1px #00000085;
-    border-radius: 6.5px;
-    z-index: 9;
-    padding: 10px;
-    position: fixed;
-    top: 10%;
-    min-width: 30%;
-    overflow: auto;
-  }
-  .overflow-auto{
-    max-height: 150px;
-  }
+.icon:hover {
+  border: 1px solid #000000;
+  border-radius: 5px;
 }
 
+.icon {
+  width: 70px;
+  height: 70px;
+  padding: 10px;
+  margin: 5px;
+}
 
-@media (max-width: 780px) { 
+.today-div {
+  margin: auto;
+}
 
-  .show__event{
-    background-color: #cc2900;
-    color: white;
-    box-shadow: 0 2px 15px 1px #00000085;
-    border-radius: 6.5px;
-    z-index: 9;
-    padding: 10px;
-    position: fixed;
-    top: 10%;
-    min-width: 30%;
-    overflow: auto;
-  }
-  .overflow-auto{
-    max-height: 250px;
-  }
+.today-button {
+  width: 100px;
+  height: 80px;
+  padding: 15px;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+.today-button:hover {
+  font-size: 22px;
 }
