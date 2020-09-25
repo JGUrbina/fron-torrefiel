@@ -121,8 +121,8 @@ export class ScheduleComponent implements OnInit {
   
   setInputs(){
     this.allUsers.forEach((user, index) => this.checkeds[index] = this.service.workers.includes(user._id) ? true : false)
-    this.startDate = this.service.startDate.split('T')[0];
-    this.startDate = this.startDate.split('-').reverse().join('-');
+    this.startDate = this.startDate == '' ? this.service.startDate.split('T')[0] : ''
+    this.startDate = this.startDate == '' ? this.startDate.split('-').reverse().join('-') : ''
     this.startHours = this.service.startHours;
   };
 

@@ -104,11 +104,10 @@ export class JobComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    // this.getClient(this.job.client);
-    // this.clientData = this.job.client
-    console.log('Client Data ------>',this.clientData)
+    
+    
     this.selectedItems = this.job.activities;
-    // console.log("trabajos", this.job)
+    // console.log("startDate", this.job.startDate.toString().slice(0, 10), "startHours", this.job.startHours)
     this.serviceService.initSocket();
     console.log(`Name Client: ${this.job.client.name} ${this.job.client.lastName}`)
     this.clientWhoContractsTheService = `${this.job.client.name}`
@@ -127,18 +126,22 @@ export class JobComponent implements OnInit {
     this.serviceToViews.emit(data);
 }
   getDate(date: any){
+    console.log('fecha------------------>', date)
+    // return date
     return this.typeDateService.generateDateOnly(date);
   }
 
   requestJobChanges(){
-    this.clientData = this.job.client
-    // this.serviceService.updateService(this.job._id, this.job).subscribe(
-    //   data => {
-    //     //console.log("num serv", this.job)
-    //     this.serviceService.editNotifications(this.job.numService,this.job.workers)
-    //     this.job = data;
-    //   }, err => console.log('err', err)
-    // )
+    
+    console.log(this.job)
+    this.serviceService.updateService(this.job._id, this.job).subscribe(
+      data => {
+       
+        this.serviceService.editNotifications(this.job.numService,this.job.workers)
+        this.job = data;
+        console.log('------------->editado', this.job)
+      }, err => console.log('err', err)
+    )
   }
 
   submitJobStatus(){

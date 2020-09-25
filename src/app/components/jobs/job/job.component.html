@@ -6,6 +6,7 @@
           <input value={{job.numBill}} placeholder="N° Factura" *ngIf="edit.bill === false" class="info code f-bold box-editing num-bill" (click)="edit.bill = true" style="border-color:transparent;">
           <input (focusout)="submitJobBill()" class="beetween-index info code input-bill" *ngIf="edit.bill === true" [(ngModel)]="job.numBill">
         <span class="info date">{{getDate(job.startDate) | date: 'dd/MM/yyyy'}} - {{job.startHours}}</span>
+        <!-- <span class="info date">{{job.startDate}} - {{job.startHours}}</span> -->
       </div>
       <div class="upContain">
         <span  class="info hours box-editing" >
