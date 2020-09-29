@@ -85,7 +85,7 @@ export class CreateServicesComponent implements OnInit {
     this.getAllClient();
   }
 
-  getAllClient(): void{
+  getAllClient(): void {
     this.clientService.getClients().subscribe(
       (data) => {
         this.allClients = data;
@@ -101,26 +101,26 @@ export class CreateServicesComponent implements OnInit {
   clientExisting(): void {
   }
 
-  clearClient(){
+  clearClient() {
     this.newClient.name = '';
     //form.resetForm(); 
     //this.getAllClient();
 
   }
 
-  searchClient(option: any){
+  searchClient(option: any) {
     //let cliente = this.allClients.filter(client => client.numClient == option)[0];
     //console.log("cliente", cliente)
     this.newClient = this.allClients.filter(client => client.numClient == option)[0];
-   
+
     console.log("all clients", this.allClients)
     console.log("new client", this.newClient)
   }
 
-  createClientAndService(): void{
+  createClientAndService(): void {
     const clientSelected = this.allClients.filter(client => client.numClient == this.newClient.numClient);
     console.log('client', clientSelected[0]);
-    if(clientSelected.length > 0){
+    if (clientSelected.length > 0) {
       this.clientService.updateClient(clientSelected[0]._id, this.newClient).subscribe(
         (data) => {
           this.createService(data.client._id);
@@ -131,9 +131,13 @@ export class CreateServicesComponent implements OnInit {
           return;
         }
       );
-    }else{
+    } else {
+      delete this.newClient._id;
+      delete this.newClient.services;
+      console.log('new', this.newClient)
       this.clientService.createClient(this.newClient).subscribe(
         (data) => {
+          console.log('data id', data.client._id)
           this.createService(data.client._id);
         },
         (err) => {
@@ -145,8 +149,8 @@ export class CreateServicesComponent implements OnInit {
     }
   }
 
-  dateChange(){
-    let Year : any, Month : any, Day : any;
+  dateChange() {
+    let Year: any, Month: any, Day: any;
     Year = new Date().getFullYear();
     Month = new Date().getMonth() + 1;
     Day = new Date().getDate();
@@ -155,13 +159,13 @@ export class CreateServicesComponent implements OnInit {
     return `${Year}-${Month}-${Day}`;
   };
 
-  createService(clientId: any): void{
+  createService(clientId: any): void {
     this.newService.email !== null ? this.newService.email = this.newService.email.toLowerCase() : null;
     this.newService.startDate = this.dateChange();
     this.newService.startHours = "00:00";
     this.newService.activities = this.selectedItems
     this.newService.workers = [];
-    if(this.newService.numDeliveryNote === undefined){
+    if (this.newService.numDeliveryNote === undefined) {
       this.newService.numDeliveryNote = '';
     };
     console.log('servicio', this.newService);
@@ -181,9 +185,9 @@ export class CreateServicesComponent implements OnInit {
     );
   }
 
-  updateView(view: string): void{
+  updateView(view: string): void {
     console.log("updateView")
-    if(this.sameDirection){
+    if (this.sameDirection) {
       this.newService.name = this.newClient.name;
       this.newService.lastName = this.newClient.lastName;
       this.newService.motherLastName = this.newClient.motherLastName;
@@ -213,7 +217,7 @@ export class CreateServicesComponent implements OnInit {
     this.viewActual = view;
   }
 
-  messageErrorCreate(where: string){
+  messageErrorCreate(where: string) {
     const urlIcon = '';
     const header = `Ha ocurrido un error.`;
     const title = 'No se ha podido realizar el registro, verifique los datos';
@@ -221,7 +225,7 @@ export class CreateServicesComponent implements OnInit {
     this.showAlert(urlIcon, header, title, subtitle);
   }
 
-  messageErrorCreateService(error){
+  messageErrorCreateService(error) {
     const urlIcon = '';
     const header = `Ha ocurrido un error.`;
     const title = error;
@@ -229,7 +233,7 @@ export class CreateServicesComponent implements OnInit {
     this.showAlert(urlIcon, header, title, subtitle);
   }
 
-  showAlert(urlIcon: string, header: string, title: string, subtitle: string){
+  showAlert(urlIcon: string, header: string, title: string, subtitle: string) {
     this.alertUrlIcon = urlIcon;
     this.alertHeader = header;
     this.alertTitle = title;
@@ -241,23 +245,23 @@ export class CreateServicesComponent implements OnInit {
     }, this.ALERTTIMESHOW);
   }
 
-  compareClient(){
+  compareClient() {
     //Se busca el cliente entre todos los clientes con el num ingresado en el input de cliente
     let clientSelected = this.allClients.filter(client => client.numClient == this.newClient.numClient);
     //clientSelected.length > 0 ? this.searchClient(clientSelected[0].numClient) : this.resetInputs() ;
-    if( clientSelected.length > 0){
+    if (clientSelected.length > 0) {
       this.searchClient(clientSelected[0].numClient);
-      console.log("num cliente",clientSelected[0].numClient)
+      console.log("num cliente", clientSelected[0].numClient)
       this.getAllClient();
     }
-    else{
-      this.resetInputs() ;
+    else {
+      this.resetInputs();
     }
     console.log("clientSelected", clientSelected.length > 0);
     //this.getAllClient();
   }
 
-  resetInputs(){
+  resetInputs() {
     this.newClient.name = null;
     this.newClient.lastName = null;
     this.newClient.motherLastName = null;
