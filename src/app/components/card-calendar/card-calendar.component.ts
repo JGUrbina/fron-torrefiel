@@ -1,6 +1,5 @@
 import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/models/user/user';
-import { Service } from 'src/app/models/service/service';
 import {
   Component,
   ChangeDetectionStrategy,
@@ -10,21 +9,12 @@ import {
   OnInit
 } from '@angular/core';
 import {
-  startOfDay,
-  endOfDay,
-  subDays,
-  addDays,
-  endOfMonth,
-  isSameDay,
-  isSameMonth,
   addHours,
 } from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
-  CalendarEventAction,
-  CalendarEventTimesChangedEvent,
   CalendarView,
 } from 'angular-calendar';
 
@@ -32,21 +22,6 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 
 registerLocaleData(localeEs);
-
-const colors: any = {
-  red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3',
-  },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF',
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA',
-  },
-};
 
 @Component({
   selector: 'app-card-calendar',
@@ -81,20 +56,6 @@ export class CardCalendarComponent implements OnInit {
     private userService: UserService
   ) { }
 
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-      }
-      this.viewDate = date;
-    }
-  }
-
   ngOnInit() {
     this.getAllWorkers();
   }
@@ -114,16 +75,15 @@ export class CardCalendarComponent implements OnInit {
         console.log('worker', worker);
         const tmpService = this.eventsInput.filter(event => event._id === work)[0];
         const tmpHours = Number(tmpService.startHours.split(':')[0]);
-        //const tmpMinutes = Number(tmpService.startHours.split(':')[1]);
         const tmpEvent = {
           start: addHours(new Date(tmpService.startDate.replace('.000Z', '')), tmpHours),
-          title: worker.name,
-          color: { primary: '#002300', secondary: worker.color }
+          title: `${tmpService.startHours} ${worker.name}`,
+          color: { primary: '#cd2a00;', secondary: worker.color }
         }
         this.events.push(tmpEvent);
       });
     });
-    console.log(this.events);
+    this.refresh.next()
   };
 
   handleEvent(action: string, event: CalendarEvent): void {
