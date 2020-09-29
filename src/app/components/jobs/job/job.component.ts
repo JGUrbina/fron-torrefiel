@@ -126,7 +126,7 @@ export class JobComponent implements OnInit {
     this.serviceToViews.emit(data);
 }
   getDate(date: any){
-    console.log('fecha------------------>', date)
+    // console.log('fecha------------------>', date)
     // return date
     return this.typeDateService.generateDateOnly(date);
   }

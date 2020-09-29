@@ -25,19 +25,27 @@
       <img [src]="url" alt="Girl in a jacket" width="500" height="600">
     </div>
   </div>
+  
    <div style="display: flex; justify-content: space-between; width: 100%;">
+   
    <div style="display: flex; width: 80%;">
       <label for="file-upload" class="subir">
         <figure class="description__icons--icon">
           <app-create-icon [class]="'color-gray bg-white button h-color-red p-7'" [name]="'img'" [url]="'../../../assets/svg_2/img-firma.svg'" ></app-create-icon>
         </figure>
       </label>
-      <input id="file-upload" multiple type="file" style="display: none; " (change)="selectFile($event)"/>
+      <input id="file-upload" multiple type="file" style="display: none; " [formControl]="imgsCtrl" (change)="selectFile($event)"/>
       <div class="container-input-text" style="width: 100%;"> 
-        <input type="text" id="text" placeholder="Notas sobre fotos subidas" (keyup.enter)="uploadImgs($event.target.value) "> 
+        <input type="text" id="text" placeholder="Notas sobre fotos subidas" (keyup.enter)="uploadImgs() "> 
       </div>
+      
    </div>
-   
+   <div (click)="uploadImgs()" style="cursor: pointer; padding: 5px; text-align: center;">
+      <strong>Guardar</strong>
+   </div>
+   <!-- <figure class="icon descarga" (click)="uploadImgs()">
+      <app-create-icon [class]="'color-gray bg-white button'" [name]="'upload'" [url]="'../../../../assets/svg_2/upload.svg'"></app-create-icon>
+    </figure> -->
     <figure class="icon descarga" (click)="downloadImages()">
       <app-create-icon [class]="'color-gray bg-white button'" [name]="'download'" [url]="'../../../../assets/svg_2/descargar.svg'"></app-create-icon>
     </figure>

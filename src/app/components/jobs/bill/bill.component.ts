@@ -17,6 +17,7 @@ export class BillComponent implements OnInit {
   @Input () clientData: Client;
 
   public emailPdf: string;
+  public date: any;
   public monto: any;
   public alertShow: boolean = false;
   public alertUrlIcon: string;
@@ -29,10 +30,13 @@ export class BillComponent implements OnInit {
     private pdfService: PdfService
   ) { 
     this.emailPdf = '';
+    this.date = ''
   }
 
   ngOnInit(): void {
-    console.log('delivery', this.clientData.name);
+    if(this.deliveryNoteData.startDate != null) this.date =this.deliveryNoteData.startDate.split('T')[0].split('-').reverse().join('/')
+    
+    console.log('fecha---->', this.deliveryNoteData.startDate)
     this.monto = (this.deliveryNoteData.amount + (this.deliveryNoteData.amount * this.deliveryNoteData.typeIva /100)).toFixed(2);
   }
   
@@ -376,7 +380,7 @@ export class BillComponent implements OnInit {
       <section class="data">
         <div class="data__contain">
         <div class="data__contain--item">
-          <span><b>Fecha de emisión: </b> ${this.deliveryNoteData.startDate.split('T')[0].split('-').reverse().join('/')}</span>
+          <span><b>Fecha de emisión: </b> ${this.date}</span>
         </div>
         <div class="data__contain--item"><span>N° Factura:</span></div>
          
@@ -393,7 +397,7 @@ export class BillComponent implements OnInit {
         <div class="data__contain--item"><span>${ this.deliveryNoteData.phoneTwo }</span></div>
         </div>
         <div class="data__contain">
-        <div class="data__contain--item"><span><b>Dirección trabajos: </b>${ this.deliveryNoteData.direction } #${ this.deliveryNoteData.numberExternal }</span></div>
+        <div class="data__contain--item"><span><b>Dirección trabajos: </b>${ this.deliveryNoteData.direction } - ${ this.deliveryNoteData.numberExternal } - ${ this.deliveryNoteData.numberInternal }</span></div>
         <div class="data__contain--item"><span>Población:  ${ this.deliveryNoteData.province } <br>${ this.deliveryNoteData.municipality }</span></div>
         <div class="data__contain--item"><span>C.P. ${ this.deliveryNoteData.postalCode}</span></div>
         </div>

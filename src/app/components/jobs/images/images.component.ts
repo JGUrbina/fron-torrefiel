@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, Input} from '@angular/core';
-import { EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
+import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { ServiceService } from '../../../services/service/service.service'
 import { DomSanitizer } from '@angular/platform-browser'
+
 
 
 @Component({
@@ -17,7 +18,7 @@ export class ImagesComponent implements OnInit {
   @Output () closeWindow = new EventEmitter();
   @Input() id: string;
   
-
+  imgsCtrl = new FormControl('', [])
   public allImages: any[];
   public description: string;
   public imgs: any;
@@ -28,7 +29,7 @@ export class ImagesComponent implements OnInit {
     private service : ServiceService
   ) {
     this.imgsPreview = [];
-     
+    this.allImages = []
    }
 
 
@@ -44,12 +45,12 @@ export class ImagesComponent implements OnInit {
     console.log("id", id)
     this.service.getImages(id).subscribe(
       data=>{
-        
+        data === undefined ? [] : data;
         if(data.length > 0 ){
         
-          this.allImages = data;
+          this.allImages = data
         }
-        console.log("all Images", this.allImages)
+        console.log("all Images ---", data)
       }, (err)=>{
         console.log("err", err)
       }
@@ -82,6 +83,7 @@ export class ImagesComponent implements OnInit {
   }
 selectFile(event) {
   
+  
   if(event != '') {
      this.imgs = event.target.files
     
@@ -93,11 +95,14 @@ selectFile(event) {
     this.imgsPreview = []
   }
 }
-uploadImgs(event) {
+uploadImgs() {
   let id = this.id;
-  this.allImages.push({images: this.imgsPreview, description: event})
+  let text = (<HTMLInputElement>document.getElementById('text')).value
+  this.allImages.push({images: this.imgsPreview, description: text})
   const form = new FormData()
-  form.append('description', event)
+  
+
+  form.append('description', text)
   for(let i =0; i < this.imgs.length; i++){
         form.append("images[]", this.imgs[i]);
     }
@@ -110,7 +115,7 @@ uploadImgs(event) {
     }
   )
   this.selectFile('');
-  var inputValue = (<HTMLInputElement>document.getElementById('text')).value = '';
+  (<HTMLInputElement>document.getElementById('text')).value = '';
   
   
 }

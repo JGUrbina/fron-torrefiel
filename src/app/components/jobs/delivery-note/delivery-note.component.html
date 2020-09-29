@@ -56,7 +56,7 @@
         <section class="data">
           <div class="data__contain">
             <div class="data__contain--item">
-              <span><b>Fecha de emisión: </b> {{deliveryNoteData.startDate.split('T')[0].split('-').reverse().join('/')}}</span>
+              <span><b>Fecha de emisión: </b> {{date}}</span>
             </div>
             <div class="data__contain--item"><span>N° albarán:</span></div>
                                                     
@@ -73,7 +73,7 @@
             <div class="data__contain--item"><span>{{ deliveryNoteData.phoneTwo }}</span></div>
           </div>
           <div class="data__contain">
-            <div class="data__contain--item"><span><b>Dirección trabajos: </b>{{ deliveryNoteData.direction }} #{{ deliveryNoteData.numberExternal }}</span></div>
+            <div class="data__contain--item"><span><b>Dirección trabajos: </b>{{ deliveryNoteData.direction }} - {{ deliveryNoteData.numberExternal }} - {{ deliveryNoteData.numberInternal }}</span></div>
             <div class="data__contain--item"><span>Población:  {{ deliveryNoteData.province }} <br>{{ deliveryNoteData.municipality }}</span></div>
             <div class="data__contain--item"><span>C.P. {{ deliveryNoteData.postalCode}}</span></div>
           </div>
