@@ -12,6 +12,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { DataTablesModule } from 'angular-datatables';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { DpDatePickerModule } from 'ng2-date-picker';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 // Search Module
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -143,7 +144,8 @@ import { AddNewComponent } from './components/admin/users/add-new/add-new.compon
     DataTablesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     NgMultiSelectDropDownModule.forRoot(),
-    DpDatePickerModule
+    DpDatePickerModule,
+    CKEditorModule
   ],
   providers: [appRoutingProviders, MatIconModule],
   bootstrap: [AppComponent]

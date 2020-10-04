@@ -9,6 +9,7 @@ import { DropDownOptionsService } from '../../../services/dropDownOptions/drop-d
 import { ServiceService } from 'src/app/services/service/service.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 @Component({
   selector: 'app-job',
@@ -23,6 +24,7 @@ export class JobComponent implements OnInit {
   @Output() serviceToViews: EventEmitter <Service> = new EventEmitter();
 
   @ViewChild(ScheduleComponent ) child : ScheduleComponent ;
+  @ViewChild(CKEditorModule ) ckEditor : CKEditorModule ;
 
   public optionsActivities: string[];
   public optionsStatus: string[];
@@ -105,7 +107,25 @@ export class JobComponent implements OnInit {
 
   ngOnInit(): void {
     
-    
+    let editor  = this.ckEditor;
+    console.log('editor---->', editor)
+//     editor.config.toolbarGroups = [
+//     { name: 'document',    groups: [ 'mode', 'document', 'doctools' ] },
+//     { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+//     { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+//     { name: 'forms' },
+//     '/',
+//     { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+//     { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+//     { name: 'links' },
+//     { name: 'insert' },
+//     '/',
+//     { name: 'styles' },
+//     { name: 'colors' },
+//     { name: 'tools' },
+//     { name: 'others' },
+//     { name: 'about' }
+// ]
     this.selectedItems = this.job.activities;
     // console.log("startDate", this.job.startDate.toString().slice(0, 10), "startHours", this.job.startHours)
     this.serviceService.initSocket();
@@ -113,11 +133,7 @@ export class JobComponent implements OnInit {
     this.clientWhoContractsTheService = `${this.job.client.name}`
   }
 
-  // async getClient(id: string): Promise<any>{
-  //   const client = await this.clientService.getClient(id);
-  //   //this.nameClient = client.name;
-  //   this.clientData = client;
-  // }
+ 
 
   close(input: string): void{
     this.sectionMenuShow = input;

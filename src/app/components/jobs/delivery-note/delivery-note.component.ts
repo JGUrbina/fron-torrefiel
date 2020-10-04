@@ -313,8 +313,8 @@ export class DeliveryNoteComponent implements OnInit {
                           Descripción de trabajos realizados
                         </p>
                       </div>
-                      <div class="text">
-                        <span style="word-break: break-word;">${this.deliveryNoteData.description}</span>
+                      <div >
+                        <pre style="word-break: break-word;" class="text">${this.deliveryNoteData.description}</pre>
                       </div>
                       <div class="titulos-texto">
                         <p class="bg-purple mb-0">
