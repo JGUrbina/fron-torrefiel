@@ -62,24 +62,47 @@
 
 <ng-template #modalContent let-close="close">
   <div class="modal-header">
-    <h5 class="modal-title">Event action occurred</h5>
+    <h3 class="modal-title">Servicio agendado</h3>
     <button type="button" class="close" (click)="close()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <div>
-      Action:
-      <pre>{{ modalData?.action }}</pre>
+      <h4 class="modal-title">Cliente:</h4>
+      <div class="modal-text-container">
+        {{ selectedWork.client.name }} {{ selectedWork.client.lastName }}
+        {{ selectedWork.client.motherLastName }}
+      </div>
     </div>
     <div>
-      Event:
-      <pre>{{ modalData?.event | json }}</pre>
+      <h4 class="modal-title">Detalles:</h4>
+      <div class="modal-text-container">
+        <p>
+          <strong>Nombre: </strong>{{ selectedWork.name }}
+          {{ selectedWork.lastName }} {{ selectedWork.motherLastName }}
+        </p>
+        <p>
+          <strong>Teléfono: </strong
+          >{{
+            selectedWork.phoneOne === 0
+              ? "No hay teléfono registrado"
+              : selectedWork.phoneOne
+          }}
+        </p>
+        <p><strong>Descripción: </strong>{{ selectedWork.description }}</p>
+        <p>
+          <strong>Dirección: </strong>{{ selectedWork.direction }} #{{
+            selectedWork.numberExternal
+          }}
+          {{ selectedWork.province }} {{ selectedWork.municipality }}
+        </p>
+      </div>
     </div>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline-secondary" (click)="close()">
-      OK
+      CERRAR
     </button>
   </div>
 </ng-template>
