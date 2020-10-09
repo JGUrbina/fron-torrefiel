@@ -18,6 +18,7 @@ public nickName: any
 public numWorks: any
 public masRepetida: string
 public cont: number
+public totalIngresos: number
 
 public clients: any
 public allservice: any
@@ -32,6 +33,7 @@ public mostUsedActivity: any
     this.array= []
     this.cont = 0
     this.mostUsedActivity  = []
+    this.totalIngresos = 0
   }
 
 ngOnInit() {
@@ -39,6 +41,7 @@ ngOnInit() {
    this.userWithMoreJobs()
    this.clientsWithMoreServices()
    this.mostRequestedActivities()
+   this.ingresosTotales()
   }
 
   emitEvent(): void{
@@ -151,5 +154,14 @@ percentageOfJobsByActivity(activities, services) {
   console.log(this.mostUsedActivity)
 }
 
+ingresosTotales() {
+  this.services.getServices().subscribe(
+    data => {
+      data.services.forEach(service => {
+        console.log('Total Ingresos',service.amoun)
+      });
+      })
+      
+}
 
 }

@@ -107,29 +107,8 @@ export class JobComponent implements OnInit {
 
   ngOnInit(): void {
     
-    let editor  = this.ckEditor;
-    console.log('editor---->', editor)
-//     editor.config.toolbarGroups = [
-//     { name: 'document',    groups: [ 'mode', 'document', 'doctools' ] },
-//     { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
-//     { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
-//     { name: 'forms' },
-//     '/',
-//     { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
-//     { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
-//     { name: 'links' },
-//     { name: 'insert' },
-//     '/',
-//     { name: 'styles' },
-//     { name: 'colors' },
-//     { name: 'tools' },
-//     { name: 'others' },
-//     { name: 'about' }
-// ]
     this.selectedItems = this.job.activities;
-    // console.log("startDate", this.job.startDate.toString().slice(0, 10), "startHours", this.job.startHours)
     this.serviceService.initSocket();
-    console.log(`Name Client: ${this.job.client.name} ${this.job.client.lastName}`)
     this.clientWhoContractsTheService = `${this.job.client.name}`
   }
 
@@ -155,7 +134,6 @@ export class JobComponent implements OnInit {
        
         this.serviceService.editNotifications(this.job.numService,this.job.workers)
         this.job = data;
-        console.log('------------->editado', this.job)
       }, err => console.log('err', err)
     )
   }
