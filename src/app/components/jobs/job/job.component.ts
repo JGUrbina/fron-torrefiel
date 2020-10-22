@@ -108,7 +108,7 @@ export class JobComponent implements OnInit {
   ngOnInit(): void {
     
     this.selectedItems = this.job.activities;
-    this.serviceService.initSocket();
+    // this.serviceService.initSocket();
     this.clientWhoContractsTheService = `${this.job.client.name}`
   }
 
