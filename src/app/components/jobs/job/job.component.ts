@@ -45,7 +45,8 @@ export class JobComponent implements OnInit {
     description: false,
     bill: false,
     activities: false,
-    iva: false
+    iva: false,
+    phoneOne: false
   }
 
  
@@ -155,6 +156,11 @@ export class JobComponent implements OnInit {
     this.keep.input1 = false;
     this.keep.input2 = false;
     this.keep.input3 = false;
+  }
+
+  submitPhoneOne() {
+    this.requestJobChanges();
+    this.edit.phoneOne = false;
   }
 
   submitJobDirections(){
