@@ -12,6 +12,8 @@
         <span  class="info hours box-editing" >
           Cliente que contrata el servicio: {{ clientWhoContractsTheService }}
         </span>
+        <input value={{job.phoneOne}} placeholder="N° Teléfono" *ngIf="edit.phoneOne === false" class="info code f-bold box-editing phone-one" (click)="edit.phoneOne = true" style="border-color:transparent;">
+        <input (focusout)="submitPhoneOne()" class="beetween-index info code input-bill" *ngIf="edit.phoneOne === true" [(ngModel)]="job.phoneOne">
       </div>
       <div class="upContain">
         <span *ngIf="edit.names === false" class="info hours box-editing" (click)="edit.names = true">
@@ -22,6 +24,7 @@
           <input (focusout)="keep.input2 = false" (mousedown)="keep.input2 = true" [(ngModel)]="job.lastName" class="info hours box-editing" placeholder="Apellido Paterno">
           <input (focusout)="keep.input3 = false" (mousedown)="keep.input3 = true" [(ngModel)]="job.motherLastName" class="info hours box-editing" placeholder="Apellido Materno">
         </span>
+
       </div>
 
       <!-- Se ponen clases condicionales ngClass para ajustar los z-index -->
