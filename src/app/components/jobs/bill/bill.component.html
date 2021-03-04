@@ -55,12 +55,15 @@
       <main class="pdf__main">
         <section class="data">
           <div class="data__contain">
-            <div class="data__contain--item">
+            <div class="data__contain--item-date">
               <span><b>Fecha de emisión: </b> {{date}}</span>
+            </div>
+            <div class="data__contain--item-nif">
+              <span><b>NIF: </b> {{deliveryNoteData.client.nif}}</span>
             </div>
             <div class="data__contain--item"><span>N° Factura:</span></div>
            
-            <div class="data__contain--item"><span> {{deliveryNoteData.numBill}} </span></div>
+            <div class="data__contain--item-numBill"><span> {{deliveryNoteData.numBill}} </span></div>
           </div>
           <div class="data__contain">
             <div class="data__contain--item"><span><b>Cliente: </b>{{ deliveryNoteData.name }} {{ deliveryNoteData.lastName }} {{ deliveryNoteData.motherLastName }}</span></div>

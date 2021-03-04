@@ -30,6 +30,7 @@ export class Service {
   public phoneOne: number;
   public phoneTwo: number;
   public signUrl: string;
+  public nif: string;
 
   constructor(
     activities: string[],
@@ -57,7 +58,8 @@ export class Service {
     email: string,
     phoneOne: number,
     phoneTwo: number,
-    signUrl: string
+    signUrl: string,
+    nif: string
   ){
     this.client = client;
     this.numService = numService;
@@ -85,5 +87,6 @@ export class Service {
     this.phoneOne = phoneOne;
     this.phoneTwo = phoneTwo;
     this.signUrl = signUrl;
+    this.nif = nif;
   }
 }
