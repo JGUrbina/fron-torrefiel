@@ -10,7 +10,7 @@
       </div>
       <div class="upContain">
         <span  class="info hours box-editing" >
-          Cliente que contrata el servicio: {{ clientWhoContractsTheService }}
+          Cliente que contrata el servicio: {{ job.client.name }}
         </span>
         <input value={{job.phoneOne}} placeholder="N° Teléfono" *ngIf="edit.phoneOne === false" class="info code f-bold box-editing phone-one" (click)="edit.phoneOne = true" style="border-color:transparent;">
         <input (focusout)="submitPhoneOne()" class="beetween-index info code input-bill" *ngIf="edit.phoneOne === true" [(ngModel)]="job.phoneOne">

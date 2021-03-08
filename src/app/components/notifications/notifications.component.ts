@@ -1,5 +1,4 @@
 import { Component,  Input, Output, EventEmitter } from '@angular/core';
-import { FullCalendarComponent } from '@fullcalendar/angular';
 import * as moment from 'moment';
 import 'moment/locale/es'  // without this line it didn't work
 moment.locale('es')

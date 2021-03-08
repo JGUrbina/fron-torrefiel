@@ -149,6 +149,58 @@
                 text-align: center;
               }
             }
+            &--item-date{
+              background-color: #fdff99 !important;
+              padding: 5px;
+              color: #7f017e;
+
+              border: 1px solid #7f017e;
+              padding: 5px;
+              display: flex;
+
+              &:nth-child(1){
+                width: 40%;
+              }
+              &:nth-child(2), &:nth-child(3){
+                width: 10%;
+                text-align: center;
+              }
+            }
+            &--item-nif {
+              background-color: #fdff99 !important;
+              padding: 5px;
+              color: #7f017e;
+
+              border: 1px solid #7f017e;
+              padding: 5px;
+              display: flex;
+
+              &:nth-child(1){
+                width: 60%;
+              }
+              &:nth-child(2), &:nth-child(3){
+                width: 20%;
+                text-align: center;
+              }
+            }
+            &--item-numBill {
+              background-color: #fdff99 !important;
+              padding: 5px;
+              color: #7f017e;
+
+              border: 1px solid #7f017e;
+              padding: 5px;
+              width: 20%;
+              text-align: center;
+
+              &:nth-child(1){
+                width: 60%;
+              }
+              &:nth-child(2), &:nth-child(3){
+                width: 20%;
+                text-align: center;
+              }
+            }
           }
         }
 

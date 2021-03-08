@@ -8,34 +8,41 @@
   <div class="filter__containOptions fadeInDown all-inputs-filter" *ngIf="isCollapsed">
     <div class="option">
       <label for="">Palabras clave</label>
-      <input (keyup)=emitFilter($event.target.value) type="text" placeholder="N° cliente, nombre cliente..">
+      <input (keyup)="inputChanged()" type="text" placeholder="N° cliente, nombre cliente.." [(ngModel)]="filterKeywords">
     </div>
     <div class="option">
       <label for="status">Estado</label>
-      <select (change)="emitFilter($event.target.value)" name="status" id="">
+      <select (change)="emitFilter()" name="status"  [(ngModel)]="filterStatus">
         <option value="">Todos</option>
         <option *ngFor="let status of statusList" value="{{ status }}">{{ status }}</option>
       </select>
     </div>
     <div class="option">
       <label for="">Actividad</label>
-      <select (change)="emitFilter($event.target.value)" name="status" id="">
+      <select (change)="emitFilter()" name="activity"  [(ngModel)]="filterActivity">
         <option value="">Todas</option>
         <option *ngFor="let activity of activitiesList" value="{{ activity }}">{{ activity }}</option>
       </select>
     </div>
     <div class="option">
-      <label for="">Año</label>
-      <select name="status" id="" (change)="handleYear($event.target.value)">
+      <label for="">Cliente</label>
+      <select (change)="emitFilter()" name="client"  [(ngModel)]="filterClient">
         <option value="">Todos</option>
-        <option *ngFor="let year of years" value="{{year+'-'}}">{{ year }}</option>
+        <option *ngFor="let client of clients" value="{{ client.numClient }}">{{ client.name }} {{ client.lastname && client.lastname }}</option>
+      </select>
+    </div>
+    <div class="option">
+      <label for="">Año</label>
+      <select name="year"  (change)="emitFilter()" [(ngModel)]="selectedYear">
+        <option value="">Todos</option>
+        <option *ngFor="let year of years" value="{{year}}">{{ year }}</option>
       </select>
     </div>
     <div *ngIf="selectedYear.length > 0"class="option">
       <label for="">Mes</label>
-      <select (change)="handleMonth($event.target.value)" name="status" id="">
+      <select (change)="emitFilter()" name="month" [(ngModel)]="selectedMonth" >
         <option value="">Todos</option>
-        <option *ngFor="let month of allMonths;let index=index;" value="{{ index + 1}}">{{ month }}</option>
+        <option *ngFor="let month of allMonths" value="{{month.value}}">{{ month.text }}</option>
       </select>
     </div>
   </div>

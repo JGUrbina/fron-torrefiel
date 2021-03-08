@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  public searchFilter: string;
+  public searchFilters: string;
   public showView: string;
   public JOBS: string = 'jobs';
   public CREATESERVICE: string = 'createService';
@@ -25,7 +25,7 @@ export class MainComponent implements OnInit {
   }
 
   emitToJobs(filter){
-    this.searchFilter = filter;
+    this.searchFilters = filter;
   }
 
   setYears(years){
