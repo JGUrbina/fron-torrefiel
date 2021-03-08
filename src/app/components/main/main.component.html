@@ -1,4 +1,4 @@
-<app-filter [years]="years" (emitSearchFilter)="emitToJobs($event)" class="fadeInOut" *ngIf="showView === JOBS"></app-filter>
+<app-filter [years]="years" (emitSearchFilters)="emitToJobs($event)" class="fadeInOut" *ngIf="showView === JOBS"></app-filter>
 
 <main class="main">
   <section class="main__section">
@@ -9,7 +9,7 @@
     </div>
     <div class="viewOptions {{showView}}">
       <div class="job" *ngIf="showView === JOBS">
-        <app-jobs-view (years)="setYears($event)" [searchFilter]="searchFilter"></app-jobs-view>
+        <app-jobs-view (years)="setYears($event)" [searchFilters]="searchFilters"></app-jobs-view>
       </div>
       <div class="service" *ngIf="showView === CREATESERVICE">
         <app-create-services></app-create-services>
