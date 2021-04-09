@@ -62,35 +62,34 @@
 
 <ng-template #modalContent let-close="close">
   <div class="modal-header">
-    <h3 class="modal-title">Servicio agendado</h3>
+    <h3 class="modal-title orange-tf">Servicio agendado</h3>
     <button type="button" class="close" (click)="close()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <div>
-      <h4 class="modal-title">Cliente:</h4>
+      <h4 class="modal-title orange-tf">Cliente:</h4>
       <div class="modal-text-container">
         {{ selectedWork.client.name }} {{ selectedWork.client.lastName }}
         {{ selectedWork.client.motherLastName }}
       </div>
     </div>
     <div>
-      <h4 class="modal-title">Detalles:</h4>
+      <h4 class="modal-title orange-tf">Detalles:</h4>
       <div class="modal-text-container">
         <p>
           <strong>Nombre: </strong>{{ selectedWork.name }}
           {{ selectedWork.lastName }} {{ selectedWork.motherLastName }}
         </p>
         <p>
-          <strong>Teléfono: </strong
-          >{{
+          <strong>Teléfono: </strong>{{
             selectedWork.phoneOne === 0
               ? "No hay teléfono registrado"
               : selectedWork.phoneOne
           }}
         </p>
-        <p><strong>Descripción: </strong>{{ selectedWork.description }}</p>
+        <span><p><strong>Descripción: </strong></p><pre class="description-field"> {{ selectedWork.description }}</pre></span>
         <p>
           <strong>Dirección: </strong>{{ selectedWork.direction }} #{{
             selectedWork.numberExternal
@@ -101,7 +100,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="close()">
+    <button type="button" class="button-close" (click)="close()">
       CERRAR
     </button>
   </div>

@@ -35,7 +35,6 @@ registerLocaleData(localeEs);
 export class CardCalendarComponent implements OnInit {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
   @Input() eventsInput: any[];
-  @Input() events: CalendarEvent[];
   public allWorkers: [User];
 
   public selectedWork: any;
@@ -52,6 +51,7 @@ export class CardCalendarComponent implements OnInit {
   };
 
   refresh: Subject<any> = new Subject();
+  events: CalendarEvent[] = [];
 
   activeDayIsOpen: boolean = true;
 
@@ -69,7 +69,6 @@ export class CardCalendarComponent implements OnInit {
       data => {
         this.allWorkers = data;
         this.setEvents();
-        console.log('this all workers', this.allWorkers);
       }, err => console.log('err', err));
   }
 
@@ -96,6 +95,5 @@ export class CardCalendarComponent implements OnInit {
     this.modalData = { event, action };
     this.modal.open(this.modalContent, { size: 'lg' });
     this.selectedWork = this.eventsInput.find(event => event._id === this.modalData.event.id);
-    console.log('selected', this.selectedWork);
   }
 }
