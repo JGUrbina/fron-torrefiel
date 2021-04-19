@@ -413,9 +413,18 @@ textarea.area-description:focus{
   .priority-label{
     min-width: 100px !important;
   }
+
+  .scheduling {
+    height: 90% !important;
+  }
+
 }
 
 @media (max-width: 780px) { 
+
+  .scheduling {
+    height: 100% !important;
+  }
 
   .hoverIcon{
     display: none !important;

@@ -4,6 +4,7 @@ import { Service } from '../../../models/service/service';
 import { User } from 'src/app/models/user/user';
 import { UserService } from 'src/app/services/user/user.service';
 import { ServiceService } from 'src/app/services/service/service.service';
+import * as moment from 'moment';
 
 
 @Component({
@@ -15,10 +16,8 @@ export class ScheduleComponent implements OnInit {
 
   @Output () closeWindow = new EventEmitter();
   @Output() serviceToJobs: EventEmitter<Service> = new EventEmitter();
-  @Input() startService: Date;
-  @Input() hourService: any;
   @Input() user: any[];
-  @Input() service: any;
+  @Input() service: Service;
   @Input() worker: any;
 
   public allUsers: User[];
@@ -28,15 +27,24 @@ export class ScheduleComponent implements OnInit {
   public checkeds: any[];
   public startHours: any;
   public startDate: any;
+  public endHours: any;
+  public endDate: any;
   public workersIds: any[];
   public config: any;
+  // alert variables
+  public alertShow: boolean = false;
+  public alertUrlIcon: string;
+  public alertHeader: string;
+  public alertTitle: string;
+  public alertSubtitle: string;
+  private ALERTTIMESHOW: number = 2500;
 
   constructor(
     private userService: UserService,
     private serviceService: ServiceService,
 
   ) {
-    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     this.allUsers = []; 
     this.checkeds = [];
     this.workersIds = [];
@@ -72,17 +80,15 @@ export class ScheduleComponent implements OnInit {
       multipleYearsNavigateBy: 10,
       showMultipleYearsNavigation: false,
       locale: 'es-es',
-      // min:'2017-08-29 15:50',
+      // minDate: new Date().toLocaleDateString(),
+      // min: new Date().toLocaleDateString(),
       // minTime:'2017-08-29 15:50'
     }
-    this.startDate = this.dateChange()
    }
    
 
   ngOnInit(): void {
     this.getAllUser();
-    //console.log('service oninit', this.service)
-    console.log('date oninit', this.startDate)
     this.connectSocket()
   }
 
@@ -120,37 +126,71 @@ export class ScheduleComponent implements OnInit {
   }
   
   setInputs(){
-    this.allUsers.forEach((user, index) => this.checkeds[index] = this.service.workers.includes(user._id) ? true : false)
-    this.startDate = this.startDate == '' ? this.service.startDate.split('T')[0] : ''
-    this.startDate = this.startDate == '' ? this.startDate.split('-').reverse().join('-') : ''
+    this.allUsers.forEach((user, index) => this.checkeds[index] = this.service.workers.includes(user._id) ? true : false);
     this.startHours = this.service.startHours;
-  };
+    this.endHours = this.service.endHours;
+    this.startDate = this.service.startDate === '' || !this.service.startDate ? '' : this.service.startDate.split('T')[0].split('-').reverse().join('-');
+    this.endDate = this.service.endDate === '' || !this.service.endDate ? '' : this.service.endDate.split('T')[0].split('-').reverse().join('-');
+  };/*  */
 
+  showAlert(urlIcon: string, header: string, title: string, subtitle: string, cb: any){
+    this.alertUrlIcon = urlIcon;
+    this.alertHeader = header;
+    this.alertTitle = title;
+    this.alertSubtitle = subtitle;
+    this.alertShow = true;
 
+    setTimeout(() => {
+      this.alertShow = false;
+      cb();
+    }, this.ALERTTIMESHOW);
+  }
 
   scheduleService(){
 
-    this.startDate = this.startDate.split('-').reverse().join('-');
-    console.log('thisdate', this.startDate)
-
     this.checkeds.forEach((check, index) => check ? this.workersIds.push(this.allUsers[index]._id) : null);
-
-    if(this.workersIds.length > 0){
-      const id = this.service._id;
-      const payload = {
-        workers: this.workersIds,
-        startDate: this.startDate,
-        startHours: this.startHours
+    const invalidDates = new Date(this.startDate.split('-').reverse().join('-')).getTime() > new Date(this.endDate.split('-').reverse().join('-')).getTime();
+    const sameDates = new Date(this.startDate.split('-').reverse().join('-')).getTime() === new Date(this.endDate.split('-').reverse().join('-')).getTime();
+    const invalidHours = sameDates && (parseInt(this.endHours.replace(':', '')) <= parseInt(this.startHours.replace(':', '')));
+    console.log('1', parseInt(this.endHours.replace(':', '')), '2', parseInt(this.startHours.replace(':', ''))); 
+    if(invalidDates){
+      const urlIcon = '';
+      const header = `Error`;
+      const title = "La fecha de inicio debe ser anterior que la final";
+      const subtitle = '';
+      this.showAlert(urlIcon, header, title, subtitle, ()=>{});
+      return;
+   }else{
+     if(invalidHours){
+      const urlIcon = '';
+      const header = `Error`;
+      const title = "La hora de inicio debe ser menor que la hora final";
+      const subtitle = '';
+      this.showAlert(urlIcon, header, title, subtitle, ()=>{});
+      return;
+     }else {
+      if(this.workersIds.length > 0){
+        const id = this.service._id;
+        const payload = {
+          workers: this.workersIds,
+          startDate: this.startDate.split('-').reverse().join('-'),
+          startHours: this.startHours,
+          endDate: this.endDate.split('-').reverse().join('-'),
+          endHours: this.endHours
+        };
+        
+        this.serviceService.scheduleService(id, payload)
+          .subscribe(data =>{
+            this.serviceService.createNotification(this.workersIds);
+            this.serviceToJobs.emit(data.services);
+            const urlIcon = '../../../assets/svg_2/ok.svg';
+            const header = `Servicio agendado`;
+            const title = '¡Servicio agendado exitosamente!';
+            const subtitle = '';
+            this.showAlert(urlIcon, header, title, subtitle, () => this.emitEvent());
+          }, err => console.log('error', err));
       };
-      
-      this.serviceService.scheduleService(id, payload)
-        .subscribe(data =>{
-          this.serviceService.createNotification(this.workersIds)
-          console.log('respuesta', data);
-          this.serviceToJobs.emit(data.services);
-        }, err => console.log('error', err));
-    };
-
-    this.startDate = this.startDate.split('-').reverse().join('-');
+     }
+   };
   };
 };

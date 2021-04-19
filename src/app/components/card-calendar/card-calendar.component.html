@@ -91,7 +91,7 @@
         </p>
         <span><p><strong>Descripción: </strong></p><pre class="description-field"> {{ selectedWork.description }}</pre></span>
         <p>
-          <strong>Dirección: </strong>{{ selectedWork.direction }} #{{
+          <strong>Dirección: </strong>{{ selectedWork.direction }} {{selectedWork.numberExternal && '#'}} {{
             selectedWork.numberExternal
           }}
           {{ selectedWork.province }} {{ selectedWork.municipality }}

@@ -9,14 +9,13 @@ import {
   OnInit
 } from '@angular/core';
 import {
-  addHours,
+  addHours, addMinutes,
 } from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
   CalendarView,
-  DateAdapter
 } from 'angular-calendar';
 
 import { registerLocaleData } from '@angular/common';
@@ -77,11 +76,16 @@ export class CardCalendarComponent implements OnInit {
       worker.works.forEach(work => {
         const tmpService = this.eventsInput.filter(event => event._id === work)[0];
         if (!!tmpService) {
-          const tmpHours = Number(tmpService.startHours.split(':')[0]);
+          const [startHours, startMinutes] = tmpService.startHours.split(':').map(value => Number(value));
+          const [endHours, endMinutes] = tmpService.endHours.split(':').map(value => Number(value));
+          const start = addMinutes(addHours(new Date(tmpService.startDate.replace('.000Z', '')), startHours), startMinutes);
+          const end = tmpService.endDate ? addMinutes(addHours(new Date(tmpService.endDate.replace('.000Z', '')), endHours), endMinutes) : addHours(start, 1);
+          const title = `${tmpService.startHours} ${tmpService.endHours}  - ${worker.name} - ${tmpService.direction} ${tmpService.numberExternal && '#'} ${tmpService.numberExternal} ${tmpService.province} ${tmpService.municipality}`;
           const tmpEvent = {
-            start: addHours(new Date(tmpService.startDate.replace('.000Z', '')), tmpHours),
-            title: `${tmpService.startHours} ${worker.name}`,
-            color: { primary: '#cd2a00;', secondary: worker.color },
+            start,
+            end,
+            title,
+            color: { primary: '#fff', secondary: worker.color },
             id: tmpService._id
           }
           this.events.push(tmpEvent);
@@ -95,5 +99,6 @@ export class CardCalendarComponent implements OnInit {
     this.modalData = { event, action };
     this.modal.open(this.modalContent, { size: 'lg' });
     this.selectedWork = this.eventsInput.find(event => event._id === this.modalData.event.id);
+    console.log({selectedWork: this.selectedWork})
   }
 }

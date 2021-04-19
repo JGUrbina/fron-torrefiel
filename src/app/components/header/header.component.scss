@@ -101,7 +101,7 @@ header{
   right: 50px;
   background-color: white;
   padding: 10px;
-  width: 655px;
+  width: 90%;
   z-index: 99;
   border-radius: 5px;
 }
@@ -162,18 +162,17 @@ header{
     width: 37px !important;
     height: 36px !important;
   }
-  
-.burbujaNotificacion{
-  width: 15px;
-  height: 15px;
-  font-size: .6rem;
-}
+    
+  .burbujaNotificacion{
+    width: 15px;
+    height: 15px;
+    font-size: .6rem;
+  }
 
-.show__calendar, .show__notifications{
-  width: 60%;
-}
-
-
+  .show__calendar, .show__notifications{
+    width: 90%;
+    right: 5%;
+  }
 
 }
 

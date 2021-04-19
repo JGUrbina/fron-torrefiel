@@ -59,7 +59,7 @@ export class CreateServicesComponent implements OnInit {
     public router: Router,
   ) {
     // tslint:disable-next-line: max-line-length
-    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    this.newService = new Service(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     // tslint:disable-next-line: max-line-length
     this.newClient = new Client(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     this.optionsStatus = this.dropDownOptions.getStatus();
