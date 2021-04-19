@@ -77,10 +77,11 @@ export class CardCalendarComponent implements OnInit {
         const tmpService = this.eventsInput.filter(event => event._id === work)[0];
         if (!!tmpService) {
           const [startHours, startMinutes] = tmpService.startHours.split(':').map(value => Number(value));
-          const [endHours, endMinutes] = tmpService.endHours.split(':').map(value => Number(value));
+          const [endHours, endMinutes] = tmpService.endHours ? tmpService.endHours.split(':').map(value => Number(value)) : [startHours === 23 ? 0 : startHours+1, startMinutes];
           const start = addMinutes(addHours(new Date(tmpService.startDate.replace('.000Z', '')), startHours), startMinutes);
           const end = tmpService.endDate ? addMinutes(addHours(new Date(tmpService.endDate.replace('.000Z', '')), endHours), endMinutes) : addHours(start, 1);
-          const title = `${tmpService.startHours} ${tmpService.endHours}  - ${worker.name} - ${tmpService.direction} ${tmpService.numberExternal && '#'} ${tmpService.numberExternal} ${tmpService.province} ${tmpService.municipality}`;
+          const newFixedEndHours = `${endHours < 10 ? '0' : '' + endHours.toString()}:${endMinutes === 0 ? '00' : endMinutes < 10 ? '0' : '' + endMinutes.toString()}`
+          const title = `${tmpService.startHours} ${newFixedEndHours} - ${worker.name} - ${tmpService.direction} ${tmpService.numberExternal && '#'} ${tmpService.numberExternal} ${tmpService.province} ${tmpService.municipality}`;
           const tmpEvent = {
             start,
             end,
@@ -99,6 +100,5 @@ export class CardCalendarComponent implements OnInit {
     this.modalData = { event, action };
     this.modal.open(this.modalContent, { size: 'lg' });
     this.selectedWork = this.eventsInput.find(event => event._id === this.modalData.event.id);
-    console.log({selectedWork: this.selectedWork})
   }
 }

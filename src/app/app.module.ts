@@ -8,7 +8,6 @@ import { routing, appRoutingProviders } from './app.routing';
 import { MatIconModule } from '@angular/material/icon';
 import { SocketIoModule } from 'ngx-socket-io';
 import { ChartsModule } from 'ng2-charts';
-import { FullCalendarModule } from '@fullcalendar/angular';
 import { DataTablesModule } from 'angular-datatables';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { DpDatePickerModule } from 'ng2-date-picker';
@@ -142,7 +141,6 @@ Ng2SearchPipeModule,
     MatIconModule,
     SocketIoModule.forRoot(SocketConfig),
     ChartsModule,
-    FullCalendarModule,
     ReactiveFormsModule,
     DataTablesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),

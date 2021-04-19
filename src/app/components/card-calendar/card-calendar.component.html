@@ -78,6 +78,7 @@
     <div>
       <h4 class="modal-title orange-tf">Detalles:</h4>
       <div class="modal-text-container">
+        <div *ngIf="selectedWork.priority" class="priority-div"><span class="priority-label">**URGENTE**</span></div>
         <p>
           <strong>Nombre: </strong>{{ selectedWork.name }}
           {{ selectedWork.lastName }} {{ selectedWork.motherLastName }}
@@ -89,13 +90,13 @@
               : selectedWork.phoneOne
           }}
         </p>
-        <span><p><strong>Descripción: </strong></p><pre class="description-field"> {{ selectedWork.description }}</pre></span>
         <p>
-          <strong>Dirección: </strong>{{ selectedWork.direction }} {{selectedWork.numberExternal && '#'}} {{
-            selectedWork.numberExternal
+          <strong>Dirección: </strong>{{ selectedWork.direction || '' }} {{selectedWork.numberExternal && '#'}} {{
+            selectedWork.numberExternal || ''
           }}
-          {{ selectedWork.province }} {{ selectedWork.municipality }}
+          {{ selectedWork.province || '' }} {{ selectedWork.municipality || '' }}
         </p>
+        <span><p><strong>Descripción: </strong></p><pre class="description-field"> {{ selectedWork.description }}</pre></span>
       </div>
     </div>
   </div>
