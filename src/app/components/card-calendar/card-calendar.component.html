@@ -1,32 +1,108 @@
-<div class='app'>
-
-  <div class='app-calendar' *ngIf="calendarVisible">
-    <full-calendar
-      #calendar
-      defaultView="dayGridDay"
-      [header]="{
-        left: 'prev',
-        center: 'title',
-        right: 'next'
-      }"
-      [locale]="calendarLocale"
-      [plugins]="calendarPlugins"
-      [weekends]="calendarWeekends"
-      [events]="customEvents"
-      [allDaySlot]="allDaySlot"
-      (eventClick)="changeShowEvent($event)"
-
-    ></full-calendar>
-    <div class="show__event" *ngIf="showEvent">
-      <div class="d-flex flex-column justify-content-between w-90">
-        <figure class="icon exit" (click)="showEvent = false">
-          <app-create-icon [class]="'color-red'" [name]="'cancel'" [url]="'../../../assets/svg_2/cancelar.svg'"></app-create-icon>
+<div>
+  <div class="calendar-header">
+    <div class="buttons-day">
+      <div mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
+        <figure class="icon">
+          <app-create-icon
+            [class]="'color-white'"
+            [name]="'left'"
+            [url]="'../../../assets/svg_2/arrow_left.svg'"
+          ></app-create-icon>
         </figure>
-        <p>Cliente: {{ selectedEvent.name }} {{ selectedEvent.lastName }} {{ selectedEvent.motherLastName }}</p>
-        <p>Teléfono(s): {{ selectedEvent.phoneOne }}</p>
-        <p class="overflow-auto" style="overflow-y: auto; min-height: 120px; background-color: transparent; border: none; color: white;">Descripción: {{ selectedEvent.description }}</p>
-        <p>Dirección: {{ selectedEvent.direction }} #{{ selectedEvent.numberExternal }} {{ selectedEvent.province }} {{ selectedEvent.municipality }}</p>
+      </div>
+      <div class="today-div">
+        <div mwlCalendarToday [(viewDate)]="viewDate">
+          <div class="today-button">Hoy</div>
+        </div>
+      </div>
+      <div mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
+        <figure class="icon">
+          <app-create-icon
+            [class]="'color-white'"
+            [name]="'right'"
+            [url]="'../../../assets/svg_2/arrow_right.svg'"
+          ></app-create-icon>
+        </figure>
+      </div>
+    </div>
+    <!-- <h3>{{ viewDate | calendarDate: view + "ViewTitle":"Es" }}</h3> -->
+    <h3>
+      {{
+        viewDate
+          .toLocaleDateString("es-ES", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+          })
+          .charAt(0)
+          .toUpperCase() +
+          viewDate
+            .toLocaleDateString("es-ES", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric"
+            })
+            .slice(1)
+      }}
+    </h3>
+  </div>
+</div>
+<div>
+  <mwl-calendar-day-view
+    locale="es"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+  >
+  </mwl-calendar-day-view>
+</div>
+
+<ng-template #modalContent let-close="close">
+  <div class="modal-header">
+    <h3 class="modal-title orange-tf">Servicio agendado</h3>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <h4 class="modal-title orange-tf">Cliente:</h4>
+      <div class="modal-text-container">
+        {{ selectedWork.client.name }} {{ selectedWork.client.lastName }}
+        {{ selectedWork.client.motherLastName }}
+      </div>
+    </div>
+    <div>
+      <h4 class="modal-title orange-tf">Detalles:</h4>
+      <div class="modal-text-container">
+        <div *ngIf="selectedWork.priority" class="priority-div"><span class="priority-label">**URGENTE**</span></div>
+        <p>
+          <strong>Nombre: </strong>{{ selectedWork.name }}
+          {{ selectedWork.lastName }} {{ selectedWork.motherLastName }}
+        </p>
+        <p>
+          <strong>Teléfono: </strong>{{
+            selectedWork.phoneOne === 0
+              ? "No hay teléfono registrado"
+              : selectedWork.phoneOne
+          }}
+        </p>
+        <p>
+          <strong>Dirección: </strong>{{ selectedWork.direction || '' }} {{selectedWork.numberExternal && '#'}} {{
+            selectedWork.numberExternal || ''
+          }}
+          {{ selectedWork.province || '' }} {{ selectedWork.municipality || '' }}
+        </p>
+        <span><p><strong>Descripción: </strong></p><pre class="description-field"> {{ selectedWork.description }}</pre></span>
       </div>
     </div>
   </div>
-</div>
+  <div class="modal-footer">
+    <button type="button" class="button-close" (click)="close()">
+      CERRAR
+    </button>
+  </div>
+</ng-template>

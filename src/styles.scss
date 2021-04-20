@@ -4,10 +4,6 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
-
-@import '~@fullcalendar/core/main.css';
-@import '~@fullcalendar/daygrid/main.css';
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -59,4 +55,24 @@ h1{
 
 .fc .fc-row .fc-content-skeleton td{
   padding: 4px 12px
+}
+
+
+.dp-calendar-week > *, .dp-weekdays > * {
+  height: 35px !important;
+  width: 36px !important;
+}
+
+.cal-event {
+  display: flex;
+  justify-content: center !important;
+  text-align: center !important;
+  flex-wrap: wrap !important;
+  white-space: normal !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+}
+
+.cal-event-title {
+  mix-blend-mode: difference;
 }

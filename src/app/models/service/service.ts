@@ -14,6 +14,8 @@ export class Service {
   public typeIva: number;
   public startDate: any;
   public startHours: any;
+  public endDate: any;
+  public endHours: any;
   public finalized: any;
   public direction: string;
   public numberExternal: string;
@@ -45,6 +47,8 @@ export class Service {
     priority: string,
     startDate: any,
     startHours: any,
+    endDate: any,
+    endHours: any,
     workers: any,
     client: any,
     direction: string,
@@ -76,6 +80,8 @@ export class Service {
     this.amount = amount;
     this.startDate = startDate;
     this.startHours = startHours;
+    this.endDate = endDate;
+    this.endHours = endHours;
     this.workers = workers;
     this.direction = direction;
     this.province = province;

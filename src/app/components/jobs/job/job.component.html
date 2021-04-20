@@ -113,7 +113,7 @@
         <app-bill [clientData]="clientData" [deliveryNoteData]="job" (closeWindow)="close($event)" style="width: 90%;"></app-bill>
       </div>
       <div class="scheduling" *ngIf="sectionMenuShow === CALENDAR">
-        <app-schedule (serviceToJobs)="receiveDataFromChild($event)" class="w-100" (closeWindow)="close($event)" [startService]="job.startDate" [hourService]="job.startHours" [service]="job" [worker]="worker"></app-schedule>
+        <app-schedule (serviceToJobs)="receiveDataFromChild($event)" class="w-100" (closeWindow)="close($event)" [service]="job" [worker]="worker"></app-schedule>
       </div>
       <div class="chat" *ngIf="sectionMenuShow === CHAT">
         <app-chat class="w-100" (closeWindow)="close($event)"></app-chat>

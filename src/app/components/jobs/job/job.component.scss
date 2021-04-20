@@ -201,7 +201,8 @@
       .scheduling {
         width: 90%;
         margin: 5% auto auto auto;
-        height: 80%;
+        min-height: 80% !important;
+        height: auto !important;
         border-radius: 6px;
       }
     }
@@ -413,10 +414,14 @@ textarea.area-description:focus{
   .priority-label{
     min-width: 100px !important;
   }
+
+  .scheduling {
+    height: auto !important;
+  }
+
 }
 
 @media (max-width: 780px) { 
-
   .hoverIcon{
     display: none !important;
   }

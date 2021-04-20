@@ -1,4 +1,5 @@
 <section class="sectionCalendar">
+  <app-alert class="alertCenter" [alertUrlIcon]="alertUrlIcon" [alertShow]="alertShow" [alertHeader]="alertHeader" [alertTitle]="alertTitle" [alertSubtitle]="alertSubtitle"></app-alert>
   <header class="sectionCalendar__icons">
     <figure class="icon exit" (click)="emitEvent()">
       <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'">
@@ -7,17 +8,35 @@
   </header>
   <main class="sectionCalendar__body">
     <form (submit)="scheduleService()">
-      <div class="input__contain dateContain margin">
-        <label for="">Fecha</label><br>
-        <dp-date-picker theme="dp-material" [(ngModel)]="startDate" [config]='config'
-          [placeholder]="'dd/mm/yyyy'" #datePicker [ngModelOptions]="{standalone: true}">
-        </dp-date-picker>
-        <!-- <input type="date" name="date" [(ngModel)]="startDate" placeholder="00/00/0000" required> -->
-      </div>
+      <div class="inputs_container">
+        <div class="inputs1">
+          <div class="input__contain dateContain margin">
+            <label for="">Fecha de inicio</label><br>
+            <dp-date-picker theme="dp-material" [(ngModel)]="startDate" [config]='config'
+              [placeholder]="'dd/mm/yyyy'" #datePicker [ngModelOptions]="{standalone: true}">
+            </dp-date-picker>
+            <!-- <input type="date" name="date" [(ngModel)]="startDate" placeholder="00/00/0000" required> -->
+          </div>
+          <div class="input__contain margin">
+            <label for="">Hora de inicio</label><br>
+            <input type="time" placeholder="00:00" name="startHours" [(ngModel)]="startHours" required>
+          </div>
+        </div>
 
-      <div class="input__contain margin">
-        <label for="">Hora</label><br>
-        <input type="time" placeholder="00:00" name="hour" [(ngModel)]="startHours" required>
+        <div class="inputs2">
+          <div class="input__contain dateContain margin">
+            <label for="">Fecha final</label><br>
+            <dp-date-picker theme="dp-material" [(ngModel)]="endDate" [config]='config'
+              [placeholder]="'dd/mm/yyyy'" #datePicker [ngModelOptions]="{standalone: true}">
+            </dp-date-picker>
+            <!-- <input type="date" name="date" [(ngModel)]="startDate" placeholder="00/00/0000" required> -->
+          </div>
+          <div class="input__contain margin">
+            <label for="">Hora final</label><br>
+            <input type="time" placeholder="00:00" name="endHours" [(ngModel)]="endHours" required>
+          </div>
+        </div>
+
       </div>
       <div class="margin">
         <p>Asignar trabajador(es)</p>
@@ -29,7 +48,7 @@
         </div>
       </div>
       <div class="buttons w-50 d-flex align-items-center margin">
-        <button class="buttonSave" type="submit" [disabled]="!startHours || !startDate">
+        <button class="buttonSave" type="submit" [disabled]="!startHours || !startDate || !endHours || !endDate || checkeds.length === 0" [ngClass]="{'buttonSave2': !startHours || !startDate || !endHours || !endDate}">
           Agendar<br>
         </button>
       </div>

@@ -120,6 +120,9 @@ export class JobComponent implements OnInit {
   }
   receiveDataFromChild(data) {
     this.serviceToViews.emit(data);
+    const updatedJob = data.find(job => job._id === this.job._id);
+    if(!!updatedJob)
+      this.job = updatedJob;
 }
   getDate(date: any){
     // console.log('fecha------------------>', date)
@@ -128,8 +131,6 @@ export class JobComponent implements OnInit {
   }
 
   requestJobChanges(){
-    
-    console.log(this.job)
     this.serviceService.updateService(this.job._id, this.job).subscribe(
       data => {
        
