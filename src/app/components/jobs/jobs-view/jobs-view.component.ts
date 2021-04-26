@@ -66,7 +66,9 @@ export class JobsViewComponent implements OnInit, OnChanges {
             !(
               job.description.toLowerCase().includes(filter.filter.toLowerCase()) ||
               job.client.name.toLowerCase().includes(filter.filter.toLowerCase()) ||
+              job.client.email?.toLowerCase().includes(filter.filter.toLowerCase()) ||
               job.name.toLowerCase().includes(filter.filter.toLowerCase()) ||
+              job.motherLastName.toLowerCase().includes(filter.filter.toLowerCase()) ||
               job.direction.toLowerCase().includes(filter.filter.toLowerCase()) ||
               job.activities.includes(filter.filter) ||
               job.email.toLowerCase().includes(filter.filter.toLowerCase()) ||
