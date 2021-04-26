@@ -32,7 +32,9 @@ export class PdfService {
         scale: 2,
         dpi: 300,
         letterRendering: true,
-        useCORS: true
+        useCORS: true,
+        scrollX: 0,
+        scrollY: 0
       },
       jsPDF: {unit: 'in', format: 'letter', orientation},
     };
