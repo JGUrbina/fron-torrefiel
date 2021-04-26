@@ -64,23 +64,23 @@ export class JobsViewComponent implements OnInit, OnChanges {
           if(
             filter.type === 'keywords' &&
             !(
-              job.description.toLowerCase().includes(filter.filter) ||
-              job.client.name.toLowerCase().includes(filter.filter) ||
-              job.name.toLowerCase().includes(filter.filter) ||
-              job.direction.toLowerCase().includes(filter.filter) ||
+              job.description.toLowerCase().includes(filter.filter.toLowerCase()) ||
+              job.client.name.toLowerCase().includes(filter.filter.toLowerCase()) ||
+              job.name.toLowerCase().includes(filter.filter.toLowerCase()) ||
+              job.direction.toLowerCase().includes(filter.filter.toLowerCase()) ||
               job.activities.includes(filter.filter) ||
-              job.email.toLowerCase().includes(filter.filter) ||
-              job.municipality.toLowerCase().includes(filter.filter) ||
-              job.numBill.toString().includes(filter.filter) ||
+              job.email.toLowerCase().includes(filter.filter.toLowerCase()) ||
+              job.municipality.toLowerCase().includes(filter.filter.toLowerCase()) ||
+              job.numBill.toString().toLowerCase().includes(filter.filter.toLowerCase()) ||
               job.numDeliveryNote.includes(filter.filter) ||
-              job.numService.toString().includes(filter.filter) ||
+              job.numService.toString().toLowerCase().includes(filter.filter.toLowerCase()) ||
               job.numberExternal.includes(filter.filter) ||
               job.numberInternal.includes(filter.filter) ||
-              job.phoneOne.toString().includes(filter.filter) ||
-              job.postalCode.toString().includes(filter.filter) ||
-              job.province.toLowerCase().includes(filter.filter) ||
-              job.status.toLowerCase().includes(filter.filter) ||
-              job.client.nif?.toLowerCase().includes(filter.filter)
+              job.phoneOne.toString().toLowerCase().includes(filter.filter.toLowerCase()) ||
+              job.postalCode.toString().toLowerCase().includes(filter.filter.toLowerCase()) ||
+              job.province.toLowerCase().includes(filter.filter.toLowerCase()) ||
+              job.status.toLowerCase().includes(filter.filter.toLowerCase()) ||
+              job.client.nif?.toLowerCase().includes(filter.filter.toLowerCase())
             )
           ) {
             didMatch = false;
