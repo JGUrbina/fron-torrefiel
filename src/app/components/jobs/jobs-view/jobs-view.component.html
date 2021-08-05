@@ -1,5 +1,12 @@
-<div *ngFor="let job of filteredJobs">
+<div *ngFor="let job of filteredJobs | paginate: { id: 'job',
+itemsPerPage: 10,
+currentPage: page,
+totalItems: totalJobs }">
   <app-job (serviceToViews)="updateJobsFromChilds($event)" [job]="job"></app-job>
+</div>
+<div *ngIf="!filteredJobs || (filteredJobs.length > 10)">
+  <pagination-controls (pageChange)="page = $event" id="job" previousLabel="Anterior"
+  nextLabel="Siguiente"></pagination-controls>
 </div>
 <div class="no-data" *ngIf="!allJobs || allJobs.length === 0">
   <div class="text-center" style="float: bottom;">

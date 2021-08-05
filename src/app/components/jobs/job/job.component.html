@@ -7,7 +7,10 @@
           <input (focusout)="submitJobBill()" class="beetween-index info code input-bill" *ngIf="edit.bill === true" [(ngModel)]="job.numBill">
         <span class="info date">{{getDate(job.startDate) | date: 'dd/MM/yyyy'}} - {{job.startHours}}</span>
         <!-- <span class="info date">{{job.startDate}} - {{job.startHours}}</span> -->
+       
+        
       </div>
+      
       <div class="upContain">
         <span  class="info hours box-editing" >
           Cliente que contrata el servicio: {{ job.client.name }}
@@ -52,14 +55,14 @@
         <span class="info box-editing stage f-bold" *ngIf="edit.status === false" (click)="edit.status = true">
           {{job.status}}
         </span>
-        <select (focusout)="submitJobStatus()" class="info stage f-bold beetween-index" name="status" [(ngModel)]="job.status" required *ngIf="edit.status === true">
+        <select (change)="submitJobStatus()" class="info stage f-bold beetween-index" name="status" [(ngModel)]="job.status" required *ngIf="edit.status === true">
           <option value="">Selecciona un estado</option>
           <option *ngFor="let option of optionsStatus" [value]="option">{{option}}</option>
         </select>
         <span class="info box-editing job-iva f-bold" *ngIf="edit.iva === false" (click)="edit.iva = true">
           {{ job.typeIva === 10 ? 'Reducido' : 'Normal' }}
         </span>
-        <select (focusout)="submitJobIva()" class="info job-iva f-bold beetween-index" name="status" [(ngModel)]="job.typeIva" required *ngIf="edit.iva === true">
+        <select (change)="submitJobIva()" class="info job-iva f-bold beetween-index" name="status" [(ngModel)]="job.typeIva" required *ngIf="edit.iva === true">
           <option value="10">Reducido</option>
           <option value="21">Normal</option>
         </select>
@@ -165,5 +168,69 @@
         Nota interna
       </div>
     </figure>
+    <div class="clientAndStatus">
+      <figure (click)="showHistoryService(job, HISTORYSERVICE)" class="description__icons--icon">
+        <app-create-icon [class]="'color-gray bg-white button'" [name]="'history'" [url]="'../../../../assets/svg_2/history.svg'"></app-create-icon>
+      </figure>
+    </div>
+  </div>
+</div>
+<!-- Borrar servicio de cliente -->
+<div class="history-service-container" *ngIf="showView === HISTORYSERVICE">
+  <figure class="exit" (click)="hideServiceOptions()">
+    <app-create-icon [class]="'color-white'" [name]="'cancel'" [url]="'../../../../assets/svg_2/cancelar.svg'">
+    </app-create-icon>
+  </figure>
+  <div class="history-service-main">
+    <div class="history-titles">
+      <div>
+        <p>Modificado por</p>
+      </div>
+      <div>
+        <p>Fecha asignada</p>
+      </div>
+      <div>
+        <p>Descripción</p>
+      </div>
+      <div>
+        <p>Estado</p>
+      </div>
+      <div>
+        <p>Nota interna</p>
+      </div>
+      <div>
+        <p>Actividades</p>
+      </div>
+      <div>
+        <p>Trabajadores asignados</p>
+      </div>
+    </div>
+    <hr>
+    <div class="history-data-container">
+      <div class="history-data" *ngFor="let history of selectedHistory">
+        <div>
+          <p>{{history.createdAt.split('T')[0].split('-').reverse().join('/')}} {{history.createdAt.split('T')[1].split('.')[0].substring(0, 5)}}</p>
+          <p>{{history.userName}}</p>
+        </div>
+        <div>
+          <p>{{history.startDate}}</p>
+        </div>
+        <div>
+          <p>{{history.description}}</p>
+        </div>
+        <div>
+          <p>{{history.status}}</p>
+        </div>
+        <div>
+          <p>{{history.lastNote}}</p>
+        </div>
+        <div>
+          <p *ngFor="let activity of history.activities">{{activity}}</p>
+        </div>
+        <div>
+          <p>{{history.assignedWorkers}}</p>
+        </div>
+    </div>
+    </div>
   </div>
 </div>

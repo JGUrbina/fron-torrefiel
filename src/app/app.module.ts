@@ -12,6 +12,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { DpDatePickerModule } from 'ng2-date-picker';
 import { CKEditorModule } from 'ng2-ckeditor';
+import {NgxPaginationModule} from 'ngx-pagination'; 
 
 // Search Module
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -77,6 +78,7 @@ import { CalendarModule } from 'angular-calendar';
 import { DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -128,8 +130,10 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     LineChartComponent,
     SearchComponent,
     AddNewComponent,
+    
   ],
   imports: [
+    NgxPaginationModule,
 Ng2SearchPipeModule,
     BrowserModule,
     NgbModule,
