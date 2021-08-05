@@ -10,6 +10,7 @@ import { ServiceService } from 'src/app/services/service/service.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import { CKEditorModule } from 'ng2-ckeditor';
+import { HistoryService } from '../../../services/history/history.service';
 
 @Component({
   selector: 'app-job',
@@ -26,6 +27,8 @@ export class JobComponent implements OnInit {
   @ViewChild(ScheduleComponent ) child : ScheduleComponent ;
   @ViewChild(CKEditorModule ) ckEditor : CKEditorModule ;
 
+  
+
   public optionsActivities: string[];
   public optionsStatus: string[];
   public optionsProvince: string[];
@@ -35,6 +38,12 @@ export class JobComponent implements OnInit {
   public nameWorker: string[] = [];
   public worker: string[] = [];
   public clientWhoContractsTheService: string;
+  public show: string = '';
+  public showView: string = '';
+  public OPTIONS: string = 'options';
+  public selectedService: Service;
+  public selectedHistory: any[];
+  public HISTORYSERVICE: string = 'history service';
 
   //edits
   public edit = {
@@ -81,11 +90,12 @@ export class JobComponent implements OnInit {
   public dropdownFlag = 0;
 
   constructor(
-    private clientService: ClientService,
-    private userService: UserService,
+    // private clientService: ClientService,
+    // private userService: UserService,
     private typeDateService: TypeDateService,
     private dropDownOptions: DropDownOptionsService,
-    private serviceService: ServiceService
+    private serviceService: ServiceService,
+    private historyService: HistoryService
   ) {
     this.optionsActivities = this.dropDownOptions.getActivities();
     this.optionsStatus = this.dropDownOptions.getStatus();
@@ -141,6 +151,7 @@ export class JobComponent implements OnInit {
   }
 
   submitJobStatus(){
+    
     this.requestJobChanges();
     this.edit.status = false;
   }
@@ -217,4 +228,25 @@ export class JobComponent implements OnInit {
     this.requestJobChanges();
     this.edit.iva = false;
   }
+  hideServiceOptions() {
+    this.show = this.OPTIONS;
+    this.showView = "service";
+    
+  }
+
+    // History ----------------
+
+    showHistoryService(service, view: string){
+      console.log('click click')
+      this.show = this.OPTIONS;
+      this.showView = view;
+      this.selectedService = service;
+      // console.log('service selected', this.selectedService);
+      this.historyService.getHistoryPerService(this.selectedService._id).subscribe(
+        data => {
+          this.selectedHistory = data.history;
+          // console.log('data de history', this.selectedHistory)
+        }, err => console.log('err', err)
+      )
+    }
 }

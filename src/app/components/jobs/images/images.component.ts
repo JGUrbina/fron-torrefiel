@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter} from '@angular/core';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { ServiceService } from '../../../services/service/service.service'
 import { DomSanitizer } from '@angular/platform-browser'
 

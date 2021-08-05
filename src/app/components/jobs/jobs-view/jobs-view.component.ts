@@ -1,15 +1,18 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, NgModule, OnInit, ViewChild, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Service } from '../../../models/service/service';
 import { ServiceService } from 'src/app/services/service/service.service';
 import { JobComponent } from '../job/job.component';
+
+// cosos
 
 @Component({
   selector: 'app-jobs-view',
   templateUrl: './jobs-view.component.html',
   styleUrls: ['./jobs-view.component.scss']
 })
+
 export class JobsViewComponent implements OnInit, OnChanges {
-  
+
   @Input() searchFilters: { type: string, filter: string }[];
   @Output() years = new EventEmitter<any>();
 
@@ -17,9 +20,16 @@ export class JobsViewComponent implements OnInit, OnChanges {
 
   public allJobs: Service[];
   public filteredJobs: Service[];
+  public totalJobs: number;
+  public page: number;
+  
+
 
   constructor(
-    private serviceService: ServiceService,
+    private serviceService: ServiceService
+    
+
+
   ) { }
 
   ngOnInit(): void {
@@ -27,22 +37,24 @@ export class JobsViewComponent implements OnInit, OnChanges {
     this.searchFilters = [];
   }
 
-  ngOnChanges(): void{
+  ngOnChanges(): void {
     this.handleFilters();
   }
 
-  updateJobsFromChilds(data){
+  updateJobsFromChilds(data) {
     data.reverse();
     this.allJobs = data;
   }
 
-  getDataService(): void{
+  getDataService(): void {
+    console.log('aquí')
     this.serviceService.getServices().subscribe(
       (data) => {
         data.services.reverse();
         this.allJobs = data.services;
-        console.log('all jobs', this.allJobs);
+        console.log('all jobs');
         this.filteredJobs = this.allJobs;
+        this.totalJobs = this.allJobs.length;
         this.years.emit(data.years);
       },
       (err) => {
@@ -51,68 +63,82 @@ export class JobsViewComponent implements OnInit, OnChanges {
     );
   }
 
-  handleFilters(): void{
-    if(!this.searchFilters) return;
+
+
+
+
+
+  // filters ----------------------
+
+  fullName(job: any): string {
+    return `${job.name ? job.name : ''} ${job.lastName ? job.lastName : '' } ${job.motherLastName ? job.motherLastName : ''}`;
+  }
+  fullDirection(job: any): string{
+    return `${job.direction ? job.direction : ''} ${job.numberExternal ? job.numberExternal : ''} ${job.numberInternal ? job.numberInternal : ''} ${job.province ? job.province : ''} ${job.municipality ? job.municipality : ''}`
+  }
+
+  handleFilters(): void {
+    if (!this.searchFilters) return;
     const validFilters = this.searchFilters.filter(filter => filter.filter.length > 0);
-    console.log({validFilters});
-    if(validFilters.length === 0) {
+    console.log({ validFilters });
+    if (validFilters.length === 0) {
       this.filteredJobs = this.allJobs;
-    }else {
+    } else {
+    
+    //  console.log(this.allJobs[0])
+
       this.filteredJobs = this.allJobs.filter(job => {
+
         let didMatch = true;
-        validFilters.forEach(filter => {
-          if(
-            filter.type === 'keywords' &&
-            !(
-              job.description.toLowerCase().includes(filter.filter.toLowerCase()) ||
-              job.client.name.toLowerCase().includes(filter.filter.toLowerCase()) ||
-              job.client.email?.toLowerCase().includes(filter.filter.toLowerCase()) ||
-              job.name.toLowerCase().includes(filter.filter.toLowerCase()) ||
-              job.motherLastName.toLowerCase().includes(filter.filter.toLowerCase()) ||
-              job.direction.toLowerCase().includes(filter.filter.toLowerCase()) ||
-              job.activities.includes(filter.filter) ||
-              job.email.toLowerCase().includes(filter.filter.toLowerCase()) ||
-              job.municipality.toLowerCase().includes(filter.filter.toLowerCase()) ||
-              job.numBill.toString().toLowerCase().includes(filter.filter.toLowerCase()) ||
-              job.numDeliveryNote.includes(filter.filter) ||
-              job.numService.toString().toLowerCase().includes(filter.filter.toLowerCase()) ||
-              job.numberExternal.includes(filter.filter) ||
-              job.numberInternal.includes(filter.filter) ||
-              job.phoneOne.toString().toLowerCase().includes(filter.filter.toLowerCase()) ||
-              job.postalCode.toString().toLowerCase().includes(filter.filter.toLowerCase()) ||
-              job.province.toLowerCase().includes(filter.filter.toLowerCase()) ||
-              job.status.toLowerCase().includes(filter.filter.toLowerCase()) ||
-              job.client.nif?.toLowerCase().includes(filter.filter.toLowerCase())
-            )
+        validFilters.map(filter => {
+          if (filter.type === 'keywords') {
+            let fullName = this.fullName(job);
+            let fullDirection = this.fullDirection(job)
+            if (
+              !(job.description.replace(/ /g, "").toLowerCase().includes(filter.filter?.replace(/ /g, "").toLowerCase()) ||
+                job.client?.name?.replace(/ /g, "").toLowerCase().includes(filter.filter?.replace(/ /g, "").toLowerCase()) ||
+                fullName.replace(/ /g, "").toLowerCase().includes(filter.filter?.replace(/ /g, "").toLowerCase()) ||
+                fullDirection.replace(/ /g, "").toLowerCase().includes(filter.filter?.replace(/ /g, "").toLowerCase()) ||
+                job.activities.includes(filter.filter?.toLowerCase()) ||
+                job.email.replace(/ /g, "").toLowerCase().includes(filter.filter?.replace(/ /g, "").toLowerCase()) ||
+                job.numBill?.toString().replace(/ /g, "").includes(filter.filter?.replace(/ /g, "").toLowerCase()) ||
+                job.numDeliveryNote.replace(/ /g, "").includes(filter.filter?.replace(/ /g, "").toLowerCase()) ||
+                job.numService?.toString().replace(/ /g, "").includes(filter.filter?.replace(/ /g, "").toLowerCase()) ||
+                job.phoneOne?.toString().replace(/ /g, "").includes(filter.filter?.replace(/ /g, "").toLowerCase()) ||
+                job.postalCode.toString().replace(/ /g, "").includes(filter.filter?.replace(/ /g, "").toLowerCase()) ||
+                job.status.replace(/ /g, "").toLowerCase().includes(filter.filter?.replace(/ /g, "").toLowerCase()) ||
+                job.client.nif?.replace(/ /g, "").toLowerCase().includes(filter.filter?.replace(/ /g, "").toLowerCase()))
+            ) {
+              didMatch = false;
+            }
+          } else if (
+            filter.type === 'status' &&
+            job.status !== filter.filter
           ) {
             didMatch = false;
-          } else if(
-              filter.type === 'status' &&
-              job.status !== filter.filter
-          ) {
-            didMatch = false;
-          }else if(
+          } else if (
             filter.type === 'activity' &&
             !job.activities.includes(filter.filter)
-            ) {
+          ) {
             didMatch = false;
-          }else if(
+          } else if (
             filter.type === 'client' &&
             job.client.numClient.toString() !== filter.filter.toString()
-          ){
+          ) {
             didMatch = false;
-          }else if(
+          } else if (
             filter.type === 'year' &&
             !job.createdAt.toString().startsWith(filter.filter)
-          ){
+          ) {
             didMatch = false;
-          }else if(
+          } else if (
             filter.type === 'month' &&
             job.createdAt.toString().split('-')[1] !== filter.filter
-          ){
+          ) {
             didMatch = false;
           }
         })
+        
         return didMatch;
       });
     };

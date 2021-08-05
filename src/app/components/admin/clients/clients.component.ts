@@ -102,7 +102,7 @@ export class ClientsComponent implements OnInit {
   }
 
   editClient(client, view: string){
-    console.log('client', client);
+    // console.log('client', client);
     this.showOptions(view);
     this.newClient = client;
   }
@@ -117,7 +117,7 @@ export class ClientsComponent implements OnInit {
     this.showView = view;
     this.clientService.getServices(client._id).subscribe(
       data => {
-        console.log('data', data);
+        // console.log('data', data);
         this.allServiceOfClient = data.services;
       }, err => {
         console.log('err', err);
@@ -139,7 +139,7 @@ export class ClientsComponent implements OnInit {
   updateClient(){
     this.clientService.updateClient(this.newClient._id, this.newClient).subscribe(
       data => {
-        console.log('edited!', data);
+        // console.log('edited!', data);
         const urlIcon = '../../../assets/svg_2/ok.svg';
         const header = 'Registro Correcto';
         const title = 'Los datos del cliente se actualizaron correctamente';
@@ -161,7 +161,7 @@ export class ClientsComponent implements OnInit {
   deleteClient(){
     this.clientService.deleteClient(this.selectedClient._id).subscribe(
       data => {
-        console.log('Borrado', data);
+        // console.log('Borrado', data);
         const urlIcon = '../../../assets/svg_2/ok.svg';
         const header = 'Cliente borrado';
         const title = 'El cliente y sus servicios asignados se han eliminado correctamente';
@@ -180,18 +180,18 @@ export class ClientsComponent implements OnInit {
     this.show = this.OPTIONS;
     this.showView = view;
     this.selectedService = service;
-    console.log('service selected', this.selectedService);
+    // console.log('service selected', this.selectedService);
   }
 
   showHistoryService(service, view: string){
     this.show = this.OPTIONS;
     this.showView = view;
     this.selectedService = service;
-    console.log('service selected', this.selectedService);
+    // console.log('service selected', this.selectedService);
     this.historyService.getHistoryPerService(this.selectedService._id).subscribe(
       data => {
         this.selectedHistory = data.history;
-        console.log('data de history', this.selectedHistory)
+        // console.log('data de history', this.selectedHistory)
       }, err => console.log('err', err)
     )
   }
