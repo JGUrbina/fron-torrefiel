@@ -55,7 +55,8 @@ export class JobComponent implements OnInit {
     bill: false,
     activities: false,
     iva: false,
-    phoneOne: false
+    phoneOne: false,
+    nif: false,
   }
 
  
@@ -228,6 +229,12 @@ export class JobComponent implements OnInit {
     this.requestJobChanges();
     this.edit.iva = false;
   }
+
+  submitJobNIF() {
+    this.requestJobChanges();
+    this.edit.nif = false;
+  }
+
   hideServiceOptions() {
     this.show = this.OPTIONS;
     this.showView = "service";

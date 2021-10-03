@@ -2,13 +2,14 @@
   <div class="description__info">
     <div class="up">
       <div class="upContain">
-        <span class="info code f-bold ">#{{job.numService}}</span>
-          <input value={{job.numBill}} placeholder="N° Factura" *ngIf="edit.bill === false" class="info code f-bold box-editing num-bill" (click)="edit.bill = true" style="border-color:transparent;">
-          <input (focusout)="submitJobBill()" class="beetween-index info code input-bill" *ngIf="edit.bill === true" [(ngModel)]="job.numBill">
         <span class="info date">{{getDate(job.startDate) | date: 'dd/MM/yyyy'}} - {{job.startHours}}</span>
-        <!-- <span class="info date">{{job.startDate}} - {{job.startHours}}</span> -->
-       
-        
+      </div>
+      <div class="upContain">
+        <span class="info code f-bold ">#{{job.numService}}</span>
+        <input value={{job.numBill}} placeholder="N° Factura" *ngIf="edit.bill === false" class="info code f-bold box-editing num-bill" (click)="edit.bill = true" style="border-color:transparent;">
+        <input (focusout)="submitJobBill()" class="beetween-index info code input-bill" *ngIf="edit.bill === true" [(ngModel)]="job.numBill">
+        <input value={{job.nif}} placeholder="NIF" *ngIf="edit.nif === false" class="info code f-bold box-editing num-bill" (click)="edit.nif = true" style="border-color:transparent;">
+        <input (focusout)="submitJobNIF()" class="beetween-index info code input-bill" *ngIf="edit.nif === true" [(ngModel)]="job.nif">
       </div>
       
       <div class="upContain">
