@@ -34,6 +34,7 @@ export class CreateServicesComponent implements OnInit {
   public searchNameClient: string;
   public hour: any;
   public isNewClient: boolean;
+  public serviceNif: string;
 
   public sameDirection: boolean = true;
 
@@ -165,6 +166,7 @@ export class CreateServicesComponent implements OnInit {
     this.newService.startHours = "00:00";
     this.newService.activities = this.selectedItems
     this.newService.workers = [];
+    this.newService.nif = this.serviceNif;
     if (this.newService.numDeliveryNote === undefined) {
       this.newService.numDeliveryNote = '';
     };
